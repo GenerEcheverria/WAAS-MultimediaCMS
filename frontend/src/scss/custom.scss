@@ -1,6 +1,10 @@
+$azure-web: #D4E8E9;
+$primary: #00ADB5;
+
 
 $theme-colors: (
-    "primary": #00ADB5,
+    "primary": $primary,
+    "azure-web": $azure-web,
 );
 
 

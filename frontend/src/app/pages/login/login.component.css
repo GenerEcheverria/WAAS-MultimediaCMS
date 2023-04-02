@@ -1,0 +1,14 @@
+#cajaExterior {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; 
+}
+
+.rounded-pill {
+    border-radius: 20px;
+  }
+
+#registrar-url{
+    text-decoration: none;
+}
