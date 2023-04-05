@@ -10,6 +10,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { MenuOptionComponent } from './shared/buttons/menu-option/menu-option.component';
 import { EdicionSitioComponent } from './pages/edicion-sitio/edicion-sitio.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,11 +21,12 @@ import { EdicionSitioComponent } from './pages/edicion-sitio/edicion-sitio.compo
     HeaderComponent,
     SidebarComponent,
     MenuOptionComponent,
-    EdicionSitioComponent
+    EdicionSitioComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

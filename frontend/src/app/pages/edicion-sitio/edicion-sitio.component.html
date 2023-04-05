@@ -1,5 +1,36 @@
-<form action="">
-    <div>
-        
+<h3>Editar sitio</h3>
+<form action="" id="sitioForm" (ngSubmit)="onSubmit()"  [formGroup]="sitioForm">
+    <div class="border rounded p-4">
+        <h5>Información del sitio web</h5>
+        <div>
+            <label class="col-3" for="name">Nombre del sitio </label>
+            <input class="col-4" type="text" formControlName="name">
+        </div>
     </div>
+    <br>
+    <div class="border rounded p-4">
+        <h5>Cabecera</h5>
+        <form id="header" formGroupName="header" class="row">
+            <div class="col-5">
+                <label for="title">Titulo </label>
+                <input class="mx-2" type="text" formControlName="title">
+            </div>
+            <div class="col-7">
+                <label class="pe-2" for="size">Tamaño del titulo</label>
+                <label class="px-2">
+                    <input type="radio" value="small" formControlName="size" class="px-2"> Pequeño
+                </label>
+                <label class="px-2">
+                    <input type="radio" value="medium" formControlName="size"> Mediano
+                </label>
+                <label class="px-2">
+                    <input type="radio" value="big" formControlName="size"> Grande
+                </label>
+            </div>
+        </form>
+    </div>
+    <div class="d-flex justify-content-evenly mt-4">
+        <button (click)="cancelar()" class="btn btn-secondary rounded-pill text-gray px-5 py-2">Cancelar</button>
+        <button type="submit" form="sitioForm" class="btn btn-primary rounded-pill text-white px-5 py-2">Guardar</button>
+    </div>  
 </form>
