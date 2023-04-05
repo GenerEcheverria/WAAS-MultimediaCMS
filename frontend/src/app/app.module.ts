@@ -5,12 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MiCuentaComponent } from './pages/mi-cuenta/mi-cuenta.component';
+import { MainLayoutComponent } from './main-layout/main-layout.component';
+import { SitiosComponent } from './pages/sitios/sitios.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { MenuOptionComponent } from './shared/buttons/menu-option/menu-option.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MiCuentaComponent
+    MiCuentaComponent,
+    MainLayoutComponent,
+    SitiosComponent,
+    HeaderComponent,
+    SidebarComponent,
+    MenuOptionComponent
   ],
   imports: [
     BrowserModule,

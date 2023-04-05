@@ -1,11 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { LoginComponent } from './pages/login/login.component';
+import { SitiosComponent } from './pages/sitios/sitios.component';
 import { MiCuentaComponent } from "./pages/mi-cuenta/mi-cuenta.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'mi-cuenta', component: MiCuentaComponent}
+  {
+    path: '',
+    component: MainLayoutComponent,
+    children: [
+      { path: 'sitios', component:  SitiosComponent},
+      { path: 'mi-cuenta', component: MiCuentaComponent}
+    ]
+  }
 ];
 
 @NgModule({
