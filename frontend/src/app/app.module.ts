@@ -9,6 +9,7 @@ import { SitiosComponent } from './pages/sitios/sitios.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { MenuOptionComponent } from './shared/buttons/menu-option/menu-option.component';
+import { EdicionSitioComponent } from './pages/edicion-sitio/edicion-sitio.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MenuOptionComponent } from './shared/buttons/menu-option/menu-option.co
     SitiosComponent,
     HeaderComponent,
     SidebarComponent,
-    MenuOptionComponent
+    MenuOptionComponent,
+    EdicionSitioComponent
   ],
   imports: [
     BrowserModule,
