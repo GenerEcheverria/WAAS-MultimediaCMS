@@ -29,10 +29,12 @@
   --bs-gray-700: #495057;
   --bs-gray-800: #343a40;
   --bs-gray-900: #212529;
-  --bs-primary: #00ADB5;
   --bs-azure-web: #D4E8E9;
-  --bs-primary-rgb: 0, 173, 181;
+  --bs-primary: #00ADB5;
+  --bs-secondary: #E2ECEC;
   --bs-azure-web-rgb: 212, 232, 233;
+  --bs-primary-rgb: 0, 173, 181;
+  --bs-secondary-rgb: 226, 236, 236;
   --bs-white-rgb: 255, 255, 255;
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 33, 37, 41;
@@ -2826,6 +2828,23 @@ textarea.form-control-lg {
   opacity: var(--bs-btn-disabled-opacity);
 }
 
+.btn-azure-web {
+  --bs-btn-color: #000;
+  --bs-btn-bg: #D4E8E9;
+  --bs-btn-border-color: #D4E8E9;
+  --bs-btn-hover-color: #000;
+  --bs-btn-hover-bg: #daebec;
+  --bs-btn-hover-border-color: #d8eaeb;
+  --bs-btn-focus-shadow-rgb: 180, 197, 198;
+  --bs-btn-active-color: #000;
+  --bs-btn-active-bg: #ddeded;
+  --bs-btn-active-border-color: #d8eaeb;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #000;
+  --bs-btn-disabled-bg: #D4E8E9;
+  --bs-btn-disabled-border-color: #D4E8E9;
+}
+
 .btn-primary {
   --bs-btn-color: #000;
   --bs-btn-bg: #00ADB5;
@@ -2843,21 +2862,38 @@ textarea.form-control-lg {
   --bs-btn-disabled-border-color: #00ADB5;
 }
 
-.btn-azure-web {
+.btn-secondary {
   --bs-btn-color: #000;
-  --bs-btn-bg: #D4E8E9;
-  --bs-btn-border-color: #D4E8E9;
+  --bs-btn-bg: #E2ECEC;
+  --bs-btn-border-color: #E2ECEC;
   --bs-btn-hover-color: #000;
-  --bs-btn-hover-bg: #daebec;
-  --bs-btn-hover-border-color: #d8eaeb;
-  --bs-btn-focus-shadow-rgb: 180, 197, 198;
+  --bs-btn-hover-bg: #e6efef;
+  --bs-btn-hover-border-color: #e5eeee;
+  --bs-btn-focus-shadow-rgb: 192, 201, 201;
   --bs-btn-active-color: #000;
-  --bs-btn-active-bg: #ddeded;
-  --bs-btn-active-border-color: #d8eaeb;
+  --bs-btn-active-bg: #e8f0f0;
+  --bs-btn-active-border-color: #e5eeee;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   --bs-btn-disabled-color: #000;
-  --bs-btn-disabled-bg: #D4E8E9;
+  --bs-btn-disabled-bg: #E2ECEC;
+  --bs-btn-disabled-border-color: #E2ECEC;
+}
+
+.btn-outline-azure-web {
+  --bs-btn-color: #D4E8E9;
+  --bs-btn-border-color: #D4E8E9;
+  --bs-btn-hover-color: #000;
+  --bs-btn-hover-bg: #D4E8E9;
+  --bs-btn-hover-border-color: #D4E8E9;
+  --bs-btn-focus-shadow-rgb: 212, 232, 233;
+  --bs-btn-active-color: #000;
+  --bs-btn-active-bg: #D4E8E9;
+  --bs-btn-active-border-color: #D4E8E9;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #D4E8E9;
+  --bs-btn-disabled-bg: transparent;
   --bs-btn-disabled-border-color: #D4E8E9;
+  --bs-gradient: none;
 }
 
 .btn-outline-primary {
@@ -2877,20 +2913,20 @@ textarea.form-control-lg {
   --bs-gradient: none;
 }
 
-.btn-outline-azure-web {
-  --bs-btn-color: #D4E8E9;
-  --bs-btn-border-color: #D4E8E9;
+.btn-outline-secondary {
+  --bs-btn-color: #E2ECEC;
+  --bs-btn-border-color: #E2ECEC;
   --bs-btn-hover-color: #000;
-  --bs-btn-hover-bg: #D4E8E9;
-  --bs-btn-hover-border-color: #D4E8E9;
-  --bs-btn-focus-shadow-rgb: 212, 232, 233;
+  --bs-btn-hover-bg: #E2ECEC;
+  --bs-btn-hover-border-color: #E2ECEC;
+  --bs-btn-focus-shadow-rgb: 226, 236, 236;
   --bs-btn-active-color: #000;
-  --bs-btn-active-bg: #D4E8E9;
-  --bs-btn-active-border-color: #D4E8E9;
+  --bs-btn-active-bg: #E2ECEC;
+  --bs-btn-active-border-color: #E2ECEC;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #D4E8E9;
+  --bs-btn-disabled-color: #E2ECEC;
   --bs-btn-disabled-bg: transparent;
-  --bs-btn-disabled-border-color: #D4E8E9;
+  --bs-btn-disabled-border-color: #E2ECEC;
   --bs-gradient: none;
 }
 
@@ -4434,6 +4470,15 @@ textarea.form-control-lg {
   padding: 1.25rem 1rem;
 }
 
+.alert-azure-web {
+  --bs-alert-color: #555d5d;
+  --bs-alert-bg: #f6fafb;
+  --bs-alert-border-color: #f2f8f8;
+}
+.alert-azure-web .alert-link {
+  color: #444a4a;
+}
+
 .alert-primary {
   --bs-alert-color: #00686d;
   --bs-alert-bg: #cceff0;
@@ -4443,13 +4488,13 @@ textarea.form-control-lg {
   color: #005357;
 }
 
-.alert-azure-web {
-  --bs-alert-color: #555d5d;
-  --bs-alert-bg: #f6fafb;
-  --bs-alert-border-color: #f2f8f8;
+.alert-secondary {
+  --bs-alert-color: #5a5e5e;
+  --bs-alert-bg: #f9fbfb;
+  --bs-alert-border-color: #f6f9f9;
 }
-.alert-azure-web .alert-link {
-  color: #444a4a;
+.alert-secondary .alert-link {
+  color: #484b4b;
 }
 
 @keyframes progress-bar-stripes {
@@ -4744,6 +4789,20 @@ textarea.form-control-lg {
   border-bottom-width: 0;
 }
 
+.list-group-item-azure-web {
+  color: #555d5d;
+  background-color: #f6fafb;
+}
+.list-group-item-azure-web.list-group-item-action:hover, .list-group-item-azure-web.list-group-item-action:focus {
+  color: #555d5d;
+  background-color: #dde1e2;
+}
+.list-group-item-azure-web.list-group-item-action.active {
+  color: #fff;
+  background-color: #555d5d;
+  border-color: #555d5d;
+}
+
 .list-group-item-primary {
   color: #00686d;
   background-color: #cceff0;
@@ -4758,18 +4817,18 @@ textarea.form-control-lg {
   border-color: #00686d;
 }
 
-.list-group-item-azure-web {
-  color: #555d5d;
-  background-color: #f6fafb;
+.list-group-item-secondary {
+  color: #5a5e5e;
+  background-color: #f9fbfb;
 }
-.list-group-item-azure-web.list-group-item-action:hover, .list-group-item-azure-web.list-group-item-action:focus {
-  color: #555d5d;
-  background-color: #dde1e2;
+.list-group-item-secondary.list-group-item-action:hover, .list-group-item-secondary.list-group-item-action:focus {
+  color: #5a5e5e;
+  background-color: #e0e2e2;
 }
-.list-group-item-azure-web.list-group-item-action.active {
+.list-group-item-secondary.list-group-item-action.active {
   color: #fff;
-  background-color: #555d5d;
-  border-color: #555d5d;
+  background-color: #5a5e5e;
+  border-color: #5a5e5e;
 }
 
 .btn-close {
@@ -6295,14 +6354,26 @@ textarea.form-control-lg {
   content: "";
 }
 
+.text-bg-azure-web {
+  color: #000 !important;
+  background-color: RGBA(212, 232, 233, var(--bs-bg-opacity, 1)) !important;
+}
+
 .text-bg-primary {
   color: #000 !important;
   background-color: RGBA(0, 173, 181, var(--bs-bg-opacity, 1)) !important;
 }
 
-.text-bg-azure-web {
+.text-bg-secondary {
   color: #000 !important;
-  background-color: RGBA(212, 232, 233, var(--bs-bg-opacity, 1)) !important;
+  background-color: RGBA(226, 236, 236, var(--bs-bg-opacity, 1)) !important;
+}
+
+.link-azure-web {
+  color: #D4E8E9 !important;
+}
+.link-azure-web:hover, .link-azure-web:focus {
+  color: #ddeded !important;
 }
 
 .link-primary {
@@ -6312,11 +6383,11 @@ textarea.form-control-lg {
   color: #33bdc4 !important;
 }
 
-.link-azure-web {
-  color: #D4E8E9 !important;
+.link-secondary {
+  color: #E2ECEC !important;
 }
-.link-azure-web:hover, .link-azure-web:focus {
-  color: #ddeded !important;
+.link-secondary:hover, .link-secondary:focus {
+  color: #e8f0f0 !important;
 }
 
 .ratio {
@@ -6740,14 +6811,19 @@ textarea.form-control-lg {
   border-left: 0 !important;
 }
 
+.border-azure-web {
+  --bs-border-opacity: 1;
+  border-color: rgba(var(--bs-azure-web-rgb), var(--bs-border-opacity)) !important;
+}
+
 .border-primary {
   --bs-border-opacity: 1;
   border-color: rgba(var(--bs-primary-rgb), var(--bs-border-opacity)) !important;
 }
 
-.border-azure-web {
+.border-secondary {
   --bs-border-opacity: 1;
-  border-color: rgba(var(--bs-azure-web-rgb), var(--bs-border-opacity)) !important;
+  border-color: rgba(var(--bs-secondary-rgb), var(--bs-border-opacity)) !important;
 }
 
 .border-white {
@@ -7572,14 +7648,19 @@ textarea.form-control-lg {
 }
 
 /* rtl:end:remove */
+.text-azure-web {
+  --bs-text-opacity: 1;
+  color: rgba(var(--bs-azure-web-rgb), var(--bs-text-opacity)) !important;
+}
+
 .text-primary {
   --bs-text-opacity: 1;
   color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important;
 }
 
-.text-azure-web {
+.text-secondary {
   --bs-text-opacity: 1;
-  color: rgba(var(--bs-azure-web-rgb), var(--bs-text-opacity)) !important;
+  color: rgba(var(--bs-secondary-rgb), var(--bs-text-opacity)) !important;
 }
 
 .text-black {
@@ -7633,14 +7714,19 @@ textarea.form-control-lg {
   --bs-text-opacity: 1;
 }
 
+.bg-azure-web {
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-azure-web-rgb), var(--bs-bg-opacity)) !important;
+}
+
 .bg-primary {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
 }
 
-.bg-azure-web {
+.bg-secondary {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-azure-web-rgb), var(--bs-bg-opacity)) !important;
+  background-color: rgba(var(--bs-secondary-rgb), var(--bs-bg-opacity)) !important;
 }
 
 .bg-black {
