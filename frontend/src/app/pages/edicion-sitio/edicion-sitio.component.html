@@ -81,13 +81,13 @@
         </div>
         <div class="col-4">
           <label for="color" class="align-top">Color:</label>
-          <input class="mx-2 " type="color" formControlName="color" />
+          <input class="mx-2" type="color" formControlName="color" />
         </div>
       </div>
       <div class="ms-1 py-1 row">
         <div class="form-check form-switch col-3">
-            <label class="form-check-label" for="type">Agregar Hero</label>
-            <input
+          <label class="form-check-label" for="type">Agregar Hero</label>
+          <input
             value="false"
             class="form-check-input"
             type="checkbox"
@@ -98,10 +98,38 @@
           />
         </div>
         <div *ngIf="isHero" class="col-7">
-            <input type="file" class="form-control" id="image" formControlName="image">
-          </div>
+          <input
+            type="file"
+            class="form-control"
+            id="image"
+            formControlName="image"
+          />
+        </div>
       </div>
     </form>
+  </div>
+  <br />
+  <div class="border rounded p-4">
+    <h5>Cuerpo</h5>
+    
+    <app-body-element
+      *ngFor="
+        let childForm of getCtrl('body', sitioForm).controls;
+        index as formChild;
+        let i = index
+      "
+      [bodyElementForm]="childForm"
+      [arrayIndex]="i"
+      (deleteBodyElementEvent)="deleteBodyElement($event)"
+    >
+    </app-body-element>
+    <button
+      type="button"
+      (click)="addBodyElement()"
+      class="text-primary pe-auto btn btn-outline-secondary"
+    >
+      Agregar un nuevo elemento
+    </button>
   </div>
   <div class="d-flex justify-content-evenly mt-4">
     <button

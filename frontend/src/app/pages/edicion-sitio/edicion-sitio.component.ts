@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BodyElementComponent } from './body-element/body-element.component';
 
 @Component({
   selector: 'app-edicion-sitio',
@@ -30,7 +31,27 @@ export class EdicionSitioComponent implements OnInit {
         color: new FormControl(''),
         image: new FormControl(''),
       }),
+      body: new FormArray([
+        
+      ]),
     })
+  }
+
+  getCtrl(key: string, form: FormGroup): any {
+    return form.get(key)
+  }
+
+  addBodyElement(): void {
+    this.getCtrl('body', this.sitioForm).push(BodyElementComponent.addComponentItem())
+  }
+
+  deleteBodyElement(index: number): void {
+    this.getCtrl('body', this.sitioForm).removeAt(index);
+  }
+
+  deleteAllBodyElement(): void {
+    const bodyCtrl = this.getCtrl('body', this.sitioForm);
+    bodyCtrl.clear();
   }
 
   cancelar():void {

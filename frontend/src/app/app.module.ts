@@ -11,6 +11,7 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { MenuOptionComponent } from './shared/buttons/menu-option/menu-option.component';
 import { EdicionSitioComponent } from './pages/edicion-sitio/edicion-sitio.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BodyElementComponent } from './pages/edicion-sitio/body-element/body-element.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     SidebarComponent,
     MenuOptionComponent,
     EdicionSitioComponent,
+    BodyElementComponent,
   ],
   imports: [
     BrowserModule,

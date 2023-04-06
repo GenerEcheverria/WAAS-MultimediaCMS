@@ -1,0 +1,11 @@
+<form [formGroup]="bodyElementForm">
+    <input type="text" formControlName="dato">
+    
+    <button
+      class="btn  col-1"
+      type="button"
+      (click)="deleteBodyElement(arrayIndex)"
+    >
+      <i class="bi bi-trash text-danger"></i>
+    </button>
+</form>
