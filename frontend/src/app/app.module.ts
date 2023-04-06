@@ -9,6 +9,7 @@ import { SitiosComponent } from './pages/sitios/sitios.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { MenuOptionComponent } from './shared/buttons/menu-option/menu-option.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,9 +23,13 @@ import { MenuOptionComponent } from './shared/buttons/menu-option/menu-option.co
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    
+  ],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }
