@@ -2,58 +2,53 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
 </head>
 
-<h1 style="font-family: 'Inter';">Cuenta Usuario</h1>
+<h1 style="font-family: 'Inter';" class="mb-4 mt-4">Cuenta Usuario</h1>
 
-<!--Información-->
-<div class="mt-4" id="divInformacion">
-    <h3>Información</h3>
-    
+<div class="container p-0 m-0">
+    <h3 class="mb-4">Información</h3>
     <!--Nombre-->
-    <div class="row mt-4">
-        <div class="col-2">
-            <h5 style="font-family: 'Inter';">Nombre</h5>
+    <div class="row mb-4 mx-0 mt-0 p-0" id="filasInformacion">
+        <div class="col-2 p-0 m-0 d-flex align-self-center">
+            <h5 class=" m-0 h-100" style="font-family: 'Inter';">Nombre</h5>
         </div>
-        <div class="col-10">
-            <div class="rounded-pill bg-azure-web" id="nombreUsuario" >Gener Alejando Echeverria Chi</div>
+        <div class="col-10 p-0 m-0">
+            <input type="text" value="Gener Alejando Echeverria Chi"  class=" rounded-pill bg-azure-web border border-none w-100 h-100 ps-3" readonly>
         </div>
     </div>
-    
     <!--Correo electrónico-->
-    <div class="row mt-4">
-        <div class="col-2">
-            <h5 style="font-family: 'Inter';">Correo electrónico</h5>
+    <div class="row mb-4 mx-0 mt-0 p-0" id="filasInformacion">
+        <div class="col-2 p-0 m-0 d-flex align-self-center">
+            <h5 class=" m-0 h-100" style="font-family: 'Inter';">Correo</h5>
         </div>
-        <div class="col-10">
-            <div class="rounded-pill bg-azure-web" id="correoUsuario">generecheverria@gmail.com</div>
+        <div class="col-10 p-0 m-0">
+            <input type="text" value="gerber@gmail.com"  class=" rounded-pill bg-azure-web border border-none w-100 h-100 ps-3" readonly>
         </div>
     </div>
-    
     <!--Teléfono-->
-    <div class="row mt-4">
-        <div class="col-2">
-            <h5 style="font-family: 'Inter';">Teléfono</h5>
+    <div class="row mb-4 mx-0 mt-0 p-0" id="filasInformacion">
+        <div class="col-2 p-0 m-0 d-flex align-self-center">
+            <h5 class=" m-0 h-100" style="font-family: 'Inter';">Teléfono</h5>
         </div>
-        <div class="col-10">
-            <div class="rounded-pill bg-azure-web" id="correoUsuario">generecheverria@gmail.com</div>
+        <div class="col-10 p-0 m-0">
+            <input type="text" value="9992195646"  class=" rounded-pill bg-azure-web border border-none w-100 h-100 ps-3" readonly>
         </div>
     </div>
-    
     <!--Foto de perfil-->
-    <div class="row mt-4">
-        <div class="col-2">
-            <h5 style="font-family: 'Inter';">Foto de perfil</h5>
+    <div class="row mb-4 mx-0 mt-0 p-0">
+        <div class="col-2 p-0 m-0 d-flex align-self-center">
+            <h5 class=" m-0 h-100" style="font-family: 'Inter';">Foto de perfil</h5>
         </div>
-        <div class="col-10">
-            <div class="border border-2 border-azure-web" id="correoUsuario"></div>
+        <div class="col-10 p-0 m-0" id="image-container">
+            <img class="img-fluid" src="../../../assets/images/gerber.jpg">
         </div>
-    </div>    
+    </div>
 </div>
 
 <!--Lista de sitios-->
-<div class="mt-5 row" id="divListaSitios">
-    <div class="col-7">
-        <h3>Lista de sitios</h3>
-        <table class="table bg-azure-web table-striped mt-4">
+<div class="m-0 mt-5 p-0 row">
+    <div class="col-12 m-0 p-0">
+        <h3 class="mb-4">Lista de sitios</h3>
+        <table class="table table-striped mt-4">
             <thead>
               <tr>
                 <th class="fw-bold">Nombre</th>
@@ -71,41 +66,60 @@
                 <td>12-02-23</td>
                 <td>/gerberino.com</td>
               </tr>
+              <tr>
+                <td>Gener Echeverria</td>
+                <td>1000</td>
+                <td>12-02-22</td>
+                <td>12-02-23</td>
+                <td>/gerberino.com</td>
+              </tr>
+              <tr>
+                <td>Gener Echeverria</td>
+                <td>1000</td>
+                <td>12-02-22</td>
+                <td>12-02-23</td>
+                <td>/gerberino.com</td>
+              </tr>
+              <tr>
+                <td>Gener Echeverria</td>
+                <td>1000</td>
+                <td>12-02-22</td>
+                <td>12-02-23</td>
+                <td>/gerberino.com</td>
+              </tr>
             </tbody>
           </table>
     </div>
 </div>
 
 <!--Estado-->
-<div class="mt-5" id="divListaSitios">
-    <h3>Estado</h3>
-    <div class="row  mt-4">
-        <div class="col-3">
-            <label for="estado">Estado:</label>
-            <select class="form-select rounded-pill bg-azure-web" id="estado">
+<div class="container p-0 m-0 mt-5">
+    <h3>Estado de la cuenta</h3>
+    <div class="row m-0 p-0 mt-4">
+        <div class="col-3 m-0 p-0">
+            <label class="mb-3" for="estado">Seleccione un estado:</label>
+            <select class="form-select rounded-pill" id="estado">
                 <option value="activada">Activada</option>
                 <option value="desactivada">Desactivada</option>
             </select>
         </div>
-        <div class="col-4 d-flex justify-content-end align-items-end">
+        <div class="col-9 m-0 p-0 d-flex justify-content-end align-items-end">
             <button type="button" class="btn btn-primary rounded-pill w-25 text-white">Guardar</button>
-          </div>  
+        </div>  
     </div>
 </div>
 
 <!--Eliminar cuenta-->
-<div class="mt-5" id="divEliminarCuenta">
+<div class="container p-0 m-0 mt-5">
     <h3>Eliminar cuenta</h3>
-    <div class="row mt-4">
-        <div class="col-3">
-            <div class="form-check form-check-inline">
-                <label class="form-check-label align-self-center" for="confirmar">Confirmar</label>
-                <input class="form-check-input" type="checkbox" id="confirmar">
-            </div>
+    <div class="row mt-4 m-0 p-0">
+        <div class="col-3 m-0 p-0 d-flex align-items-center">
+            <label class="pe-3 form-check-label align-self-center" for="confirmar">Seguro desea eliminar la cuenta</label>
+            <input class="form-check-input" type="checkbox" id="confirmar">
         </div>
-        <div class="col-4 d-flex justify-content-end align-items-end">
+        <div class="col-9 d-flex justify-content-end align-items-end m-0 p-0">
             <button type="button" class="btn btn-primary rounded-pill w-25 text-white">Eliminar</button>
-        </div>
+        </div>  
     </div>
 </div>
-
+<br><br><br><br><br>
