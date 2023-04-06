@@ -1,36 +1,121 @@
 <h3>Editar sitio</h3>
-<form action="" id="sitioForm" (ngSubmit)="onSubmit()"  [formGroup]="sitioForm">
-    <div class="border rounded p-4">
-        <h5>Información del sitio web</h5>
-        <div>
-            <label class="col-3" for="name">Nombre del sitio </label>
-            <input class="col-4" type="text" formControlName="name">
+<form action="" id="sitioForm" (ngSubmit)="onSubmit()" [formGroup]="sitioForm">
+  <div class="border rounded p-4">
+    <h5>Información del sitio web</h5>
+    <div>
+      <label class="col-3" for="name">Nombre del sitio: </label>
+      <input class="col-4" type="text" formControlName="name" />
+    </div>
+  </div>
+  <br />
+  <div class="border rounded p-4">
+    <h5>Cabecera</h5>
+    <form id="header" formGroupName="header">
+      <div class="row py-1">
+        <div class="col-5">
+          <label for="title">Titulo: </label>
+          <input class="mx-2" type="text" formControlName="title" />
         </div>
-    </div>
-    <br>
-    <div class="border rounded p-4">
-        <h5>Cabecera</h5>
-        <form id="header" formGroupName="header" class="row">
-            <div class="col-5">
-                <label for="title">Titulo </label>
-                <input class="mx-2" type="text" formControlName="title">
-            </div>
-            <div class="col-7">
-                <label class="pe-2" for="size">Tamaño del titulo</label>
-                <label class="px-2">
-                    <input type="radio" value="small" formControlName="size" class="px-2"> Pequeño
-                </label>
-                <label class="px-2">
-                    <input type="radio" value="medium" formControlName="size"> Mediano
-                </label>
-                <label class="px-2">
-                    <input type="radio" value="big" formControlName="size"> Grande
-                </label>
-            </div>
-        </form>
-    </div>
-    <div class="d-flex justify-content-evenly mt-4">
-        <button (click)="cancelar()" class="btn btn-secondary rounded-pill text-gray px-5 py-2">Cancelar</button>
-        <button type="submit" form="sitioForm" class="btn btn-primary rounded-pill text-white px-5 py-2">Guardar</button>
-    </div>  
+        <div class="col-7">
+          <label class="pe-2" for="size">Posición:</label>
+          <div class="form-check form-check-inline">
+            <input
+              type="radio"
+              value="left"
+              formControlName="position"
+              class="form-check-input"
+            />
+            <label class="form-check-label"> Izquierda </label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              value="center"
+              formControlName="position"
+            />
+            <label class="form-check-label"> Centro </label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              value="right"
+              formControlName="position"
+            />
+
+            <label class="form-check-label"> Derecha </label>
+          </div>
+        </div>
+      </div>
+      <div class="row py-1">
+        <div class="col-8">
+          <label class="pe-2" for="size">Tamaño de letra:</label>
+          <div class="form-check form-check-inline">
+            <input
+              type="radio"
+              value="small"
+              formControlName="size"
+              class="form-check-input"
+            />
+            <label class="form-check-label"> Pequeño </label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              type="radio"
+              value="medium"
+              formControlName="size"
+              class="form-check-input"
+            />
+            <label class="form-check-label"> Mediano </label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              type="radio"
+              value="big"
+              formControlName="size"
+              class="form-check-input"
+            />
+            <label class="form-check-label"> Grande </label>
+          </div>
+        </div>
+        <div class="col-4">
+          <label for="color" class="align-top">Color:</label>
+          <input class="mx-2 " type="color" formControlName="color" />
+        </div>
+      </div>
+      <div class="ms-1 py-1 row">
+        <div class="form-check form-switch col-3">
+            <label class="form-check-label" for="type">Agregar Hero</label>
+            <input
+            value="false"
+            class="form-check-input"
+            type="checkbox"
+            role="switch"
+            id="hero"
+            formControlName="hero"
+            (change)="isHero = !isHero"
+          />
+        </div>
+        <div *ngIf="isHero" class="col-7">
+            <input type="file" class="form-control" id="image" formControlName="image">
+          </div>
+      </div>
+    </form>
+  </div>
+  <div class="d-flex justify-content-evenly mt-4">
+    <button
+      (click)="cancelar()"
+      class="btn btn-secondary rounded-pill text-gray px-5 py-2"
+    >
+      Cancelar
+    </button>
+    <button
+      type="submit"
+      form="sitioForm"
+      class="btn btn-primary rounded-pill text-white px-5 py-2"
+    >
+      Guardar
+    </button>
+  </div>
 </form>

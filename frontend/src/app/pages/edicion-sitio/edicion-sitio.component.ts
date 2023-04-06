@@ -9,8 +9,11 @@ import { Router } from '@angular/router';
 })
 export class EdicionSitioComponent implements OnInit {
   public sitioForm!: FormGroup;
+  public isHero: boolean;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    this.isHero = false;
+  }
 
   ngOnInit(): void {
       this.initSitioForm();
@@ -20,9 +23,12 @@ export class EdicionSitioComponent implements OnInit {
     this.sitioForm = new FormGroup({
       name: new FormControl(''),
       header: new FormGroup( {
-        type: new FormControl(''),
+        hero: new FormControl(''),
         title: new FormControl(''),
-        size: new FormControl('')
+        position: new FormControl(''),
+        size: new FormControl(''),
+        color: new FormControl(''),
+        image: new FormControl(''),
       }),
     })
   }
