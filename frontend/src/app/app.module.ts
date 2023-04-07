@@ -10,7 +10,8 @@ import { SitiosComponent } from './pages/sitios/sitios.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { MenuOptionComponent } from './shared/buttons/menu-option/menu-option.component';
-import { ErrorTailorModule } from '@ngneat/error-tailor';
+import { SuperAdminSitiosComponent } from './pages/super-admin-sitios/super-admin-sitios.component';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ErrorTailorModule } from '@ngneat/error-tailor';
     SitiosComponent,
     HeaderComponent,
     SidebarComponent,
-    MenuOptionComponent
+    MenuOptionComponent,
+    SuperAdminSitiosComponent
   ],
   imports: [
     BrowserModule,
