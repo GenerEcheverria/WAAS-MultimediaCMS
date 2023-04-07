@@ -10,7 +10,6 @@ import { SitiosComponent } from './pages/sitios/sitios.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { MenuOptionComponent } from './shared/buttons/menu-option/menu-option.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { ErrorTailorModule } from '@ngneat/error-tailor';
 
 @NgModule({
@@ -27,17 +26,7 @@ import { ErrorTailorModule } from '@ngneat/error-tailor';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
-    ErrorTailorModule.forRoot({
-      errors: {
-        useValue: {
-          required: 'Campo requerido',
-          minlength: ({ requiredLength, actualLength }) => 
-                      `Expect ${requiredLength} but got ${actualLength}`,
-          invalidAddress: error => `Address isn't valid`
-        }
-      }
-    })
+    ReactiveFormsModule
   ],
 
   providers: [],

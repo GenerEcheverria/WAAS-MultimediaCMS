@@ -13,8 +13,8 @@ const routes: Routes = [
     component: MainLayoutComponent,
     children: [
       { path: 'sitios', component:  SitiosComponent},
-      { path: 'mi-cuenta', component: MiCuentaComponent}
-      { path: 'sausuarios', component:  SuperadministradorCuentaUsuarioComponent},
+      { path: 'mi-cuenta', component: MiCuentaComponent},
+      { path: 'sausuarios', component:  SuperadministradorCuentaUsuarioComponent}
     ]
   }
 ];
