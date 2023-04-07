@@ -11,10 +11,27 @@ export class BodyElementComponent {
   @Input() public arrayIndex!: number;
   @Output() public deleteBodyElementEvent: EventEmitter<number> = new EventEmitter<number>();
 
-
+   static isFull = true;
+   isFull = BodyElementComponent.isFull;
   static addComponentItem(): FormGroup {
     return new FormGroup({
       dato: new FormControl(''),
+    });
+  }
+  static addFullColumn(): FormGroup {
+    BodyElementComponent.isFull = true;
+    return new FormGroup({
+      full: new FormGroup({
+        dato: new FormControl('')
+      }),
+    });
+  }
+  static addSplitColumn(): FormGroup {
+    BodyElementComponent.isFull = false;
+    return new FormGroup({
+      split: new FormGroup({
+        dato: new FormControl('')
+      }),
     });
   }
 

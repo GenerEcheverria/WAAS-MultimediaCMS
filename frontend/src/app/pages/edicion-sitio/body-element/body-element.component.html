@@ -1,11 +1,33 @@
-<form [formGroup]="bodyElementForm">
-    <input type="text" formControlName="dato">
-    
-    <button
-      class="btn  col-1"
-      type="button"
-      (click)="deleteBodyElement(arrayIndex)"
-    >
-      <i class="bi bi-trash text-danger"></i>
-    </button>
+<form action=""[formGroup]="bodyElementForm">
+<form *ngIf="isFull"  formGroupName="full">
+  <div class="border p-3 mb-1">
+    <div class="text-center">
+      <h5 class="fs-6">Columna completa</h5>
+      <button
+        class="btn col-1"
+        type="button"
+        (click)="deleteBodyElement(arrayIndex)"
+      >
+        <i class="bi bi-trash text-danger"></i>
+      </button>
+    </div>
+    <input type="text" formControlName="dato" />
+  </div>
+</form>
+
+<form *ngIf="!isFull" formGroupName="split">
+    <div class="border p-3 mb-1">
+      <div class="text-center">
+        <h5 class="fs-6">Columna dividida</h5>
+        <button
+          class="btn col-1"
+          type="button"
+          (click)="deleteBodyElement(arrayIndex)"
+        >
+          <i class="bi bi-trash text-danger"></i>
+        </button>
+      </div>
+      <input type="text" formControlName="dato" />
+    </div>
+  </form>
 </form>

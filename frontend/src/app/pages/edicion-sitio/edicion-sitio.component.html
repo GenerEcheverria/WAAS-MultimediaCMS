@@ -111,7 +111,7 @@
   <br />
   <div class="border rounded p-4">
     <h5>Cuerpo</h5>
-    
+
     <app-body-element
       *ngFor="
         let childForm of getCtrl('body', sitioForm).controls;
@@ -123,13 +123,24 @@
       (deleteBodyElementEvent)="deleteBodyElement($event)"
     >
     </app-body-element>
-    <button
-      type="button"
-      (click)="addBodyElement()"
-      class="text-primary pe-auto btn btn-outline-secondary"
-    >
-      Agregar un nuevo elemento
-    </button>
+
+    <div class="text-center">
+       Agregue una nueva columna: 
+      <button
+        type="button"
+        (click)="addFullColumn()"
+        class="text-primary pe-auto btn btn-outline-secondary mx-2"
+      >
+        Completa
+      </button>
+      <button
+        type="button"
+        (click)="addSplitColumn()"
+        class="text-primary pe-auto btn btn-outline-secondary mx-2"
+      >
+        Dividida
+      </button>
+    </div>
   </div>
   <div class="d-flex justify-content-evenly mt-4">
     <button
