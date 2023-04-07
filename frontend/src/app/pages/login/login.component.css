@@ -12,3 +12,10 @@
 #registrar-url{
     text-decoration: none;
 }
+input.ng-invalid.ng-touched {
+    border: solid 2px tomato !important;
+  }
+  
+  input.ng-valid {
+    border: solid 2px #3cc53d !important;
+  }
