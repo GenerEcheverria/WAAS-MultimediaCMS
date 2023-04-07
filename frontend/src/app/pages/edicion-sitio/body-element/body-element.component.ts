@@ -13,16 +13,12 @@ export class BodyElementComponent {
 
    static isFull = true;
    isFull = BodyElementComponent.isFull;
-  static addComponentItem(): FormGroup {
-    return new FormGroup({
-      dato: new FormControl(''),
-    });
-  }
+  
   static addFullColumn(): FormGroup {
     BodyElementComponent.isFull = true;
     return new FormGroup({
       full: new FormGroup({
-        dato: new FormControl('')
+        tipo: new FormControl('')
       }),
     });
   }
@@ -33,6 +29,10 @@ export class BodyElementComponent {
         dato: new FormControl('')
       }),
     });
+  }
+
+  public selectType(type:string) {
+    console.log(type)
   }
 
   public deleteBodyElement(index: number): void {
