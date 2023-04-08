@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FullColumnComponent } from './full-column.component';
+import { TextComponent } from './text.component';
 
-describe('FullColumnComponent', () => {
-  let component: FullColumnComponent;
-  let fixture: ComponentFixture<FullColumnComponent>;
+describe('TextComponent', () => {
+  let component: TextComponent;
+  let fixture: ComponentFixture<TextComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FullColumnComponent ]
+      declarations: [ TextComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FullColumnComponent);
+    fixture = TestBed.createComponent(TextComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

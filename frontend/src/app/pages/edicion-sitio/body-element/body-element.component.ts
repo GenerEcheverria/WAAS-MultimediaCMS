@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { TextComponent } from '../media-types/text/text.component';
 
 @Component({
   selector: 'app-body-element',
@@ -11,31 +12,63 @@ export class BodyElementComponent {
   @Input() public arrayIndex!: number;
   @Output() public deleteBodyElementEvent: EventEmitter<number> = new EventEmitter<number>();
 
-   static isFull = true;
-   isFull = BodyElementComponent.isFull;
-  
-  static addFullColumn(): FormGroup {
+  static isFull = true;
+  protected isFull = BodyElementComponent.isFull;
+
+  static textType = true;
+  protected textType = BodyElementComponent.textType;
+
+  static addFullColumn(type: string): FormGroup {
     BodyElementComponent.isFull = true;
-    return new FormGroup({
-      full: new FormGroup({
-        tipo: new FormControl('')
-      }),
-    });
-  }
-  static addSplitColumn(): FormGroup {
-    BodyElementComponent.isFull = false;
-    return new FormGroup({
-      split: new FormGroup({
-        dato: new FormControl('')
-      }),
-    });
+    return this.buildType(type)
   }
 
-  public selectType(type:string) {
-    console.log(type)
+  static addSplitColumn(leftType: string, rightType: string): FormGroup {
+    BodyElementComponent.isFull = false;
+    const left = this.buildType(leftType);
+    const right = this.buildType(rightType);
+    return new FormGroup({
+        left: left,
+        right: right,
+    });
   }
 
   public deleteBodyElement(index: number): void {
     this.deleteBodyElementEvent.next(index);
+  }
+
+  static buildType(type: string): FormGroup {
+    switch (type) {
+      case 'Text':
+        BodyElementComponent.textType = true;
+        return new FormGroup({
+          text: new FormGroup({
+            title: new FormControl(''),
+            text: new FormControl(''),
+          }),
+        });
+      case 'Image':
+        return new FormGroup({
+          image: new FormGroup({
+            title: new FormControl(''),
+            image: new FormControl(''),
+          }),
+        });
+      case 'Video':
+        return new FormGroup({
+          video: new FormGroup({
+            title: new FormControl(''),
+            url: new FormControl(''),
+          }),
+        });
+      case 'Timeline':
+        return new FormGroup({
+          timeline: new FormGroup({
+            title: new FormControl(''),
+          }),
+        });
+      default:
+        return new FormGroup({});
+    }
   }
 }

@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BodyElementComponent } from './body-element/body-element.component';
-import { SplitColumnComponent } from './columnas/split-column/split-column.component';
-import { FullColumnComponent } from './columnas/full-column/full-column.component';
+
 
 @Component({
   selector: 'app-edicion-sitio',
@@ -43,16 +42,12 @@ export class EdicionSitioComponent implements OnInit {
     return form.get(key)
   }
 
-  // addBodyElement(): void {
-  //   this.getCtrl('body', this.sitioForm).push(BodyElementComponent.addComponentItem())
-  // }
-
-  addFullColumn(): void {
-    this.getCtrl('body', this.sitioForm).push(BodyElementComponent.addFullColumn())
+  addFullColumn(type:string): void {
+    this.getCtrl('body', this.sitioForm).push(BodyElementComponent.addFullColumn(type))
   }
 
-  addSplitColumn(): void {
-    this.getCtrl('body', this.sitioForm).push(BodyElementComponent.addSplitColumn())
+  addSplitColumn(leftType:string, rightType:string): void {
+    this.getCtrl('body', this.sitioForm).push(BodyElementComponent.addSplitColumn(leftType,rightType))
   }
 
   deleteBodyElement(index: number): void {
@@ -71,4 +66,6 @@ export class EdicionSitioComponent implements OnInit {
   onSubmit(): void {
     console.log(this.sitioForm.value)
   }
+
+  
 }

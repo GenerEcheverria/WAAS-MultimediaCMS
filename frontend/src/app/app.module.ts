@@ -12,8 +12,8 @@ import { MenuOptionComponent } from './shared/buttons/menu-option/menu-option.co
 import { EdicionSitioComponent } from './pages/edicion-sitio/edicion-sitio.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BodyElementComponent } from './pages/edicion-sitio/body-element/body-element.component';
-import { FullColumnComponent } from './pages/edicion-sitio/columnas/full-column/full-column.component';
-import { SplitColumnComponent } from './pages/edicion-sitio/columnas/split-column/split-column.component';
+import { TextComponent } from './pages/edicion-sitio/media-types/text/text.component';
+
 
 @NgModule({
   declarations: [
@@ -26,8 +26,8 @@ import { SplitColumnComponent } from './pages/edicion-sitio/columnas/split-colum
     MenuOptionComponent,
     EdicionSitioComponent,
     BodyElementComponent,
-    FullColumnComponent,
-    SplitColumnComponent,
+    TextComponent,
+
   ],
   imports: [
     BrowserModule,

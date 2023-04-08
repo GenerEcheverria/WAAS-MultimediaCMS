@@ -1,8 +1,13 @@
-<form  [formGroup]="bodyElementForm">
+<form [formGroup]="bodyElementForm">
   <form *ngIf="isFull" formGroupName="full">
     <div class="border p-3 mb-1">
-      <div class="d-flex justify-content-center align-items-baseline">
+      <div
+        class="d-flex justify-content-center align-items-baseline"
+      >
         <h5 class="fs-6">Columna completa</h5>
+        <app-text 
+            [type] = "textType"
+        ></app-text>
         <button
           class="btn"
           type="button"
@@ -11,14 +16,6 @@
           <i class="bi bi-trash text-danger"></i>
         </button>
       </div>
-      <select class="form-select" aria-label="Default select example" (change)="selectType(type.value)" #type>
-        <option selected>Seleccione el elemento que desea agregar</option>
-        <option value="Text">Texto</option>
-        <option value="Image">Imagen</option>
-        <option value="Video">Video</option>
-        <option value="Timeline">Línea del tiempo</option>
-      </select>
-      
     </div>
   </form>
 
@@ -34,7 +31,7 @@
           <i class="bi bi-trash text-danger"></i>
         </button>
       </div>
-      
+
       <input type="text" formControlName="dato" />
     </div>
   </form>
