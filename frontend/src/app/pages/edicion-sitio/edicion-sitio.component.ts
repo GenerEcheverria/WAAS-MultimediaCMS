@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BodyElementComponent } from './body-element/body-element.component';
@@ -13,7 +13,7 @@ export class EdicionSitioComponent implements OnInit {
   public sitioForm!: FormGroup;
   public isHero: boolean;
 
-  constructor(private router: Router) {
+  constructor(private router: Router,private cdr: ChangeDetectorRef) {
     this.isHero = false;
   }
 
@@ -44,10 +44,13 @@ export class EdicionSitioComponent implements OnInit {
 
   addFullColumn(type:string): void {
     this.getCtrl('body', this.sitioForm).push(BodyElementComponent.addFullColumn(type))
+    this.cdr.detectChanges();
+
   }
 
   addSplitColumn(leftType:string, rightType:string): void {
     this.getCtrl('body', this.sitioForm).push(BodyElementComponent.addSplitColumn(leftType,rightType))
+    this.cdr.detectChanges();
   }
 
   deleteBodyElement(index: number): void {
