@@ -37,9 +37,9 @@ export class BodyElementComponent {
   }
 
   static buildType(type: string): FormGroup {
+    BodyElementComponent.mediaType = type;
     switch (type) {
       case 'Text':
-        BodyElementComponent.mediaType = type;
         return new FormGroup({
           text: new FormGroup({
             title: new FormControl(''),
@@ -51,8 +51,9 @@ export class BodyElementComponent {
       case 'Image':
         return new FormGroup({
           image: new FormGroup({
-            title: new FormControl(''),
             image: new FormControl(''),
+            size: new FormControl(''),
+            caption: new FormControl(''),
           }),
         });
       case 'Video':
