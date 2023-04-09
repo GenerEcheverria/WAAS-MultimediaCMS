@@ -4,8 +4,10 @@ import { FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-body-element',
   templateUrl: './body-element.component.html',
-  styleUrls: ['./body-element.component.css']
+  styleUrls: ['./body-element.component.css'],
+  
 })
+
 export class BodyElementComponent {
   @Input() public bodyElementForm!: FormGroup;
   @Input() public arrayIndex!: number;
@@ -13,22 +15,28 @@ export class BodyElementComponent {
 
   static isFull = true;
   protected isFull = BodyElementComponent.isFull;
-
   static mediaType = "";
   protected mediaType = BodyElementComponent.mediaType;
+  static leftType = "";
+  static rightType = "";
+  protected leftType = BodyElementComponent.leftType;
+  protected rightType = BodyElementComponent.rightType;
 
   static addFullColumn(type: string): FormGroup {
     BodyElementComponent.isFull = true;
-    return this.buildType(type)
+    BodyElementComponent.mediaType = type;
+    return new FormGroup({
+      full: this.buildType(type)
+    })
   }
 
   static addSplitColumn(leftType: string, rightType: string): FormGroup {
     BodyElementComponent.isFull = false;
-    const left = this.buildType(leftType);
-    const right = this.buildType(rightType);
+    BodyElementComponent.leftType = leftType;
+    BodyElementComponent.rightType = rightType;
     return new FormGroup({
-        left: left,
-        right: right,
+        left: this.buildType(leftType),
+        right: this.buildType(rightType),
     });
   }
 
@@ -37,7 +45,6 @@ export class BodyElementComponent {
   }
 
   static buildType(type: string): FormGroup {
-    BodyElementComponent.mediaType = type;
     switch (type) {
       case 'Text':
         return new FormGroup({

@@ -44,12 +44,14 @@ export class CrearSitioComponent implements OnInit {
   addFullColumn(type:string): void {
     this.getCtrl('body', this.sitioForm).push(BodyElementComponent.addFullColumn(type))
     this.cdr.detectChanges();
-
   }
 
   addSplitColumn(leftType:string, rightType:string): void {
+    console.log("si")
     this.getCtrl('body', this.sitioForm).push(BodyElementComponent.addSplitColumn(leftType,rightType))
+    console.log("2")
     this.cdr.detectChanges();
+    console.log("3")
   }
 
   deleteBodyElement(index: number): void {

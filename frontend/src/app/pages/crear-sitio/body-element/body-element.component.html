@@ -1,5 +1,5 @@
 <form [formGroup]="bodyElementForm">
-  <form [ngSwitch]="mediaType">
+  <div *ngIf="isFull" [ngSwitch]="mediaType">
     <div class="border p-3 mb-1">
       <div class="d-flex justify-content-between align-items-baseline">
         <p class="fs-6 fw-light">Columna completa</p>
@@ -11,26 +11,37 @@
           <i class="bi bi-trash text-danger"></i>
         </button>
       </div>
-      <app-text *ngSwitchCase="'Text'"></app-text>
-      <app-image *ngSwitchCase="'Image'"></app-image>
-      <app-video *ngSwitchCase="'Video'"></app-video>
+      <app-text [column]="'full'" *ngSwitchCase="'Text'"></app-text>
+      <app-image [column]="'full'" *ngSwitchCase="'Image'"></app-image>
+      <app-video [column]="'full'" *ngSwitchCase="'Video'"></app-video>
     </div>
-  </form>
+  </div>
 
-  <form *ngIf="!isFull">
+  <div *ngIf="!isFull">
     <div class="border p-3 mb-1">
-      <div class="text-center">
-        <h5 class="fs-6 fw-light">Columna dividida</h5>
+      <div class="d-flex justify-content-between align-items-baseline">
+        <p class="fs-6 fw-light">Columna dividida</p>
         <button
-          class="btn col-1"
+          class="btn"
           type="button"
           (click)="deleteBodyElement(arrayIndex)"
         >
           <i class="bi bi-trash text-danger"></i>
         </button>
       </div>
+      <div class="d-flex">
+        <form [ngSwitch]="leftType">
+          <app-text [column]="'left'" *ngSwitchCase="'Text'"></app-text>
+          <app-image [column]="'left'" *ngSwitchCase="'Image'"></app-image>
+          <app-video [column]="'left'" *ngSwitchCase="'Video'"></app-video>
+        </form>
 
-      <input type="text" formControlName="dato" />
+        <form [ngSwitch]="rightType">
+          <app-text [column]="'right'" *ngSwitchCase="'Text'"></app-text>
+          <app-image [column]="'right'" *ngSwitchCase="'Image'"></app-image>
+          <app-video [column]="'right'" *ngSwitchCase="'Video'"></app-video>
+        </form>
+      </div>
     </div>
-  </form>
+  </div>
 </form>

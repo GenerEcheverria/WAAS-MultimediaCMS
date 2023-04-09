@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ControlContainer, FormGroupDirective } from '@angular/forms';
 
 @Component({
@@ -8,6 +8,7 @@ import { ControlContainer, FormGroupDirective } from '@angular/forms';
   viewProviders: [{ provide: ControlContainer, useExisting: FormGroupDirective }]
 })
 export class ImageComponent {
+  @Input() column!: string;
   upload = true;
 
   

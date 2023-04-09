@@ -115,7 +115,6 @@
     <app-body-element
       *ngFor="
         let childForm of getCtrl('body', sitioForm).controls;
-        index as formChild;
         let i = index
       "
       [bodyElementForm]="childForm"
