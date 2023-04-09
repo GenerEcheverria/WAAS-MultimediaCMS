@@ -1,15 +1,14 @@
-import {ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BodyElementComponent } from './body-element/body-element.component';
 
-
 @Component({
-  selector: 'app-edicion-sitio',
-  templateUrl: './edicion-sitio.component.html',
-  styleUrls: ['./edicion-sitio.component.css']
+  selector: 'app-crear-sitio',
+  templateUrl: './crear-sitio.component.html',
+  styleUrls: ['./crear-sitio.component.css']
 })
-export class EdicionSitioComponent implements OnInit {
+export class CrearSitioComponent implements OnInit {
   public sitioForm!: FormGroup;
   public isHero: boolean;
 
@@ -70,5 +69,4 @@ export class EdicionSitioComponent implements OnInit {
     console.log(this.sitioForm.value)
   }
 
-  
 }

@@ -59,8 +59,8 @@ export class BodyElementComponent {
       case 'Video':
         return new FormGroup({
           video: new FormGroup({
-            title: new FormControl(''),
             url: new FormControl(''),
+            size: new FormControl(''),
           }),
         });
       case 'Timeline':

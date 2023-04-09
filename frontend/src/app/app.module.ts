@@ -9,11 +9,12 @@ import { SitiosComponent } from './pages/sitios/sitios.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { MenuOptionComponent } from './shared/buttons/menu-option/menu-option.component';
-import { EdicionSitioComponent } from './pages/edicion-sitio/edicion-sitio.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { BodyElementComponent } from './pages/edicion-sitio/body-element/body-element.component';
-import { TextComponent } from './pages/edicion-sitio/media-types/text/text.component';
-import { ImageComponent } from './pages/edicion-sitio/media-types/image/image.component';
+import { BodyElementComponent } from './pages/crear-sitio/body-element/body-element.component';
+import { TextComponent } from './pages/crear-sitio/media-types/text/text.component';
+import { ImageComponent } from './pages/crear-sitio/media-types/image/image.component';
+import { VideoComponent } from './pages/crear-sitio/media-types/video/video.component';
+import { CrearSitioComponent } from './pages/crear-sitio/crear-sitio.component';
 
 
 @NgModule({
@@ -25,10 +26,11 @@ import { ImageComponent } from './pages/edicion-sitio/media-types/image/image.co
     HeaderComponent,
     SidebarComponent,
     MenuOptionComponent,
-    EdicionSitioComponent,
     BodyElementComponent,
     TextComponent,
     ImageComponent,
+    VideoComponent,
+    CrearSitioComponent,
 
   ],
   imports: [
