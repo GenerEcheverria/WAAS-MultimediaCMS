@@ -42,10 +42,10 @@ export class BodyElementComponent {
         BodyElementComponent.mediaType = type;
         return new FormGroup({
           text: new FormGroup({
-            textTitle: new FormControl(''),
-            textPosition: new FormControl(''),
-            textBody: new FormControl(''),
-            textAlignment: new FormControl('')
+            title: new FormControl(''),
+            position: new FormControl(''),
+            text: new FormControl(''),
+            alignment: new FormControl('')
           }),
         });
       case 'Image':

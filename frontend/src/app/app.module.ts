@@ -13,6 +13,7 @@ import { EdicionSitioComponent } from './pages/edicion-sitio/edicion-sitio.compo
 import { ReactiveFormsModule } from '@angular/forms';
 import { BodyElementComponent } from './pages/edicion-sitio/body-element/body-element.component';
 import { TextComponent } from './pages/edicion-sitio/media-types/text/text.component';
+import { ImageComponent } from './pages/edicion-sitio/media-types/image/image.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { TextComponent } from './pages/edicion-sitio/media-types/text/text.compo
     EdicionSitioComponent,
     BodyElementComponent,
     TextComponent,
+    ImageComponent,
 
   ],
   imports: [

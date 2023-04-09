@@ -3,7 +3,7 @@
   <div class="border rounded p-4">
     <h5>Información del sitio web</h5>
     <div>
-      <label class="col-3" for="name">Nombre del sitio: </label>
+      <label class="col-2" for="name">Nombre del sitio: </label>
       <input class="col-4" type="text" formControlName="name" />
     </div>
   </div>
@@ -11,13 +11,13 @@
   <div class="border rounded p-4">
     <h5>Cabecera</h5>
     <form id="header" formGroupName="header">
-      <div class="row py-1">
-        <div class="col-5">
+      <div class="d-flex justify-content-between py-2">
+        <div class="">
           <label for="title">Titulo: </label>
           <input class="mx-2" type="text" formControlName="title" />
         </div>
-        <div class="col-7">
-          <label class="pe-2" for="size">Posición:</label>
+        <div class="">
+          <label class="pe-2" for="position">Posición:</label>
           <div class="form-check form-check-inline">
             <input
               type="radio"
@@ -48,8 +48,8 @@
           </div>
         </div>
       </div>
-      <div class="row py-1">
-        <div class="col-8">
+      <div class="d-flex justify-content-between py-2">
+        <div class="">
           <label class="pe-2" for="size">Tamaño de letra:</label>
           <div class="form-check form-check-inline">
             <input
@@ -79,7 +79,7 @@
             <label class="form-check-label"> Grande </label>
           </div>
         </div>
-        <div class="col-4">
+        <div class="">
           <label for="color" class="align-top">Color:</label>
           <input class="mx-2" type="color" formControlName="color" />
         </div>
