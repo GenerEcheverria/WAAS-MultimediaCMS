@@ -8,5 +8,7 @@ import { ControlContainer, FormGroupDirective } from '@angular/forms';
   viewProviders: [{ provide: ControlContainer, useExisting: FormGroupDirective }]
 })
 export class ImageComponent {
+  upload = true;
 
+  
 }

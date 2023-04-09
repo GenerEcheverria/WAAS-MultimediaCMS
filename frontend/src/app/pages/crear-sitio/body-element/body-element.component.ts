@@ -59,7 +59,7 @@ export class BodyElementComponent {
       case 'Video':
         return new FormGroup({
           video: new FormGroup({
-            url: new FormControl(''),
+            video: new FormControl(''),
             size: new FormControl(''),
           }),
         });

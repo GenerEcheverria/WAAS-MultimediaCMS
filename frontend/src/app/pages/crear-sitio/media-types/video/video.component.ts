@@ -8,5 +8,5 @@ import { ControlContainer, FormGroupDirective } from '@angular/forms';
   viewProviders: [{ provide: ControlContainer, useExisting: FormGroupDirective }]
 })
 export class VideoComponent {
-
+  upload = true
 }

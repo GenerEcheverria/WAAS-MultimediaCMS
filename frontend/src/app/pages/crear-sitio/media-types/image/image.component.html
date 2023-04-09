@@ -1,13 +1,40 @@
 <form formGroupName="image">
   <h5 class="fs-6 text-center">Nueva imagen</h5>
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="radio"
+      name="image"
+      id="image2"
+      (change)="upload = true"
+      checked
+    />
+    <label class="form-check-label" for="image2"> Agregar archivo </label>
+  </div>
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="radio"
+      name="image"
+      id="image1"
+      (change)="upload = false"
+    />
+    <label class="form-check-label" for="image1"> Agregar URL </label>
+  </div>
   <div class="d-flex justify-content-between py-2">
-      <label for="image">Imagen: </label>
-      <input
-        type="file"
-        class="form-control ms-2"
-        id="image"
-        formControlName="image"
-      />
+    <label for="image">Imagen: </label>
+    <input
+      type="file"
+      class="form-control ms-2"
+      formControlName="image"
+      *ngIf="upload"
+    />
+    <input
+      type="text"
+      class="form-control ms-2"
+      formControlName="image"
+      *ngIf="!upload"
+    />
   </div>
   <div class="">
     <label class="pe-2" for="size">Tamaño:</label>
@@ -44,5 +71,9 @@
       <label for="text">Pie de imagen: </label>
     </div>
   </div>
-  <textarea class="col-12" rows="2" formControlName="caption"></textarea>
+  <textarea
+    class="col-12 form-control"
+    rows="2"
+    formControlName="caption"
+  ></textarea>
 </form>
