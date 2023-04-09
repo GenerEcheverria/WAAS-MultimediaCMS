@@ -2,8 +2,6 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BodyElementComponent } from './body-element/body-element.component';
-import { SimpleFooterComponent } from './footers/simple-footer/simple-footer.component';
-import { RegularFooterComponent } from './footers/regular-footer/regular-footer.component';
 
 @Component({
   selector: 'app-crear-sitio',
@@ -13,11 +11,9 @@ import { RegularFooterComponent } from './footers/regular-footer/regular-footer.
 export class CrearSitioComponent implements OnInit {
   public sitioForm!: FormGroup;
   public isHero: boolean;
-  public footerType: string;
 
   constructor(private router: Router, private cdr: ChangeDetectorRef) {
     this.isHero = false;
-    this.footerType = "simple";
   }
 
   ngOnInit(): void {
@@ -39,7 +35,17 @@ export class CrearSitioComponent implements OnInit {
 
       ]),
       footer: new FormGroup({
-        simple: SimpleFooterComponent.addFooter(),
+        backgroundColor: new FormControl(''),
+        image: new FormControl(''),
+        text: new FormControl(''),
+        phone: new FormControl(''),
+        address: new FormControl(''),
+        facebook: new FormControl(''),
+        instagram: new FormControl(''),
+        twitter: new FormControl(''),
+        linkedin: new FormControl(''),
+        tiktok: new FormControl(''),
+        otro: new FormControl('')
       })
     })
   }
@@ -56,21 +62,6 @@ export class CrearSitioComponent implements OnInit {
   addSplitColumn(leftType: string, rightType: string): void {
     this.getCtrl('body', this.sitioForm).push(BodyElementComponent.addSplitColumn(leftType, rightType))
     this.cdr.detectChanges();
-  }
-
-  setFooter(type: string): void {
-    switch (type) {
-      case 'simple': 
-        this.getCtrl('footer', this.sitioForm).removeControl("regular");
-        this.getCtrl('footer', this.sitioForm).addControl("simple", SimpleFooterComponent.addFooter())
-
-        break;
-      case 'regular': 
-      this.getCtrl('footer', this.sitioForm).removeControl("simple"); 
-      this.getCtrl('footer', this.sitioForm).addControl("regular",RegularFooterComponent.addFooter())
-      break;
-    }
-    this.footerType = type;
   }
 
   deleteBodyElement(index: number): void {
