@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
-import { TextComponent } from '../media-types/text/text.component';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-body-element',
@@ -15,8 +14,8 @@ export class BodyElementComponent {
   static isFull = true;
   protected isFull = BodyElementComponent.isFull;
 
-  static textType = true;
-  protected textType = BodyElementComponent.textType;
+  static mediaType = "";
+  protected mediaType = BodyElementComponent.mediaType;
 
   static addFullColumn(type: string): FormGroup {
     BodyElementComponent.isFull = true;
@@ -40,11 +39,13 @@ export class BodyElementComponent {
   static buildType(type: string): FormGroup {
     switch (type) {
       case 'Text':
-        BodyElementComponent.textType = true;
+        BodyElementComponent.mediaType = type;
         return new FormGroup({
           text: new FormGroup({
-            title: new FormControl(''),
-            text: new FormControl(''),
+            textTitle: new FormControl(''),
+            textPosition: new FormControl(''),
+            textBody: new FormControl(''),
+            textAlignment: new FormControl('')
           }),
         });
       case 'Image':

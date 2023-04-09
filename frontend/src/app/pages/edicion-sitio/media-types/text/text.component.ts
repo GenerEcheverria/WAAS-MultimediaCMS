@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+// Dentro de text.component.ts
+import { Component,} from '@angular/core';
 
 @Component({
   selector: 'app-text',
@@ -7,5 +7,4 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./text.component.css']
 })
 export class TextComponent {
-  @Input() public type!:boolean;
 }
