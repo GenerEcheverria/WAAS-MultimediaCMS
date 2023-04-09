@@ -15,6 +15,8 @@ import { TextComponent } from './pages/crear-sitio/media-types/text/text.compone
 import { ImageComponent } from './pages/crear-sitio/media-types/image/image.component';
 import { VideoComponent } from './pages/crear-sitio/media-types/video/video.component';
 import { CrearSitioComponent } from './pages/crear-sitio/crear-sitio.component';
+import { SimpleFooterComponent } from './pages/crear-sitio/footers/simple-footer/simple-footer.component';
+import { RegularFooterComponent } from './pages/crear-sitio/footers/regular-footer/regular-footer.component';
 
 
 @NgModule({
@@ -31,6 +33,8 @@ import { CrearSitioComponent } from './pages/crear-sitio/crear-sitio.component';
     ImageComponent,
     VideoComponent,
     CrearSitioComponent,
+    SimpleFooterComponent,
+    RegularFooterComponent,
 
   ],
   imports: [
