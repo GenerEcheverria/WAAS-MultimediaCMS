@@ -11,9 +11,17 @@ import { BodyElementComponent } from './body-element/body-element.component';
 export class CrearSitioComponent implements OnInit {
   public sitioForm!: FormGroup;
   public isHero: boolean;
+  protected setSocialMedia: boolean;
+  protected setContact: boolean;
+  protected setExtra: boolean;
+  protected upload: boolean;
 
   constructor(private router: Router, private cdr: ChangeDetectorRef) {
     this.isHero = false;
+    this.setSocialMedia = false;
+    this.setContact = false;
+    this.setExtra = false;
+    this.upload = true;
   }
 
   ngOnInit(): void {
@@ -31,21 +39,28 @@ export class CrearSitioComponent implements OnInit {
         color: new FormControl(''),
         image: new FormControl(''),
       }),
-      body: new FormArray([
-
-      ]),
+      body: new FormArray([]),
       footer: new FormGroup({
         backgroundColor: new FormControl(''),
-        image: new FormControl(''),
-        text: new FormControl(''),
-        phone: new FormControl(''),
-        address: new FormControl(''),
-        facebook: new FormControl(''),
-        instagram: new FormControl(''),
-        twitter: new FormControl(''),
-        linkedin: new FormControl(''),
-        tiktok: new FormControl(''),
-        otro: new FormControl('')
+        socialMedia: new FormGroup({
+          setSocialMedia: new FormControl(false),
+          facebook: new FormControl(''),
+          instagram: new FormControl(''),
+          twitter: new FormControl(''),
+          linkedin: new FormControl(''),
+          tiktok: new FormControl(''),
+          otro: new FormControl('')
+        }),
+        extra: new FormGroup({
+          setExtra: new FormControl(false),
+          image: new FormControl(''),
+          text: new FormControl(''),
+        }),
+        contact: new FormGroup({
+          setContact: new FormControl(false),
+          phone: new FormControl(''),
+          address: new FormControl(''),
+        }),
       })
     })
   }
