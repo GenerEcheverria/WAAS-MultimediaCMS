@@ -10,6 +10,13 @@ import { SitiosComponent } from './pages/sitios/sitios.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { MenuOptionComponent } from './shared/buttons/menu-option/menu-option.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BodyElementComponent } from './pages/crear-sitio/body-element/body-element.component';
+import { TextComponent } from './pages/crear-sitio/media-types/text/text.component';
+import { ImageComponent } from './pages/crear-sitio/media-types/image/image.component';
+import { VideoComponent } from './pages/crear-sitio/media-types/video/video.component';
+import { CrearSitioComponent } from './pages/crear-sitio/crear-sitio.component';
+
 import { SuperAdminSitiosComponent } from './pages/super-admin-sitios/super-admin-sitios.component';
 
 
@@ -23,6 +30,13 @@ import { SuperAdminSitiosComponent } from './pages/super-admin-sitios/super-admi
     HeaderComponent,
     SidebarComponent,
     MenuOptionComponent,
+    BodyElementComponent,
+    TextComponent,
+    ImageComponent,
+    VideoComponent,
+    CrearSitioComponent,
+
+
     SuperAdminSitiosComponent
   ],
   imports: [
