@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BodyElementComponent } from './body-element/body-element.component';
 
@@ -30,18 +30,19 @@ export class CrearSitioComponent implements OnInit {
 
   initSitioForm(): void {
     this.sitioForm = new FormGroup({
-      name: new FormControl(''),
+      name: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9]+$/),Validators.maxLength(64)]),
+      backgroundColor: new FormControl('#ffffff'),
       header: new FormGroup({
         hero: new FormControl(''),
-        title: new FormControl(''),
-        position: new FormControl(''),
-        size: new FormControl(''),
-        color: new FormControl(''),
+        title: new FormControl('',[Validators.required, Validators.pattern(/^[a-zA-Z0-9 ]+$/), Validators.maxLength(32)]),
+        position: new FormControl('', Validators.required),
+        size: new FormControl('', Validators.required),
+        color: new FormControl('#000000'),
         image: new FormControl(''),
       }),
       body: new FormArray([]),
       footer: new FormGroup({
-        backgroundColor: new FormControl(''),
+        backgroundColor: new FormControl('#ffffff'),
         socialMedia: new FormGroup({
           setSocialMedia: new FormControl(false),
           facebook: new FormControl(''),
@@ -58,7 +59,7 @@ export class CrearSitioComponent implements OnInit {
         }),
         contact: new FormGroup({
           setContact: new FormControl(false),
-          phone: new FormControl(''),
+          phone: new FormControl('', Validators.pattern(/^\d{10}$/)),
           address: new FormControl(''),
         }),
       })
@@ -94,6 +95,26 @@ export class CrearSitioComponent implements OnInit {
 
   onSubmit(): void {
     console.log(this.sitioForm.value)
+  }
+
+  get name() {
+    return this.sitioForm.get('name');
+  }
+
+  get headerTitle() {
+    return this.sitioForm.get('header')?.get('title');
+  }
+  
+  get headerPosition() {
+    return this.sitioForm.get('header')?.get('position');
+  }
+
+  get headerSize() {
+    return this.sitioForm.get('header')?.get('size');
+  }
+
+  get footerPhone(){
+    return this.sitioForm.get('footer')?.get('contact')?.get('phone');
   }
 
 }
