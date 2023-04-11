@@ -1,0 +1,20 @@
+<div class="row border border-1">
+     <!--titulo se obtiene de bd-->
+     <!--posicionTitulo puede ser Izquierda || Centro || Derecha. Se obtiene de BD -->
+     <app-titulo-lienzo
+     [titulo]="'La rana rene'"
+     [posicionTitulo]="'Derecha'"
+     ></app-titulo-lienzo> 
+</div>
+
+<div class="row border border-1">
+     <!--texto se obtiene de bd-->
+     <!--alineacionTexto puede ser Justificado || Izquierda || Derecha || Centro.  Se obtiene de BD-->
+     <app-texto-lienzo
+     [texto]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'"
+     [alineacionTexto]="'Justificado'"
+     ></app-texto-lienzo>
+</div>
+<div class="row border border-1">
+     <app-imagen-lienzo></app-imagen-lienzo>
+</div>
