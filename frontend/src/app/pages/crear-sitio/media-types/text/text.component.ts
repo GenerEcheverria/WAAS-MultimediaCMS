@@ -9,4 +9,6 @@ import { ControlContainer, FormGroupDirective } from '@angular/forms';
 })
 export class TextComponent {
   @Input() column!: string;
+
+  
 }

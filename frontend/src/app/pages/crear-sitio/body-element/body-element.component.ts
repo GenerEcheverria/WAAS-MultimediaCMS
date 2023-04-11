@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-body-element',
@@ -80,4 +80,6 @@ export class BodyElementComponent {
         return new FormGroup({});
     }
   }
+
+
 }

@@ -34,7 +34,7 @@ export class CrearSitioComponent implements OnInit {
       backgroundColor: new FormControl('#ffffff'),
       header: new FormGroup({
         hero: new FormControl(''),
-        title: new FormControl('',[Validators.required, Validators.pattern(/^[a-zA-Z0-9 ]+$/), Validators.maxLength(32)]),
+        title: new FormControl('',[Validators.required, Validators.pattern(/^[a-zA-Z0-9 ]+$/), Validators.maxLength(64)]),
         position: new FormControl('', Validators.required),
         size: new FormControl('', Validators.required),
         color: new FormControl('#000000'),
