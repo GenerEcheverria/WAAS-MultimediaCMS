@@ -1,0 +1,20 @@
+<div *ngIf="setSocialMedia === 'true'" class="m-0 p-0 bg-{{backgroundColor}} d-flex justify-content-center">
+    <p class="me-3">Redes sociales:</p>
+    <i *ngIf="facebookIcon == 'facebook'" class="bi bi-facebook me-3"></i>
+    <i *ngIf="instagramIcon == 'instagram'" class="bi bi-instagram me-3"></i>
+    <i *ngIf="twitterIcon == 'twitter'" class="bi bi-twitter me-3"></i>
+    <i *ngIf="linkedinIcon == 'linkedin'" class="bi bi-linkedin me-3"></i>
+    <i *ngIf="tiktokIcon == 'tiktok'" class="bi bi-tiktok me-3"></i>
+    <!--<i *ngIf="otroIcon == 'otro'" class="bi bi-twitter me-3"></i>-->
+</div>
+<div *ngIf="setExtra === 'true'" class="m-0 p-0 bg-{{backgroundColor}} d-flex justify-content-center">
+    <p class="me-3">Extras:</p>
+    <img  id="imgExtraFooterDiv" src="{{imgExtraFooter}}" alt="imagen">
+    <p class="ms-3">{{textExtraFooter}}</p>
+</div>
+<div *ngIf="setContact === 'true'" class="m-0 p-0 bg-{{backgroundColor}} d-flex justify-content-center">
+    <p>Contact me:</p>
+    <p class="ms-3">{{phone}}</p>
+    <p class="ms-3">{{address}}</p>
+</div>
+  

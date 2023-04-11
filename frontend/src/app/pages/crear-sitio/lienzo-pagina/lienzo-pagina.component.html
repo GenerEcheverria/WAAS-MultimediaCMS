@@ -1,4 +1,4 @@
-<div class="row border border-1">
+<div class="row border border-1 m-0 p-0">
      <!--titulo se obtiene de bd-->
      <!--posicionTitulo puede ser Izquierda || Centro || Derecha. Se obtiene de BD -->
      <app-titulo-lienzo
@@ -7,7 +7,7 @@
      ></app-titulo-lienzo> 
 </div>
 
-<div class="row border border-1">
+<div class="row border border-1 m-0 p-0">
      <!--texto se obtiene de bd-->
      <!--alineacionTexto puede ser Justificado || Izquierda || Derecha || Centro.  Se obtiene de BD-->
      <app-texto-lienzo
@@ -15,6 +15,41 @@
      [alineacionTexto]="'Justificado'"
      ></app-texto-lienzo>
 </div>
-<div class="row border border-1">
-     <app-imagen-lienzo></app-imagen-lienzo>
+
+<div class="row border border-1 m-0 p-0">
+     <!--fuenteImg se obtiene de bd-->
+     <!--tamañoImg puede ser Grande || Mediano|| Pequeño. Se obtiene de BD-->
+     <app-imagen-lienzo
+     [fuenteImg]="'https://scontent.fmid3-1.fna.fbcdn.net/v/t1.6435-9/81774545_2788234737935350_9042756730638827520_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=cuCu0WNjzl8AX_TmoSt&_nc_ht=scontent.fmid3-1.fna&oh=00_AfDLa96GjxX3MNeKLk0mxLkAu3_S1dwx3gC3QKymiA2HnA&oe=645C3616'"
+     [captionImg]="'Este es un caption de prueba, aqui probando más texto en el caption para ver su comportamiento'"
+     [tamañoImg]="'Grande'"
+     ></app-imagen-lienzo>
+</div>
+
+<div class="row border border-1 m-0 p-0">
+     <!--fuenteImg se obtiene de bd-->
+     <!--tamañoImg puede ser Grande || Mediano|| Pequeño. Se obtiene de BD-->
+     <app-video-lienzo 
+     [fuenteVid]="'https://www.youtube.com/embed/VAiHHUMUp-4'"
+     [tamañoVid]="'Pequeño'"
+     ></app-video-lienzo>
+</div>
+
+<div class="row border border-1 m-0 p-0">
+     <app-footer-lienzo class="m-0 p-0"
+     [backgroundColor]="'primary'"
+     [setSocialMedia]="'true'"
+     [facebookIcon]="'facebook'"
+     [instagramIcon]="'instagram'"
+     [twitterIcon]="'twitter'"
+     [linkedinIcon]="'linkedin'"
+     [tiktokIcon]="''"
+     [otroIcon]="''"
+     [setExtra]="'true'"
+     [imgExtraFooter]="'https://scontent.fmid3-1.fna.fbcdn.net/v/t1.6435-9/81774545_2788234737935350_9042756730638827520_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=cuCu0WNjzl8AX_TmoSt&_nc_ht=scontent.fmid3-1.fna&oh=00_AfDLa96GjxX3MNeKLk0mxLkAu3_S1dwx3gC3QKymiA2HnA&oe=645C3616'"
+     [textExtraFooter]="'Este es un caption de prueba, aqui probando más texto '"
+     [setContact]="'true'"
+     [phone]="'99-99-99-99-99'"
+     [address]="'Calle Julian por Gener y Gener Numero Yo'"
+     ></app-footer-lienzo>
 </div>

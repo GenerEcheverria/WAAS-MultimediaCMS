@@ -4,6 +4,7 @@ import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SitiosComponent } from './pages/sitios/sitios.component';
 import { CrearSitioComponent } from './pages/crear-sitio/crear-sitio.component';
+import { LienzoPaginaComponent } from './pages/crear-sitio/lienzo-pagina/lienzo-pagina.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
@@ -11,7 +12,8 @@ const routes: Routes = [
     component: MainLayoutComponent,
     children: [
       { path: 'sitios', component:  SitiosComponent},
-      { path: 'crear', component: CrearSitioComponent}
+      { path: 'crear', component: CrearSitioComponent},
+      { path: 'lienzo', component: LienzoPaginaComponent}
     ]
   }
 ];

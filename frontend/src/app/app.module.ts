@@ -15,6 +15,13 @@ import { TextComponent } from './pages/crear-sitio/media-types/text/text.compone
 import { ImageComponent } from './pages/crear-sitio/media-types/image/image.component';
 import { VideoComponent } from './pages/crear-sitio/media-types/video/video.component';
 import { CrearSitioComponent } from './pages/crear-sitio/crear-sitio.component';
+import { LienzoPaginaComponent } from './pages/crear-sitio/lienzo-pagina/lienzo-pagina.component';
+import { TituloLienzoComponent } from './pages/crear-sitio/lienzo-pagina/titulo-lienzo/titulo-lienzo.component';
+import { TextoLienzoComponent } from './pages/crear-sitio/lienzo-pagina/texto-lienzo/texto-lienzo.component';
+import { ImagenLienzoComponent } from './pages/crear-sitio/lienzo-pagina/imagen-lienzo/imagen-lienzo.component';
+import { ConexionbdLienzoComponent } from './pages/crear-sitio/lienzo-pagina/conexionbd-lienzo/conexionbd-lienzo.component';
+import { VideoLienzoComponent } from './pages/crear-sitio/lienzo-pagina/video-lienzo/video-lienzo.component';
+import { FooterLienzoComponent } from './pages/crear-sitio/lienzo-pagina/footer-lienzo/footer-lienzo.component';
 
 
 
@@ -32,6 +39,13 @@ import { CrearSitioComponent } from './pages/crear-sitio/crear-sitio.component';
     ImageComponent,
     VideoComponent,
     CrearSitioComponent,
+    LienzoPaginaComponent,
+    TituloLienzoComponent,
+    TextoLienzoComponent,
+    ImagenLienzoComponent,
+    ConexionbdLienzoComponent,
+    VideoLienzoComponent,
+    FooterLienzoComponent,
 
 
   ],
