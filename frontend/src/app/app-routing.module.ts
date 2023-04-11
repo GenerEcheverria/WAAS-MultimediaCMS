@@ -16,7 +16,7 @@ const routes: Routes = [
     component: MainLayoutComponent,
     children: [
       { path: 'sitios', component:  SitiosComponent},
-      { path: 'crear', component: CrearSitioComponent}
+      { path: 'crear', component: CrearSitioComponent},
       { path: 'sasitios', component: SuperAdminSitiosComponent},
       { path: 'mi-cuenta', component: MiCuentaComponent},
       { path: 'sausuarios', component:  SuperadministradorCuentaUsuarioComponent}

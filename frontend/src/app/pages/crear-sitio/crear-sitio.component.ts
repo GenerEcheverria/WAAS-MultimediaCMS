@@ -15,6 +15,8 @@ export class CrearSitioComponent implements OnInit {
   protected setContact: boolean;
   protected setExtra: boolean;
   protected upload: boolean;
+  protected uploadHeroImage: boolean;
+  protected preview: boolean;
 
   constructor(private router: Router, private cdr: ChangeDetectorRef) {
     this.isHero = false;
@@ -22,12 +24,15 @@ export class CrearSitioComponent implements OnInit {
     this.setContact = false;
     this.setExtra = false;
     this.upload = true;
+    this.uploadHeroImage = true;
+    this.preview = false;
   }
 
   ngOnInit(): void {
     this.initSitioForm();
   }
 
+  //Crea el formgroup general correspondiente al contenido del sitio web del usuario
   initSitioForm(): void {
     this.sitioForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9]+$/),Validators.maxLength(64)]),
@@ -70,11 +75,13 @@ export class CrearSitioComponent implements OnInit {
     return form.get(key)
   }
 
+  //Añade un form group qie representa una columna completa al body
   addFullColumn(type: string): void {
     this.getCtrl('body', this.sitioForm).push(BodyElementComponent.addFullColumn(type))
     this.cdr.detectChanges();
   }
 
+  //Añade un form group que representa una columna dividida al body
   addSplitColumn(leftType: string, rightType: string): void {
     this.getCtrl('body', this.sitioForm).push(BodyElementComponent.addSplitColumn(leftType, rightType))
     this.cdr.detectChanges();
@@ -97,6 +104,7 @@ export class CrearSitioComponent implements OnInit {
     console.log(this.sitioForm.value)
   }
 
+  //getters para obtener valores del form usados en mensajes de validacion
   get name() {
     return this.sitioForm.get('name');
   }

@@ -6,22 +6,36 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./titulo-lienzo.component.css']
 })
 export class TituloLienzoComponent implements OnInit{
-  @Input() titulo: string = ""; 
-  @Input() posicionTitulo:  string = ""; 
-  clase: string = "";
-
+  @Input() title: string = ""; 
+  @Input() position:  string = ""; 
+  @Input() hero!: boolean;
+  @Input() size!: string;
+  @Input() color!: string;
+  @Input() image!: string;
+  protected clase: string = "";
+  protected claseSize: string = "";
+  
   ngOnInit(): void {    
-    switch (this.posicionTitulo) {
-      case "Izquierda":
+    switch (this.position) {
+      case "left":
         this.clase = "d-flex justify-content-start";
       break;
-    
-      case "Centro":
+      case "center":
         this.clase = "d-flex justify-content-center";
       break;
-
-      case "Derecha":
+      case "right":
         this.clase = "d-flex justify-content-end";
+      break;
+    }
+    switch (this.size) {
+      case "small":
+        this.claseSize = "fs-4";
+      break;
+      case "medium":
+        this.claseSize = "fs-3";
+      break;
+      case "big":
+        this.claseSize = "fs-1";
       break;
     }
   }
