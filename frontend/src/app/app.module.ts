@@ -10,7 +10,6 @@ import { SitiosComponent } from './pages/sitios/sitios.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { MenuOptionComponent } from './shared/buttons/menu-option/menu-option.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { BodyElementComponent } from './pages/crear-sitio/body-element/body-element.component';
 import { TextComponent } from './pages/crear-sitio/media-types/text/text.component';
 import { ImageComponent } from './pages/crear-sitio/media-types/image/image.component';
