@@ -6,27 +6,37 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./texto-lienzo.component.css']
 })
 export class TextoLienzoComponent implements OnInit {
-  @Input() texto: string = ""; 
-  @Input() alineacionTexto:  string = ""; 
-  clase: string = "";
-
-  ngOnInit(): void {    
+  @Input() title!: string;
+  @Input() position!: string;
+  @Input() texto: string = "";
+  @Input() alineacionTexto: string = "";
+  protected clase: string = "";
+  protected classPosition!: string;
+  ngOnInit(): void {
+    switch (this.position) {
+      case "left":
+        this.classPosition = "d-flex justify-content-start";
+        break;
+      case "center":
+        this.classPosition = "d-flex justify-content-center";
+        break;
+      case "right":
+        this.classPosition = "d-flex justify-content-end";
+        break;
+    }
     switch (this.alineacionTexto) {
-      case "Justificado":
+      case "justified":
         this.clase = "justificado-texto";
-      break;
-      
-      case "Izquierda":
+        break;
+      case "left":
         this.clase = "text-start";
-      break;
-    
-      case "Centro":
+        break;
+      case "center":
         this.clase = "text-center";
-      break;
-
-      case "Derecha":
+        break;
+      case "right":
         this.clase = "text-end";
-      break;
+        break;
     }
   }
 }
