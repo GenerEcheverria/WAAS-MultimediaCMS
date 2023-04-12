@@ -1,13 +1,9 @@
 .tamaño-grande{
-    width: 400px;
-    height: 400px;
+    width: 50em;
 }
 .tamaño-mediano{
-    width: 300px;
-    height: 300px;
-    
+    width: 40em;    
 }
 .tamaño-pequeño{
-    width: 200px;
-    height: 200px;
+    width: 30em;
 }

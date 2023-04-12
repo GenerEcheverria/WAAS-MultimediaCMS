@@ -8,12 +8,12 @@ import { Component, Input } from '@angular/core';
 export class FooterLienzoComponent {
   @Input() backgroundColor: string = "";
   @Input() setSocialMedia: string = "";
-  @Input() facebookIcon: string = "";
-  @Input() instagramIcon: string = "";
-  @Input() twitterIcon: string = "";
-  @Input() linkedinIcon: string = "";
-  @Input() tiktokIcon: string = "";
-  @Input() otroIcon: string = "";
+  @Input() facebookUrl: string = "";
+  @Input() instagramUrl: string = "";
+  @Input() twitterUrl: string = "";
+  @Input() linkedinUrl: string = "";
+  @Input() tiktokUrl: string = "";
+  @Input() otroUrl: string = "";
   @Input() setExtra:string = "";
   @Input() imgExtraFooter:string = "";
   @Input() textExtraFooter:string = "";  

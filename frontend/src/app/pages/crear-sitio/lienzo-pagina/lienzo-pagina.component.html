@@ -19,16 +19,17 @@
 <div class="row border border-1 m-0 p-0">
      <!--fuenteImg se obtiene de bd-->
      <!--tamañoImg puede ser Grande || Mediano|| Pequeño. Se obtiene de BD-->
+     <!--captionImg se obtiene de la bd-->
      <app-imagen-lienzo
-     [fuenteImg]="'https://scontent.fmid3-1.fna.fbcdn.net/v/t1.6435-9/81774545_2788234737935350_9042756730638827520_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=cuCu0WNjzl8AX_TmoSt&_nc_ht=scontent.fmid3-1.fna&oh=00_AfDLa96GjxX3MNeKLk0mxLkAu3_S1dwx3gC3QKymiA2HnA&oe=645C3616'"
+     [fuenteImg]="'https://www.purina.es/sites/default/files/2021-12/6_El_comportamiento_de_los_gatitos%20%282%29_0.jpg'"
      [captionImg]="'Este es un caption de prueba, aqui probando más texto en el caption para ver su comportamiento'"
      [tamañoImg]="'Grande'"
      ></app-imagen-lienzo>
 </div>
 
 <div class="row border border-1 m-0 p-0">
-     <!--fuenteImg se obtiene de bd-->
-     <!--tamañoImg puede ser Grande || Mediano|| Pequeño. Se obtiene de BD-->
+     <!--fuenteVid se obtiene de bd-->
+     <!--tamañoVid puede ser Grande || Mediano|| Pequeño. Se obtiene de BD-->
      <app-video-lienzo 
      [fuenteVid]="'https://www.youtube.com/embed/VAiHHUMUp-4'"
      [tamañoVid]="'Pequeño'"
@@ -37,19 +38,19 @@
 
 <div class="row border border-1 m-0 p-0">
      <app-footer-lienzo class="m-0 p-0"
-     [backgroundColor]="'primary'"
+     [backgroundColor]="'orange'"
      [setSocialMedia]="'true'"
-     [facebookIcon]="'facebook'"
-     [instagramIcon]="'instagram'"
-     [twitterIcon]="'twitter'"
-     [linkedinIcon]="'linkedin'"
-     [tiktokIcon]="''"
-     [otroIcon]="''"
+     [facebookUrl]="'https://www.facebook.com/gener.echeverria'"
+     [instagramUrl]="'https://www.instagram.com/gener_echeverria/'"
+     [twitterUrl]="'https://twitter.com/GenerEcheverria'"
+     [linkedinUrl]="'https://www.linkedin.com/in/gener-echeverria-9332b3157/'"
+     [tiktokUrl]="'https://www.linkedin.com/in/gener-echeverria-9332b3157/'"
+     [otroUrl]="'https://www.facebook.com/gener.echeverria'"
      [setExtra]="'true'"
-     [imgExtraFooter]="'https://scontent.fmid3-1.fna.fbcdn.net/v/t1.6435-9/81774545_2788234737935350_9042756730638827520_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=cuCu0WNjzl8AX_TmoSt&_nc_ht=scontent.fmid3-1.fna&oh=00_AfDLa96GjxX3MNeKLk0mxLkAu3_S1dwx3gC3QKymiA2HnA&oe=645C3616'"
-     [textExtraFooter]="'Este es un caption de prueba, aqui probando más texto '"
+     [imgExtraFooter]="'https://cms-assets.tutsplus.com/cdn-cgi/image/width=850/uploads/users/151/posts/32829/image/Placeit_4.jpg'"
+     [textExtraFooter]="'Este es un caption de prueba, aqui probando más texto. El Diccionario de la lengua española es la obra lexicográfica'"
      [setContact]="'true'"
      [phone]="'99-99-99-99-99'"
-     [address]="'Calle Julian por Gener y Gener Numero Yo'"
+     [address]="'Calle 28 entre 5 y 6 Col. Centro'"
      ></app-footer-lienzo>
 </div>
