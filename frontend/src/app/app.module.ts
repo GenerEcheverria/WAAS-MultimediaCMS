@@ -15,11 +15,15 @@ import { TextComponent } from './pages/crear-sitio/media-types/text/text.compone
 import { ImageComponent } from './pages/crear-sitio/media-types/image/image.component';
 import { VideoComponent } from './pages/crear-sitio/media-types/video/video.component';
 import { CrearSitioComponent } from './pages/crear-sitio/crear-sitio.component';
+import { LienzoPaginaComponent } from './pages/crear-sitio/lienzo-pagina/lienzo-pagina.component';
+import { TituloLienzoComponent } from './pages/crear-sitio/lienzo-pagina/titulo-lienzo/titulo-lienzo.component';
+import { TextoLienzoComponent } from './pages/crear-sitio/lienzo-pagina/texto-lienzo/texto-lienzo.component';
+import { ImagenLienzoComponent } from './pages/crear-sitio/lienzo-pagina/imagen-lienzo/imagen-lienzo.component';
+import { ConexionbdLienzoComponent } from './pages/crear-sitio/lienzo-pagina/conexionbd-lienzo/conexionbd-lienzo.component';
+import { VideoLienzoComponent } from './pages/crear-sitio/lienzo-pagina/video-lienzo/video-lienzo.component';
+import { FooterLienzoComponent } from './pages/crear-sitio/lienzo-pagina/footer-lienzo/footer-lienzo.component';
 import { SuperAdminSitiosComponent } from './pages/super-admin-sitios/super-admin-sitios.component';
 //Componentes para web usuario
-import { LienzoPaginaComponent } from './pages/crear-sitio/lienzo-pagina/lienzo-pagina.component';
-import { TextoLienzoComponent } from './pages/crear-sitio/lienzo-pagina/texto-lienzo/texto-lienzo.component';
-import { TituloLienzoComponent } from './pages/crear-sitio/lienzo-pagina/titulo-lienzo/titulo-lienzo.component';
 
 @NgModule({
   declarations: [
@@ -36,10 +40,14 @@ import { TituloLienzoComponent } from './pages/crear-sitio/lienzo-pagina/titulo-
     ImageComponent,
     VideoComponent,
     CrearSitioComponent,
-    SuperAdminSitiosComponent,
     LienzoPaginaComponent,
+    TituloLienzoComponent,
     TextoLienzoComponent,
-    TituloLienzoComponent
+    ImagenLienzoComponent,
+    ConexionbdLienzoComponent,
+    VideoLienzoComponent,
+    FooterLienzoComponent,
+    SuperAdminSitiosComponent
   ],
   imports: [
     BrowserModule,
