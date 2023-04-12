@@ -23,7 +23,6 @@ import { ConexionbdLienzoComponent } from './pages/crear-sitio/lienzo-pagina/con
 import { VideoLienzoComponent } from './pages/crear-sitio/lienzo-pagina/video-lienzo/video-lienzo.component';
 import { FooterLienzoComponent } from './pages/crear-sitio/lienzo-pagina/footer-lienzo/footer-lienzo.component';
 import { SuperAdminSitiosComponent } from './pages/super-admin-sitios/super-admin-sitios.component';
-//Componentes para web usuario
 
 @NgModule({
   declarations: [

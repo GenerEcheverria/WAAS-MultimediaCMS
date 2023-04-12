@@ -456,6 +456,6 @@
 </form>
 <!-- Preview de la página -->
 <app-lienzo-pagina
-  [style.display]="showPreview"
+  *ngIf="preview"
   [webContent]="this.sitioForm.value"
 ></app-lienzo-pagina>

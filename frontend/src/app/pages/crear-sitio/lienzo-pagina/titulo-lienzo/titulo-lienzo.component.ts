@@ -6,7 +6,6 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./titulo-lienzo.component.css']
 })
 export class TituloLienzoComponent implements OnInit{
-
   @Input() title: string = ""; 
   @Input() position:  string = ""; 
   @Input() hero!: boolean;

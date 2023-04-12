@@ -108,14 +108,12 @@ export class CrearSitioComponent implements OnInit {
     this.router.navigate(['/sitios']);
   }
 
-  //Mostrar form o preview dependiendo del switch
+  //Mostrar form y preview dependiendo del switch
   mostrarPreview() {
     this.preview = !this.preview
     if (this.preview) {
-      this.showPreview = "block"
       this.showForm = "none";
     } else {
-      this.showPreview = "none"
       this.showForm = "block";
     }
   }
