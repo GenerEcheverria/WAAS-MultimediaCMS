@@ -9,5 +9,9 @@ export class LienzoPaginaComponent implements OnInit {
   @Input() webContent!: any;
 
   ngOnInit(): void {
+    const body = this.webContent.body;
+    for(const item of body) {
+      console.log(item);
+    }
   }
 }

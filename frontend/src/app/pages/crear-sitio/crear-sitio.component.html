@@ -7,14 +7,14 @@
         class="form-check-input"
         type="checkbox"
         role="switch"
-        (change)="preview = !preview"
+        (change)="mostrarPreview()"
       />
     </div>
   </div>
 </div>
 <!-- Formulario para las secciones de la página -->
 <form
-  *ngIf="!preview"
+  [style.display]="showForm" 
   id="sitioForm"
   (ngSubmit)="onSubmit()"
   [formGroup]="sitioForm"
@@ -456,6 +456,6 @@
 </form>
 <!-- Preview de la página -->
 <app-lienzo-pagina
-  *ngIf="preview"
+  [style.display]="showPreview"
   [webContent]="this.sitioForm.value"
 ></app-lienzo-pagina>
