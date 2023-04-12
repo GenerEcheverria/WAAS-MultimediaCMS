@@ -1,0 +1,47 @@
+<div [ngStyle]="{'background-color': backgroundColor}" class="d-flex justify-content-around align-items-center p-4">
+    <div *ngIf="setExtra === 'true'" class="w-25 d-flex flex-column align-items-center">
+        <div>
+            <div class="d-flex justify-content-center">
+                <img  id="imgExtraFooterDiv" src="{{imgExtraFooter}}" alt="imagen">
+            </div>
+            <p class="m-0 p-0 ms-3 mt-2">{{textExtraFooter}}</p>
+        </div>
+    </div>
+
+    <div *ngIf="setSocialMedia === 'true'" class="w-25 m-0 p-0 d-flex flex-column align-items-center">
+        <p class="m-0 p-0 me-3 fw-bold">Redes sociales:</p>
+        <div class="d-flex align-items-center mt-2">
+            <div *ngIf="facebookUrl != ''">
+                <a href="{{facebookUrl}}"><i class="bi bi-facebook me-3"></i></a>
+            </div>
+            <div *ngIf="instagramUrl != ''">
+                <a href="{{instagramUrl}}"><i class="bi bi-instagram me-3"></i></a>
+            </div>
+            <div *ngIf="twitterUrl != ''">
+                <a href="{{twitterUrl}}"><i class="bi bi-twitter me-3"></i></a>
+            </div>
+            <div *ngIf="linkedinUrl != ''">
+                <a href="{{linkedinUrl}}"><i class="bi bi-linkedin me-3"></i></a>
+            </div>
+            <div *ngIf="tiktokUrl != ''">
+                <a href="{{tiktokUrl}}"><i class="bi bi-tiktok me-3"></i></a>
+            </div>
+            <div *ngIf="otroUrl != ''">
+                <a href="{{otroUrl}}"><i class="bi bi-arrow-up-right-square me-3"></i></a>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="setContact === 'true'" class="w-25 m-0 p-0 d-flex flex-column align-items-center">
+        <p class="m-0 p-0 fw-bold">Contact me:</p>
+        <div class="mt-2">
+            <p class="m-0 p-0 ms-3">
+                <span class="fw-bold">Phone number:</span> {{phone}}
+            </p>
+            <p class="m-0 p-0  ms-3">
+                <span class="fw-bold">Address:</span> {{address}}
+            </p>
+        </div>
+    </div>
+</div>
+
+  
