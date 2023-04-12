@@ -13,6 +13,7 @@
   </app-titulo-lienzo>
   <div>
     <div *ngIf="!columns" [ngSwitch]="fullType" class="row m-0 p-0">
+      <!--alineacionTexto puede ser Justificado || Izquierda || Derecha || Centro. -->
       <app-texto-lienzo
         *ngSwitchCase="'text'"
         [title]="this.full.text.title"
@@ -21,7 +22,13 @@
         [alineacionTexto]="this.full.text.alignment"
       >
       </app-texto-lienzo>
-      <app-imagen-lienzo *ngSwitchCase="'image'"></app-imagen-lienzo>
+      <!--tamañoImg puede ser Grande || Mediano|| Pequeño. -->
+      <app-imagen-lienzo
+        *ngSwitchCase="'image'"
+        [fuenteImg]="this.full.image.image"
+        [captionImg]="this.full.image.caption"
+        [tamañoImg]="this.full.image.size"
+      ></app-imagen-lienzo>
       <app-video-lienzo *ngSwitchCase="'video'"></app-video-lienzo>
     </div>
     <div *ngIf="columns" class="d-flex justify-content-between"></div>
@@ -44,31 +51,6 @@
     [address]="webContent.footer.contact.address"
   ></app-footer-lienzo>
 </div>
-<div class="row border border-1 m-0 p-0">
-  <!--texto se obtiene de bd-->
-  <!--alineacionTexto puede ser Justificado || Izquierda || Derecha || Centro.  Se obtiene de BD-->
-  <app-texto-lienzo
-    [texto]="
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
-    "
-    [alineacionTexto]="'Justificado'"
-  ></app-texto-lienzo>
-</div>
-
-<div class="row border border-1 m-0 p-0">
-  <!--fuenteImg se obtiene de bd-->
-  <!--tamañoImg puede ser Grande || Mediano|| Pequeño. Se obtiene de BD-->
-  <!--captionImg se obtiene de la bd-->
-  <app-imagen-lienzo
-    [fuenteImg]="
-      'https://www.purina.es/sites/default/files/2021-12/6_El_comportamiento_de_los_gatitos%20%282%29_0.jpg'
-    "
-    [captionImg]="
-      'Este es un caption de prueba, aqui probando más texto en el caption para ver su comportamiento'
-    "
-    [tamañoImg]="'Grande'"
-  ></app-imagen-lienzo>
-</div>
 
 <div class="row border border-1 m-0 p-0">
   <!--fuenteVid se obtiene de bd-->
@@ -78,5 +60,3 @@
     [tamañoVid]="'Pequeño'"
   ></app-video-lienzo>
 </div>
-
-<div class="row border border-1 m-0 p-0"></div>

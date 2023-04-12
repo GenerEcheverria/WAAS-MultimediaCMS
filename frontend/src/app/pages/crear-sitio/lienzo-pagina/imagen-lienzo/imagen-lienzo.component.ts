@@ -13,15 +13,15 @@ export class ImagenLienzoComponent implements OnInit {
 
   ngOnInit(): void {    
     switch (this.tamañoImg) {
-      case "Pequeño":
+      case "small":
         this.clase = "tamaño-pequeño";
       break;
       
-      case "Mediano":
+      case "medium":
         this.clase = "tamaño-mediano";
       break;
     
-      case "Grande":
+      case "big":
         this.clase = "tamaño-grande";
       break;
     }
