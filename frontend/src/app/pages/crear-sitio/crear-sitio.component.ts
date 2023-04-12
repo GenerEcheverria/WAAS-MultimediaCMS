@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BodyElementComponent } from './body-element/body-element.component';
 
@@ -11,9 +11,17 @@ import { BodyElementComponent } from './body-element/body-element.component';
 export class CrearSitioComponent implements OnInit {
   public sitioForm!: FormGroup;
   public isHero: boolean;
+  protected setSocialMedia: boolean;
+  protected setContact: boolean;
+  protected setExtra: boolean;
+  protected upload: boolean;
 
   constructor(private router: Router, private cdr: ChangeDetectorRef) {
     this.isHero = false;
+    this.setSocialMedia = false;
+    this.setContact = false;
+    this.setExtra = false;
+    this.upload = true;
   }
 
   ngOnInit(): void {
@@ -22,30 +30,38 @@ export class CrearSitioComponent implements OnInit {
 
   initSitioForm(): void {
     this.sitioForm = new FormGroup({
-      name: new FormControl(''),
+      name: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9]+$/),Validators.maxLength(64)]),
+      backgroundColor: new FormControl('#ffffff'),
       header: new FormGroup({
         hero: new FormControl(''),
-        title: new FormControl(''),
-        position: new FormControl(''),
-        size: new FormControl(''),
-        color: new FormControl(''),
+        title: new FormControl('',[Validators.required, Validators.pattern(/^[a-zA-Z0-9 ]+$/), Validators.maxLength(64)]),
+        position: new FormControl('', Validators.required),
+        size: new FormControl('', Validators.required),
+        color: new FormControl('#000000'),
         image: new FormControl(''),
       }),
-      body: new FormArray([
-
-      ]),
+      body: new FormArray([]),
       footer: new FormGroup({
-        backgroundColor: new FormControl(''),
-        image: new FormControl(''),
-        text: new FormControl(''),
-        phone: new FormControl(''),
-        address: new FormControl(''),
-        facebook: new FormControl(''),
-        instagram: new FormControl(''),
-        twitter: new FormControl(''),
-        linkedin: new FormControl(''),
-        tiktok: new FormControl(''),
-        otro: new FormControl('')
+        backgroundColor: new FormControl('#ffffff'),
+        socialMedia: new FormGroup({
+          setSocialMedia: new FormControl(false),
+          facebook: new FormControl(''),
+          instagram: new FormControl(''),
+          twitter: new FormControl(''),
+          linkedin: new FormControl(''),
+          tiktok: new FormControl(''),
+          otro: new FormControl('')
+        }),
+        extra: new FormGroup({
+          setExtra: new FormControl(false),
+          image: new FormControl(''),
+          text: new FormControl(''),
+        }),
+        contact: new FormGroup({
+          setContact: new FormControl(false),
+          phone: new FormControl('', Validators.pattern(/^\d{10}$/)),
+          address: new FormControl(''),
+        }),
       })
     })
   }
@@ -79,6 +95,26 @@ export class CrearSitioComponent implements OnInit {
 
   onSubmit(): void {
     console.log(this.sitioForm.value)
+  }
+
+  get name() {
+    return this.sitioForm.get('name');
+  }
+
+  get headerTitle() {
+    return this.sitioForm.get('header')?.get('title');
+  }
+  
+  get headerPosition() {
+    return this.sitioForm.get('header')?.get('position');
+  }
+
+  get headerSize() {
+    return this.sitioForm.get('header')?.get('size');
+  }
+
+  get footerPhone(){
+    return this.sitioForm.get('footer')?.get('contact')?.get('phone');
   }
 
 }
