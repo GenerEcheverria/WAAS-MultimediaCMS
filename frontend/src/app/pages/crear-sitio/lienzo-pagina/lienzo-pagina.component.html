@@ -1,12 +1,14 @@
-<div class="row border border-1 m-0 p-0">
-     <!--titulo se obtiene de bd-->
-     <!--posicionTitulo puede ser Izquierda || Centro || Derecha. Se obtiene de BD -->
+<div class="border border-primary" [style.background-color]="webContent.backgroundColor">
      <app-titulo-lienzo
-     [titulo]="'La rana rene'"
-     [posicionTitulo]="'Derecha'"
-     ></app-titulo-lienzo> 
+          [hero] = "webContent.header.hero"
+          [title]="webContent.header.title"
+          [position]="webContent.header.position"
+          [size]="webContent.header.size"
+          [color]="webContent.header.color"
+          [image]="webContent.header.image"
+     > 
+     </app-titulo-lienzo>
 </div>
-
 <div class="row border border-1 m-0 p-0">
      <!--texto se obtiene de bd-->
      <!--alineacionTexto puede ser Justificado || Izquierda || Derecha || Centro.  Se obtiene de BD-->
@@ -54,3 +56,5 @@
      [address]="'Calle 28 entre 5 y 6 Col. Centro'"
      ></app-footer-lienzo>
 </div>
+
+

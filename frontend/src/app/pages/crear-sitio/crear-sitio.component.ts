@@ -15,6 +15,10 @@ export class CrearSitioComponent implements OnInit {
   protected setContact: boolean;
   protected setExtra: boolean;
   protected upload: boolean;
+  protected uploadHeroImage: boolean;
+  protected preview: boolean;
+  protected showPreview: string;
+  protected showForm: string;
 
   constructor(private router: Router, private cdr: ChangeDetectorRef) {
     this.isHero = false;
@@ -22,19 +26,24 @@ export class CrearSitioComponent implements OnInit {
     this.setContact = false;
     this.setExtra = false;
     this.upload = true;
+    this.uploadHeroImage = true;
+    this.preview = false;
+    this.showPreview = "none";
+    this.showForm = "block";
   }
 
   ngOnInit(): void {
     this.initSitioForm();
   }
 
+  //Crea el formgroup general correspondiente al contenido del sitio web del usuario
   initSitioForm(): void {
     this.sitioForm = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9]+$/),Validators.maxLength(64)]),
+      name: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9]+$/), Validators.maxLength(64)]),
       backgroundColor: new FormControl('#ffffff'),
       header: new FormGroup({
         hero: new FormControl(''),
-        title: new FormControl('',[Validators.required, Validators.pattern(/^[a-zA-Z0-9 ]+$/), Validators.maxLength(64)]),
+        title: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9 ]+$/), Validators.maxLength(64)]),
         position: new FormControl('', Validators.required),
         size: new FormControl('', Validators.required),
         color: new FormControl('#000000'),
@@ -70,11 +79,13 @@ export class CrearSitioComponent implements OnInit {
     return form.get(key)
   }
 
+  //Añade un form group qie representa una columna completa al body
   addFullColumn(type: string): void {
     this.getCtrl('body', this.sitioForm).push(BodyElementComponent.addFullColumn(type))
     this.cdr.detectChanges();
   }
 
+  //Añade un form group que representa una columna dividida al body
   addSplitColumn(leftType: string, rightType: string): void {
     this.getCtrl('body', this.sitioForm).push(BodyElementComponent.addSplitColumn(leftType, rightType))
     this.cdr.detectChanges();
@@ -89,14 +100,27 @@ export class CrearSitioComponent implements OnInit {
     bodyCtrl.clear();
   }
 
-  cancelar(): void {
-    this.router.navigate(['/sitios']);
-  }
-
   onSubmit(): void {
     console.log(this.sitioForm.value)
   }
 
+  cancelar(): void {
+    this.router.navigate(['/sitios']);
+  }
+
+  //Mostrar form o preview dependiendo del switch
+  mostrarPreview() {
+    this.preview = !this.preview
+    if (this.preview) {
+      this.showPreview = "block"
+      this.showForm = "none";
+    } else {
+      this.showPreview = "none"
+      this.showForm = "block";
+    }
+  }
+
+  //getters para obtener valores del form usados en mensajes de validacion
   get name() {
     return this.sitioForm.get('name');
   }
@@ -104,7 +128,7 @@ export class CrearSitioComponent implements OnInit {
   get headerTitle() {
     return this.sitioForm.get('header')?.get('title');
   }
-  
+
   get headerPosition() {
     return this.sitioForm.get('header')?.get('position');
   }
@@ -113,7 +137,7 @@ export class CrearSitioComponent implements OnInit {
     return this.sitioForm.get('header')?.get('size');
   }
 
-  get footerPhone(){
+  get footerPhone() {
     return this.sitioForm.get('footer')?.get('contact')?.get('phone');
   }
 

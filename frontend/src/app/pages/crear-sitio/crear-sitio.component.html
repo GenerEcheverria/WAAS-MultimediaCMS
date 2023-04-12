@@ -1,12 +1,33 @@
-<h3>Crear sitio web</h3>
-<form action="" id="sitioForm" (ngSubmit)="onSubmit()" [formGroup]="sitioForm">
+<div class="d-flex justify-content-between align-items-center">
+  <h3>Crear sitio web</h3>
+  <div class="position-fixed end-0 border rounded p-1 bg-secondary">
+    <div class="form-check form-switch">
+      <label class="form-check-label" for="type">Visualizar</label>
+      <input
+        class="form-check-input"
+        type="checkbox"
+        role="switch"
+        (change)="mostrarPreview()"
+      />
+    </div>
+  </div>
+</div>
+<!-- Formulario para las secciones de la página -->
+<form
+  [style.display]="showForm" 
+  id="sitioForm"
+  (ngSubmit)="onSubmit()"
+  [formGroup]="sitioForm"
+>
   <div class="border rounded p-4">
     <h5>Información del sitio</h5>
     <div class="d-flex align-items-center">
       <label class="me-2" for="name">Nombre: </label>
       <input class="form-control" type="text" formControlName="name" />
     </div>
-    <span class="text-danger" *ngIf="name && name.invalid && name.touched">Solo se permiten caracteres alfanuméricos sin espacios</span>
+    <span class="text-danger" *ngIf="name && name.invalid && name.touched"
+      >Solo se permiten caracteres alfanuméricos sin espacios</span
+    >
     <div class="mt-2">
       <label for="color" class="align-top">Color de fondo:</label>
       <input class="mx-2" type="color" formControlName="backgroundColor" />
@@ -58,9 +79,17 @@
         </div>
       </div>
       <div class="d-flex justify-content-between">
-        <span class="text-danger" *ngIf="headerTitle && headerTitle.invalid && headerTitle.touched">Solo se permiten titulos alfanuméricos</span>
+        <span
+          class="text-danger"
+          *ngIf="headerTitle && headerTitle.invalid && headerTitle.touched"
+          >Solo se permiten titulos alfanuméricos</span
+        >
         <div></div>
-        <span class="text-danger ml-auto"  *ngIf="headerPosition && headerPosition.invalid">Debe elegir una posición</span>
+        <span
+          class="text-danger ml-auto"
+          *ngIf="headerPosition && headerPosition.invalid"
+          >Debe elegir una posición</span
+        >
       </div>
       <div class="d-flex justify-content-between pt-2">
         <div class="">
@@ -98,7 +127,9 @@
           <input class="mx-2" type="color" formControlName="color" />
         </div>
       </div>
-      <span class="text-danger ml-auto "  *ngIf="headerSize && headerSize.invalid">Debe elegir un tamaño</span>
+      <span class="text-danger ml-auto" *ngIf="headerSize && headerSize.invalid"
+        >Debe elegir un tamaño</span
+      >
       <div class="ms-1 py-1 row">
         <div class="form-check form-switch col-3">
           <label class="form-check-label" for="type">Agregar Hero</label>
@@ -113,12 +144,47 @@
           />
         </div>
         <div *ngIf="isHero" class="col-7">
-          <input
-            type="file"
-            class="form-control"
-            id="image"
-            formControlName="image"
-          />
+          <div class="row">
+            <label for="image" class="col-1 me-5">Imagen: </label>
+            <div class="form-check col-3">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="image"
+                id="image"
+                (change)="uploadHeroImage = true"
+                checked
+              />
+              <label class="form-check-label" for="image">
+                Agregar archivo
+              </label>
+            </div>
+            <div class="form-check col-3">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="image"
+                id="image"
+                (change)="uploadHeroImage = false"
+              />
+              <label class="form-check-label" for="image"> Agregar URL </label>
+            </div>
+            <div class="col-8">
+              <input
+                type="file"
+                class="form-control ms-2"
+                formControlName="image"
+                *ngIf="uploadHeroImage"
+              />
+              <input
+                placeholder="URL"
+                type="text"
+                class="form-control ms-2"
+                formControlName="image"
+                *ngIf="!uploadHeroImage"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </form>
@@ -296,7 +362,11 @@
             />
           </div>
         </div>
-        <span class="text-danger ml-auto "  *ngIf="footerPhone && footerPhone.invalid">El teléfono debe ser 10 dígitos</span>
+        <span
+          class="text-danger ml-auto"
+          *ngIf="footerPhone && footerPhone.invalid"
+          >El teléfono debe ser 10 dígitos</span
+        >
       </div>
     </div>
     <div formGroupName="extra">
@@ -384,3 +454,8 @@
     </button>
   </div>
 </form>
+<!-- Preview de la página -->
+<app-lienzo-pagina
+  [style.display]="showPreview"
+  [webContent]="this.sitioForm.value"
+></app-lienzo-pagina>

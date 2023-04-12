@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-
 @Component({
   selector: 'app-imagen-lienzo',
   templateUrl: './imagen-lienzo.component.html',
