@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { LoginComponent } from './pages/login/login.component';
+import { TimelineComponent } from './pages/timeline/timeline.component';
+import { FormsModule } from '@angular/forms';
 import { SitiosComponent } from './pages/sitios/sitios.component';
 import { CrearSitioComponent } from './pages/crear-sitio/crear-sitio.component';
 
@@ -25,7 +27,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: 
+  [FormsModule,
+    RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

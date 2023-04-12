@@ -1,0 +1,144 @@
+<!-- <h1 [style.font-size.px]="size" [style.color]="color">{{ text }}</h1>
+    <label>
+      Tamaño:
+      <input type="number" [(ngModel)]="size">
+    </label>
+    <label>
+      Color:
+      <input type="color" [(ngModel)]="color">
+    </label>
+    <label>
+      Texto:
+      <input type="text" [(ngModel)]="text">
+    </label> -->
+    <a class="btn btn-primary" style="margin-top:10px;" (click)="modificar()">
+         modo edicion {{editMode}}
+    </a>
+
+
+    <div *ngFor="let itemTime of LineaDelTiempo ; let indice = index" style="text-align: center;">
+            <div class="card" [style.margin-left]="((100-itemTime.Ancho)/2)+'vw'" [style.width]="itemTime.Ancho+'vw'" [style.background-color]="itemTime.Fondo">
+              <div class="card-body">
+                <h5 class="card-title" [style.color]="itemTime.TituloColor">{{ itemTime.Titulo }}</h5>
+                <p class="card-text">{{ itemTime.Fecha }}</p>
+                <img [src]="itemTime.imageSrc" *ngIf="itemTime.Multimedia=='Foto'" [style.width]="itemTime.FotoAncho+'%'">
+                <video [src]="itemTime.videoSrc" *ngIf="itemTime.Multimedia=='Video'" controls [style.width]="itemTime.FotoAncho+'%'"></video>
+                <p class="card-text" [style.color]="itemTime.DescripcionColor">{{ itemTime.Descripcion }}</p>
+              </div>
+            </div>
+
+    <div *ngIf="editMode">
+        <a class="btn btn-primary" style="margin-top:10px;" data-bs-toggle="collapse" [href]="'#'+'EditCard'+indice" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Edite el contenedor
+        </a>
+        <a class="btn btn-primary" style="margin-top:10px; margin-left: 10px;" data-bs-toggle="collapse" [href]="'#'+'EditTitle'+indice" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Edite el Titulo
+        </a>
+        <a class="btn btn-primary" style="margin-top:10px; margin-left: 10px;" data-bs-toggle="collapse" [href]="'#'+'EditMultimedia'+indice" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Edite el archivo Multimedia
+        </a>
+        <a class="btn btn-primary" style="margin-top:10px; margin-left: 10px;" data-bs-toggle="collapse" [href]="'#'+'EditDescription'+indice" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Edite la Descripción
+        </a>
+
+        <div class="collapse" [id]="'EditCard'+indice" style="text-align: center;">
+            <div class="card card-body">
+                <h4 class="mt-4 fw-bold" style="font-family: 'Inter';">Contenedor</h4>
+                <div class="mb-3 row">
+                    <label for="correo-login" class="col-sm-1 col-form-label" style="font-family: 'Inter';">Fondo:</label>
+                    <div class="col-sm-1">
+                    <input type="color" class="form-control rounded-pill bg-azure-web" [(ngModel)]="itemTime.Fondo" aria-describedby="emailHelp">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="correo-login" class="col-sm-1 col-form-label" style="font-family: 'Inter';">Ancho:</label>
+                    <div class="col-sm-1">
+                    <input type="number" class="form-control rounded-pill bg-azure-web" [(ngModel)]="itemTime.Ancho" aria-describedby="emailHelp">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="collapse" [id]="'EditTitle'+indice" style="text-align: center;">
+            <div class="card card-body">
+                <h4 class="mt-4 fw-bold" style="font-family: 'Inter';">Titulo</h4>
+                <div class="mb-3 row">
+                    <label for="correo-login" class="col-sm-1 col-form-label" style="font-family: 'Inter';">Texto:</label>
+                    <div class="col-sm-1">
+                    <input type="text" class="form-control rounded-pill bg-azure-web" [(ngModel)]="itemTime.Titulo" aria-describedby="emailHelp">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="correo-login" class="col-sm-1 col-form-label" style="font-family: 'Inter';">Color Texto:</label>
+                    <div class="col-sm-1">
+                    <input type="color" class="form-control rounded-pill bg-azure-web" [(ngModel)]="itemTime.TituloColor" aria-describedby="emailHelp">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="correo-login" class="col-sm-1 col-form-label" style="font-family: 'Inter';">Fecha:</label>
+                    <div class="col-sm-1">
+                    <input type="number" class="form-control rounded-pill bg-azure-web" [(ngModel)]="itemTime.Fecha" aria-describedby="emailHelp">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="collapse" [id]="'EditMultimedia'+indice" style="text-align: center;">
+            <div class="card card-body">
+                <h4 class="mt-4 fw-bold" style="font-family: 'Inter';">Multimedia</h4>
+                <div class="mb-3 row">
+                    <label for="correo-login" class="col-sm-1 col-form-label" style="font-family: 'Inter';">Foto/Video:</label>
+                    <div class="col-sm-1">
+                        <input type="file" class="form-control rounded-pill bg-azure-web" accept="image/*,video/*" (change)="handleFileInput($event, indice)">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="correo-login" class="col-sm-1 col-form-label" style="font-family: 'Inter';">Ancho:</label>
+                    <div class="col-sm-1">
+                    <input type="number" class="form-control rounded-pill bg-azure-web" [(ngModel)]="itemTime.FotoAncho" aria-describedby="emailHelp">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="collapse" [id]="'EditDescription'+indice" style="text-align: center;">
+            <div class="card card-body">
+                <h4 class="mt-4 fw-bold" style="font-family: 'Inter';">Descripcion</h4>
+                <div class="mb-3 row">
+                    <label for="correo-login" class="col-sm-1 col-form-label" style="font-family: 'Inter';">Texto:</label>
+                    <div class="col-sm-1">
+                    <input type="text" class="form-control rounded-pill bg-azure-web" [(ngModel)]="itemTime.Descripcion" aria-describedby="emailHelp">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="correo-login" class="col-sm-1 col-form-label" style="font-family: 'Inter';">Color Texto:</label>
+                    <div class="col-sm-1">
+                    <input type="color" class="form-control rounded-pill bg-azure-web" [(ngModel)]="itemTime.DescripcionColor" aria-describedby="emailHelp">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="arrow-with-stick" style="margin-left: 49.55vw;">
+            <div class="stick"></div>
+        </div>
+        <div class="arrow-with-stick" style="margin-left: 49vw;">
+            <div class="arrow"></div>
+        </div>
+        <!-- <h1>{{ itemTime.Titulo }} {{ LineaDelTiempo[indice].Multimedia }} {{ itemTime.Descripcion }}</h1> -->
+        <!-- <label>
+            Titulo:
+            <input type="text" [(ngModel)]="itemTime.Titulo">
+          </label>
+          <label>
+            Foto o Video:
+            <input type="file" accept="image/*,video/*" (change)="handleFileInput($event, indice)">
+          </label>
+          <label>
+            Descripcion:
+            <input type="text" [(ngModel)]="itemTime.Descripcion">
+          </label>
+          <label>
+            Fecha:
+            <input type="number" [(ngModel)]="itemTime.Fecha">
+          </label> -->
+
+    </div>
+    <button style="margin-left: 46.2vw;" (click)="agregarItem()">Agregar item</button>

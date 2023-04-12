@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { TimelineComponent } from './pages/timeline/timeline.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +24,7 @@ import { SuperAdminSitiosComponent } from './pages/super-admin-sitios/super-admi
 @NgModule({
   declarations: [
     AppComponent,
+    TimelineComponent
     LoginComponent,
     MiCuentaComponent,
     MainLayoutComponent,
@@ -34,13 +37,12 @@ import { SuperAdminSitiosComponent } from './pages/super-admin-sitios/super-admi
     ImageComponent,
     VideoComponent,
     CrearSitioComponent,
-
-
     SuperAdminSitiosComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule
     ReactiveFormsModule
   ],
 
