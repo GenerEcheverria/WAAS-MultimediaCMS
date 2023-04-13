@@ -29,10 +29,10 @@ export class TituloLienzoComponent implements OnInit{
     }
     switch (this.size) {
       case "small":
-        this.claseSize = "fs-4";
+        this.claseSize = "fs-3";
       break;
       case "medium":
-        this.claseSize = "fs-3";
+        this.claseSize = "fs-2";
       break;
       case "big":
         this.claseSize = "fs-1";

@@ -18,20 +18,5 @@ export class LienzoPaginaComponent implements OnInit {
 
   ngOnInit(): void {
     const body = this.webContent.body;
-    for(const item of body) {
-      if (Object.keys(item).length==1){
-        this.columns = false;
-        this.full = item.full;
-        this.fullType = Object.keys(this.full)[0];
-        console.log(Object.keys(this.full)[0]=='text')
-      } else {
-        this.columns = true;
-        console.log(item.left, item.right)
-        this.left = item.left
-        this.leftType = Object.keys(this.left)[0];
-        this.right = item.right
-        this.rightType = Object.keys(this.right)[0];
-      }
-    }
   }
 }

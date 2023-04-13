@@ -1,0 +1,22 @@
+<div>
+    <div *ngIf="!columns" [ngSwitch]="fullType" class="row m-0 p-0">
+      <!--alineacionTexto puede ser Justificado || Izquierda || Derecha || Centro. -->
+      <app-texto-lienzo
+        *ngSwitchCase="'text'"
+        [title]="this.full.text.title"
+        [position]="this.full.text.position"
+        [texto]="this.full.text.text"
+        [alineacionTexto]="this.full.text.alignment"
+      >
+      </app-texto-lienzo>
+      <!--tamañoImg puede ser Grande || Mediano|| Pequeño. -->
+      <app-imagen-lienzo
+        *ngSwitchCase="'image'"
+        [fuenteImg]="this.full.image.image"
+        [captionImg]="this.full.image.caption"
+        [tamañoImg]="this.full.image.size"
+      ></app-imagen-lienzo>
+      <app-video-lienzo *ngSwitchCase="'video'"></app-video-lienzo>
+    </div>
+    <div *ngIf="columns" class="d-flex justify-content-between"></div>
+  </div>
