@@ -16,7 +16,11 @@
         [captionImg]="this.full.image.caption"
         [tamañoImg]="this.full.image.size"
       ></app-imagen-lienzo>
-      <app-video-lienzo *ngSwitchCase="'video'"></app-video-lienzo>
+      <app-video-lienzo 
+        *ngSwitchCase="'video'"
+        [fuenteVid]="this.full.video.video"
+        [tamañoVid]="this.full.video.size"
+      ></app-video-lienzo>
     </div>
     <div *ngIf="columns" class="d-flex justify-content-between"></div>
   </div>
