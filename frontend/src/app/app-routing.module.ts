@@ -8,8 +8,6 @@ import { SitiosComponent } from './pages/sitios/sitios.component';
 import { CrearSitioComponent } from './pages/crear-sitio/crear-sitio.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LienzoPaginaComponent } from './pages/crear-sitio/lienzo-pagina/lienzo-pagina.component';
-
-
 import { SuperAdminSitiosComponent } from "./pages/super-admin-sitios/super-admin-sitios.component";
 import { MiCuentaComponent } from "./pages/mi-cuenta/mi-cuenta.component";
 import { SuperadministradorCuentaUsuarioComponent } from './pages/superadministrador-cuenta-usuario/superadministrador-cuenta-usuario.component';
@@ -34,6 +32,8 @@ const routes: Routes = [
       { path: 'misSitios', component: MisSitiosComponent},
       { path: 'ranking', component: RankingComponent},
       { path: 'sausuarios', component:  SuperadministradorCuentaUsuarioComponent},
+      { path: 'ranking', component: RankingComponent}
+
     ]
   }
 ];
