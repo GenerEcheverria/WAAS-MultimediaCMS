@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { TimelineComponent } from './pages/crear-sitio/media-types/timeline/timeline.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,11 +24,14 @@ import { ImagenLienzoComponent } from './pages/crear-sitio/lienzo-pagina/body-bu
 import { VideoLienzoComponent } from './pages/crear-sitio/lienzo-pagina/body-builder/video-lienzo/video-lienzo.component';
 import { FooterLienzoComponent } from './pages/crear-sitio/lienzo-pagina/footer-lienzo/footer-lienzo.component';
 import { SuperAdminSitiosComponent } from './pages/super-admin-sitios/super-admin-sitios.component';
+import { MisSitiosComponent } from './pages/mis-sitios/mis-sitios.component';
+import { RankingComponent } from './pages/ranking/ranking.component';
 import { BodyBuilderComponent } from './pages/crear-sitio/lienzo-pagina/body-builder/body-builder.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    TimelineComponent,
     LoginComponent,
     MiCuentaComponent,
     MainLayoutComponent,
@@ -39,6 +44,8 @@ import { BodyBuilderComponent } from './pages/crear-sitio/lienzo-pagina/body-bui
     ImageComponent,
     VideoComponent,
     CrearSitioComponent,
+    MisSitiosComponent,
+    RankingComponent,
     LienzoPaginaComponent,
     TituloLienzoComponent,
     TextoLienzoComponent,
@@ -51,6 +58,7 @@ import { BodyBuilderComponent } from './pages/crear-sitio/lienzo-pagina/body-bui
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule
   ],
 

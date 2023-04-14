@@ -21,6 +21,7 @@ export class BodyElementComponent {
   static rightType = "";
   protected leftType = BodyElementComponent.leftType;
   protected rightType = BodyElementComponent.rightType;
+  myTimeline!: any;
 
   static addFullColumn(type: string): FormGroup {
     BodyElementComponent.isFull = true;
@@ -71,6 +72,7 @@ export class BodyElementComponent {
           }),
         });
       case 'Timeline':
+
         return new FormGroup({
           timeline: new FormGroup({
             title: new FormControl(''),
