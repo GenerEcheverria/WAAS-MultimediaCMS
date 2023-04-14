@@ -17,13 +17,12 @@ import { VideoComponent } from './pages/crear-sitio/media-types/video/video.comp
 import { CrearSitioComponent } from './pages/crear-sitio/crear-sitio.component';
 import { LienzoPaginaComponent } from './pages/crear-sitio/lienzo-pagina/lienzo-pagina.component';
 import { TituloLienzoComponent } from './pages/crear-sitio/lienzo-pagina/titulo-lienzo/titulo-lienzo.component';
-import { TextoLienzoComponent } from './pages/crear-sitio/lienzo-pagina/texto-lienzo/texto-lienzo.component';
-import { ImagenLienzoComponent } from './pages/crear-sitio/lienzo-pagina/imagen-lienzo/imagen-lienzo.component';
-import { ConexionbdLienzoComponent } from './pages/crear-sitio/lienzo-pagina/conexionbd-lienzo/conexionbd-lienzo.component';
-import { VideoLienzoComponent } from './pages/crear-sitio/lienzo-pagina/video-lienzo/video-lienzo.component';
+import { TextoLienzoComponent } from './pages/crear-sitio/lienzo-pagina/body-builder/texto-lienzo/texto-lienzo.component';
+import { ImagenLienzoComponent } from './pages/crear-sitio/lienzo-pagina/body-builder/imagen-lienzo/imagen-lienzo.component';
+import { VideoLienzoComponent } from './pages/crear-sitio/lienzo-pagina/body-builder/video-lienzo/video-lienzo.component';
 import { FooterLienzoComponent } from './pages/crear-sitio/lienzo-pagina/footer-lienzo/footer-lienzo.component';
 import { SuperAdminSitiosComponent } from './pages/super-admin-sitios/super-admin-sitios.component';
-//Componentes para web usuario
+import { BodyBuilderComponent } from './pages/crear-sitio/lienzo-pagina/body-builder/body-builder.component';
 
 @NgModule({
   declarations: [
@@ -44,10 +43,10 @@ import { SuperAdminSitiosComponent } from './pages/super-admin-sitios/super-admi
     TituloLienzoComponent,
     TextoLienzoComponent,
     ImagenLienzoComponent,
-    ConexionbdLienzoComponent,
     VideoLienzoComponent,
     FooterLienzoComponent,
-    SuperAdminSitiosComponent
+    SuperAdminSitiosComponent,
+    BodyBuilderComponent
   ],
   imports: [
     BrowserModule,

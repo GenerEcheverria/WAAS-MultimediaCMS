@@ -52,6 +52,7 @@ export class CrearSitioComponent implements OnInit {
       body: new FormArray([]),
       footer: new FormGroup({
         backgroundColor: new FormControl('#ffffff'),
+        textColor: new FormControl('#000000'),
         socialMedia: new FormGroup({
           setSocialMedia: new FormControl(false),
           facebook: new FormControl(''),
@@ -108,14 +109,12 @@ export class CrearSitioComponent implements OnInit {
     this.router.navigate(['/sitios']);
   }
 
-  //Mostrar form o preview dependiendo del switch
+  //Mostrar form y preview dependiendo del switch
   mostrarPreview() {
     this.preview = !this.preview
     if (this.preview) {
-      this.showPreview = "block"
       this.showForm = "none";
     } else {
-      this.showPreview = "none"
       this.showForm = "block";
     }
   }

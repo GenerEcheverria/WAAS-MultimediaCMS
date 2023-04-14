@@ -1,60 +1,39 @@
-<div class="border border-primary" [style.background-color]="webContent.backgroundColor">
-     <app-titulo-lienzo
-          [hero] = "webContent.header.hero"
-          [title]="webContent.header.title"
-          [position]="webContent.header.position"
-          [size]="webContent.header.size"
-          [color]="webContent.header.color"
-          [image]="webContent.header.image"
-     > 
-     </app-titulo-lienzo>
+<div
+  class="border border-primary"
+  [style.background-color]="webContent.backgroundColor"
+>
+  <app-titulo-lienzo
+    [hero]="webContent.header.hero"
+    [title]="webContent.header.title"
+    [position]="webContent.header.position"
+    [size]="webContent.header.size"
+    [color]="webContent.header.color"
+    [image]="webContent.header.image"
+  >
+  </app-titulo-lienzo>
+  <app-body-builder
+    *ngFor="let item of this.webContent.body; let i = index"
+    [webContent]="item"
+  >
+  </app-body-builder>
+  <br>
+  <br>
+  <app-footer-lienzo
+    class="m-0 p-0"
+    [backgroundColor]="webContent.footer.backgroundColor"
+    [textColor]="webContent.footer.textColor"
+    [setSocialMedia]="webContent.footer.socialMedia.setSocialMedia"
+    [facebookUrl]="webContent.footer.socialMedia.facebook"
+    [instagramUrl]="webContent.footer.socialMedia.instagram"
+    [twitterUrl]="webContent.footer.socialMedia.twitter"
+    [linkedinUrl]="webContent.footer.socialMedia.linkedin"
+    [tiktokUrl]="webContent.footer.socialMedia.tiktok"
+    [otroUrl]="webContent.footer.socialMedia.otro"
+    [setExtra]="webContent.footer.extra.setExtra"
+    [imgExtraFooter]="webContent.footer.extra.image"
+    [textExtraFooter]="webContent.footer.extra.text"
+    [setContact]="webContent.footer.contact.setContact"
+    [phone]="webContent.footer.contact.phone"
+    [address]="webContent.footer.contact.address"
+  ></app-footer-lienzo>
 </div>
-<div class="row border border-1 m-0 p-0">
-     <!--texto se obtiene de bd-->
-     <!--alineacionTexto puede ser Justificado || Izquierda || Derecha || Centro.  Se obtiene de BD-->
-     <app-texto-lienzo
-     [texto]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'"
-     [alineacionTexto]="'Justificado'"
-     ></app-texto-lienzo>
-</div>
-
-<div class="row border border-1 m-0 p-0">
-     <!--fuenteImg se obtiene de bd-->
-     <!--tamañoImg puede ser Grande || Mediano|| Pequeño. Se obtiene de BD-->
-     <!--captionImg se obtiene de la bd-->
-     <app-imagen-lienzo
-     [fuenteImg]="'https://www.purina.es/sites/default/files/2021-12/6_El_comportamiento_de_los_gatitos%20%282%29_0.jpg'"
-     [captionImg]="'Este es un caption de prueba, aqui probando más texto en el caption para ver su comportamiento'"
-     [tamañoImg]="'Grande'"
-     ></app-imagen-lienzo>
-</div>
-
-<div class="row border border-1 m-0 p-0">
-     <!--fuenteVid se obtiene de bd-->
-     <!--tamañoVid puede ser Grande || Mediano|| Pequeño. Se obtiene de BD-->
-     <app-video-lienzo 
-     [fuenteVid]="'https://www.youtube.com/embed/VAiHHUMUp-4'"
-     [tamañoVid]="'Pequeño'"
-     ></app-video-lienzo>
-</div>
-
-<div class="row border border-1 m-0 p-0">
-     <app-footer-lienzo class="m-0 p-0"
-     [backgroundColor]="'orange'"
-     [setSocialMedia]="'true'"
-     [facebookUrl]="'https://www.facebook.com/gener.echeverria'"
-     [instagramUrl]="'https://www.instagram.com/gener_echeverria/'"
-     [twitterUrl]="'https://twitter.com/GenerEcheverria'"
-     [linkedinUrl]="'https://www.linkedin.com/in/gener-echeverria-9332b3157/'"
-     [tiktokUrl]="'https://www.linkedin.com/in/gener-echeverria-9332b3157/'"
-     [otroUrl]="'https://www.facebook.com/gener.echeverria'"
-     [setExtra]="'true'"
-     [imgExtraFooter]="'https://th.bing.com/th/id/OIG.UZv4iQX8Z3rSzbaQCKCy?w=270&h=270&c=6&r=0&o=5&pid=ImgGn'"
-     [textExtraFooter]="'Este es un caption de prueba, aqui probando más texto. El Diccionario de la lengua española es la obra lexicográfica'"
-     [setContact]="'true'"
-     [phone]="'99-99-99-99-99'"
-     [address]="'Calle 28 entre 5 y 6 Col. Centro'"
-     ></app-footer-lienzo>
-</div>
-
-

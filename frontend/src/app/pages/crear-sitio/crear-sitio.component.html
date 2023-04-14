@@ -255,6 +255,10 @@
         <label for="color" class="align-top">Color de fondo:</label>
         <input class="mx-2" type="color" formControlName="backgroundColor" />
       </div>
+      <div class="py-1">
+        <label for="color" class="align-top">Color de texto:</label>
+        <input class="mx-2" type="color" formControlName="textColor" />
+      </div>
     </div>
     <div formGroupName="socialMedia">
       <div class="form-check form-switch pb-2">
@@ -456,6 +460,6 @@
 </form>
 <!-- Preview de la página -->
 <app-lienzo-pagina
-  [style.display]="showPreview"
+  *ngIf="preview"
   [webContent]="this.sitioForm.value"
 ></app-lienzo-pagina>

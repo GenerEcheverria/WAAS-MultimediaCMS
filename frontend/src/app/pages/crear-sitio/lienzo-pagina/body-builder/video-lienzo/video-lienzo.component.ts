@@ -8,29 +8,25 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class VideoLienzoComponent implements OnInit {
   @Input() fuenteVid: string = "";
-  @Input() tamañoVid:  string = "";
+  @Input() tamañoVid: string = "";
   clase: string = "";
-   
-  constructor(private sanitizer: DomSanitizer) {}
+
+  constructor(private sanitizer: DomSanitizer) { }
 
   safeUrl: any;
 
-  ngOnInit(): void {   
-    
+  ngOnInit(): void {
     this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.fuenteVid);
- 
     switch (this.tamañoVid) {
-      case "Pequeño":
+      case "small":
         this.clase = "tamaño-pequeño";
-      break;
-      
-      case "Mediano":
+        break;
+      case "medium":
         this.clase = "tamaño-mediano";
-      break;
-    
-      case "Grande":
+        break;
+      case "big":
         this.clase = "tamaño-grande";
-      break;
+        break;
     }
   }
 }
