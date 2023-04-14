@@ -52,6 +52,7 @@ export class CrearSitioComponent implements OnInit {
       body: new FormArray([]),
       footer: new FormGroup({
         backgroundColor: new FormControl('#ffffff'),
+        textColor: new FormControl('#000000'),
         socialMedia: new FormGroup({
           setSocialMedia: new FormControl(false),
           facebook: new FormControl(''),

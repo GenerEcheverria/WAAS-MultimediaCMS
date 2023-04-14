@@ -1,12 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-footer-lienzo',
   templateUrl: './footer-lienzo.component.html',
   styleUrls: ['./footer-lienzo.component.css']
 })
-export class FooterLienzoComponent implements OnInit {
+export class FooterLienzoComponent {
   @Input() backgroundColor: string = "";
+  @Input() textColor: string = ""
   @Input() setSocialMedia!: boolean;
   @Input() facebookUrl: string = "";
   @Input() instagramUrl: string = "";
@@ -21,7 +22,4 @@ export class FooterLienzoComponent implements OnInit {
   @Input() phone:string = "";
   @Input() address:string = ""; 
 
-  ngOnInit(): void {
-    console.log(this.phone)
-  }
 }
