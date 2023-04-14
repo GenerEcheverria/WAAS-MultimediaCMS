@@ -11,6 +11,9 @@ import { SuperAdminSitiosComponent } from "./pages/super-admin-sitios/super-admi
 import { MiCuentaComponent } from "./pages/mi-cuenta/mi-cuenta.component";
 import { SuperadministradorCuentaUsuarioComponent } from './pages/superadministrador-cuenta-usuario/superadministrador-cuenta-usuario.component';
 
+import { MisSitiosComponent } from './pages/mis-sitios/mis-sitios.component';
+import { RankingComponent } from './pages/ranking/ranking.component';
+
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
@@ -21,7 +24,9 @@ const routes: Routes = [
       { path: 'crear', component: CrearSitioComponent},
       { path: 'sasitios', component: SuperAdminSitiosComponent},
       { path: 'mi-cuenta', component: MiCuentaComponent},
-      { path: 'sausuarios', component:  SuperadministradorCuentaUsuarioComponent}
+      { path: 'sausuarios', component:  SuperadministradorCuentaUsuarioComponent},
+      { path: 'misSitios', component: MisSitiosComponent},
+      { path: 'ranking', component: RankingComponent}
     ]
   }
 ];

@@ -19,6 +19,8 @@ import { VideoComponent } from './pages/crear-sitio/media-types/video/video.comp
 import { CrearSitioComponent } from './pages/crear-sitio/crear-sitio.component';
 
 import { SuperAdminSitiosComponent } from './pages/super-admin-sitios/super-admin-sitios.component';
+import { MisSitiosComponent } from './pages/mis-sitios/mis-sitios.component';
+import { RankingComponent } from './pages/ranking/ranking.component';
 
 
 @NgModule({
@@ -37,7 +39,9 @@ import { SuperAdminSitiosComponent } from './pages/super-admin-sitios/super-admi
     ImageComponent,
     VideoComponent,
     CrearSitioComponent,
-    SuperAdminSitiosComponent
+    SuperAdminSitiosComponent,
+    MisSitiosComponent,
+    RankingComponent
   ],
   imports: [
     BrowserModule,

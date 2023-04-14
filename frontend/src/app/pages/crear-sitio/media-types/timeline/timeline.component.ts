@@ -11,8 +11,10 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 export class TimelineComponent {
 
   constructor(private sanitizer: DomSanitizer) {}
+  typeView: string = 'vertical'
   editMode: boolean = true;
   size: number = 36;
+  indexModal: number = 0;
   color: string = '#000000';
   text: string = 'Mi titulo';
   imageSrc: string = ''
@@ -25,12 +27,21 @@ export class TimelineComponent {
     this.LineaDelTiempo.push({Fondo: '#FFFFFF', Ancho: 16, Titulo: '', TituloColor: '', Multimedia: '', imageSrc: '', FotoAncho:100, Descripcion: '',DescripcionColor:'',videoSrc: this.sanitizer.bypassSecurityTrustUrl(''), Fecha: '2000' });
   }
 
+  deleteItem(index: number) {
+    console.log('apuntando a',index)
+    if(this.LineaDelTiempo.length>1){
+    this.LineaDelTiempo.splice(index,1)
+  }
+  }
+
   modificar() {
     if(this.editMode){
       this.editMode=false
     }else{
       this.editMode=true
     }
+    console.log(this.LineaDelTiempo)
+    console.log(this.LineaDelTiempo.slice(0,2))
   }
 
   handleFileInput(event: any,  index: number): void {
