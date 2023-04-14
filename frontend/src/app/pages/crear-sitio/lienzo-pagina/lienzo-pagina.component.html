@@ -2,6 +2,7 @@
   class="border border-primary"
   [style.background-color]="webContent.backgroundColor"
 >
+<!-- Componente para construir el header del sitio -->
   <app-titulo-lienzo
     [hero]="webContent.header.hero"
     [title]="webContent.header.title"
@@ -11,6 +12,7 @@
     [image]="webContent.header.image"
   >
   </app-titulo-lienzo>
+  <!-- Componente para construir los elementos que conforman al body del sitio -->
   <app-body-builder
     *ngFor="let item of this.webContent.body; let i = index"
     [webContent]="item"
@@ -18,6 +20,7 @@
   </app-body-builder>
   <br>
   <br>
+  <!-- Componente para construir el footer del sitio -->
   <app-footer-lienzo
     class="m-0 p-0"
     [backgroundColor]="webContent.footer.backgroundColor"

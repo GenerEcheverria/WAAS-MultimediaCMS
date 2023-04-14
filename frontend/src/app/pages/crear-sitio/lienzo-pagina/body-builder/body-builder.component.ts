@@ -5,6 +5,8 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './body-builder.component.html',
   styleUrls: ['./body-builder.component.css']
 })
+
+//Componente encargado de devolver el tipo de medio correspondiente
 export class BodyBuilderComponent implements OnInit {
   @Input() webContent: any;
   protected full: any;
@@ -18,10 +20,14 @@ export class BodyBuilderComponent implements OnInit {
   ngOnInit(): void {
     const item = this.webContent;
     if (Object.keys(item).length == 1) {
+      //Si solo se encuentra un elemento, se considera que es una columna completa
+      //es decir, ocupará todo el width
       this.columns = false;
       this.full = item.full;
       this.fullType = Object.keys(this.full)[0];
     } else {
+      //De lo contrario será una columna dividida, es decir,
+      //tendra un medio en el lado izquierdo y otro en el derecho
       this.columns = true;
       console.log(item.left, item.right)
       this.left = item.left

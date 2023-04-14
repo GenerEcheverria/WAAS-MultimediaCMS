@@ -6,6 +6,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./lienzo-pagina.component.css']
 })
 
+//Componente base para visualizar el sitio web con el contenido
+//elegido por el usuario
 export class LienzoPaginaComponent implements OnInit {
   @Input() webContent: any;
   protected full:any;
