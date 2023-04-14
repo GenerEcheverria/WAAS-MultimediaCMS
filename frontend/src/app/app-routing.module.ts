@@ -6,7 +6,7 @@ import { TimelineComponent } from './pages/crear-sitio/media-types/timeline/time
 import { FormsModule } from '@angular/forms';
 import { SitiosComponent } from './pages/sitios/sitios.component';
 import { CrearSitioComponent } from './pages/crear-sitio/crear-sitio.component';
-
+import { RegisterComponent } from './pages/register/register.component';
 import { LienzoPaginaComponent } from './pages/crear-sitio/lienzo-pagina/lienzo-pagina.component';
 
 
@@ -20,6 +20,7 @@ import { RankingComponent } from './pages/ranking/ranking.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent},
   {
     path: '',
     component: MainLayoutComponent,
@@ -31,9 +32,8 @@ const routes: Routes = [
       { path: 'mi-cuenta', component: MiCuentaComponent},
       { path: 'sausuarios', component:  SuperadministradorCuentaUsuarioComponent},
       { path: 'misSitios', component: MisSitiosComponent},
-      { path: 'ranking', component: RankingComponent}
-      { path: 'sausuarios', component:  SuperadministradorCuentaUsuarioComponent}
-
+      { path: 'ranking', component: RankingComponent},
+      { path: 'sausuarios', component:  SuperadministradorCuentaUsuarioComponent},
     ]
   }
 ];

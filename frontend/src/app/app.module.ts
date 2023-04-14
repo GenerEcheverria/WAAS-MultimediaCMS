@@ -27,6 +27,7 @@ import { SuperAdminSitiosComponent } from './pages/super-admin-sitios/super-admi
 import { MisSitiosComponent } from './pages/mis-sitios/mis-sitios.component';
 import { RankingComponent } from './pages/ranking/ranking.component';
 import { BodyBuilderComponent } from './pages/crear-sitio/lienzo-pagina/body-builder/body-builder.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ import { BodyBuilderComponent } from './pages/crear-sitio/lienzo-pagina/body-bui
     CrearSitioComponent,
     SuperAdminSitiosComponent,
     MisSitiosComponent,
-    RankingComponent
+    RankingComponent,
     LienzoPaginaComponent,
     TituloLienzoComponent,
     TextoLienzoComponent,
@@ -54,7 +55,8 @@ import { BodyBuilderComponent } from './pages/crear-sitio/lienzo-pagina/body-bui
     VideoLienzoComponent,
     FooterLienzoComponent,
     SuperAdminSitiosComponent,
-    BodyBuilderComponent
+    BodyBuilderComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
