@@ -8,6 +8,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   
 })
 
+//Componente encargado de devolver los formgroups correspondientes al body
+//y de mostrar los formularios correspondientes
 export class BodyElementComponent {
   @Input() public bodyElementForm!: FormGroup;
   @Input() public arrayIndex!: number;
@@ -23,6 +25,7 @@ export class BodyElementComponent {
   protected rightType = BodyElementComponent.rightType;
   myTimeline!: any;
 
+  //Devuelve un formgroup para medios que ocupen todo el width de la pantalla
   static addFullColumn(type: string): FormGroup {
     BodyElementComponent.isFull = true;
     BodyElementComponent.mediaType = type;
@@ -31,6 +34,7 @@ export class BodyElementComponent {
     })
   }
 
+    //Devuelve un formgroup que contiene los formcontrol para un medio del lado izquierdo y otro del lado derecho
   static addSplitColumn(leftType: string, rightType: string): FormGroup {
     BodyElementComponent.isFull = false;
     BodyElementComponent.leftType = leftType;

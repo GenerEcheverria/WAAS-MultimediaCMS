@@ -8,6 +8,7 @@ import { BodyElementComponent } from './body-element/body-element.component';
   templateUrl: './crear-sitio.component.html',
   styleUrls: ['./crear-sitio.component.css']
 })
+//Componente para la ventana de creación de sitios 
 export class CrearSitioComponent implements OnInit {
   public sitioForm!: FormGroup;
   public isHero: boolean;
