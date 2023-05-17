@@ -12,7 +12,7 @@ class AuthController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'register']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register', 'checkToken']]);
     }
 
     public function login()
@@ -28,9 +28,12 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'userName' => 'required',
+            'name' => 'required',
             'email' => 'required|string|email|max:100|unique:users',
-            'password' => 'required|string|min:6'
+            'password' => 'required|string|min:6',
+            'role' => 'required|string',
+            'phone' => 'required',
+            'photo' => 'required|string',
         ]);
         if ($validator->fails()) {
             return response()->json($validator->errors()->toJson(), 400);
@@ -88,5 +91,23 @@ class AuthController extends Controller
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60
         ]);
+    }
+
+    public function checkToken(Request $request)
+    {
+        try {
+            $token = JWTAuth::parseToken()->getToken();
+            $user = JWTAuth::authenticate($token);
+            if (!$user) {
+                return response()->json(['valid' => false], 401);
+            }
+            return response()->json(['valid' => true], 200);
+        } catch (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
+            return response()->json(['valid' => false], 401);
+        } catch (\Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
+            return response()->json(['valid' => false], 401);
+        } catch (\Tymon\JWTAuth\Exceptions\JWTException $e) {
+            return response()->json(['valid' => false], 500);
+        }
     }
 }
