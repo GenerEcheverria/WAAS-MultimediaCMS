@@ -1,5 +1,12 @@
 import { Component } from '@angular/core';
+import * as pdfMake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+import { writeFile } from 'xlsx';
+import * as XLSX from 'xlsx';
+import { saveAs } from 'file-saver';
+import { ElementRef } from '@angular/core';
 
+(pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 @Component({
   selector: 'app-mis-sitios',
   templateUrl: './mis-sitios.component.html',
@@ -58,6 +65,56 @@ export class MisSitiosComponent {
     this.filteredData = this.bibliotecaSitios.filter((item) =>
       item.titulo.toLowerCase().includes(this.Filtro.toLowerCase())
     );
+  }
+
+  generarPDF() {
+    const documentDefinition = {   content: [
+      {
+        table: {
+          headerRows: 1,
+          widths: ['*', '*', '*', '*'],
+          body: [
+            ['Link', 'Título', 'Sección', 'Vistas'],
+            ...this.bibliotecaSitios.map(item => [item.link, item.titulo, item.seccion, item.vistas])
+          ]
+        }
+      }
+    ],
+    defaultStyle: {
+      fontSize: 12,
+      color: '#333333'
+    },
+    styles: {
+      body: {
+        fillColor: '#CCCCCC',
+        color: '#FFFFFF',
+        bold: true,
+        fontSize: 15
+      }
+    }
+  };
+    pdfMake.createPdf(documentDefinition).download('ReporteMisSitios.pdf');
+  }
+
+  generarExcel() {
+    const worksheet = XLSX.utils.json_to_sheet(this.bibliotecaSitios);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Biblioteca Sitios');
+    const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    const data = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    saveAs(data, 'ReporteMisSitios.xlsx');
+  }
+
+  async generarQRyDescargar(url: string): Promise<void> {
+    try {
+      const apiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(url)}`;
+      const response = await fetch(apiUrl);
+      const blob = await response.blob();
+  
+      saveAs(blob, 'qrcode.png');
+    } catch (error) {
+      console.error('Error generating and downloading QR code:', error);
+    }
   }
 
 }
