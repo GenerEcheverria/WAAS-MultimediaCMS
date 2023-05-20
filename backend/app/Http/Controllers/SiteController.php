@@ -32,40 +32,36 @@ class SiteController extends Controller
         if ($validator->fails()) {
             return response()->json($validator->errors()->toJson(), 400);
         }
-
         $user = JWTAuth::parseToken()->authenticate(); 
         $siteData = $validator->validate();
         $siteData['idUser'] = $user->id; 
-
         $site = Site::create($siteData);
-
         return response()->json([
             'message' => 'Successfully created',
             'site' => $site
         ], 201);
     }
 
+    public function getSitesForCurrentUser()
+    {
+        $user = JWTAuth::parseToken()->authenticate();
+        $sites = $user->sites; 
+        return response()->json([
+            'sites' => $sites
+        ], 200);
+    }
 
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         //

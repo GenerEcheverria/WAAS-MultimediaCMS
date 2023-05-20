@@ -40,6 +40,7 @@ Route::group([
     'prefix' => 'media'
 ], function ($router){
     Route::post('sites', 'App\Http\Controllers\SiteController@store');
+    Route::get('mySites', 'App\Http\Controllers\SiteController@getSitesForCurrentUser');
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
