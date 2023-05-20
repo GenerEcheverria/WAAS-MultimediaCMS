@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh; 
+
 }
 
 .rounded-pill {
@@ -24,3 +24,4 @@ input.ng-valid {
   color: rgb(223, 107, 87);
   font-size: 12px;
 }
+

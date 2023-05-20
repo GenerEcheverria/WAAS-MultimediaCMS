@@ -28,6 +28,7 @@ import { MisSitiosComponent } from './pages/mis-sitios/mis-sitios.component';
 import { RankingComponent } from './pages/ranking/ranking.component';
 import { BodyBuilderComponent } from './pages/crear-sitio/lienzo-pagina/body-builder/body-builder.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -56,13 +57,14 @@ import { RegisterComponent } from './pages/register/register.component';
     FooterLienzoComponent,
     SuperAdminSitiosComponent,
     BodyBuilderComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
 
   providers: [],
