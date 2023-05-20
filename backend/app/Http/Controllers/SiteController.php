@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Footer;
 use App\Models\Site;
 use App\Models\Header;
 use Illuminate\Support\Facades\Validator;
@@ -57,12 +58,34 @@ class SiteController extends Controller
 
             $header = Header::create($headerData);
 
+            $footerData =[
+                'idSite'=> $site->id,
+                'backgroundColor' => $request->input('footer.backgroundColor'),
+                'textColor'=> $request->input('footer.textColor'),
+                'setSocialMedia'=> $request->input('footer.socialMedia.setSocialMedia'),
+                'facebook'=> $request->input('footer.socialMedia.facebook'),
+                'twitter'=> $request->input('footer.socialMedia.twitter'),
+                'instagram'=> $request->input('footer.socialMedia.instagram'),
+                'tiktok' => $request->input('footer.socialMedia.tiktok'),
+                'linkedin' => $request->input('footer.socialMedia.linkedin'),
+                'otro'=> $request->input('footer.socialMedia.setSocialMedia'),
+                'setContact'=> $request->input('footer.contact.setContact'),
+                'address'=> $request->input('footer.contact.address'),
+                'phone'=> $request->input('footer.contact.phone'),
+                'setExtra'=> $request->input('footer.extra.setExtra'),
+                'text'=> $request->input('footer.extra.text'),
+                'image'=> $request->input('footer.extra.image')
+            ];
+
+            $footer = Footer::create($footerData);
+
             DB::commit();
 
             return response()->json([
                 'message' => 'Successfully created',
                 'site' => $site,
-                'header' => $header
+                'header' => $header,
+                'footer' => $footer
             ], 201);
         } catch (\Exception $e) {
             DB::rollBack();
