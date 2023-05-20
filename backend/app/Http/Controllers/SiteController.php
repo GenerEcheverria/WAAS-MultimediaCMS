@@ -51,19 +51,44 @@ class SiteController extends Controller
         ], 200);
     }
 
-
     public function show(string $id)
     {
-        //
+        $site = Site::findOrFail($id);
+        return response()->json([
+            'site' => $site
+        ], 200);
     }
 
     public function update(Request $request, string $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string',
+            'views' => 'required|integer',
+            'url' => 'required|string',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors()->toJson(), 400);
+        }
+
+        $site = Site::findOrFail($id);
+        $siteData = $validator->validate();
+        $site->update($siteData);
+
+        return response()->json([
+            'message' => 'Successfully updated',
+            'site' => $site
+        ], 200);
     }
 
     public function destroy(string $id)
     {
-        //
+        $site = Site::findOrFail($id);
+        $site->delete();
+
+        return response()->json([
+            'message' => 'Successfully deleted',
+            'site' => $site
+        ], 200);
     }
 }

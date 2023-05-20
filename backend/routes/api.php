@@ -39,8 +39,12 @@ Route::group([
     'middleware' => 'api',
     'prefix' => 'media'
 ], function ($router){
+    Route::get('sites', 'App\Http\Controllers\SiteController@index');
     Route::post('sites', 'App\Http\Controllers\SiteController@store');
     Route::get('mySites', 'App\Http\Controllers\SiteController@getSitesForCurrentUser');
+    Route::get('comment/{id}', 'App\Http\Controllers\CommentController@getMethodShow')->name('store.comment{id}');
+    Route::put('comment/{id}', 'App\Http\Controllers\CommentController@getMethodUpdate')->name('store.comment{id}');
+    Route::delete('comment/{id}', 'App\Http\Controllers\CommentController@getMethodDestroy')->name('store.comment{id}');
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
