@@ -12,6 +12,7 @@ return new class extends Migration
         Schema::create('sites', function (Blueprint $table) {
             $table->increments('id')->unique();
             $table->string('name');
+            $table->string('backgroundColor');
             $table->integer('views');
             $table->unsignedBigInteger('idUser'); 
             $table->string('url');

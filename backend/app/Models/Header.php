@@ -5,14 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Site extends Model
+class Header extends Model
 {
     use HasFactory;
     protected  $fillable = [
-        'name', 'backgroundColor','views', 'idUser', 'url'
+        'idSite', 'title', 'size', 'position', 'color', 'hero', 'image'
     ];
 
-    protected $table = 'sites';
-
-    
+    protected $table = 'headers';
 }

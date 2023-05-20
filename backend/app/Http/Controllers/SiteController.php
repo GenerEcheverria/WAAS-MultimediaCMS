@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Site;
+use App\Models\Header;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use Illuminate\Support\Facades\DB;
 
 class SiteController extends Controller
 {
-    
+
     public function __construct()
     {
         $this->middleware('auth:api');
@@ -25,6 +27,7 @@ class SiteController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
+            'backgroundColor' => 'required|string',
             'views' => 'required|integer',
             'url' => 'required|string',
         ]);
@@ -32,20 +35,49 @@ class SiteController extends Controller
         if ($validator->fails()) {
             return response()->json($validator->errors()->toJson(), 400);
         }
-        $user = JWTAuth::parseToken()->authenticate(); 
+
+        $user = JWTAuth::parseToken()->authenticate();
         $siteData = $validator->validate();
-        $siteData['idUser'] = $user->id; 
-        $site = Site::create($siteData);
-        return response()->json([
-            'message' => 'Successfully created',
-            'site' => $site
-        ], 201);
+        $siteData['idUser'] = $user->id;
+
+        try {
+            DB::beginTransaction();
+
+            $site = Site::create($siteData);
+
+            $headerData = [
+                'idSite' => $site->id,
+                'title' => $request->input('header.title'),
+                'size' => $request->input('header.size'),
+                'position' => $request->input('header.position'),
+                'color' => $request->input('header.color'),
+                'image' => $request->input('header.image'),
+                'hero' => $request->input('header.hero'),
+            ];
+
+            $header = Header::create($headerData);
+
+            DB::commit();
+
+            return response()->json([
+                'message' => 'Successfully created',
+                'site' => $site,
+                'header' => $header
+            ], 201);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json([
+                'message' => 'Failed to create',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
+
 
     public function getSitesForCurrentUser()
     {
         $user = JWTAuth::parseToken()->authenticate();
-        $sites = $user->sites; 
+        $sites = $user->sites;
         return response()->json([
             'sites' => $sites
         ], 200);
@@ -63,6 +95,7 @@ class SiteController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'string',
+            'backgroundColor' => 'string',
             'views' => 'integer',
             'url' => 'string',
         ]);
