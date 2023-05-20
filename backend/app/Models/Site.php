@@ -12,5 +12,5 @@ class Site extends Model
         'name', 'views', 'idUser', 'url'
     ];
 
-    protected $table = 'site';
+    protected $table = 'sites';
 }

@@ -35,6 +35,13 @@ Route::group([
     Route::delete('users/{id}', 'App\Http\Controllers\UserController@destroy');
 });
 
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'media'
+], function ($router){
+    Route::post('sites', 'App\Http\Controllers\SiteController@store');
+});
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

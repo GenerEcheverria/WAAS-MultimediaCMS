@@ -15,7 +15,8 @@ return new class extends Migration
             $table->integer('views');
             $table->unsignedBigInteger('idUser'); 
             $table->string('url');
-            
+            $table->timestamps(); 
+
             $table->foreign('idUser')->references('id')->on('users'); 
         });
     }
