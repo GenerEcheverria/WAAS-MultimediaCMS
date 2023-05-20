@@ -1,5 +1,11 @@
+import { formatNumber } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { User } from 'src/app/interfaces/user';
+import { Crypto } from 'src/app/util/crypto';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+import { saveAs } from 'file-saver';
 
 
 @Component({
@@ -12,7 +18,8 @@ export class RegisterComponent {
   public pass: string = ''
   public pass2: string = ''
   public imageSrc: string = '';
-  constructor(private formBuilder: FormBuilder) {}
+  private crypto = new Crypto;
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.formLogin = this.formBuilder.group({
@@ -62,11 +69,24 @@ export class RegisterComponent {
     return null;
   }
 
-  send(): any {
-    //Implememntar luego para redirigir a otra página se essperaría que fuese Sitios una vez iniciada sesión
-    console.log(this.formLogin.value);
-    window.location.href = "/misSitios";
+  onSubmit() {
+    const formUser = this.formLogin.value;
+    console.log(formUser);
+    const newUser:User = {
+      'name': formUser.Nombre,
+      'email' : formUser.email,
+      'password' : this.crypto.encrypted(formUser.password),
+      'role' : "administrador",
+      'phone': formUser.telefono,
+      'photo': "adadad", //aqui le deben pasar la url
+    }
+    this.authService.register(newUser.name, newUser.email, newUser.password, newUser.role, newUser.phone, newUser.photo).subscribe(
+      (response) => {
+        this.router.navigate(['/login']);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
-
-  
 }

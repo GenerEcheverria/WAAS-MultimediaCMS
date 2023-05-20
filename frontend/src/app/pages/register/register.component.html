@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-12 m-0 p-0">
                 <h4 class="m-0 p-0 mt-3 p-3 fw-bold" style="font-family: 'Inter';">Registrate</h4>
-                <form *ngIf="formLogin" [formGroup]="formLogin" (submit)="send()" class="mb-4">
+                <form *ngIf="formLogin" [formGroup]="formLogin" (ngSubmit)="onSubmit()" class="mb-4">
                     <div *ngIf="imageSrc!=''">
                         <div class="row">
                             <div class="col-8 m-0 p-0">
