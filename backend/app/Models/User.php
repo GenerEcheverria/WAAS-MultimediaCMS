@@ -35,4 +35,9 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    public function sites()
+    {
+        return $this->hasMany(Site::class, 'idUser');
+    }
 }

@@ -35,6 +35,18 @@ Route::group([
     Route::delete('users/{id}', 'App\Http\Controllers\UserController@destroy');
 });
 
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'media'
+], function ($router){
+    Route::get('sites', 'App\Http\Controllers\SiteController@index');
+    Route::post('sites', 'App\Http\Controllers\SiteController@store');
+    Route::get('mySites', 'App\Http\Controllers\SiteController@getSitesForCurrentUser');
+    Route::get('site/{id}', 'App\Http\Controllers\SiteController@show');
+    Route::put('site/{id}', 'App\Http\Controllers\SiteController@update');
+    Route::delete('site/{id}', 'App\Http\Controllers\SiteController@destroy');
+});
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
