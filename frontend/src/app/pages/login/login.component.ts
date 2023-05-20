@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Crypto } from 'src/app/util/crypto';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,8 +11,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   public formLogin!: FormGroup;
+  private crypto = new Crypto;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.formLogin = this.formBuilder.group({
@@ -17,9 +21,20 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(8)]]
     });  
   }
-
-  send(): any {
-    //Implememntar luego para redirigir a otra página se essperaría que fuese Sitios una vez iniciada sesión
-    console.log(this.formLogin.value);
+  onSubmit() {
+    const formUser = this.formLogin.value;
+    const user = {
+      'email' : formUser.email,
+      'password' : this.crypto.encrypted(formUser.password)
+    } 
+    this.authService.login(user.email, user.password).subscribe(
+      (response) => {
+        localStorage.setItem('token', response.access_token);
+        this.router.navigate(['/']);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
 }
