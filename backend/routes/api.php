@@ -43,7 +43,7 @@ Route::group([
     Route::post('sites', 'App\Http\Controllers\SiteController@store');
     Route::get('mySites', 'App\Http\Controllers\SiteController@getSitesForCurrentUser');
     Route::get('site/{id}', 'App\Http\Controllers\SiteController@show');
-    Route::put('comment/{id}', 'App\Http\Controllers\CommentController@getMethodUpdate')->name('store.comment{id}');
+    Route::put('site/{id}', 'App\Http\Controllers\SiteController@update');
     Route::delete('comment/{id}', 'App\Http\Controllers\CommentController@getMethodDestroy')->name('store.comment{id}');
 });
 

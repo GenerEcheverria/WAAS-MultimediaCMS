@@ -62,9 +62,9 @@ class SiteController extends Controller
     public function update(Request $request, string $id)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string',
-            'views' => 'required|integer',
-            'url' => 'required|string',
+            'name' => 'string',
+            'views' => 'integer',
+            'url' => 'string',
         ]);
 
         if ($validator->fails()) {
