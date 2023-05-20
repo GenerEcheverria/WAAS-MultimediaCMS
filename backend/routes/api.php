@@ -44,7 +44,7 @@ Route::group([
     Route::get('mySites', 'App\Http\Controllers\SiteController@getSitesForCurrentUser');
     Route::get('site/{id}', 'App\Http\Controllers\SiteController@show');
     Route::put('site/{id}', 'App\Http\Controllers\SiteController@update');
-    Route::delete('comment/{id}', 'App\Http\Controllers\CommentController@getMethodDestroy')->name('store.comment{id}');
+    Route::delete('site/{id}', 'App\Http\Controllers\SiteController@destroy');
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
