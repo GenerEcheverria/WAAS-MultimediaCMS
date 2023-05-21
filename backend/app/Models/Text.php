@@ -17,4 +17,8 @@ class Text extends Model
     ];
 
     protected $table = 'texts';
+    public function body()
+    {
+        return $this->belongsTo(Body::class, 'idCol');
+    }
 }

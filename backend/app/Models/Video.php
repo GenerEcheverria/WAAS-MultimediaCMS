@@ -15,4 +15,9 @@ class Video extends Model
     ];
 
     protected $table = 'videos';
+
+    public function body()
+    {
+        return $this->belongsTo(Body::class, 'idCol');
+    }
 }
