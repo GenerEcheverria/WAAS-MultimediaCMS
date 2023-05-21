@@ -23,11 +23,20 @@ export class SitiosComponent {
   ngOnInit(): void {
     this.url = this.route.snapshot.paramMap.get('url');
     console.log(this.url);
+    let id:string = "";
     if (this.url) {
       this.siteService.getSiteIdbyUrl(this.url.toString()).subscribe(
         (response) => {
           console.log(response.id)
-          
+          id = response.id;
+          this.siteService.getSite(id).subscribe(
+            (response) => {
+              console.log(response);
+            },
+            (error) => {
+              console.error(JSON.stringify(JSON.parse(error), null, 2));
+            }
+          )
         },
         (error) => {
           console.error(JSON.stringify(JSON.parse(error), null, 2));
@@ -35,8 +44,9 @@ export class SitiosComponent {
       );
     } else {
       this.router.navigate(['/login']);
-
     }
+    
+    
 
     //const body = this.webContent.body;
   }
