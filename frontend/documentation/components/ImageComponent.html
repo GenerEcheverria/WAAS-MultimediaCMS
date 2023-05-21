@@ -68,6 +68,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente para mostrar una imagen.</p>
+
+    </p>
 
 
 
@@ -184,9 +191,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/pages/crear-sitio/media-types/image/image.component.ts:11</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/pages/crear-sitio/media-types/image/image.component.ts:25</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Columna asociada a la imagen.</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -217,10 +230,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/pages/crear-sitio/media-types/image/image.component.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/pages/crear-sitio/media-types/image/image.component.ts:32</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indicador de carga de la imagen.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -233,6 +252,14 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
 import { ControlContainer, FormGroupDirective } from &#x27;@angular/forms&#x27;;
 
+/**
+ * Componente para mostrar una imagen.
+ * 
+ * @component
+ * @selector app-image
+ * @templateUrl ./image.component.html
+ * @styleUrls [&#x27;./image.component.css&#x27;]
+ */
 @Component({
   selector: &#x27;app-image&#x27;,
   templateUrl: &#x27;./image.component.html&#x27;,
@@ -240,7 +267,19 @@ import { ControlContainer, FormGroupDirective } from &#x27;@angular/forms&#x27;;
   viewProviders: [{ provide: ControlContainer, useExisting: FormGroupDirective }]
 })
 export class ImageComponent {
+
+   /**
+   * Columna asociada a la imagen.
+   * 
+   * @property {string} column
+   */
   @Input() column!: string;
+
+    /**
+   * Indicador de carga de la imagen.
+   * 
+   * @property {boolean} upload
+   */
   upload &#x3D; true;
 
   

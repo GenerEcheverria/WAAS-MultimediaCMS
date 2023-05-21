@@ -68,6 +68,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente para mostrar un video.</p>
+
+    </p>
 
 
 
@@ -184,9 +191,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/pages/crear-sitio/media-types/video/video.component.ts:11</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/crear-sitio/media-types/video/video.component.ts:26</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>La columna en la que se mostrará el video.</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -217,10 +230,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/pages/crear-sitio/media-types/video/video.component.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/pages/crear-sitio/media-types/video/video.component.ts:33</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indica si se permite la carga de un video.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -233,6 +252,15 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
 import { ControlContainer, FormGroupDirective } from &#x27;@angular/forms&#x27;;
 
+/**
+ * Componente para mostrar un video.
+ * 
+ * @component
+ * @selector app-video
+ * @templateUrl ./video.component.html
+ * @styleUrls [&#x27;./video.component.css&#x27;]
+ * @viewProviders [{ provide: ControlContainer, useExisting: FormGroupDirective }]
+ */
 @Component({
   selector: &#x27;app-video&#x27;,
   templateUrl: &#x27;./video.component.html&#x27;,
@@ -240,7 +268,19 @@ import { ControlContainer, FormGroupDirective } from &#x27;@angular/forms&#x27;;
   viewProviders: [{ provide: ControlContainer, useExisting: FormGroupDirective }]
 })
 export class VideoComponent {
+  /**
+   * La columna en la que se mostrará el video.
+   * 
+   * @property {string} column
+   * @input
+   */
   @Input() column!: string;
+
+   /**
+   * Indica si se permite la carga de un video.
+   * 
+   * @property {boolean} upload
+   */
   upload &#x3D; true
 }
 </code></pre>
