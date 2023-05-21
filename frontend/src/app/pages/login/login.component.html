@@ -14,13 +14,12 @@
                 <form *ngIf="formLogin" [formGroup]="formLogin" (ngSubmit)="onSubmit()" class="mb-4">
                     <div class="m-0 p-0 mt-2 p-3">
                         <label for="email">Correo electrónico:</label>
-                        <input type="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" formControlName="email" class="form-control rounded-pill bg-azure-web mt-2" >
-                    
-                        <div *ngIf="formLogin.get('email')?.invalid && (formLogin.get('email')?.dirty || formLogin.get('email')?.touched)">
-                            <div class="control-error" *ngIf="formLogin.get('email')?.errors?.['required']">El campo Email es requerido.</div>
-                            <div class="control-error" *ngIf="formLogin.get('email')?.errors?.['email']">No es un email valido</div>
-                          </div>
-                    
+                        <input type="email" id="email" formControlName="email" class="form-control rounded-pill bg-azure-web mt-2">
+                        
+                        <div *ngIf="formLogin.get('email')?.touched" class="control-error">
+                            <div *ngIf="formLogin.get('email')?.hasError('required')">El campo Email es requerido.</div>
+                            <div *ngIf="formLogin.get('email')?.value !== '' && formLogin.get('email')?.hasError('emailInvalid')">Correo no válido.</div>
+                        </div>
                     </div>
                     <div class="m-0 p-0 mt-2 p-3">
                         <label for="password">Contraseña:</label>
