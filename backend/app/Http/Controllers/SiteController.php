@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Footer;
 use App\Models\Site;
+use App\Models\Body;
+use App\Models\Text;
+use App\Models\Image;
+use App\Models\Video;
 use App\Models\Header;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -59,6 +63,135 @@ class SiteController extends Controller
                 'image' => $request->input('newCrearSitio.header.image'),
                 'hero' => $request->input('newCrearSitio.header.hero'),
             ];
+
+            $bodyDataContent = $request->input('newCrearSitio.body');
+            foreach ($bodyDataContent as $index => $item) {
+                $bodyData= [
+                    'idSite' => $site->id,
+                    'indexPage'=> $index,
+                ];
+                $body = Body::create($bodyData);
+                if (isset($item['full'])) {
+                    if (isset($item['full']['text'])) {
+                        $textData= [
+                            'idCol' => $body->id,
+                            'titleText' => $item['full']['text']['title'],
+                            'positionTitle' => $item['full']['text']['alignment'],
+                            'text' => $item['full']['text']['text'],
+                            'positionText' => $item['full']['text']['position']
+                        ];
+                        $text = Text::create($textData);
+                        $body->idType = $text->id;
+                        $body->Type = 'text';
+                        $body->fill($bodyData);
+                        $body->save();
+                    }
+                    if (isset($item['full']['image'])) {
+                        $imageData= [
+                            'idCol' => $body->id,
+                            'url' => $item['full']['image']['image'],
+                            'size' => $item['full']['image']['size'],
+                            'text' => $item['full']['image']['caption']
+                        ];
+                        $image = Image::create($imageData);
+                        $body->idType = $image->id;
+                        $body->Type = 'image';
+                        $body->fill($bodyData);
+                        $body->save();
+                    }
+                    if (isset($item['full']['video'])) {
+                        $videoData= [
+                            'idCol' => $body->id,
+                            'url' => $item['full']['video']['video'],
+                            'size' => $item['full']['video']['size']
+                        ];
+                        $video = Video::create($videoData);
+                        $body->idType = $video->id;
+                        $body->Type = 'video';
+                        $body->fill($bodyData);
+                        $body->save();
+                    }
+                } elseif (isset($item['left'])) {
+                    if (isset($item['left']['text'])) {
+                        $textData= [
+                            'idCol' => $body->id,
+                            'titleText' => $item['left']['text']['title'],
+                            'positionTitle' => $item['left']['text']['alignment'],
+                            'text' => $item['left']['text']['text'],
+                            'positionText' => $item['left']['text']['position']
+                        ];
+                        $text = Text::create($textData);
+                        $body->idType = $text->id;
+                        $body->Type = 'text';
+                        $body->fill($bodyData);
+                        $body->save();
+                    }
+                    if (isset($item['left']['image'])) {
+                        $imageData= [
+                            'idCol' => $body->id,
+                            'url' => $item['left']['image']['image'],
+                            'size' => $item['left']['image']['size'],
+                            'text' => $item['left']['image']['caption']
+                        ];
+                        $image = Image::create($imageData);
+                        $body->idType = $image->id;
+                        $body->Type = 'image';
+                        $body->fill($bodyData);
+                        $body->save();
+                    }
+                    if (isset($item['left']['video'])) {
+                        $videoData= [
+                            'idCol' => $body->id,
+                            'url' => $item['left']['video']['video'],
+                            'size' => $item['left']['video']['size']
+                        ];
+                        $video = Video::create($videoData);
+                        $body->idType = $video->id;
+                        $body->Type = 'video';
+                        $body->fill($bodyData);
+                        $body->save();
+                    }
+                    if (isset($item['right']['text'])) {
+                        $textData= [
+                            'idCol' => $body->id,
+                            'titleText' => $item['right']['text']['title'],
+                            'positionTitle' => $item['right']['text']['alignment'],
+                            'text' => $item['right']['text']['text'],
+                            'positionText' => $item['right']['text']['position']
+                        ];
+                        $text = Text::create($textData);
+                        $body->idType2 = $text->id;
+                        $body->Type2 = 'text';
+                        $body->fill($bodyData);
+                        $body->save();
+                    }
+                    if (isset($item['right']['image'])) {
+                        $imageData= [
+                            'idCol' => $body->id,
+                            'url' => $item['right']['image']['image'],
+                            'size' => $item['right']['image']['size'],
+                            'text' => $item['right']['image']['caption']
+                        ];
+                        $image = Image::create($imageData);
+                        $body->idType2 = $image->id;
+                        $body->Type2 = 'image';
+                        $body->fill($bodyData);
+                        $body->save();
+                    }
+                    if (isset($item['right']['video'])) {
+                        $videoData= [
+                            'idCol' => $body->id,
+                            'url' => $item['right']['video']['video'],
+                            'size' => $item['right']['video']['size']
+                        ];
+                        $video = Video::create($videoData);
+                        $body->idType2 = $video->id;
+                        $body->Type2 = 'video';
+                        $body->fill($bodyData);
+                        $body->save();
+                    }
+                }
+            }
 
             $header = Header::create($headerData);
 
