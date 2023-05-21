@@ -38,10 +38,10 @@ export class MisSitiosComponent {
       {
         table: {
           headerRows: 1,
-          widths: ['*', '*', '*', '*'],
+          widths: ['*', '*', '*'],
           body: [
-            ['URL', 'Nombre', 'Sección', 'Vistas'],
-            ...this.bibliotecaSitios.map(item => [item.url, item.name, "PENDIENTE", item.views])
+            ['URL', 'Nombre', 'Vistas'],
+            ...this.bibliotecaSitios.map(item => [item.url, item.name, item.views])
           ]
         }
       }
