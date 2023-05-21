@@ -24,7 +24,7 @@ export class RegisterComponent {
   ngOnInit(): void {
     this.formLogin = this.formBuilder.group({
       Nombre: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.minLength(10)]],
+      email: ['', [Validators.required, this.emailValidator()]],
       telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
       fotoPerfil: ['', [Validators.required, this.imageValidator.bind(this)]],
       password: ['', [Validators.required, Validators.minLength(8)]],
@@ -32,6 +32,15 @@ export class RegisterComponent {
 
     }); 
   }
+
+  emailValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      const isValid = emailPattern.test(control.value);
+      return isValid ? null : { emailInvalid: true };
+    };
+  }
+
   onFileChange(event: any) {
     const file = event.target.files[0];
     if (file && file.type.match(/image\/(gif|jpe?g|png)$/i)) {
