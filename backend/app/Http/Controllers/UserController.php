@@ -1,10 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-
 
 class UserController extends Controller
 {
@@ -13,6 +11,11 @@ class UserController extends Controller
         $this->middleware('auth:api');
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         return User::all();
@@ -20,6 +23,9 @@ class UserController extends Controller
 
     /**
      * Display the specified resource.
+     *
+     * @param  string  $id
+     * @return \Illuminate\Http\Response
      */
     public function show(string $id)
     {
@@ -28,11 +34,17 @@ class UserController extends Controller
 
     /**
      * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $id
+     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, string $id)
     {
         if (User::where("id", $id)->exists()) {
             $user = User::find($id);
+
+            // Actualizar los campos del usuario con los datos del request
             $user->fill($request->only([
                 'name',
                 'email',
@@ -41,6 +53,7 @@ class UserController extends Controller
             ]));
 
             if ($request->has('password')) {
+                // Si se proporciona una nueva contraseña, se actualiza
                 $user->password = bcrypt($request->input('password'));
             }
 
@@ -59,6 +72,9 @@ class UserController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     *
+     * @param  string  $id
+     * @return \Illuminate\Http\Response
      */
     public function destroy(string $id)
     {

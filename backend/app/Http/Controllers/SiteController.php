@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -19,12 +18,22 @@ class SiteController extends Controller
         $this->middleware('auth:api');
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         return Site::all();
     }
 
-
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -46,10 +55,12 @@ class SiteController extends Controller
             'views' => $request->input('newCrearSitio.views'),
             'url' => $request->input('newCrearSitio.url'),
         ];
-        
+
         try {
             DB::beginTransaction();
             $site = Site::create($siteData);
+
+            // Crear un nuevo header para el sitio
             $headerData = [
                 'idSite' => $site->id,
                 'title' => $request->input('newCrearSitio.header.title'),
@@ -59,9 +70,9 @@ class SiteController extends Controller
                 'image' => $request->input('newCrearSitio.header.image'),
                 'hero' => $request->input('newCrearSitio.header.hero'),
             ];
-
             $header = Header::create($headerData);
 
+            // Crear un nuevo footer para el sitio
             $footerData = [
                 'idSite' => $site->id,
                 'backgroundColor' => $request->input('newCrearSitio.footer.backgroundColor'),
@@ -80,7 +91,6 @@ class SiteController extends Controller
                 'text' => $request->input('newCrearSitio.footer.extra.text'),
                 'image' => $request->input('newCrearSitio.footer.extra.image'),
             ];
-
             $footer = Footer::create($footerData);
 
             DB::commit();
@@ -100,8 +110,11 @@ class SiteController extends Controller
         }
     }
 
-
-
+    /**
+     * Get sites for the current user.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function getSitesForCurrentUser()
     {
         $user = JWTAuth::parseToken()->authenticate();
@@ -111,6 +124,12 @@ class SiteController extends Controller
         ], 200);
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  string  $id
+     * @return \Illuminate\Http\Response
+     */
     public function show(string $id)
     {
         $site = Site::findOrFail($id);
@@ -119,6 +138,13 @@ class SiteController extends Controller
         ], 200);
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $id
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request, string $id)
     {
         $validator = Validator::make($request->all(), [
@@ -142,6 +168,12 @@ class SiteController extends Controller
         ], 200);
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  string  $id
+     * @return \Illuminate\Http\Response
+     */
     public function destroy(string $id)
     {
         $site = Site::findOrFail($id);

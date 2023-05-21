@@ -17,6 +17,11 @@ class AuthController extends Controller
         $this->middleware('auth:api', ['except' => ['login', 'register', 'checkToken']]);
     }
 
+      /**
+     * Handle user login.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function login()
     {
         $credentials = request(['email', 'password']);
@@ -27,6 +32,12 @@ class AuthController extends Controller
     }
 
 
+    /**
+     * Register a new user.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -52,6 +63,11 @@ class AuthController extends Controller
         ], 201);
     }
 
+    /**
+     * Get the authenticated user.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function me()
     {
         return response()->json(auth()->user());
@@ -95,6 +111,12 @@ class AuthController extends Controller
         ]);
     }
 
+    /**
+     * Check the validity of a token.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function checkToken(Request $request)
     {
         try {
