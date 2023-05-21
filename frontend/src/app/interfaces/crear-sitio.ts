@@ -8,6 +8,11 @@ enum HeaderSize {
     small = "small",
     medium = "medium"
 }
+enum BodySize{
+    big = "big",
+    small = "small",
+    medium = "medium"
+}
 export interface CrearSitio {
     name: string,
     backgroundColor: string,
@@ -21,6 +26,12 @@ export interface CrearSitio {
         hero: boolean;        
         image: string;
     },
+    /*body: (
+        { full: { text: { alignment: string; position: string; text: string; title: string; } } } |
+        { full: { image: { caption: string; image: string; size: BodySize; } } } |
+        { full: { video: { video: string; size: BodySize; } } } |
+        { right: { video: { video: string; size: BodySize; } }, left: { image: { caption: string; image: string; size: BodySize; } } }
+    )[];*/
     footer: {
         backgroundColor: string;
         textColor: string;

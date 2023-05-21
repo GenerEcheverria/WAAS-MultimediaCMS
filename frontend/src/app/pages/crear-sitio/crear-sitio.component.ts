@@ -119,6 +119,13 @@ export class CrearSitioComponent implements OnInit {
         'hero': sitioForm.header.hero,
         'image': "adskdkdkdk"
       },
+      /*'body': [
+        'full':{
+          'text':{
+            'alignment': sitioForm.body[0].full.text.alig
+          }
+        }
+      ],*/
       'footer': {
         'backgroundColor': sitioForm.footer.backgroundColor,
         'textColor': sitioForm.footer.textColor,
