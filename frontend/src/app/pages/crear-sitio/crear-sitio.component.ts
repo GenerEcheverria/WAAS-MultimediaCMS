@@ -2,7 +2,6 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BodyElementComponent } from './body-element/body-element.component';
-import { CrearSitio } from 'src/app/interfaces/crear-sitio';
 import { CrearSitioService } from 'src/app/services/crear-sitio.service';
 
 @Component({
@@ -36,6 +35,7 @@ export class CrearSitioComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //endpoint que conecte a show co un parametro
     this.initSitioForm();
   }
 
@@ -106,59 +106,20 @@ export class CrearSitioComponent implements OnInit {
 
   onSubmit() {
     const sitioForm = this.sitioForm.value;
-    const newCrearSitio: CrearSitio = {
-      'name': sitioForm.name,
-      'backgroundColor': sitioForm.backgroundColor,
-      'views': 0,
-      'url': "djdjdkdjdj",
-      'header': {
-        'title': sitioForm.header.title,
-        'color': sitioForm.header.color,
-        'position': sitioForm.header.position,
-        'size': sitioForm.header.size,
-        'hero': sitioForm.header.hero,
-        'image': "adskdkdkdk"
-      },
-      /*'body': [
-        'full':{
-          'text':{
-            'alignment': sitioForm.body[0].full.text.alig
-          }
-        }
-      ],*/
-      'footer': {
-        'backgroundColor': sitioForm.footer.backgroundColor,
-        'textColor': sitioForm.footer.textColor,
-        'socialMedia': {
-          'setSocialMedia': sitioForm.footer.socialMedia.setSocialMedia,
-          'facebook': sitioForm.footer.socialMedia.facebook,
-          'instagram': sitioForm.footer.socialMedia.instagram,
-          'twitter': sitioForm.footer.socialMedia.twitter,
-          'linkedin': sitioForm.footer.socialMedia.linkedin,
-          'tiktok': sitioForm.footer.socialMedia.tiktok,
-          'otro': sitioForm.footer.socialMedia.otro,
-        },
-        'extra': {
-          'setExtra':  sitioForm.footer.extra.setExtra,
-          'image': sitioForm.footer.extra.image,
-          'text': sitioForm.footer.extra.text,
-        },
-        'contact': {
-          'setContact': sitioForm.footer.contact.setContact,
-          'phone': sitioForm.footer.contact.phone,
-          'address': sitioForm.footer.contact.address,
-        }
-      }
-    };
-    console.log(newCrearSitio);
-    this.crearSitio.crearSite(newCrearSitio).subscribe(
+    sitioForm.url = "tuVariableUrl";
+    sitioForm.views = 0;
+
+    
+    console.log(sitioForm);
+    this.crearSitio.crearSite(sitioForm).subscribe(
       (response) => {
         this.router.navigate(['/sitios']);
       },
       (error) => {
-        console.error(error);
+        console.error(JSON.stringify(JSON.parse(error), null, 2));
       }
     );
+    
   }
 
 
