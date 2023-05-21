@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('titleText');
             $table->enum('positionTitle', ['left', 'center', 'right']);
             $table->string('text');
-            $table->enum('positionText', ['left', 'center', 'right']);
+            $table->enum('positionText', ['left', 'center', 'right', 'justified']);
             $table->timestamps();
         });
     }

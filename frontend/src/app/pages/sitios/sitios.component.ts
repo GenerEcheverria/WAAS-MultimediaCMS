@@ -8,7 +8,7 @@ import { SiteService } from 'src/app/services/site.service';
   styleUrls: ['./sitios.component.css']
 })
 export class SitiosComponent {
-  @Input() webContent: any;
+  public webContent: any;
   protected full: any;
   protected fullType!: string;
   protected left: any;
@@ -17,37 +17,28 @@ export class SitiosComponent {
   protected rightType!: string;
   protected columns: any;
   private url!: string | null;
+  public isDataLoaded: boolean = false;
 
   constructor(private route: ActivatedRoute, private siteService: SiteService, private router: Router) { }
 
   ngOnInit(): void {
+    this.loadData();
+  }
+
+  private async loadData(): Promise<void> {
     this.url = this.route.snapshot.paramMap.get('url');
-    console.log(this.url);
-    let id:string = "";
+    let id: string = "";
     if (this.url) {
-      this.siteService.getSiteIdbyUrl(this.url.toString()).subscribe(
-        (response) => {
-          console.log(response.id)
-          id = response.id;
-          this.siteService.getSite(id).subscribe(
-            (response) => {
-              console.log(response);
-            },
-            (error) => {
-              console.error(JSON.stringify(JSON.parse(error), null, 2));
-            }
-          )
-        },
-        (error) => {
-          console.error(JSON.stringify(JSON.parse(error), null, 2));
-        }
-      );
+      try {
+        const response = await this.siteService.getSiteIdbyUrl(this.url.toString()).toPromise();
+        id = response.id;
+        this.webContent = await this.siteService.getSite(id).toPromise();
+        this.isDataLoaded = true; // Marcar los datos como cargados
+      } catch (error) {
+      }
     } else {
       this.router.navigate(['/login']);
     }
-    
-    
-
-    //const body = this.webContent.body;
+    console.log(this.webContent);
   }
 }
