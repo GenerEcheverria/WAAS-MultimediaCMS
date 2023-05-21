@@ -45,7 +45,7 @@ export class CrearSitioComponent implements OnInit {
       name: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9]+$/), Validators.maxLength(64)]),
       backgroundColor: new FormControl('#ffffff'),
       header: new FormGroup({
-        hero: new FormControl(''),
+        hero: new FormControl(false),
         title: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9 ]+$/), Validators.maxLength(64)]),
         position: new FormControl('', Validators.required),
         size: new FormControl('', Validators.required),
@@ -76,7 +76,7 @@ export class CrearSitioComponent implements OnInit {
           address: new FormControl(''),
         }),
       })
-    })
+    });
   }
 
   getCtrl(key: string, form: FormGroup): any {
@@ -123,23 +123,23 @@ export class CrearSitioComponent implements OnInit {
         'backgroundColor': sitioForm.footer.backgroundColor,
         'textColor': sitioForm.footer.textColor,
         'socialMedia': {
-          'setSocialMedia': false,//sitioForm.footer.setSocialMedia,
-          'facebook': sitioForm.footer.facebook,
-          'instagram': sitioForm.footer.instagram,
-          'twitter': sitioForm.footer.twitter,
-          'linkedin': sitioForm.footer.linkedin,
-          'tiktok': sitioForm.footer.tiktok,
-          'otro': sitioForm.footer.otro,
+          'setSocialMedia': sitioForm.footer.socialMedia.setSocialMedia,
+          'facebook': sitioForm.footer.socialMedia.facebook,
+          'instagram': sitioForm.footer.socialMedia.instagram,
+          'twitter': sitioForm.footer.socialMedia.twitter,
+          'linkedin': sitioForm.footer.socialMedia.linkedin,
+          'tiktok': sitioForm.footer.socialMedia.tiktok,
+          'otro': sitioForm.footer.socialMedia.otro,
         },
         'extra': {
-          'setExtra':  false,//sitioForm.footer.setExtra,
-          'image': sitioForm.footer.image,
-          'text': sitioForm.footer.text,
+          'setExtra':  sitioForm.footer.extra.setExtra,
+          'image': sitioForm.footer.extra.image,
+          'text': sitioForm.footer.extra.text,
         },
         'contact': {
-          'setContact': false,// sitioForm.footer.setContact,
-          'phone': sitioForm.footer.phone,
-          'address': sitioForm.footer.address,
+          'setContact': sitioForm.footer.contact.setContact,
+          'phone': sitioForm.footer.contact.phone,
+          'address': sitioForm.footer.contact.address,
         }
       }
     };
