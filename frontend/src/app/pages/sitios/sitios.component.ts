@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SiteService } from 'src/app/services/site.service';
 
 @Component({
   selector: 'app-sitios',
@@ -6,5 +8,37 @@ import { Component } from '@angular/core';
   styleUrls: ['./sitios.component.css']
 })
 export class SitiosComponent {
+  public webContent: any;
+  protected full: any;
+  protected fullType!: string;
+  protected left: any;
+  protected leftType!: string;
+  protected right: any;
+  protected rightType!: string;
+  protected columns: any;
+  private url!: string | null;
+  public isDataLoaded: boolean = false;
 
+  constructor(private route: ActivatedRoute, private siteService: SiteService, private router: Router) { }
+
+  ngOnInit(): void {
+    this.loadData();
+  }
+
+  private async loadData(): Promise<void> {
+    this.url = this.route.snapshot.paramMap.get('url');
+    let id: string = "";
+    if (this.url) {
+      try {
+        const response = await this.siteService.getSiteIdbyUrl(this.url.toString()).toPromise();
+        id = response.id;
+        this.webContent = await this.siteService.getSite(id).toPromise();
+        this.isDataLoaded = true; // Marcar los datos como cargados
+      } catch (error) {
+      }
+    } else {
+      this.router.navigate(['/login']);
+    }
+    console.log(this.webContent);
+  }
 }
