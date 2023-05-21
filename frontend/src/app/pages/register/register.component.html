@@ -75,8 +75,8 @@
                             <input type="telefono" id="telefono" pattern="^[0-9]+$" formControlName="telefono" class="form-control rounded-pill bg-azure-web mt-2">
                             <div *ngIf="formLogin.get('telefono')?.invalid && (formLogin.get('telefono')?.dirty || formLogin.get('telefono')?.touched)">
                                 <div class="control-error" *ngIf="formLogin.get('telefono')?.errors?.['required']">Se requiere un número telefónico</div>
-                                <div class="control-error" *ngIf="formLogin.get('telefono')?.errors?.['minlength']">El teléfono debe tener 12 números</div>
-                                <div class="control-error" *ngIf="formLogin.get('telefono')?.errors?.['maxlength']">El teléfono debe tener 12 números</div>
+                                <div class="control-error" *ngIf="formLogin.get('telefono')?.errors?.['minlength']">El teléfono debe tener 10 números</div>
+                                <div class="control-error" *ngIf="formLogin.get('telefono')?.errors?.['maxlength']">El teléfono debe tener 10 números</div>
                             </div>
                         </div>
                     </div>
