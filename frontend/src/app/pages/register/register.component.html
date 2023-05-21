@@ -69,9 +69,7 @@
                               <div *ngIf="formLogin.get('email')?.hasError('required')">El campo Email es requerido.</div>
                               <div *ngIf="formLogin.get('email')?.value !== '' && formLogin.get('email')?.hasError('emailInvalid')">Correo no válido.</div>
                             </div>
-                          </div>
-                          
-                          
+                        </div>
                         <div class="m-0 p-0 mt-2 p-3">
                             <label for="telefono">Teléfono:</label>
                             <input type="telefono" id="telefono" pattern="^[0-9]+$" formControlName="telefono" class="form-control rounded-pill bg-azure-web mt-2">
