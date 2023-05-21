@@ -68,6 +68,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente para mostrar una imagen en el lienzo de la página.</p>
+
+    </p>
 
 
     <p class="comment">
@@ -207,9 +214,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/pages/crear-sitio/lienzo-pagina/body-builder/imagen-lienzo/imagen-lienzo.component.ts:11</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/crear-sitio/lienzo-pagina/body-builder/imagen-lienzo/imagen-lienzo.component.ts:26</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Leyenda de la imagen.</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
@@ -233,9 +246,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/pages/crear-sitio/lienzo-pagina/body-builder/imagen-lienzo/imagen-lienzo.component.ts:9</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/pages/crear-sitio/lienzo-pagina/body-builder/imagen-lienzo/imagen-lienzo.component.ts:16</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Fuente de la imagen.</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
@@ -259,9 +278,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/pages/crear-sitio/lienzo-pagina/body-builder/imagen-lienzo/imagen-lienzo.component.ts:10</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/pages/crear-sitio/lienzo-pagina/body-builder/imagen-lienzo/imagen-lienzo.component.ts:21</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Tamaño de la imagen.</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -293,14 +318,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="14"
-                            class="link-to-prism">src/app/pages/crear-sitio/lienzo-pagina/body-builder/imagen-lienzo/imagen-lienzo.component.ts:14</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="36"
+                            class="link-to-prism">src/app/pages/crear-sitio/lienzo-pagina/body-builder/imagen-lienzo/imagen-lienzo.component.ts:36</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Método de inicialización del componente.</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -340,10 +367,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/pages/crear-sitio/lienzo-pagina/body-builder/imagen-lienzo/imagen-lienzo.component.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/pages/crear-sitio/lienzo-pagina/body-builder/imagen-lienzo/imagen-lienzo.component.ts:31</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Clase CSS correspondiente al tamaño de la imagen.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -355,17 +388,39 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, OnInit } from &#x27;@angular/core&#x27;;
 
+/**
+ * Componente para mostrar una imagen en el lienzo de la página.
+ */
 @Component({
   selector: &#x27;app-imagen-lienzo&#x27;,
   templateUrl: &#x27;./imagen-lienzo.component.html&#x27;,
   styleUrls: [&#x27;./imagen-lienzo.component.css&#x27;]
 })
 export class ImagenLienzoComponent implements OnInit {
+
+  /**
+   * Fuente de la imagen.
+   */
   @Input() fuenteImg: string &#x3D; &quot;&quot;;
+
+  /**
+   * Tamaño de la imagen.
+   */
   @Input() tamañoImg:  string &#x3D; &quot;&quot;;
+
+  /**
+   * Leyenda de la imagen.
+   */
   @Input() captionImg: string &#x3D; &quot;&quot;;
+
+  /**
+   * Clase CSS correspondiente al tamaño de la imagen.
+   */
   clase: string &#x3D; &quot;&quot;;
 
+  /**
+   * Método de inicialización del componente.
+   */
   ngOnInit(): void {    
     switch (this.tamañoImg) {
       case &quot;small&quot;:

@@ -68,6 +68,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente para la página de inicio de sesión.</p>
+
+    </p>
 
 
     <p class="comment">
@@ -182,12 +189,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/pages/login/login.component.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/pages/login/login.component.ts:24</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor del componente.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -196,6 +205,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -210,6 +220,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Objeto FormBuilder para construir formularios.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>authService</td>
@@ -222,6 +236,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Servicio de autenticación.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>router</td>
@@ -234,6 +252,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Objeto Router para la navegación.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -273,14 +295,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="18"
-                            class="link-to-prism">src/app/pages/login/login.component.ts:18</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="37"
+                            class="link-to-prism">src/app/pages/login/login.component.ts:37</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Método de inicialización del componente.</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -310,14 +334,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="24"
-                            class="link-to-prism">src/app/pages/login/login.component.ts:24</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="47"
+                            class="link-to-prism">src/app/pages/login/login.component.ts:47</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Método ejecutado al enviar el formulario de inicio de sesión.</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -352,10 +378,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/pages/login/login.component.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/pages/login/login.component.ts:24</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Objeto para encriptar datos.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -379,10 +411,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/pages/login/login.component.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/pages/login/login.component.ts:19</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Formulario de inicio de sesión.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -398,23 +436,46 @@ import { Crypto } from &#x27;src/app/util/crypto&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
 import { AuthService } from &#x27;src/app/services/auth.service&#x27;;
 
+/**
+ * Componente para la página de inicio de sesión.
+ */
 @Component({
   selector: &#x27;app-login&#x27;,
   templateUrl: &#x27;./login.component.html&#x27;,
   styleUrls: [&#x27;./login.component.css&#x27;]
 })
 export class LoginComponent implements OnInit {
+  /**
+   * Formulario de inicio de sesión.
+   */
   public formLogin!: FormGroup;
+
+   /**
+   * Objeto para encriptar datos.
+   */
   private crypto &#x3D; new Crypto;
 
+  /**
+   * Constructor del componente.
+   * @param formBuilder Objeto FormBuilder para construir formularios.
+   * @param authService Servicio de autenticación.
+   * @param router Objeto Router para la navegación.
+   */
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {}
 
+   /**
+   * Método de inicialización del componente.
+   */
   ngOnInit(): void {
     this.formLogin &#x3D; this.formBuilder.group({
       email: [&#x27;&#x27;, [Validators.required, Validators.email]],
       password: [&#x27;&#x27;, [Validators.required, Validators.minLength(8)]]
     });  
   }
+
+  /**
+   * Método ejecutado al enviar el formulario de inicio de sesión.
+   */
   onSubmit() {
     const formUser &#x3D; this.formLogin.value;
     const user &#x3D; {

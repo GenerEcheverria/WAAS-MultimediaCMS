@@ -68,6 +68,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente encargado de administrar la cuenta del usuario.</p>
+
+    </p>
 
 
     <p class="comment">
@@ -182,12 +189,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/pages/mi-cuenta/mi-cuenta.component.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/mi-cuenta/mi-cuenta.component.ts:23</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor del componente MiCuentaComponent.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -196,6 +205,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -210,6 +220,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Instancia del FormBuilder utilizado para crear los formularios.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -249,14 +263,17 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="19"
-                            class="link-to-prism">src/app/pages/mi-cuenta/mi-cuenta.component.ts:19</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="37"
+                            class="link-to-prism">src/app/pages/mi-cuenta/mi-cuenta.component.ts:37</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Método de ciclo de vida de Angular que se ejecuta al iniciar el componente.
+Se encarga de inicializar los formularios y definir las validaciones.</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -286,14 +303,17 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="33"
-                            class="link-to-prism">src/app/pages/mi-cuenta/mi-cuenta.component.ts:33</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="55"
+                            class="link-to-prism">src/app/pages/mi-cuenta/mi-cuenta.component.ts:55</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Método invocado al enviar el formulario.
+Imprime en la consola los valores del formulario de datos personales.</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
@@ -329,10 +349,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/pages/mi-cuenta/mi-cuenta.component.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/pages/mi-cuenta/mi-cuenta.component.ts:18</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Formulario para los datos personales del usuario.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -356,10 +382,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/pages/mi-cuenta/mi-cuenta.component.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/mi-cuenta/mi-cuenta.component.ts:23</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Formulario para el cambio de contraseña del usuario.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -373,6 +405,9 @@
 import { FormGroup, FormBuilder, Validators } from &quot;@angular/forms&quot;;
 import { passwordValidator } from &#x27;./password.validator&#x27;;
 
+/**
+ * Componente encargado de administrar la cuenta del usuario.
+ */
 @Component({
   selector: &#x27;app-mi-cuenta&#x27;,
   templateUrl: &#x27;./mi-cuenta.component.html&#x27;,
@@ -380,13 +415,28 @@ import { passwordValidator } from &#x27;./password.validator&#x27;;
 })
 export class MiCuentaComponent implements OnInit {
 
+   /**
+   * Formulario para los datos personales del usuario.
+   */
   public form1!: FormGroup;
+
+  /**
+   * Formulario para el cambio de contraseña del usuario.
+   */
   public form2!: FormGroup;
 
+  /**
+   * Constructor del componente MiCuentaComponent.
+   * @param formBuilder Instancia del FormBuilder utilizado para crear los formularios.
+   */
   constructor(private formBuilder: FormBuilder){
 
   }
 
+  /**
+   * Método de ciclo de vida de Angular que se ejecuta al iniciar el componente.
+   * Se encarga de inicializar los formularios y definir las validaciones.
+   */
   ngOnInit(): void {
     this.form1 &#x3D; this.formBuilder.group({
       nombre: [&#x27;&#x27;, [Validators.required, Validators.maxLength(32), Validators.minLength(10)]],
@@ -401,6 +451,10 @@ export class MiCuentaComponent implements OnInit {
     }, { validator: passwordValidator })
   }
 
+  /**
+   * Método invocado al enviar el formulario.
+   * Imprime en la consola los valores del formulario de datos personales.
+   */
   send(): any {
     console.log(this.form1.value);
   }
