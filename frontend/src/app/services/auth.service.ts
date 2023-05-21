@@ -23,6 +23,16 @@ export class AuthService {
     return this.http.post<any>(this.url + '/login', { email, password });
   }
 
+  me(){
+    const token = this.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      })
+    };
+    return this.http.post<any>(this.url+'/me', {},httpOptions);
+  }
+
   logout() {
     const token = this.getToken();
     const httpOptions = {
