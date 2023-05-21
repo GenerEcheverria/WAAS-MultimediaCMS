@@ -23,12 +23,12 @@
                 <div class="col-3 d-flex align-items-center"><b>{{sitio.name}}</b></div>
                 <div class="col-3 d-flex align-items-center">{{sitio.views}} vistas</div>
                 <div class="col-2">
-                    <a class="btn btn-primary rounded-pill  text-white" style="width:90%" href="/crear">Visualizar</a>
+                    <a class="btn btn-primary rounded-pill  text-white" style="width:90%"  href="/site/{{sitio.url}} " target="_blank">Visualizar</a>
                 </div>
                 <div class="col-2">
                     <a class="btn btn-primary rounded-pill  text-white" style="width:90%" href="/crear">Editar</a>
                 </div>
-                <div class="col-2" id="position"><button class="btn btn-primary rounded-pill  text-white" style="width:90%" (click)="generarQRyDescargar(sitio.link)">Obtener QR</button></div>
+                <div class="col-2" id="position"><button class="btn btn-primary rounded-pill  text-white" style="width:90%" (click)="generarQRyDescargar('http://localhost:4200/'+sitio.url)">Obtener QR</button></div>
             </div>
         </div>
         <div class="col-1"></div>

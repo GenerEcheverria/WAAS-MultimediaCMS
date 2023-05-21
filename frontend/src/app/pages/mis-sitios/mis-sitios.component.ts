@@ -41,7 +41,7 @@ export class MisSitiosComponent {
           widths: ['*', '*', '*'],
           body: [
             ['URL', 'Nombre', 'Vistas'],
-            ...this.bibliotecaSitios.map(item => [item.url, item.name, item.views])
+            ...this.bibliotecaSitios.map(item => ["/site/"+item.url, item.name, item.views])
           ]
         }
       }
