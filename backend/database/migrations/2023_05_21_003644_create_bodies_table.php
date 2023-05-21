@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('bodies', function (Blueprint $table) {
             $table->increments('id')->unique();
-            $table->unsignedInteger('index');
+            $table->unsignedInteger('indexPage');
             $table->unsignedInteger('idSite');
             $table->foreign('idSite')->references('id')->on('sites')->onDelete('cascade');
             $table->string('type');
-            $table->unsignedInteger('idType');
-            $table->string('type2');
-            $table->unsignedInteger('idType2');
+            $table->unsignedInteger('idType')->nullable();
+            $table->string('type2')->nullable();
+            $table->unsignedInteger('idType2')->nullable();
             $table->timestamps();
         });
 

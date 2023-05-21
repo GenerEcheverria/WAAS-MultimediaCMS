@@ -12,8 +12,7 @@ class Image extends Model
         'idCol',
         'url',
         'size',
-        'text',
-        'indexPage'
+        'text'
     ];
 
     protected $table = 'images';

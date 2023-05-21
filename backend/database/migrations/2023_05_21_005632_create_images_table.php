@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('url');
             $table->enum('size', ['medium', 'small', 'big']); 
             $table->string('text');
-            $table->unsignedInteger('indexPage');
             $table->timestamps();
         });
     }

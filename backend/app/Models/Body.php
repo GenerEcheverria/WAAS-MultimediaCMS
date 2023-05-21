@@ -9,8 +9,8 @@ class Body extends Model
 {
     use HasFactory;
     protected  $fillable = [
-        'index',
         'idSite',
+        'indexPage',
         'type',
         'idtype',
         'type2',

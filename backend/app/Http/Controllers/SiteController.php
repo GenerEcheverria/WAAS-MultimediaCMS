@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Footer;
 use App\Models\Site;
+use App\Models\Body;
+use App\Models\Text;
 use App\Models\Header;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -59,6 +61,95 @@ class SiteController extends Controller
                 'image' => $request->input('newCrearSitio.header.image'),
                 'hero' => $request->input('newCrearSitio.header.hero'),
             ];
+
+            // $bodyData = $request->input('newCrearSitio.body');
+            // $bodyData= [
+            //     'idSite' => $site->id,
+            //     'title' => $request->input('newCrearSitio.header.title'),
+            //     'size' => $request->input('newCrearSitio.header.size'),
+            //     'position' => $request->input('newCrearSitio.header.position'),
+            //     'color' => $request->input('newCrearSitio.header.color'),
+            //     'image' => $request->input('newCrearSitio.header.image'),
+            //     'hero' => $request->input('newCrearSitio.header.hero'),
+            // ];
+
+            $bodyDataContent = $request->input('newCrearSitio.body');
+            print_r($bodyDataContent);
+            foreach ($bodyDataContent as $index => $item) {
+                // echo $item;
+                print_r($item);
+                if (isset($item['full'])) {
+                    if (isset($item['full']['text'])) {
+                        $bodyData= [
+                            'idSite' => $site->id,
+                            'type' => 'text',
+                            'indexPage'=> $index,
+                            // PENDIENTE
+                            // 'idType' => '0',
+                        ];
+                        $body = Body::create($bodyData);
+                        // VER SI EL += ES LEGAL
+                        $textData= [
+                            'idCol' => $body->id,
+                            'titleText' => $item['full']['text']['title'],
+                            'positionTitle' => $item['full']['text']['alignment'],
+                            'text' => $item['full']['text']['text'],
+                            'positionText' => $item['full']['text']['position']
+                        ];
+                        //Checar si jala
+                        $text = Text::create($textData);
+
+                        $bodyData['idType'] = $text->id;
+                        $body->fill($bodyData);
+                        $body->save();
+                        //ACTUALIZAR
+
+                    }
+                    // if (isset($item['full']['image'])) {
+                    //     $imageData= [
+                    //         'idCol' => $index
+                    //         'url' => $item['full']['text']['image']
+                    //         'size' => $item['full']['text']['size']
+                    //         'text' => $item['full']['text']['caption']
+                    //         'indexPage' => $index
+                    //     ]
+                    //     //Checar si jala
+                    //     $image = Image::create($imageData);
+                    //     $bodyData= [
+                    //         'index' => $index,
+                    //         'idSite' => $site->id,
+                    //         'type' => 'text',
+                    //         // PENDIENTE
+                    //         'idType' => $image->id,
+                    //     ];
+                    //     // VER SI EL += ES LEGAL
+                    //     $body = Body::create($bodyData);
+                    // }
+                    // if (isset($item['full']['video'])) {
+                    //     $videoData= [
+                    //         'idCol' => $index
+                    //         'titleText' => $item['full']['text']['title']
+                    //         'positionTitle' => $item['full']['text']['alignment']
+                    //         'text' => $item['full']['text']['text']
+                    //         'positionText' => $item['full']['text']['position']
+                    //     ]
+                    //     //Checar si jala
+                    //     $video = Video::create($videoData);
+                    //     $bodyData= [
+                    //         'index' => $index,
+                    //         'idSite' => $site->id,
+                    //         'type' => 'text',
+                    //         // PENDIENTE
+                    //         'idType' => $video->id,
+                    //     ];
+                    //     // VER SI EL += ES LEGAL
+                    //     $body = Body::create($bodyData);
+                    // }
+                } elseif (isset($item['left'])) {
+                    
+                }
+                // VER SI EL += ES LEGAL
+            }
 
             $header = Header::create($headerData);
 
