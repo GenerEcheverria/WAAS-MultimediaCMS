@@ -7,16 +7,34 @@ import { saveAs } from 'file-saver';
 import { ElementRef } from '@angular/core';
 
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
+
+/**
+ * Componente para gestionar los sitios del usuario.
+ */
 @Component({
   selector: 'app-mis-sitios',
   templateUrl: './mis-sitios.component.html',
   styleUrls: ['./mis-sitios.component.css']
 })
 export class MisSitiosComponent {
+  /**
+   * Lista de sitios en la biblioteca del usuario.
+   */
   public bibliotecaSitios: {link: string, titulo: string, seccion: string, vistas: number}[] = [];
+  
+  /**
+   * Datos filtrados de la biblioteca de sitios.
+   */
   public filteredData = this.bibliotecaSitios
+
+  /**
+   * Filtro aplicado a la biblioteca de sitios.
+   */
   public Filtro: string = '';
 
+  /**
+   * Se ejecuta al inicializar el componente.
+   */
   ngOnInit(): void {
     let a = {
       link: '/misSitios',
@@ -61,12 +79,19 @@ export class MisSitiosComponent {
     console.log('estos son los sitios actuales', this.bibliotecaSitios);
   }
 
+  
+  /**
+   * Filtra los datos de la biblioteca de sitios según el valor del filtro.
+   */
   filterData() {
     this.filteredData = this.bibliotecaSitios.filter((item) =>
       item.titulo.toLowerCase().includes(this.Filtro.toLowerCase())
     );
   }
 
+  /**
+   * Genera y descarga un archivo PDF con los datos de la biblioteca de sitios.
+   */
   generarPDF() {
     const documentDefinition = {   content: [
       {
@@ -96,6 +121,9 @@ export class MisSitiosComponent {
     pdfMake.createPdf(documentDefinition).download('ReporteMisSitios.pdf');
   }
 
+  /**
+   * Genera y descarga un archivo Excel con los datos de la biblioteca de sitios.
+   */
   generarExcel() {
     const worksheet = XLSX.utils.json_to_sheet(this.bibliotecaSitios);
     const workbook = XLSX.utils.book_new();
@@ -105,6 +133,10 @@ export class MisSitiosComponent {
     saveAs(data, 'ReporteMisSitios.xlsx');
   }
 
+  /**
+   * Genera y descarga un código QR a partir de la URL proporcionada.
+   * @param url La URL para generar el código QR.
+   */
   async generarQRyDescargar(url: string): Promise<void> {
     try {
       const apiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(url)}`;
