@@ -32,15 +32,79 @@ export class CrearSitioComponent implements OnInit {
    * @property {boolean} isHero
    */
   public isHero: boolean;
+
+   /**
+   * Indica si se establecen los medios sociales.
+   *
+   * @property {boolean} setSocialMedia
+   * @protected
+   */
   protected setSocialMedia: boolean;
+
+  /**
+   * Indica si se establece el contacto.
+   *
+   * @property {boolean} setContact
+   * @protected
+   */
   protected setContact: boolean;
+
+  
+  /**
+   * Indica si se establecen extras.
+   *
+   * @property {boolean} setExtra
+   * @protected
+   */
   protected setExtra: boolean;
+
+  /**
+   * Indica si se permite la carga de archivos.
+   *
+   * @property {boolean} upload
+   * @protected
+   */
   protected upload: boolean;
+
+   /**
+   * Indica si se permite la carga de una imagen.
+   *
+   * @property {boolean} uploadHeroImage
+   * @protected
+   */
   protected uploadHeroImage: boolean;
+
+  /**
+   * Indica si se muestra la vista previa.
+   *
+   * @property {boolean} preview
+   * @protected
+   */
   protected preview: boolean;
+
+  /**
+   * Indica el estilo para mostrar la vista previa.
+   *
+   * @property {string} showPreview
+   * @protected
+   */
   protected showPreview: string;
+
+   /**
+   * Indica el estilo para mostrar el formulario.
+   *
+   * @property {string} showForm
+   * @protected
+   */
   protected showForm: string;
 
+   /**
+   * Crea una instancia de CrearSitioComponent.
+   *
+   * @constructor
+   * @param {Router} router - El enrutador de Angular.
+   * @param {ChangeDetectorRef} cdr - El detector de cambios de Angular.
+   */
   constructor(private router: Router, private cdr: ChangeDetectorRef) {
     this.isHero = false;
     this.setSocialMedia = false;
@@ -53,6 +117,11 @@ export class CrearSitioComponent implements OnInit {
     this.showForm = "block";
   }
 
+  /**
+   * Funcion que se ejecuta al cargar el componente
+   *
+   * 
+   */
   ngOnInit(): void {
     this.initSitioForm();
   }
