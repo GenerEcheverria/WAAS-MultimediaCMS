@@ -8,6 +8,8 @@ use App\Models\Footer;
 use App\Models\Site;
 use App\Models\Body;
 use App\Models\Text;
+use App\Models\Image;
+use App\Models\Video;
 use App\Models\Header;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -62,33 +64,15 @@ class SiteController extends Controller
                 'hero' => $request->input('newCrearSitio.header.hero'),
             ];
 
-            // $bodyData = $request->input('newCrearSitio.body');
-            // $bodyData= [
-            //     'idSite' => $site->id,
-            //     'title' => $request->input('newCrearSitio.header.title'),
-            //     'size' => $request->input('newCrearSitio.header.size'),
-            //     'position' => $request->input('newCrearSitio.header.position'),
-            //     'color' => $request->input('newCrearSitio.header.color'),
-            //     'image' => $request->input('newCrearSitio.header.image'),
-            //     'hero' => $request->input('newCrearSitio.header.hero'),
-            // ];
-
             $bodyDataContent = $request->input('newCrearSitio.body');
-            print_r($bodyDataContent);
             foreach ($bodyDataContent as $index => $item) {
-                // echo $item;
-                print_r($item);
+                $bodyData= [
+                    'idSite' => $site->id,
+                    'indexPage'=> $index,
+                ];
+                $body = Body::create($bodyData);
                 if (isset($item['full'])) {
                     if (isset($item['full']['text'])) {
-                        $bodyData= [
-                            'idSite' => $site->id,
-                            'type' => 'text',
-                            'indexPage'=> $index,
-                            // PENDIENTE
-                            // 'idType' => '0',
-                        ];
-                        $body = Body::create($bodyData);
-                        // VER SI EL += ES LEGAL
                         $textData= [
                             'idCol' => $body->id,
                             'titleText' => $item['full']['text']['title'],
@@ -96,59 +80,117 @@ class SiteController extends Controller
                             'text' => $item['full']['text']['text'],
                             'positionText' => $item['full']['text']['position']
                         ];
-                        //Checar si jala
                         $text = Text::create($textData);
-
-                        $bodyData['idType'] = $text->id;
+                        $body->idType = $text->id;
+                        $body->Type = 'text';
                         $body->fill($bodyData);
                         $body->save();
-                        //ACTUALIZAR
-
                     }
-                    // if (isset($item['full']['image'])) {
-                    //     $imageData= [
-                    //         'idCol' => $index
-                    //         'url' => $item['full']['text']['image']
-                    //         'size' => $item['full']['text']['size']
-                    //         'text' => $item['full']['text']['caption']
-                    //         'indexPage' => $index
-                    //     ]
-                    //     //Checar si jala
-                    //     $image = Image::create($imageData);
-                    //     $bodyData= [
-                    //         'index' => $index,
-                    //         'idSite' => $site->id,
-                    //         'type' => 'text',
-                    //         // PENDIENTE
-                    //         'idType' => $image->id,
-                    //     ];
-                    //     // VER SI EL += ES LEGAL
-                    //     $body = Body::create($bodyData);
-                    // }
-                    // if (isset($item['full']['video'])) {
-                    //     $videoData= [
-                    //         'idCol' => $index
-                    //         'titleText' => $item['full']['text']['title']
-                    //         'positionTitle' => $item['full']['text']['alignment']
-                    //         'text' => $item['full']['text']['text']
-                    //         'positionText' => $item['full']['text']['position']
-                    //     ]
-                    //     //Checar si jala
-                    //     $video = Video::create($videoData);
-                    //     $bodyData= [
-                    //         'index' => $index,
-                    //         'idSite' => $site->id,
-                    //         'type' => 'text',
-                    //         // PENDIENTE
-                    //         'idType' => $video->id,
-                    //     ];
-                    //     // VER SI EL += ES LEGAL
-                    //     $body = Body::create($bodyData);
-                    // }
+                    if (isset($item['full']['image'])) {
+                        $imageData= [
+                            'idCol' => $body->id,
+                            'url' => $item['full']['image']['image'],
+                            'size' => $item['full']['image']['size'],
+                            'text' => $item['full']['image']['caption']
+                        ];
+                        $image = Image::create($imageData);
+                        $body->idType = $image->id;
+                        $body->Type = 'image';
+                        $body->fill($bodyData);
+                        $body->save();
+                    }
+                    if (isset($item['full']['video'])) {
+                        $videoData= [
+                            'idCol' => $body->id,
+                            'url' => $item['full']['video']['video'],
+                            'size' => $item['full']['video']['size']
+                        ];
+                        $video = Video::create($videoData);
+                        $body->idType = $video->id;
+                        $body->Type = 'video';
+                        $body->fill($bodyData);
+                        $body->save();
+                    }
                 } elseif (isset($item['left'])) {
-                    
+                    if (isset($item['left']['text'])) {
+                        $textData= [
+                            'idCol' => $body->id,
+                            'titleText' => $item['left']['text']['title'],
+                            'positionTitle' => $item['left']['text']['alignment'],
+                            'text' => $item['left']['text']['text'],
+                            'positionText' => $item['left']['text']['position']
+                        ];
+                        $text = Text::create($textData);
+                        $body->idType = $text->id;
+                        $body->Type = 'text';
+                        $body->fill($bodyData);
+                        $body->save();
+                    }
+                    if (isset($item['left']['image'])) {
+                        $imageData= [
+                            'idCol' => $body->id,
+                            'url' => $item['left']['image']['image'],
+                            'size' => $item['left']['image']['size'],
+                            'text' => $item['left']['image']['caption']
+                        ];
+                        $image = Image::create($imageData);
+                        $body->idType = $image->id;
+                        $body->Type = 'image';
+                        $body->fill($bodyData);
+                        $body->save();
+                    }
+                    if (isset($item['left']['video'])) {
+                        $videoData= [
+                            'idCol' => $body->id,
+                            'url' => $item['left']['video']['video'],
+                            'size' => $item['left']['video']['size']
+                        ];
+                        $video = Video::create($videoData);
+                        $body->idType = $video->id;
+                        $body->Type = 'video';
+                        $body->fill($bodyData);
+                        $body->save();
+                    }
+                    if (isset($item['right']['text'])) {
+                        $textData= [
+                            'idCol' => $body->id,
+                            'titleText' => $item['right']['text']['title'],
+                            'positionTitle' => $item['right']['text']['alignment'],
+                            'text' => $item['right']['text']['text'],
+                            'positionText' => $item['right']['text']['position']
+                        ];
+                        $text = Text::create($textData);
+                        $body->idType2 = $text->id;
+                        $body->Type2 = 'text';
+                        $body->fill($bodyData);
+                        $body->save();
+                    }
+                    if (isset($item['right']['image'])) {
+                        $imageData= [
+                            'idCol' => $body->id,
+                            'url' => $item['right']['image']['image'],
+                            'size' => $item['right']['image']['size'],
+                            'text' => $item['right']['image']['caption']
+                        ];
+                        $image = Image::create($imageData);
+                        $body->idType2 = $image->id;
+                        $body->Type2 = 'image';
+                        $body->fill($bodyData);
+                        $body->save();
+                    }
+                    if (isset($item['right']['video'])) {
+                        $videoData= [
+                            'idCol' => $body->id,
+                            'url' => $item['right']['video']['video'],
+                            'size' => $item['right']['video']['size']
+                        ];
+                        $video = Video::create($videoData);
+                        $body->idType2 = $video->id;
+                        $body->Type2 = 'video';
+                        $body->fill($bodyData);
+                        $body->save();
+                    }
                 }
-                // VER SI EL += ES LEGAL
             }
 
             $header = Header::create($headerData);

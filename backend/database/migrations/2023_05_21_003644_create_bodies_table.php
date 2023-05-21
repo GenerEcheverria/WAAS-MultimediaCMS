@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedInteger('indexPage');
             $table->unsignedInteger('idSite');
             $table->foreign('idSite')->references('id')->on('sites')->onDelete('cascade');
-            $table->string('type');
+            $table->string('type')->nullable();
             $table->unsignedInteger('idType')->nullable();
             $table->string('type2')->nullable();
             $table->unsignedInteger('idType2')->nullable();
