@@ -108,7 +108,6 @@ export class CrearSitioComponent implements OnInit {
     const sitioForm = this.sitioForm.value;
     sitioForm.url = sitioForm.name;
     sitioForm.views = 0;
-    console.log(sitioForm);
     this.crearSitio.crearSite(sitioForm).subscribe(
       (response) => {
         this.router.navigate(['/misSitios']);
@@ -119,8 +118,6 @@ export class CrearSitioComponent implements OnInit {
     );
     
   }
-
-
 
   cancelar(): void {
     this.router.navigate(['/misSitios']);
