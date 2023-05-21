@@ -10,7 +10,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('headers', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id')->unique();
             $table->unsignedInteger('idSite');
             $table->foreign('idSite')->references('id')->on('sites')->onDelete('cascade');
             $table->string('title');

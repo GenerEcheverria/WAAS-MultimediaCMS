@@ -24,13 +24,14 @@ class SiteController extends Controller
         return Site::all();
     }
 
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string',
-            'backgroundColor' => 'required|string',
-            'views' => 'required|integer',
-            'url' => 'required|string',
+            'newCrearSitio.name' => 'required|string',
+            'newCrearSitio.backgroundColor' => 'required|string',
+            'newCrearSitio.views' => 'required|integer',
+            'newCrearSitio.url' => 'required|string',
         ]);
 
         if ($validator->fails()) {
@@ -38,43 +39,46 @@ class SiteController extends Controller
         }
 
         $user = JWTAuth::parseToken()->authenticate();
-        $siteData = $validator->validate();
-        $siteData['idUser'] = $user->id;
-
+        $siteData = [
+            'idUser' => $user->id,
+            'name' => $request->input('newCrearSitio.name'),
+            'backgroundColor' => $request->input('newCrearSitio.backgroundColor'),
+            'views' => $request->input('newCrearSitio.views'),
+            'url' => $request->input('newCrearSitio.url'),
+        ];
+        
         try {
             DB::beginTransaction();
-
             $site = Site::create($siteData);
-
             $headerData = [
                 'idSite' => $site->id,
-                'title' => $request->input('header.title'),
-                'size' => $request->input('header.size'),
-                'position' => $request->input('header.position'),
-                'color' => $request->input('header.color'),
-                'image' => $request->input('header.image'),
-                'hero' => $request->input('header.hero'),
+                'title' => $request->input('newCrearSitio.header.title'),
+                'size' => $request->input('newCrearSitio.header.size'),
+                'position' => $request->input('newCrearSitio.header.position'),
+                'color' => $request->input('newCrearSitio.header.color'),
+                'image' => $request->input('newCrearSitio.header.image'),
+                'hero' => $request->input('newCrearSitio.header.hero'),
             ];
 
             $header = Header::create($headerData);
 
-            $footerData =[
-                'idSite'=> $site->id,
-                'backgroundColor' => $request->input('footer.backgroundColor'),
-                'textColor'=> $request->input('footer.textColor'),
-                'setSocialMedia'=> $request->input('footer.socialMedia.setSocialMedia'),
-                'facebook'=> $request->input('footer.socialMedia.facebook'),
-                'twitter'=> $request->input('footer.socialMedia.twitter'),
-                'instagram'=> $request->input('footer.socialMedia.instagram'),
-                'tiktok' => $request->input('footer.socialMedia.tiktok'),
-                'linkedin' => $request->input('footer.socialMedia.linkedin'),
-                'otro'=> $request->input('footer.socialMedia.setSocialMedia'),
-                'setContact'=> $request->input('footer.contact.setContact'),
-                'address'=> $request->input('footer.contact.address'),
-                'phone'=> $request->input('footer.contact.phone'),
-                'setExtra'=> $request->input('footer.extra.setExtra'),
-                'text'=> $request->input('footer.extra.text'),
-                'image'=> $request->input('footer.extra.image')
+            $footerData = [
+                'idSite' => $site->id,
+                'backgroundColor' => $request->input('newCrearSitio.footer.backgroundColor'),
+                'textColor' => $request->input('newCrearSitio.footer.textColor'),
+                'setSocialMedia' => $request->input('newCrearSitio.footer.socialMedia.setSocialMedia'),
+                'facebook' => $request->input('newCrearSitio.footer.socialMedia.facebook'),
+                'twitter' => $request->input('newCrearSitio.footer.socialMedia.twitter'),
+                'instagram' => $request->input('newCrearSitio.footer.socialMedia.instagram'),
+                'tiktok' => $request->input('newCrearSitio.footer.socialMedia.tiktok'),
+                'linkedin' => $request->input('newCrearSitio.footer.socialMedia.linkedin'),
+                'otro' => $request->input('newCrearSitio.footer.socialMedia.otro'),
+                'setContact' => $request->input('newCrearSitio.footer.contact.setContact'),
+                'address' => $request->input('newCrearSitio.footer.contact.address'),
+                'phone' => $request->input('newCrearSitio.footer.contact.phone'),
+                'setExtra' => $request->input('newCrearSitio.footer.extra.setExtra'),
+                'text' => $request->input('newCrearSitio.footer.extra.text'),
+                'image' => $request->input('newCrearSitio.footer.extra.image'),
             ];
 
             $footer = Footer::create($footerData);
@@ -95,6 +99,7 @@ class SiteController extends Controller
             ], 500);
         }
     }
+
 
 
     public function getSitesForCurrentUser()
