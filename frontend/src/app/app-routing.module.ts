@@ -13,6 +13,7 @@ import { SuperadministradorCuentaUsuarioComponent } from './pages/superadministr
 
 import { MisSitiosComponent } from './pages/mis-sitios/mis-sitios.component';
 import { RankingComponent } from './pages/ranking/ranking.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 const routes: Routes = [
@@ -21,7 +22,9 @@ const routes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
+    canActivate: [AuthGuard],
     children: [
+      {path: '', redirectTo: 'misSitios', pathMatch: 'full'},
       { path: 'sitios', component:  SitiosComponent},
       { path: 'crear', component: CrearSitioComponent},
       { path: 'sasitios', component: SuperAdminSitiosComponent},
@@ -29,9 +32,7 @@ const routes: Routes = [
       { path: 'sausuarios', component:  SuperadministradorCuentaUsuarioComponent},
       { path: 'misSitios', component: MisSitiosComponent},
       { path: 'ranking', component: RankingComponent},
-      { path: 'sausuarios', component:  SuperadministradorCuentaUsuarioComponent},
-      { path: 'ranking', component: RankingComponent}
-
+      {path: '**', redirectTo: 'misSitios', pathMatch: 'full'},
     ]
   }
 ];
