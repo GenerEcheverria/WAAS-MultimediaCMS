@@ -9,12 +9,13 @@ import { AuthService } from '../../services/auth.service';
 export class MainLayoutComponent implements OnInit{
   protected name!: string;
   protected photo!: string;
-
+  protected userRole!: string|null;
+  
   constructor(private authService: AuthService){}
   
   ngOnInit(): void {
       this.getUserInfo();
-      
+      this.userRole = localStorage.getItem('role');
   }
 
   private getUserInfo(){
