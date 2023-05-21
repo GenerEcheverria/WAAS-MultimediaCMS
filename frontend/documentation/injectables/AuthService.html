@@ -62,6 +62,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Servicio de autenticación y gestión de usuarios.</p>
+
+            </p>
 
 
 
@@ -133,7 +140,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/services/auth.service.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/services/auth.service.ts:12</a></div>
                             </td>
                         </tr>
 
@@ -196,17 +203,25 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="37"
-                            class="link-to-prism">src/app/services/auth.service.ts:37</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="64"
+                            class="link-to-prism">src/app/services/auth.service.ts:64</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Obtiene el token de autenticación almacenado en el almacenamiento local.</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>    <code>string | null</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>El token de autenticación o null si no está presente.</p>
 
                     </div>
                 </td>
@@ -233,17 +248,25 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="41"
-                            class="link-to-prism">src/app/services/auth.service.ts:41</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="72"
+                            class="link-to-prism">src/app/services/auth.service.ts:72</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Comprueba si el usuario ha iniciado sesión.</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>Observable que indica si el usuario ha iniciado sesión o no.</p>
 
                     </div>
                 </td>
@@ -270,14 +293,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="22"
-                            class="link-to-prism">src/app/services/auth.service.ts:22</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">src/app/services/auth.service.ts:42</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Inicia sesión con las credenciales proporcionadas.</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -288,6 +313,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -302,6 +328,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>Correo electrónico del usuario.</p>
+
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>password</td>
@@ -314,6 +344,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>Contraseña del usuario.</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -325,7 +359,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>Observable que representa la respuesta del servidor.</p>
+
                     </div>
                 </td>
             </tr>
@@ -351,17 +386,25 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="26"
-                            class="link-to-prism">src/app/services/auth.service.ts:26</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="50"
+                            class="link-to-prism">src/app/services/auth.service.ts:50</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Cierra la sesión del usuario actual.</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>Observable que representa la respuesta del servidor.</p>
 
                     </div>
                 </td>
@@ -388,14 +431,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="18"
-                            class="link-to-prism">src/app/services/auth.service.ts:18</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">src/app/services/auth.service.ts:32</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Registra un nuevo usuario.</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -406,6 +451,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -420,6 +466,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>Nombre del usuario.</p>
+
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>email</td>
@@ -432,6 +482,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>Correo electrónico del usuario.</p>
+
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>password</td>
@@ -444,6 +498,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>Contraseña del usuario.</p>
+
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>role</td>
@@ -456,6 +514,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>Rol del usuario.</p>
+
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>phone</td>
@@ -468,6 +530,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>Número de teléfono del usuario.</p>
+
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>photo</td>
@@ -480,6 +546,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>Foto del perfil del usuario.</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -491,7 +561,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>Observable que representa la respuesta del servidor.</p>
+
                     </div>
                 </td>
             </tr>
@@ -531,7 +602,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/services/auth.service.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/services/auth.service.ts:16</a></div>
                         </td>
                     </tr>
 
@@ -562,7 +633,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/services/auth.service.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/services/auth.service.ts:12</a></div>
                         </td>
                     </tr>
 
@@ -579,6 +650,9 @@
 import { HttpClient, HttpHeaders } from &#x27;@angular/common/http&#x27;;
 import { of } from &#x27;rxjs&#x27;;
 
+/**
+ * Servicio de autenticación y gestión de usuarios.
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
@@ -592,14 +666,35 @@ export class AuthService {
       &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
     })
   }
+
+   /**
+   * Registra un nuevo usuario.
+   * @param name Nombre del usuario.
+   * @param email Correo electrónico del usuario.
+   * @param password Contraseña del usuario.
+   * @param role Rol del usuario.
+   * @param phone Número de teléfono del usuario.
+   * @param photo Foto del perfil del usuario.
+   * @returns Observable que representa la respuesta del servidor.
+   */
   register(name: string, email: string, password: string, role: string, phone: string, photo: string) {
     return this.http.post&lt;any&gt;(this.url + &#x27;/register&#x27;, { name, email, password, role, phone, photo }, this.httpOptions);
   }
 
+  /**
+   * Inicia sesión con las credenciales proporcionadas.
+   * @param email Correo electrónico del usuario.
+   * @param password Contraseña del usuario.
+   * @returns Observable que representa la respuesta del servidor.
+   */
   login(email: string, password: string) {
     return this.http.post&lt;any&gt;(this.url + &#x27;/login&#x27;, { email, password });
   }
 
+  /**
+   * Cierra la sesión del usuario actual.
+   * @returns Observable que representa la respuesta del servidor.
+   */
   logout() {
     const token &#x3D; this.getToken();
     const httpOptions &#x3D; {
@@ -610,11 +705,18 @@ export class AuthService {
     return this.http.post&lt;any&gt;(this.url + &#x27;/logout&#x27;, {},httpOptions);
   }
 
-  //Recuperar token
+  /**
+   * Obtiene el token de autenticación almacenado en el almacenamiento local.
+   * @returns El token de autenticación o null si no está presente.
+   */
   getToken(): string | null {
     return localStorage.getItem(&#x27;token&#x27;);
   }
 
+  /**
+   * Comprueba si el usuario ha iniciado sesión.
+   * @returns Observable que indica si el usuario ha iniciado sesión o no.
+   */
   isLoggedIn() {
     const token &#x3D; this.getToken();
     if (token) {

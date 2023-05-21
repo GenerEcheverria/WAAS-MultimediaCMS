@@ -68,6 +68,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente de una opción de menú para el sidebar.</p>
+
+    </p>
 
 
 
@@ -173,9 +180,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/shared/buttons/menu-option/menu-option.component.ts:12</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/shared/buttons/menu-option/menu-option.component.ts:27</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Icono de la opción de menú.</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
@@ -199,9 +212,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/shared/buttons/menu-option/menu-option.component.ts:11</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/shared/buttons/menu-option/menu-option.component.ts:22</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Enlace de la opción de menú.</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
@@ -225,9 +244,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/shared/buttons/menu-option/menu-option.component.ts:10</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/shared/buttons/menu-option/menu-option.component.ts:17</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Título de la opción de menú.</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -242,6 +267,9 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
 
+/**
+ * Componente de una opción de menú para el sidebar.
+ */
 @Component({
   selector: &#x27;app-menu-option&#x27;,
   templateUrl: &#x27;./menu-option.component.html&#x27;,
@@ -249,8 +277,20 @@
 })
 //Boton generico para las opciones del sidebar
 export class MenuOptionComponent {
+
+  /**
+   * Título de la opción de menú.
+   */
   @Input() titulo: string &#x3D;&quot;&quot;
+
+ /**
+   * Enlace de la opción de menú.
+   */
   @Input() link: string &#x3D; &quot;&quot;
+
+  /**
+   * Icono de la opción de menú.
+   */
   @Input() icon: string &#x3D; &quot;&quot;
 }
 </code></pre>

@@ -68,6 +68,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente del encabezado de la aplicación.</p>
+
+    </p>
 
 
 
@@ -167,9 +174,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/shared/header/header.component.ts:9</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/shared/header/header.component.ts:15</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Nombre para mostrar en el encabezado.</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -184,12 +197,18 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
 
+/**
+ * Componente del encabezado de la aplicación.
+ */
 @Component({
   selector: &#x27;app-header&#x27;,
   templateUrl: &#x27;./header.component.html&#x27;,
   styleUrls: [&#x27;./header.component.css&#x27;]
 })
 export class HeaderComponent {
+   /**
+   * Nombre para mostrar en el encabezado.
+   */
   @Input() name: string &#x3D;&quot;&quot;;
 }
 </code></pre>

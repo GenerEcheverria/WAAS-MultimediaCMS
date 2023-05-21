@@ -68,6 +68,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente para mostrar el ranking de sitios.</p>
+
+    </p>
 
 
 
@@ -188,14 +195,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="11"
-                            class="link-to-prism">src/app/pages/ranking/ranking.component.ts:11</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="20"
+                            class="link-to-prism">src/app/pages/ranking/ranking.component.ts:20</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Se ejecuta al inicializar el componente.</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -236,10 +245,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/pages/ranking/ranking.component.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/pages/ranking/ranking.component.ts:15</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de sitios en la biblioteca.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -251,14 +266,23 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 
+/**
+ * Componente para mostrar el ranking de sitios.
+ */
 @Component({
   selector: &#x27;app-ranking&#x27;,
   templateUrl: &#x27;./ranking.component.html&#x27;,
   styleUrls: [&#x27;./ranking.component.css&#x27;]
 })
 export class RankingComponent {
+    /**
+   * Lista de sitios en la biblioteca.
+   */
   public bibliotecaSitios: {link: string, titulo: string, seccion: string, vistas: number}[] &#x3D; [];
 
+   /**
+   * Se ejecuta al inicializar el componente.
+   */
   ngOnInit(): void {
     let a &#x3D; {
       link: &#x27;/misSitios&#x27;,

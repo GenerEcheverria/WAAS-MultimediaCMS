@@ -68,6 +68,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente para la administración de sitios por parte de un superadministrador.</p>
+
+    </p>
 
 
 
@@ -173,14 +180,17 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="12"
-                            class="link-to-prism">src/app/pages/super-admin-sitios/super-admin-sitios.component.ts:12</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="20"
+                            class="link-to-prism">src/app/pages/super-admin-sitios/super-admin-sitios.component.ts:20</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Método que se ejecuta después de que la vista ha sido inicializada.
+Inicializa el plugin DataTables para la tabla de sitios.</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -201,12 +211,20 @@ import * as $ from &#x27;jquery&#x27;;
 import &#x27;datatables.net&#x27;;
 import &#x27;datatables.net-bs5&#x27;;
 
+/**
+ * Componente para la administración de sitios por parte de un superadministrador.
+ */
 @Component({
   selector: &#x27;app-super-admin-sitios&#x27;,
   templateUrl: &#x27;./super-admin-sitios.component.html&#x27;,
   styleUrls: [&#x27;./super-admin-sitios.component.css&#x27;]
 })
 export class SuperAdminSitiosComponent {
+
+  /**
+   * Método que se ejecuta después de que la vista ha sido inicializada.
+   * Inicializa el plugin DataTables para la tabla de sitios.
+   */
   ngAfterViewInit() {
     $(document).ready(function() {
       $(&#x27;#example&#x27;).DataTable({

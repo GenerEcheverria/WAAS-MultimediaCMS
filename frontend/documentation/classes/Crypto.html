@@ -66,6 +66,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Clase de utilidad para encriptar y desencriptar datos utilizando el algoritmo AES.</p>
+
+            </p>
 
 
 
@@ -147,10 +154,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">src/app/util/crypto.ts:5</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/util/crypto.ts:15</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Vector de inicialización en formato hexadecimal.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -173,10 +186,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">src/app/util/crypto.ts:4</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/util/crypto.ts:10</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Clave de encriptación en formato hexadecimal.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -209,14 +228,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="11"
-                            class="link-to-prism">src/app/util/crypto.ts:11</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="31"
+                            class="link-to-prism">src/app/util/crypto.ts:31</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Desencripta un texto encriptado utilizando el algoritmo AES.</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -227,6 +248,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -241,6 +263,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>Texto encriptado.</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -252,7 +278,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>Texto desencriptado.</p>
+
                     </div>
                 </td>
             </tr>
@@ -280,14 +307,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="7"
-                            class="link-to-prism">src/app/util/crypto.ts:7</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="22"
+                            class="link-to-prism">src/app/util/crypto.ts:22</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Encripta un texto utilizando el algoritmo AES.</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -298,6 +327,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -312,6 +342,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>Texto a encriptar.</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -323,7 +357,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>Texto encriptado.</p>
+
                     </div>
                 </td>
             </tr>
@@ -341,14 +376,34 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import * as CryptoJS from &#x27;crypto-js&#x27;;
 
+/**
+ * Clase de utilidad para encriptar y desencriptar datos utilizando el algoritmo AES.
+ */
 export class Crypto {
+    /**
+     * Clave de encriptación en formato hexadecimal.
+     */
     private key &#x3D; CryptoJS.enc.Hex.parse(&#x27;23Sr3YuUc4ttANnSsIs3g&#x27;);
+    
+     /**
+     * Vector de inicialización en formato hexadecimal.
+     */
     private iv &#x3D; CryptoJS.enc.Hex.parse(&#x27;101112131415161718191a1b1c1d1e1f&#x27;); // IV en formato hexadecimal
 
+    /**
+     * Encripta un texto utilizando el algoritmo AES.
+     * @param text Texto a encriptar.
+     * @returns Texto encriptado.
+     */
     public encrypted(text: string): string {
         return (CryptoJS.AES.encrypt(text, this.key,{iv:this.iv})).toString();
     }
 
+    /**
+     * Desencripta un texto encriptado utilizando el algoritmo AES.
+     * @param text Texto encriptado.
+     * @returns Texto desencriptado.
+     */
     public decrypted(text: string): string {
         return (CryptoJS.AES.decrypt(text, this.key)).toString(CryptoJS.enc.Utf8);
     }
