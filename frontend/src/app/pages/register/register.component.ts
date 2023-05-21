@@ -96,7 +96,7 @@ export class RegisterComponent {
       'name': formUser.Nombre,
       'email' : formUser.email,
       'password' : this.crypto.encrypted(formUser.password),
-      'role' : "administrador",
+      'role' : "admin",
       'phone': formUser.telefono,
       'photo': "adadad", //aqui le deben pasar la url
     }
