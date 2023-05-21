@@ -16,4 +16,8 @@ class Image extends Model
     ];
 
     protected $table = 'images';
+    public function body()
+    {
+        return $this->belongsTo(Body::class, 'idCol');
+    }
 }

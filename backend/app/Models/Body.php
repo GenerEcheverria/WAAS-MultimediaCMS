@@ -18,4 +18,23 @@ class Body extends Model
     ];
 
     protected $table = 'bodies';
+
+    public function site()
+    {
+        return $this->belongsTo(Site::class, 'idSite');
+    }
+    public function texts()
+    {
+        return $this->hasMany(Text::class, 'idCol');
+    }
+
+    public function images()
+    {
+        return $this->hasMany(Image::class, 'idCol');
+    }
+
+    public function videos()
+    {
+        return $this->hasMany(Video::class, 'idCol');
+    }
 }

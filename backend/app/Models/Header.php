@@ -13,4 +13,9 @@ class Header extends Model
     ];
 
     protected $table = 'headers';
+
+    public function site()
+    {
+        return $this->belongsTo(Site::class, 'idSite');
+    }
 }

@@ -247,8 +247,158 @@ class SiteController extends Controller
     public function show(string $id)
     {
         $site = Site::findOrFail($id);
+        $site->views = $site->views + 1;
+        $site->save();
+        $site = Site::leftJoin('bodies', 'sites.id', '=', 'bodies.idSite')
+        ->leftJoin('headers', 'sites.id', '=', 'headers.idSite')
+        ->leftJoin('footers', 'sites.id', '=', 'footers.idSite')
+        ->where('sites.id', $id)
+        ->select('sites.*', 'bodies.*')
+        ->findOrFail($id);
+        $bodies = $site->bodies;
+        $site = Site::with('bodies.texts', 'bodies.images', 'bodies.videos', 'headers', 'footers')
+        ->findOrFail($id);
+
+        $name = $site['name'];
+        $arreglo = array();
+        $arreglo[] = $name;
+        
+        $test = (object) [
+            'name' => $site['name'],
+            'backgroundColor' => $site['backgroundColor'],
+            'views' => $site['views'],
+            'url' => $site['url'],
+            'id' => $site['id'],
+            'idUser' => $site['idUser'],
+            'header' => [
+                'title' => $site->headers[0]->title,
+                'color' => $site->headers[0]->color,
+                'position' => $site->headers[0]->position,
+                'size' => $site->headers[0]->size,
+                'hero' => ($site->headers[0]->hero == 0) ? False : True,
+                'image' => ($site->headers[0]->image == null) ? "" : $site->headers[0]->image
+            ],
+            'footer'=> [
+                'backgroundColor'=>$site->footers[0]->backgroundColor,
+                'textColor'=>$site->footers[0]->textColor,
+                'socialMedia'=> [
+                    'setSocialMedia'=> ($site->footers[0]->setSocialMedia == 0) ? False : True,
+                    'facebook'=> ($site->footers[0]->facebook == null) ? "" : $site->footers[0]->facebook,
+                    'instagram' =>($site->footers[0]->instagram == null) ? "" : $site->footers[0]->instagram,
+                    'twitter'=>($site->footers[0]->twitter == null) ? "" : $site->footers[0]->twitter,
+                    'linkedin'=>($site->footers[0]->linkedin == null) ? "" : $site->footers[0]->linkedin,
+                    'tiktok'=>($site->footers[0]->tiktok == null) ? "" : $site->footers[0]->tiktok,
+                    'otro'=>($site->footers[0]->otro == null) ? "" : $site->footers[0]->otro
+                ],
+                'contact'=>[
+                    'setContact'=> ($site->footers[0]->setContact== 0) ? False : True,
+                    'phone'=>($site->footers[0]->phone == null) ? "" : $site->footers[0]->phone,
+                    'address'=>($site->footers[0]->address == null) ? "" : $site->footers[0]->address
+                ],
+                'extra'=>[
+                    'setExtra'=>($site->footers[0]->setExtra == 0) ? False : True,
+                    'text'=>($site->footers[0]->text == null) ? "" : $site->footers[0]->text,
+                    'image'=>($site->footers[0]->image == null) ? "" : $site->footers[0]->image
+                ]
+    
+            ]
+        ];
+        foreach ($site->bodies as $bodyItem) {
+            if (is_null($bodyItem->type2)) {
+                if ($bodyItem->type === 'text') {
+                    $test->body[] = [
+                            'full'=>[
+                                'text'=>[
+                                    'alignment'=>$bodyItem->texts[0]->positionTitle,
+                                    'position'=>$bodyItem->texts[0]->positionText,
+                                    'text'=>$bodyItem->texts[0]->titleText,
+                                    'title'=>$bodyItem->texts[0]->text
+                                ]
+                            ]
+                        ];
+                } else if ($bodyItem->type === 'image'){
+                    $test->body[] = [ 
+                            'full'=>[
+                                'image'=>[
+                                    'caption'=>$bodyItem->images[0]->text,
+                                    'image'=>$bodyItem->images[0]->url,
+                                    'size'=>$bodyItem->images[0]->size,
+                                ]
+                            ]
+                        ];
+                } else if ($bodyItem->type === 'video'){
+                    $test->body[] = [
+                            'full'=>[
+                                'video'=>[
+                                    'video'=>$bodyItem->videos[0]->url,
+                                    'size'=>$bodyItem->videos[0]->size
+                                ]
+                            ]
+                        ];
+                }
+            }else{
+                if ($bodyItem->type === 'text') {
+                     $elements= (object) [
+                            'left'=>[
+                                'text'=>[
+                                    'alignment'=>$bodyItem->texts[0]->positionTitle,
+                                    'position'=>$bodyItem->texts[0]->positionText,
+                                    'text'=>$bodyItem->texts[0]->titleText,
+                                    'title'=>$bodyItem->texts[0]->text
+                                ]
+                            ]
+                        ];
+                } else if ($bodyItem->type === 'image'){
+                    $elements= (object) [ 
+                            'left'=>[
+                                'image'=>[
+                                    'caption'=>$bodyItem->images[0]->text,
+                                    'image'=>$bodyItem->images[0]->url,
+                                    'size'=>$bodyItem->images[0]->size,
+                                ]
+                            ]
+                        ];
+                } else if ($bodyItem->type === 'video'){
+                    $elements= (object) [
+                            'left'=>[
+                                'video'=>[
+                                    'video'=>$bodyItem->videos[0]->url,
+                                    'size'=>$bodyItem->videos[0]->size
+                                ]
+                            ]
+                        ];
+                }
+                if ($bodyItem->type2 === 'text') {
+                    $test->backgroundColor = 'owo';
+                     $elements->right= [
+                                'text'=>[
+                                    'alignment'=>$bodyItem->texts[1]->positionTitle,
+                                    'position'=>$bodyItem->texts[1]->positionText,
+                                    'text'=>$bodyItem->texts[1]->titleText,
+                                    'title'=>$bodyItem->texts[1]->text
+                                ]
+                                ];
+                } else if ($bodyItem->type2 === 'image'){
+                    $elements->right= [
+                                'image'=>[
+                                    'caption'=>$bodyItem->images[1]->text,
+                                    'image'=>$bodyItem->images[1]->url,
+                                    'size'=>$bodyItem->images[1]->size,
+                                ]
+                                ];
+                } else if ($bodyItem->type2 === 'video'){
+                    $elements->right= [
+                                'video'=>[
+                                    'video'=>$bodyItem->videos[1]->url,
+                                    'size'=>$bodyItem->videos[1]->size
+                                ]
+                                ];
+                }
+                $test->body[] = $elements;
+            }
+        }
         return response()->json([
-            'site' => $site
+            'newCrearSitio' => $test
         ], 200);
     }
 
@@ -268,6 +418,11 @@ class SiteController extends Controller
         $site = Site::findOrFail($id);
         $siteData = $validator->validate();
         $site->update($siteData);
+
+        // $name = $site['name'];
+        // $arreglo = array();
+        // $arreglo[] = $name;
+        // $newCrearSitio = [];
 
         return response()->json([
             'message' => 'Successfully updated',

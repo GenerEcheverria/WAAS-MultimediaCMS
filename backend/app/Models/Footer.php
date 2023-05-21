@@ -29,4 +29,9 @@ class Footer extends Model
     ];
 
     protected $table = 'footers';
+
+    public function site()
+    {
+        return $this->belongsTo(Site::class, 'idSite');
+    }
 }
