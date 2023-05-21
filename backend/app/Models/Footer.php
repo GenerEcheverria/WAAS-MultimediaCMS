@@ -9,7 +9,6 @@ class Footer extends Model
 {
     use HasFactory;
 
-    use HasFactory;
     protected  $fillable = [
         'idSite',
         'backgroundColor',
