@@ -3,12 +3,20 @@ import * as $ from 'jquery';
 import 'datatables.net';
 import 'datatables.net-bs5';
 
+/**
+ * Componente para la administración de sitios por parte de un superadministrador.
+ */
 @Component({
   selector: 'app-super-admin-sitios',
   templateUrl: './super-admin-sitios.component.html',
   styleUrls: ['./super-admin-sitios.component.css']
 })
 export class SuperAdminSitiosComponent {
+
+  /**
+   * Método que se ejecuta después de que la vista ha sido inicializada.
+   * Inicializa el plugin DataTables para la tabla de sitios.
+   */
   ngAfterViewInit() {
     $(document).ready(function() {
       $('#example').DataTable({
