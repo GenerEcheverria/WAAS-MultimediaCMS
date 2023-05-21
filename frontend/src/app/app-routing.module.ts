@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MainLayoutComponent } from './main-layout/main-layout.component';
+import { MainLayoutComponent } from './shared/main-layout/main-layout.component';
 import { LoginComponent } from './pages/login/login.component';
 import { TimelineComponent } from './pages/crear-sitio/media-types/timeline/timeline.component';
 import { FormsModule } from '@angular/forms';
