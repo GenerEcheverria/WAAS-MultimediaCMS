@@ -106,28 +106,47 @@ export class CrearSitioComponent implements OnInit {
 
   onSubmit() {
     const sitioForm = this.sitioForm.value;
-    console.log(sitioForm);
     const newCrearSitio: CrearSitio = {
       'name': sitioForm.name,
       'backgroundColor': sitioForm.backgroundColor,
       'views': 0,
       'url': "djdjdkdjdj",
-      'header':
-        {
-          'title': sitioForm.header.title,
-          'color': sitioForm.header.color,
-          'position': sitioForm.header.position,
-          'size': sitioForm.header.size,
-          'hero': sitioForm.header.hero,
-          'image': "adskdkdkdk"
+      'header': {
+        'title': sitioForm.header.title,
+        'color': sitioForm.header.color,
+        'position': sitioForm.header.position,
+        'size': sitioForm.header.size,
+        'hero': sitioForm.header.hero,
+        'image': "adskdkdkdk"
+      },
+      'footer': {
+        'backgroundColor': sitioForm.footer.backgroundColor,
+        'textColor': sitioForm.footer.textColor,
+        'socialMedia': {
+          'setSocialMedia': false,//sitioForm.footer.setSocialMedia,
+          'facebook': sitioForm.footer.facebook,
+          'instagram': sitioForm.footer.instagram,
+          'twitter': sitioForm.footer.twitter,
+          'linkedin': sitioForm.footer.linkedin,
+          'tiktok': sitioForm.footer.tiktok,
+          'otro': sitioForm.footer.otro,
+        },
+        'extra': {
+          'setExtra':  false,//sitioForm.footer.setExtra,
+          'image': sitioForm.footer.image,
+          'text': sitioForm.footer.text,
+        },
+        'contact': {
+          'setContact': false,// sitioForm.footer.setContact,
+          'phone': sitioForm.footer.phone,
+          'address': sitioForm.footer.address,
         }
+      }
     };
     console.log(newCrearSitio);
-    this.crearSitio.crearSitio(
-      newCrearSitio,
-      ).subscribe(
+    this.crearSitio.crearSite(newCrearSitio).subscribe(
       (response) => {
-        //this.router.navigate(['/login']);
+        this.router.navigate(['/sitios']);
       },
       (error) => {
         console.error(error);

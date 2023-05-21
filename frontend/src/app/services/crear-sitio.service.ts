@@ -18,7 +18,7 @@ export class CrearSitioService {
     })
   }
 
-  crearSitio(newCreatSite: CrearSitio) {
-    return this.http.post<any>(this.url + '/media/sites', { newCreatSite }, this.httpOptions);
+  crearSite(newCrearSitio: CrearSitio) {
+    return this.http.post<any>(this.url + '/media/sites', { newCrearSitio }, this.httpOptions);
   }
 }
