@@ -25,7 +25,7 @@ export class RegisterComponent {
     this.formLogin = this.formBuilder.group({
       Nombre: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, this.emailValidator()]],
-      telefono: ['', [Validators.required, Validators.minLength(12), Validators.maxLength(12)]],
+      telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
       fotoPerfil: ['', [Validators.required, this.imageValidator.bind(this)]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', [Validators.required]]

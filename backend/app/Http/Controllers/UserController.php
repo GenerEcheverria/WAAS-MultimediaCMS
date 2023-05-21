@@ -31,16 +31,21 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        if (User::where("id",$id)->exists()) {
+        if (User::where("id", $id)->exists()) {
             $user = User::find($id);
             $user->fill($request->only([
                 'name',
                 'email',
-                'password',
                 'phone',
                 'photo'
             ]));
+
+            if ($request->has('password')) {
+                $user->password = bcrypt($request->input('password'));
+            }
+
             $user->save();
+
             return response()->json([
                 "message" => "User updated successfully",
                 'user' => $user
@@ -59,7 +64,7 @@ class UserController extends Controller
     {
         if (User::where('id', $id)->exists()) {
             $user = User::find($id);
-            $user ->delete();
+            $user->delete();
             return response()->json([
                 "message" => "User deleted successfully",
             ], 202);
