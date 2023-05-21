@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { of } from 'rxjs';
+import { Crypto } from '../util/crypto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   url: string = 'http://localhost:8000/api/auth';
+  private crypto = new Crypto;
 
   constructor(private http: HttpClient) { }
 
@@ -60,5 +62,18 @@ export class AuthService {
     }
     return of({ valid: false });
   }
+
+  public setUserRoles(role: string) {
+    localStorage.setItem('role', role);
+  }
+
+  public hasRole(requiredRole: string): boolean {
+    const userRole: string | null = localStorage.getItem('role');
+    if (userRole) {
+      return userRole===requiredRole;
+    }
+    return false;
+  }
+  
 
 }

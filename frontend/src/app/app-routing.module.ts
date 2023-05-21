@@ -14,6 +14,7 @@ import { SuperadministradorCuentaUsuarioComponent } from './pages/superadministr
 import { MisSitiosComponent } from './pages/mis-sitios/mis-sitios.component';
 import { RankingComponent } from './pages/ranking/ranking.component';
 import { AuthGuard } from './guards/auth.guard';
+import { RoleGuard } from './guards/role.guard';
 
 
 const routes: Routes = [
@@ -25,13 +26,13 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {path: '', redirectTo: 'misSitios', pathMatch: 'full'},
-      { path: 'sitios', component:  SitiosComponent},
-      { path: 'crear', component: CrearSitioComponent},
-      { path: 'sasitios', component: SuperAdminSitiosComponent},
-      { path: 'mi-cuenta', component: MiCuentaComponent},
-      { path: 'sausuarios', component:  SuperadministradorCuentaUsuarioComponent},
-      { path: 'misSitios', component: MisSitiosComponent},
-      { path: 'ranking', component: RankingComponent},
+      { path: 'sitios', component:  SitiosComponent,canActivate: [RoleGuard], data: { roles: ['superadmin'] }},
+      { path: 'crear', component: CrearSitioComponent, canActivate: [RoleGuard], data: { roles: ['admin'] }},
+      { path: 'sasitios', component: SuperAdminSitiosComponent,canActivate: [RoleGuard], data: { roles: ['superadmin'] }},
+      { path: 'mi-cuenta', component: MiCuentaComponent, canActivate: [RoleGuard], data: { roles: ['admin'] }},
+      { path: 'sausuarios', component:  SuperadministradorCuentaUsuarioComponent,canActivate: [RoleGuard], data: { roles: ['superadmin'] }},
+      { path: 'misSitios', component: MisSitiosComponent, canActivate: [RoleGuard], data: { roles: ['admin'] } },
+      { path: 'ranking', component: RankingComponent, canActivate: [RoleGuard], data: { roles: ['admin'] }},
       {path: '**', redirectTo: 'misSitios', pathMatch: 'full'},
     ]
   }
