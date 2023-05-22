@@ -27,8 +27,7 @@ export class MiCuentaComponent implements OnInit {
     this.form1 = this.formBuilder.group({
       nombre: ['', [Validators.required, Validators.maxLength(32), Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
-      tel: ['', [Validators.required, Validators.pattern('^((\\+52-?)|0)?[0-9]{10}$')]],
-      imagen: [null, Validators.required]
+      tel: ['', [Validators.required, Validators.pattern('^((\\+52-?)|0)?[0-9]{10}$')]]
     })
     this.form2 = this.formBuilder.group({
       npass: ['', [Validators.required, Validators.maxLength(32), Validators.minLength(8)]],
@@ -64,6 +63,17 @@ export class MiCuentaComponent implements OnInit {
   }
 
   onSubmitContrasenas(){
-
+    const sitioForm = this.form2.value;
+    sitioForm.url = sitioForm.name;
+    sitioForm.views = 0;
+    console.log("Sitio forme es: "+sitioForm);
+    this.cuenta.miCuenta(sitioForm, this.idUser).subscribe(
+      (response) => {
+        this.router.navigate(['/misSitios']);
+      },
+      (error) => {
+        console.error(JSON.stringify(JSON.parse(error), null, 2));
+      }
+    );
   }
 }
