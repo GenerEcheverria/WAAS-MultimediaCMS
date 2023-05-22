@@ -85,6 +85,10 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#crypto" >crypto</a>
+                            </li>
+                            <li>
                                 <a href="#httpOptions" >httpOptions</a>
                             </li>
                             <li>
@@ -106,6 +110,10 @@
                                 <a href="#getToken" >getToken</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#hasRole" >hasRole</a>
+                            </li>
+                            <li>
                                 <a href="#isLoggedIn" >isLoggedIn</a>
                             </li>
                             <li>
@@ -115,7 +123,14 @@
                                 <a href="#logout" >logout</a>
                             </li>
                             <li>
+                                <a href="#me" >me</a>
+                            </li>
+                            <li>
                                 <a href="#register" >register</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#setUserRoles" >setUserRoles</a>
                             </li>
                         </ul>
                     </td>
@@ -140,7 +155,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/services/auth.service.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/services/auth.service.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -203,8 +218,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="64"
-                            class="link-to-prism">src/app/services/auth.service.ts:64</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="80"
+                            class="link-to-prism">src/app/services/auth.service.ts:80</a></div>
                 </td>
             </tr>
 
@@ -232,6 +247,85 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="hasRole"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>hasRole</b></span>
+                        <a href="#hasRole"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>hasRole(requiredRole: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="114"
+                            class="link-to-prism">src/app/services/auth.service.ts:114</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Comprueba si el usuario tiene el rol especificado.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>requiredRole</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Rol requerido.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>True si el usuario tiene el rol, False en caso contrario.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="isLoggedIn"></a>
                     <span class="name">
                         <span ><b>isLoggedIn</b></span>
@@ -248,8 +342,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="72"
-                            class="link-to-prism">src/app/services/auth.service.ts:72</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="88"
+                            class="link-to-prism">src/app/services/auth.service.ts:88</a></div>
                 </td>
             </tr>
 
@@ -293,8 +387,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="42"
-                            class="link-to-prism">src/app/services/auth.service.ts:42</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="44"
+                            class="link-to-prism">src/app/services/auth.service.ts:44</a></div>
                 </td>
             </tr>
 
@@ -386,15 +480,15 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="50"
-                            class="link-to-prism">src/app/services/auth.service.ts:50</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="66"
+                            class="link-to-prism">src/app/services/auth.service.ts:66</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Cierra la sesión del usuario actual.</p>
+                    <div class="io-description"><p>Cierra la sesión del usuario.</p>
 </div>
 
                     <div>
@@ -405,6 +499,51 @@
                     </div>
                     <div class="io-description">
                         <p>Observable que representa la respuesta del servidor.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="me"></a>
+                    <span class="name">
+                        <span ><b>me</b></span>
+                        <a href="#me"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>me()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="52"
+                            class="link-to-prism">src/app/services/auth.service.ts:52</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Obtiene la información del usuario actualmente autenticado.</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>Observable que representa la información del usuario.</p>
 
                     </div>
                 </td>
@@ -431,8 +570,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="32"
-                            class="link-to-prism">src/app/services/auth.service.ts:32</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">src/app/services/auth.service.ts:34</a></div>
                 </td>
             </tr>
 
@@ -568,12 +707,116 @@
             </tr>
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setUserRoles"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>setUserRoles</b></span>
+                        <a href="#setUserRoles"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setUserRoles(role: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="105"
+                            class="link-to-prism">src/app/services/auth.service.ts:105</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Establece los roles del usuario en el almacenamiento local.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>role</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Rol del usuario.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
             <section>
     
     <h3 id="inputs">
         Properties
     </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="crypto"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>crypto</b></span>
+                        <a href="#crypto"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Crypto</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/services/auth.service.ts:14</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -602,7 +845,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/services/auth.service.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/services/auth.service.ts:18</a></div>
                         </td>
                     </tr>
 
@@ -633,7 +876,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/services/auth.service.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/services/auth.service.ts:13</a></div>
                         </td>
                     </tr>
 
@@ -649,6 +892,7 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { HttpClient, HttpHeaders } from &#x27;@angular/common/http&#x27;;
 import { of } from &#x27;rxjs&#x27;;
+import { Crypto } from &#x27;../util/crypto&#x27;;
 
 /**
  * Servicio de autenticación y gestión de usuarios.
@@ -658,6 +902,7 @@ import { of } from &#x27;rxjs&#x27;;
 })
 export class AuthService {
   url: string &#x3D; &#x27;http://localhost:8000/api/auth&#x27;;
+  private crypto &#x3D; new Crypto;
 
   constructor(private http: HttpClient) { }
 
@@ -692,7 +937,21 @@ export class AuthService {
   }
 
   /**
-   * Cierra la sesión del usuario actual.
+   * Obtiene la información del usuario actualmente autenticado.
+   * @returns Observable que representa la información del usuario.
+   */
+  me(){
+    const token &#x3D; this.getToken();
+    const httpOptions &#x3D; {
+      headers: new HttpHeaders({
+        &#x27;Authorization&#x27;: &#x60;Bearer ${token}&#x60;
+      })
+    };
+    return this.http.post&lt;any&gt;(this.url+&#x27;/me&#x27;, {},httpOptions);
+  }
+
+  /**
+   * Cierra la sesión del usuario.
    * @returns Observable que representa la respuesta del servidor.
    */
   logout() {
@@ -729,6 +988,28 @@ export class AuthService {
     }
     return of({ valid: false });
   }
+
+   /**
+   * Establece los roles del usuario en el almacenamiento local.
+   * @param role Rol del usuario.
+   */
+  public setUserRoles(role: string) {
+    localStorage.setItem(&#x27;role&#x27;, role);
+  }
+
+  /**
+   * Comprueba si el usuario tiene el rol especificado.
+   * @param requiredRole Rol requerido.
+   * @returns True si el usuario tiene el rol, False en caso contrario.
+   */
+  public hasRole(requiredRole: string): boolean {
+    const userRole: string | null &#x3D; localStorage.getItem(&#x27;role&#x27;);
+    if (userRole) {
+      return userRole&#x3D;&#x3D;&#x3D;requiredRole;
+    }
+    return false;
+  }
+  
 
 }
 </code></pre>

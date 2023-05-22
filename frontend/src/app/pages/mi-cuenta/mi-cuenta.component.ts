@@ -28,9 +28,12 @@ export class MiCuentaComponent implements OnInit {
   public emailUser: string = "";
   public phoneUser: string = "";
   
-   /**
+    /**
    * Constructor del componente MiCuentaComponent.
    * @param formBuilder Instancia del FormBuilder utilizado para crear los formularios.
+   * @param authService Servicio de autenticación.
+   * @param router Enrutador de la aplicación.
+   * @param cuenta Servicio para administrar la cuenta.
    */
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, private cuenta: MiCuentaService){}
 
@@ -62,6 +65,10 @@ export class MiCuentaComponent implements OnInit {
     
   }
 
+  /**
+   * Método que se ejecuta al enviar el formulario de datos de cuenta.
+   * Guarda los cambios realizados en la cuenta del usuario.
+   */
   onSubmitDatos() {
     const sitioForm = this.form1.value;
     sitioForm.url = sitioForm.name;
@@ -77,6 +84,10 @@ export class MiCuentaComponent implements OnInit {
     );
   }
 
+  /**
+   * Método que se ejecuta al enviar el formulario de cambio de contraseñas.
+   * Guarda la nueva contraseña del usuario.
+   */
   onSubmitContrasenas(){
     const sitioForm = this.form2.value;
     sitioForm.url = sitioForm.name;

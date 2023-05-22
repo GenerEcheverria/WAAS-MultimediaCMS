@@ -142,11 +142,35 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Public</span>
+                                <a href="#datosCuenta" >datosCuenta</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#emailUser" >emailUser</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#form1" >form1</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
                                 <a href="#form2" >form2</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#idUser" >idUser</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#nameUser" >nameUser</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#phoneUser" >phoneUser</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#userData" >userData</a>
                             </li>
                         </ul>
                     </td>
@@ -164,7 +188,10 @@
                                 <a href="#ngOnInit" >ngOnInit</a>
                             </li>
                             <li>
-                                <a href="#send" >send</a>
+                                <a href="#onSubmitContrasenas" >onSubmitContrasenas</a>
+                            </li>
+                            <li>
+                                <a href="#onSubmitDatos" >onSubmitDatos</a>
                             </li>
                         </ul>
                     </td>
@@ -184,12 +211,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(formBuilder: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>)</code>
+<code>constructor(formBuilder: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>, authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, cuenta: <a href="../injectables/MiCuentaService.html" target="_self">MiCuentaService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/mi-cuenta/mi-cuenta.component.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/pages/mi-cuenta/mi-cuenta.component.ts:29</a></div>
                             </td>
                         </tr>
 
@@ -222,6 +249,54 @@
                                                     
                                                         <td>
                                                                 <p>Instancia del FormBuilder utilizado para crear los formularios.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Servicio de autenticación.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Enrutador de la aplicación.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>cuenta</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/MiCuentaService.html" target="_self" >MiCuentaService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Servicio para administrar la cuenta.</p>
 
                                                         </td>
                                                 </tr>
@@ -263,8 +338,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="37"
-                            class="link-to-prism">src/app/pages/mi-cuenta/mi-cuenta.component.ts:37</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="44"
+                            class="link-to-prism">src/app/pages/mi-cuenta/mi-cuenta.component.ts:44</a></div>
                 </td>
             </tr>
 
@@ -287,36 +362,76 @@ Se encarga de inicializar los formularios y definir las validaciones.</p>
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="send"></a>
+                    <a name="onSubmitContrasenas"></a>
                     <span class="name">
-                        <span ><b>send</b></span>
-                        <a href="#send"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>onSubmitContrasenas</b></span>
+                        <a href="#onSubmitContrasenas"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>send()</code>
+<code>onSubmitContrasenas()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="55"
-                            class="link-to-prism">src/app/pages/mi-cuenta/mi-cuenta.component.ts:55</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="91"
+                            class="link-to-prism">src/app/pages/mi-cuenta/mi-cuenta.component.ts:91</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Método invocado al enviar el formulario.
-Imprime en la consola los valores del formulario de datos personales.</p>
+                    <div class="io-description"><p>Método que se ejecuta al enviar el formulario de cambio de contraseñas.
+Guarda la nueva contraseña del usuario.</p>
 </div>
 
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSubmitDatos"></a>
+                    <span class="name">
+                        <span ><b>onSubmitDatos</b></span>
+                        <a href="#onSubmitDatos"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSubmitDatos()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="72"
+                            class="link-to-prism">src/app/pages/mi-cuenta/mi-cuenta.component.ts:72</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Método que se ejecuta al enviar el formulario de datos de cuenta.
+Guarda los cambios realizados en la cuenta del usuario.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                     </div>
                 </td>
@@ -329,6 +444,70 @@ Imprime en la consola los valores del formulario de datos personales.</p>
     <h3 id="inputs">
         Properties
     </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="datosCuenta"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>datosCuenta</b></span>
+                        <a href="#datosCuenta"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/pages/mi-cuenta/mi-cuenta.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="emailUser"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>emailUser</b></span>
+                        <a href="#emailUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&quot;&quot;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/pages/mi-cuenta/mi-cuenta.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -353,12 +532,6 @@ Imprime en la consola los valores del formulario de datos personales.</p>
                         </td>
                     </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Formulario para los datos personales del usuario.</p>
-</div>
-                </td>
-            </tr>
 
         </tbody>
     </table>
@@ -395,6 +568,129 @@ Imprime en la consola los valores del formulario de datos personales.</p>
 
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="idUser"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>idUser</b></span>
+                        <a href="#idUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&quot;&quot;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/mi-cuenta/mi-cuenta.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nameUser"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>nameUser</b></span>
+                        <a href="#nameUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&quot;&quot;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/pages/mi-cuenta/mi-cuenta.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="phoneUser"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>phoneUser</b></span>
+                        <a href="#phoneUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&quot;&quot;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/pages/mi-cuenta/mi-cuenta.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userData"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>userData</b></span>
+                        <a href="#userData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/pages/mi-cuenta/mi-cuenta.component.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
 </section>
 
 </div>
@@ -404,6 +700,10 @@ Imprime en la consola los valores del formulario de datos personales.</p>
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
 import { FormGroup, FormBuilder, Validators } from &quot;@angular/forms&quot;;
 import { passwordValidator } from &#x27;./password.validator&#x27;;
+import { AuthService } from &#x27;src/app/services/auth.service&#x27;;
+import { MiCuentaService } from &#x27;src/app/services/mi-cuenta.service&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { Cuenta } from &#x27;src/app/interfaces/cuenta&#x27;;
 
 /**
  * Componente encargado de administrar la cuenta del usuario.
@@ -414,24 +714,27 @@ import { passwordValidator } from &#x27;./password.validator&#x27;;
   styleUrls: [&#x27;./mi-cuenta.component.css&#x27;]
 })
 export class MiCuentaComponent implements OnInit {
-
-   /**
-   * Formulario para los datos personales del usuario.
-   */
   public form1!: FormGroup;
 
   /**
    * Formulario para el cambio de contraseña del usuario.
    */
   public form2!: FormGroup;
-
-  /**
+  public datosCuenta: any[] &#x3D; [];
+  public userData: any;
+  public idUser: string &#x3D; &quot;&quot;;
+  public nameUser: string &#x3D; &quot;&quot;;
+  public emailUser: string &#x3D; &quot;&quot;;
+  public phoneUser: string &#x3D; &quot;&quot;;
+  
+    /**
    * Constructor del componente MiCuentaComponent.
    * @param formBuilder Instancia del FormBuilder utilizado para crear los formularios.
+   * @param authService Servicio de autenticación.
+   * @param router Enrutador de la aplicación.
+   * @param cuenta Servicio para administrar la cuenta.
    */
-  constructor(private formBuilder: FormBuilder){
-
-  }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, private cuenta: MiCuentaService){}
 
   /**
    * Método de ciclo de vida de Angular que se ejecuta al iniciar el componente.
@@ -439,24 +742,64 @@ export class MiCuentaComponent implements OnInit {
    */
   ngOnInit(): void {
     this.form1 &#x3D; this.formBuilder.group({
-      nombre: [&#x27;&#x27;, [Validators.required, Validators.maxLength(32), Validators.minLength(10)]],
+      nombre: [&#x27;&#x27;, [Validators.required, Validators.maxLength(32), Validators.minLength(3)]],
       email: [&#x27;&#x27;, [Validators.required, Validators.email]],
-      tel: [&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;^((\\+52-?)|0)?[0-9]{10}$&#x27;)]],
-      imagen: [null, Validators.required]
+      tel: [&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;^((\\+52-?)|0)?[0-9]{10}$&#x27;)]]
     })
-
     this.form2 &#x3D; this.formBuilder.group({
       npass: [&#x27;&#x27;, [Validators.required, Validators.maxLength(32), Validators.minLength(8)]],
       cpass: [&#x27;&#x27;, [Validators.required, Validators.maxLength(32), Validators.minLength(8)]]
     }, { validator: passwordValidator })
+
+    this.authService.me().subscribe(data &#x3D;&gt; {
+      this.userData &#x3D; data;
+      this.idUser &#x3D; data.id;
+    
+      this.form1.patchValue({
+        nombre: data.name,
+        tel: data.phone,
+        email: data.email,        
+      });
+    });
+    
   }
 
   /**
-   * Método invocado al enviar el formulario.
-   * Imprime en la consola los valores del formulario de datos personales.
+   * Método que se ejecuta al enviar el formulario de datos de cuenta.
+   * Guarda los cambios realizados en la cuenta del usuario.
    */
-  send(): any {
-    console.log(this.form1.value);
+  onSubmitDatos() {
+    const sitioForm &#x3D; this.form1.value;
+    sitioForm.url &#x3D; sitioForm.name;
+    sitioForm.views &#x3D; 0;
+    console.log(&quot;Sitio forme es: &quot;+sitioForm);
+    this.cuenta.miCuenta(sitioForm, this.idUser).subscribe(
+      (response) &#x3D;&gt; {
+        this.router.navigate([&#x27;/misSitios&#x27;]);
+      },
+      (error) &#x3D;&gt; {
+        console.error(JSON.stringify(JSON.parse(error), null, 2));
+      }
+    );
+  }
+
+  /**
+   * Método que se ejecuta al enviar el formulario de cambio de contraseñas.
+   * Guarda la nueva contraseña del usuario.
+   */
+  onSubmitContrasenas(){
+    const sitioForm &#x3D; this.form2.value;
+    sitioForm.url &#x3D; sitioForm.name;
+    sitioForm.views &#x3D; 0;
+    console.log(&quot;Sitio forme es: &quot;+sitioForm);
+    this.cuenta.miCuenta(sitioForm, this.idUser).subscribe(
+      (response) &#x3D;&gt; {
+        this.router.navigate([&#x27;/misSitios&#x27;]);
+      },
+      (error) &#x3D;&gt; {
+        console.error(JSON.stringify(JSON.parse(error), null, 2));
+      }
+    );
   }
 }
 </code></pre>
@@ -470,7 +813,7 @@ export class MiCuentaComponent implements OnInit {
   &lt;div class&#x3D;&quot;row justify-content-center mb-5&quot;&gt;
     &lt;div class&#x3D;&quot;col-12 col-md-6&quot; style&#x3D;&quot;width: 100%;&quot;&gt;
       &lt;div class&#x3D;&quot;d-flex justify-content-start align-items-center mb-3&quot;&gt;
-        &lt;img src&#x3D;&quot;ruta/a/la/imagen&quot; alt&#x3D;&quot;Imagen de usuario&quot; class&#x3D;&quot;img-fluid mx-3 my-2&quot;
+        &lt;img src&#x3D;&quot;../../../assets/users/generceo.png&quot; alt&#x3D;&quot;Imagen de usuario&quot; class&#x3D;&quot;img-fluid mx-3 my-2 rounded-5&quot;
           style&#x3D;&quot;width: 50px; height: 50px;&quot;&gt;
         &lt;h4 class&#x3D;&quot;my-2&quot;&gt;Mi Cuenta&lt;/h4&gt;
       &lt;/div&gt;
@@ -478,7 +821,7 @@ export class MiCuentaComponent implements OnInit {
   &lt;/div&gt;
   &lt;div class&#x3D;&quot;row justify-content-center mb-5&quot;&gt;
     &lt;div class&#x3D;&quot;col-12 &quot; style&#x3D;&quot;width: 100%;&quot;&gt;
-      &lt;form [formGroup]&#x3D;&quot;form1&quot; (submit)&#x3D;&quot;send()&quot;&gt;
+      &lt;form [formGroup]&#x3D;&quot;form1&quot; (ngSubmit)&#x3D;&quot;onSubmitDatos()&quot;&gt;
         &lt;h4 class&#x3D;&quot;mb-3&quot;&gt;Mi Información&lt;/h4&gt;
 
         &lt;div class&#x3D;&quot;row mb-3&quot;&gt;
@@ -491,7 +834,7 @@ export class MiCuentaComponent implements OnInit {
 
               &lt;div *ngIf&#x3D;&quot;form1.get(&#x27;nombre&#x27;)?.invalid &amp;&amp; (form1.get(&#x27;nombre&#x27;)?.dirty || form1.get(&#x27;nombre&#x27;)?.touched)&quot;&gt;
                 &lt;div class&#x3D;&quot;control-error&quot; *ngIf&#x3D;&quot;form1.get(&#x27;nombre&#x27;)?.errors?.[&#x27;required&#x27;]&quot;&gt;El campo Nombre es requerido.&lt;/div&gt;
-                &lt;div class&#x3D;&quot;control-error&quot; *ngIf&#x3D;&quot;form1.get(&#x27;nombre&#x27;)?.errors?.[&#x27;minlength&#x27;]&quot;&gt;El campo Nombre debe tener al menos 10 caracteres.&lt;/div&gt;
+                &lt;div class&#x3D;&quot;control-error&quot; *ngIf&#x3D;&quot;form1.get(&#x27;nombre&#x27;)?.errors?.[&#x27;minlength&#x27;]&quot;&gt;El campo Nombre debe tener al menos 3 caracteres.&lt;/div&gt;
                 &lt;div class&#x3D;&quot;control-error&quot; *ngIf&#x3D;&quot;form1.get(&#x27;nombre&#x27;)?.errors?.[&#x27;maxlength&#x27;]&quot;&gt;El campo Nombre debe tener menos de 32 caracteres.&lt;/div&gt;
               &lt;/div&gt;
 
@@ -534,22 +877,6 @@ export class MiCuentaComponent implements OnInit {
 
           &lt;/div&gt;
         &lt;/div&gt;
-        &lt;div class&#x3D;&quot;row mb-3&quot;&gt;
-          &lt;div class&#x3D;&quot;col-2&quot;&gt;
-
-            &lt;label for&#x3D;&quot;imagen&quot; class&#x3D;&quot;form-label&quot;&gt;Imagen:&lt;/label&gt;
-          &lt;/div&gt;
-          &lt;div class&#x3D;&quot;col-6&quot;&gt;
-
-            &lt;input type&#x3D;&quot;file&quot; formControlName&#x3D;&quot;imagen&quot; class&#x3D;&quot;form-control rounded-pill bg-azure-web&quot; id&#x3D;&quot;imagen&quot;
-              name&#x3D;&quot;imagen&quot;&gt;
-
-              &lt;div *ngIf&#x3D;&quot;form1.get(&#x27;imagen&#x27;)?.invalid &amp;&amp; (form1.get(&#x27;imagen&#x27;)?.dirty || form1.get(&#x27;imagen&#x27;)?.touched)&quot;&gt;
-                &lt;div class&#x3D;&quot;control-error&quot; *ngIf&#x3D;&quot;form1.get(&#x27;imagen&#x27;)?.errors?.[&#x27;required&#x27;]&quot;&gt;Se requiere una Imagen&lt;/div&gt;
-              &lt;/div&gt;
-
-          &lt;/div&gt;
-        &lt;/div&gt;
         &lt;div class&#x3D;&quot;d-flex col-8 justify-content-end align-items-end&quot;&gt;
 
           &lt;button type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;form1.invalid&quot;
@@ -560,7 +887,7 @@ export class MiCuentaComponent implements OnInit {
   &lt;/div&gt;
   &lt;div class&#x3D;&quot;row justify-content-center mb-5&quot;&gt;
     &lt;div class&#x3D;&quot;col-12 col-md-6&quot; style&#x3D;&quot;width: 100%;&quot;&gt;
-      &lt;form [formGroup]&#x3D;&quot;form2&quot;&gt;
+      &lt;form [formGroup]&#x3D;&quot;form2&quot; (ngSubmit)&#x3D;&quot;onSubmitContrasenas()&quot;&gt;
         &lt;h4 class&#x3D;&quot;mb-3&quot;&gt;Cambio de Contraseña&lt;/h4&gt;
         &lt;div class&#x3D;&quot;row mb-3&quot;&gt;
           &lt;div class&#x3D;&quot;col-2&quot;&gt;
@@ -661,8 +988,8 @@ export class MiCuentaComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><head>  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter"></head><div class="container-fluid">  <div class="row justify-content-center mb-5">    <div class="col-12 col-md-6" style="width: 100%;">      <div class="d-flex justify-content-start align-items-center mb-3">        <img src="ruta/a/la/imagen" alt="Imagen de usuario" class="img-fluid mx-3 my-2"          style="width: 50px; height: 50px;">        <h4 class="my-2">Mi Cuenta</h4>      </div>    </div>  </div>  <div class="row justify-content-center mb-5">    <div class="col-12 " style="width: 100%;">      <form [formGroup]="form1" (submit)="send()">        <h4 class="mb-3">Mi Información</h4>        <div class="row mb-3">          <div class="col-2">            <label for="nombre" class="form-label">Nombre:</label>          </div>          <div class="col-6">            <input type="text" formControlName="nombre" class="form-control rounded-pill bg-azure-web" id="nombre"              name="nombre">              <div *ngIf="form1.get(\'nombre\')?.invalid && (form1.get(\'nombre\')?.dirty || form1.get(\'nombre\')?.touched)">                <div class="control-error" *ngIf="form1.get(\'nombre\')?.errors?.[\'required\']">El campo Nombre es requerido.</div>                <div class="control-error" *ngIf="form1.get(\'nombre\')?.errors?.[\'minlength\']">El campo Nombre debe tener al menos 10 caracteres.</div>                <div class="control-error" *ngIf="form1.get(\'nombre\')?.errors?.[\'maxlength\']">El campo Nombre debe tener menos de 32 caracteres.</div>              </div>          </div>        </div>        <div class="row mb-3">          <div class="col-2">            <label for="email" class="form-label">Correo Electrónico:</label>          </div>          <div class="col-6">            <input type="email" formControlName="email" class="form-control rounded-pill bg-azure-web" id="email"              name="email">              <div *ngIf="form1.get(\'email\')?.invalid && (form1.get(\'email\')?.dirty || form1.get(\'email\')?.touched)">              <div class="control-error" *ngIf="form1.get(\'email\')?.errors?.[\'required\']">El campo Email es requerido.</div>              <div class="control-error" *ngIf="form1.get(\'email\')?.errors?.[\'email\']">No es un email valido</div>            </div>          </div>        </div>        <div class="row mb-3">          <div class="col-2">            <label for="telefono" class="form-label">Teléfono:</label>          </div>          <div class="col-6">            <input type="tel" formControlName="tel" class="form-control rounded-pill bg-azure-web" id="telefono"              name="telefono">              <div *ngIf="form1.get(\'tel\')?.invalid && (form1.get(\'tel\')?.dirty || form1.get(\'tel\')?.touched)">                <div class="control-error" *ngIf="form1.get(\'tel\')?.errors?.[\'required\']">El campo número es requerido.</div>                <div class="control-error" *ngIf="form1.get(\'tel\')?.errors?.[\'pattern\']">No es un número valido</div>              </div>          </div>        </div>        <div class="row mb-3">          <div class="col-2">            <label for="imagen" class="form-label">Imagen:</label>          </div>          <div class="col-6">            <input type="file" formControlName="imagen" class="form-control rounded-pill bg-azure-web" id="imagen"              name="imagen">              <div *ngIf="form1.get(\'imagen\')?.invalid && (form1.get(\'imagen\')?.dirty || form1.get(\'imagen\')?.touched)">                <div class="control-error" *ngIf="form1.get(\'imagen\')?.errors?.[\'required\']">Se requiere una Imagen</div>              </div>          </div>        </div>        <div class="d-flex col-8 justify-content-end align-items-end">          <button type="submit" [disabled]="form1.invalid"            class="btn btn-primary rounded-pill text-white ">Guardar</button>        </div>      </form>    </div>  </div>  <div class="row justify-content-center mb-5">    <div class="col-12 col-md-6" style="width: 100%;">      <form [formGroup]="form2">        <h4 class="mb-3">Cambio de Contraseña</h4>        <div class="row mb-3">          <div class="col-2">            <label for="npass" class="form-label">Nueva Contraseña:</label>          </div>          <div class="col-6">            <input type="password" formControlName="npass" class="form-control rounded-pill bg-azure-web" id="npass"              name="npass">              <div *ngIf="form2.get(\'npass\')?.invalid && (form2.get(\'npass\')?.dirty || form2.get(\'npass\')?.touched)">                <div class="control-error" *ngIf="form2.get(\'npass\')?.errors?.[\'required\']">Se requiere una contraseña</div>                <div class="control-error" *ngIf="form2.get(\'npass\')?.errors?.[\'minlength\']">Se requiere una contraseña de al menos 8 caracteres.</div>                <div class="control-error" *ngIf="form2.get(\'npass\')?.errors?.[\'maxlength\']">La contraseña no debe exceder de 32 caracteres.</div>              </div>          </div>        </div>        <div class="row mb-3">          <div class="col-2">            <label for="cpass" class="form-label">Confirmar Contraseña:</label>          </div>          <div class="col-6">            <input type="password" formControlName="cpass" class="form-control rounded-pill bg-azure-web" id="cpass"              name="cpass">              <div *ngIf="form2.get(\'cpass\')?.invalid && (form2.get(\'cpass\')?.dirty || form2.get(\'cpass\')?.touched)">                <div class="control-error" *ngIf="form2.get(\'cpass\')?.errors?.[\'required\']">Se requiere una contraseña</div>                <div class="control-error" *ngIf="form2.get(\'cpass\')?.errors?.[\'minlength\']">Se requiere una contraseña de al menos 8 caracteres.</div>                <div class="control-error" *ngIf="form2.get(\'cpass\')?.errors?.[\'maxlength\']">La contraseña no debe exceder de 32 caracteres.</div>              </div>              <div  class="control-error" *ngIf="form2.hasError(\'passwordsDoNotMatch\') && (form2.get(\'npass\')?.dirty || form2.get(\'cpass\')?.dirty)">                Las contraseñas no coinciden              </div>          </div>        </div>        <div class="d-flex col-8 justify-content-end align-items-end">          <button type="submit" [disabled]="form2.invalid"            class="btn btn-primary rounded-pill w-10 text-white">Guardar</button>        </div>      </form>    </div>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BodyBuilderComponent', 'selector': 'app-body-builder'},{'name': 'BodyElementComponent', 'selector': 'app-body-element'},{'name': 'CrearSitioComponent', 'selector': 'app-crear-sitio'},{'name': 'FooterLienzoComponent', 'selector': 'app-footer-lienzo'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ImageComponent', 'selector': 'app-image'},{'name': 'ImagenLienzoComponent', 'selector': 'app-imagen-lienzo'},{'name': 'LienzoPaginaComponent', 'selector': 'app-lienzo-pagina'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainLayoutComponent', 'selector': 'app-main-layout'},{'name': 'MenuOptionComponent', 'selector': 'app-menu-option'},{'name': 'MiCuentaComponent', 'selector': 'app-mi-cuenta'},{'name': 'MisSitiosComponent', 'selector': 'app-mis-sitios'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SitiosComponent', 'selector': 'app-sitios'},{'name': 'SuperadministradorCuentaUsuarioComponent', 'selector': 'app-superadministrador-cuenta-usuario'},{'name': 'SuperAdminSitiosComponent', 'selector': 'app-super-admin-sitios'},{'name': 'TextComponent', 'selector': 'app-text'},{'name': 'TextoLienzoComponent', 'selector': 'app-texto-lienzo'},{'name': 'TimelineComponent', 'selector': 'app-timeline'},{'name': 'TituloLienzoComponent', 'selector': 'app-titulo-lienzo'},{'name': 'VideoComponent', 'selector': 'app-video'},{'name': 'VideoLienzoComponent', 'selector': 'app-video-lienzo'}];
+        var COMPONENT_TEMPLATE = '<div><head>  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter"></head><div class="container-fluid">  <div class="row justify-content-center mb-5">    <div class="col-12 col-md-6" style="width: 100%;">      <div class="d-flex justify-content-start align-items-center mb-3">        <img src="../../../assets/users/generceo.png" alt="Imagen de usuario" class="img-fluid mx-3 my-2 rounded-5"          style="width: 50px; height: 50px;">        <h4 class="my-2">Mi Cuenta</h4>      </div>    </div>  </div>  <div class="row justify-content-center mb-5">    <div class="col-12 " style="width: 100%;">      <form [formGroup]="form1" (ngSubmit)="onSubmitDatos()">        <h4 class="mb-3">Mi Información</h4>        <div class="row mb-3">          <div class="col-2">            <label for="nombre" class="form-label">Nombre:</label>          </div>          <div class="col-6">            <input type="text" formControlName="nombre" class="form-control rounded-pill bg-azure-web" id="nombre"              name="nombre">              <div *ngIf="form1.get(\'nombre\')?.invalid && (form1.get(\'nombre\')?.dirty || form1.get(\'nombre\')?.touched)">                <div class="control-error" *ngIf="form1.get(\'nombre\')?.errors?.[\'required\']">El campo Nombre es requerido.</div>                <div class="control-error" *ngIf="form1.get(\'nombre\')?.errors?.[\'minlength\']">El campo Nombre debe tener al menos 3 caracteres.</div>                <div class="control-error" *ngIf="form1.get(\'nombre\')?.errors?.[\'maxlength\']">El campo Nombre debe tener menos de 32 caracteres.</div>              </div>          </div>        </div>        <div class="row mb-3">          <div class="col-2">            <label for="email" class="form-label">Correo Electrónico:</label>          </div>          <div class="col-6">            <input type="email" formControlName="email" class="form-control rounded-pill bg-azure-web" id="email"              name="email">              <div *ngIf="form1.get(\'email\')?.invalid && (form1.get(\'email\')?.dirty || form1.get(\'email\')?.touched)">              <div class="control-error" *ngIf="form1.get(\'email\')?.errors?.[\'required\']">El campo Email es requerido.</div>              <div class="control-error" *ngIf="form1.get(\'email\')?.errors?.[\'email\']">No es un email valido</div>            </div>          </div>        </div>        <div class="row mb-3">          <div class="col-2">            <label for="telefono" class="form-label">Teléfono:</label>          </div>          <div class="col-6">            <input type="tel" formControlName="tel" class="form-control rounded-pill bg-azure-web" id="telefono"              name="telefono">              <div *ngIf="form1.get(\'tel\')?.invalid && (form1.get(\'tel\')?.dirty || form1.get(\'tel\')?.touched)">                <div class="control-error" *ngIf="form1.get(\'tel\')?.errors?.[\'required\']">El campo número es requerido.</div>                <div class="control-error" *ngIf="form1.get(\'tel\')?.errors?.[\'pattern\']">No es un número valido</div>              </div>          </div>        </div>        <div class="d-flex col-8 justify-content-end align-items-end">          <button type="submit" [disabled]="form1.invalid"            class="btn btn-primary rounded-pill text-white ">Guardar</button>        </div>      </form>    </div>  </div>  <div class="row justify-content-center mb-5">    <div class="col-12 col-md-6" style="width: 100%;">      <form [formGroup]="form2" (ngSubmit)="onSubmitContrasenas()">        <h4 class="mb-3">Cambio de Contraseña</h4>        <div class="row mb-3">          <div class="col-2">            <label for="npass" class="form-label">Nueva Contraseña:</label>          </div>          <div class="col-6">            <input type="password" formControlName="npass" class="form-control rounded-pill bg-azure-web" id="npass"              name="npass">              <div *ngIf="form2.get(\'npass\')?.invalid && (form2.get(\'npass\')?.dirty || form2.get(\'npass\')?.touched)">                <div class="control-error" *ngIf="form2.get(\'npass\')?.errors?.[\'required\']">Se requiere una contraseña</div>                <div class="control-error" *ngIf="form2.get(\'npass\')?.errors?.[\'minlength\']">Se requiere una contraseña de al menos 8 caracteres.</div>                <div class="control-error" *ngIf="form2.get(\'npass\')?.errors?.[\'maxlength\']">La contraseña no debe exceder de 32 caracteres.</div>              </div>          </div>        </div>        <div class="row mb-3">          <div class="col-2">            <label for="cpass" class="form-label">Confirmar Contraseña:</label>          </div>          <div class="col-6">            <input type="password" formControlName="cpass" class="form-control rounded-pill bg-azure-web" id="cpass"              name="cpass">              <div *ngIf="form2.get(\'cpass\')?.invalid && (form2.get(\'cpass\')?.dirty || form2.get(\'cpass\')?.touched)">                <div class="control-error" *ngIf="form2.get(\'cpass\')?.errors?.[\'required\']">Se requiere una contraseña</div>                <div class="control-error" *ngIf="form2.get(\'cpass\')?.errors?.[\'minlength\']">Se requiere una contraseña de al menos 8 caracteres.</div>                <div class="control-error" *ngIf="form2.get(\'cpass\')?.errors?.[\'maxlength\']">La contraseña no debe exceder de 32 caracteres.</div>              </div>              <div  class="control-error" *ngIf="form2.hasError(\'passwordsDoNotMatch\') && (form2.get(\'npass\')?.dirty || form2.get(\'cpass\')?.dirty)">                Las contraseñas no coinciden              </div>          </div>        </div>        <div class="d-flex col-8 justify-content-end align-items-end">          <button type="submit" [disabled]="form2.invalid"            class="btn btn-primary rounded-pill w-10 text-white">Guardar</button>        </div>      </form>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BodyBuilderComponent', 'selector': 'app-body-builder'},{'name': 'BodyElementComponent', 'selector': 'app-body-element'},{'name': 'CrearSitioComponent', 'selector': 'app-crear-sitio'},{'name': 'FooterLienzoComponent', 'selector': 'app-footer-lienzo'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ImageComponent', 'selector': 'app-image'},{'name': 'ImagenLienzoComponent', 'selector': 'app-imagen-lienzo'},{'name': 'LienzoPaginaComponent', 'selector': 'app-lienzo-pagina'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainLayoutComponent', 'selector': 'app-main-layout'},{'name': 'MainLayoutComponent', 'selector': 'app-main-layout'},{'name': 'MenuOptionComponent', 'selector': 'app-menu-option'},{'name': 'MiCuentaComponent', 'selector': 'app-mi-cuenta'},{'name': 'MisSitiosComponent', 'selector': 'app-mis-sitios'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SitiosComponent', 'selector': 'app-sitios'},{'name': 'SuperadministradorCuentaUsuarioComponent', 'selector': 'app-superadministrador-cuenta-usuario'},{'name': 'SuperAdminSitiosComponent', 'selector': 'app-super-admin-sitios'},{'name': 'TextComponent', 'selector': 'app-text'},{'name': 'TextoLienzoComponent', 'selector': 'app-texto-lienzo'},{'name': 'TimelineComponent', 'selector': 'app-timeline'},{'name': 'TituloLienzoComponent', 'selector': 'app-titulo-lienzo'},{'name': 'VideoComponent', 'selector': 'app-video'},{'name': 'VideoLienzoComponent', 'selector': 'app-video-lienzo'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'MiCuentaComponent'};
 </script>

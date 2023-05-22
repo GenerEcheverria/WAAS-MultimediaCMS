@@ -165,6 +165,54 @@
     </table>
 </section>
 
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(misSitiosService: <a href="../injectables/MisSitiosService.html" target="_self">MisSitiosService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/pages/ranking/ranking.component.ts:13</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>misSitiosService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/MisSitiosService.html" target="_self" >MisSitiosService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
 
 
 
@@ -234,7 +282,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>    <code>literal type[]</code>
+                        <i>Type : </i>    <code>any[]</code>
 
                     </td>
                 </tr>
@@ -245,16 +293,10 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/pages/ranking/ranking.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/pages/ranking/ranking.component.ts:13</a></div>
                         </td>
                     </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Lista de sitios en la biblioteca.</p>
-</div>
-                </td>
-            </tr>
 
         </tbody>
     </table>
@@ -265,6 +307,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { MisSitiosService } from &#x27;src/app/services/mis-sitios.service&#x27;;
 
 /**
  * Componente para mostrar el ranking de sitios.
@@ -275,56 +318,18 @@
   styleUrls: [&#x27;./ranking.component.css&#x27;]
 })
 export class RankingComponent {
-    /**
-   * Lista de sitios en la biblioteca.
-   */
-  public bibliotecaSitios: {link: string, titulo: string, seccion: string, vistas: number}[] &#x3D; [];
+  public bibliotecaSitios: any[] &#x3D; [];
+
+  constructor(private misSitiosService: MisSitiosService) {}
 
    /**
    * Se ejecuta al inicializar el componente.
    */
   ngOnInit(): void {
-    let a &#x3D; {
-      link: &#x27;/misSitios&#x27;,
-      titulo: &#x27;Sitio A&#x27;,
-      seccion: &#x27;seccion 1&#x27;,
-      vistas: 3
-    };
-    this.bibliotecaSitios.push(a);
-
-    let b &#x3D; {
-      link: &#x27;/ranking&#x27;,
-      titulo: &#x27;Sitio B&#x27;,
-      seccion: &#x27;seccion 3&#x27;,
-      vistas: 5
-    };
-    this.bibliotecaSitios.push(b);
-
-    let c &#x3D; {
-      link: &#x27;/cuenta&#x27;,
-      titulo: &#x27;Sitio C&#x27;,
-      seccion: &#x27;seccion 2&#x27;,
-      vistas: 3
-    };
-    this.bibliotecaSitios.push(c);
-
-    let d &#x3D; {
-      link: &#x27;/misSitios&#x27;,
-      titulo: &#x27;Sitio D&#x27;,
-      seccion: &#x27;seccion 4&#x27;,
-      vistas: 5
-    };
-    this.bibliotecaSitios.push(d);
-
-    let e &#x3D; {
-      link: &#x27;/misSitios&#x27;,
-      titulo: &#x27;Sitio E&#x27;,
-      seccion: &#x27;seccion 4&#x27;,
-      vistas: 5
-    };
-    this.bibliotecaSitios.push(e);
-
-    console.log(&#x27;estos son los sitios actuales&#x27;, this.bibliotecaSitios);
+    this.misSitiosService.getAll().subscribe(data &#x3D;&gt; {
+      this.bibliotecaSitios &#x3D; data.sites;
+      this.bibliotecaSitios.sort((a, b) &#x3D;&gt; b.views - a.views); // Ordenar por vistas de forma descendente
+    });
   }
 }
 </code></pre>
@@ -349,11 +354,9 @@ export class RankingComponent {
     &lt;div class&#x3D;&quot;col-1&quot; id&#x3D;&quot;position&quot;&gt;&lt;/div&gt;
     &lt;div class&#x3D;&quot;col-11&quot;&gt;
         &lt;div class&#x3D;&quot;row m-0 p-0&quot;&gt;
-            &lt;div class&#x3D;&quot;col-4&quot;&gt;Página&lt;/div&gt;
-            &lt;div class&#x3D;&quot;col-4&quot;&gt;Sección&lt;/div&gt;
-            &lt;div class&#x3D;&quot;col-1&quot;&gt;&lt;/div&gt;
-            &lt;div class&#x3D;&quot;col-1&quot;&gt;Sitio&lt;/div&gt;
-            &lt;div class&#x3D;&quot;col-2&quot;&gt;Vistas&lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-6&quot;&gt;Página&lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-3&quot;&gt;Sitio&lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-3&quot;&gt;Vistas&lt;/div&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
@@ -373,18 +376,16 @@ export class RankingComponent {
         &lt;/div&gt;
         &lt;div class&#x3D;&quot;col-11 border border-azure-web rounded-pill justify-content-center&quot; id&#x3D;&quot;containerData&quot;&gt;
             &lt;div class&#x3D;&quot;row m-0 p-0&quot;&gt;
-                &lt;div class&#x3D;&quot;col-4&quot;&gt;{{sitio.titulo}}&lt;/div&gt;
-                &lt;div class&#x3D;&quot;col-4&quot;&gt;{{sitio.seccion}}&lt;/div&gt;
-                &lt;div class&#x3D;&quot;col-1&quot;&gt;&lt;/div&gt;
-                &lt;div class&#x3D;&quot;col-1&quot;&gt;
-                    &lt;a href&#x3D;&quot;{{sitio.link}}&quot; class&#x3D;&quot;text-decoration-none&quot;&gt;
+                &lt;div class&#x3D;&quot;col-6&quot;&gt;{{sitio.name}}&lt;/div&gt;
+                &lt;div class&#x3D;&quot;col-3&quot;&gt;
+                    &lt;a href&#x3D;&quot;/site/{{sitio.url}} &quot; target&#x3D;&quot;_blank&quot; class&#x3D;&quot;text-decoration-none&quot;&gt;
                         &lt;svg xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; width&#x3D;&quot;30&quot; height&#x3D;&quot;30&quot; fill&#x3D;&quot;currentColor&quot; class&#x3D;&quot;bi bi-eye-fill&quot; viewBox&#x3D;&quot;0 0 16 16&quot;&gt;
                             &lt;path d&#x3D;&quot;M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z&quot;/&gt;
                             &lt;path d&#x3D;&quot;M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z&quot;/&gt;
                           &lt;/svg&gt;
                     &lt;/a&gt;
                 &lt;/div&gt;
-                &lt;div class&#x3D;&quot;col-2&quot;&gt;{{sitio.vistas}} vistas&lt;/div&gt;
+                &lt;div class&#x3D;&quot;col-3&quot;&gt;{{sitio.views}} vistas&lt;/div&gt;
             &lt;/div&gt;
         &lt;/div&gt;
         &lt;div class&#x3D;&quot;col-1&quot;&gt;&lt;/div&gt;
@@ -437,8 +438,8 @@ export class RankingComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="row m-0 p-0" id="cajaExterior" style="height: 200px;">    <div class="col-1" id="position"></div>    <div class="col-11">        <div class="row m-0 p-0 d-flex align-items-center">            <div class="col-4  d-flex align-items-center" style="display: flex; justify-content: center;">                <img style="height: 100px;" src="../../../assets/images/Ranking2.png" alt="Flecha hacia la derecha">                <H1>&nbsp;&nbsp;&nbsp;Ranking</H1>            </div>            <div class="col-6"></div>        </div>    </div></div><div class="row m-0 p-0" id="cajaExterior">    <div class="col-1" id="position"></div>    <div class="col-11">        <div class="row m-0 p-0">            <div class="col-4">Página</div>            <div class="col-4">Sección</div>            <div class="col-1"></div>            <div class="col-1">Sitio</div>            <div class="col-2">Vistas</div>        </div>    </div></div><div *ngFor="let sitio of bibliotecaSitios;let indice=index">    <div class="row m-0 p-0" id="cajaExterior">        <div class="col-1" id="position">            <svg *ngIf="indice==0" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-trophy-fill" viewBox="0 0 16 16">                <path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935z"/>              </svg>            <svg *ngIf="indice==2" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-stars" viewBox="0 0 16 16">                <path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828l.645-1.937zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.734 1.734 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.734 1.734 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.734 1.734 0 0 0 3.407 2.31l.387-1.162zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L10.863.1z"/>            </svg>            <svg *ngIf="indice==1" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>              </svg>        </div>        <div class="col-11 border border-azure-web rounded-pill justify-content-center" id="containerData">            <div class="row m-0 p-0">                <div class="col-4">{{sitio.titulo}}</div>                <div class="col-4">{{sitio.seccion}}</div>                <div class="col-1"></div>                <div class="col-1">                    <a href="{{sitio.link}}" class="text-decoration-none">                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>                            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>                          </svg>                    </a>                </div>                <div class="col-2">{{sitio.vistas}} vistas</div>            </div>        </div>        <div class="col-1"></div>    </div></div></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BodyBuilderComponent', 'selector': 'app-body-builder'},{'name': 'BodyElementComponent', 'selector': 'app-body-element'},{'name': 'CrearSitioComponent', 'selector': 'app-crear-sitio'},{'name': 'FooterLienzoComponent', 'selector': 'app-footer-lienzo'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ImageComponent', 'selector': 'app-image'},{'name': 'ImagenLienzoComponent', 'selector': 'app-imagen-lienzo'},{'name': 'LienzoPaginaComponent', 'selector': 'app-lienzo-pagina'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainLayoutComponent', 'selector': 'app-main-layout'},{'name': 'MenuOptionComponent', 'selector': 'app-menu-option'},{'name': 'MiCuentaComponent', 'selector': 'app-mi-cuenta'},{'name': 'MisSitiosComponent', 'selector': 'app-mis-sitios'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SitiosComponent', 'selector': 'app-sitios'},{'name': 'SuperadministradorCuentaUsuarioComponent', 'selector': 'app-superadministrador-cuenta-usuario'},{'name': 'SuperAdminSitiosComponent', 'selector': 'app-super-admin-sitios'},{'name': 'TextComponent', 'selector': 'app-text'},{'name': 'TextoLienzoComponent', 'selector': 'app-texto-lienzo'},{'name': 'TimelineComponent', 'selector': 'app-timeline'},{'name': 'TituloLienzoComponent', 'selector': 'app-titulo-lienzo'},{'name': 'VideoComponent', 'selector': 'app-video'},{'name': 'VideoLienzoComponent', 'selector': 'app-video-lienzo'}];
+        var COMPONENT_TEMPLATE = '<div><div class="row m-0 p-0" id="cajaExterior" style="height: 200px;">    <div class="col-1" id="position"></div>    <div class="col-11">        <div class="row m-0 p-0 d-flex align-items-center">            <div class="col-4  d-flex align-items-center" style="display: flex; justify-content: center;">                <img style="height: 100px;" src="../../../assets/images/Ranking2.png" alt="Flecha hacia la derecha">                <H1>&nbsp;&nbsp;&nbsp;Ranking</H1>            </div>            <div class="col-6"></div>        </div>    </div></div><div class="row m-0 p-0" id="cajaExterior">    <div class="col-1" id="position"></div>    <div class="col-11">        <div class="row m-0 p-0">            <div class="col-6">Página</div>            <div class="col-3">Sitio</div>            <div class="col-3">Vistas</div>        </div>    </div></div><div *ngFor="let sitio of bibliotecaSitios;let indice=index">    <div class="row m-0 p-0" id="cajaExterior">        <div class="col-1" id="position">            <svg *ngIf="indice==0" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-trophy-fill" viewBox="0 0 16 16">                <path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935z"/>              </svg>            <svg *ngIf="indice==2" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-stars" viewBox="0 0 16 16">                <path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828l.645-1.937zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.734 1.734 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.734 1.734 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.734 1.734 0 0 0 3.407 2.31l.387-1.162zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L10.863.1z"/>            </svg>            <svg *ngIf="indice==1" xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>              </svg>        </div>        <div class="col-11 border border-azure-web rounded-pill justify-content-center" id="containerData">            <div class="row m-0 p-0">                <div class="col-6">{{sitio.name}}</div>                <div class="col-3">                    <a href="/site/{{sitio.url}} " target="_blank" class="text-decoration-none">                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>                            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>                          </svg>                    </a>                </div>                <div class="col-3">{{sitio.views}} vistas</div>            </div>        </div>        <div class="col-1"></div>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BodyBuilderComponent', 'selector': 'app-body-builder'},{'name': 'BodyElementComponent', 'selector': 'app-body-element'},{'name': 'CrearSitioComponent', 'selector': 'app-crear-sitio'},{'name': 'FooterLienzoComponent', 'selector': 'app-footer-lienzo'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ImageComponent', 'selector': 'app-image'},{'name': 'ImagenLienzoComponent', 'selector': 'app-imagen-lienzo'},{'name': 'LienzoPaginaComponent', 'selector': 'app-lienzo-pagina'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainLayoutComponent', 'selector': 'app-main-layout'},{'name': 'MainLayoutComponent', 'selector': 'app-main-layout'},{'name': 'MenuOptionComponent', 'selector': 'app-menu-option'},{'name': 'MiCuentaComponent', 'selector': 'app-mi-cuenta'},{'name': 'MisSitiosComponent', 'selector': 'app-mis-sitios'},{'name': 'RankingComponent', 'selector': 'app-ranking'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SitiosComponent', 'selector': 'app-sitios'},{'name': 'SuperadministradorCuentaUsuarioComponent', 'selector': 'app-superadministrador-cuenta-usuario'},{'name': 'SuperAdminSitiosComponent', 'selector': 'app-super-admin-sitios'},{'name': 'TextComponent', 'selector': 'app-text'},{'name': 'TextoLienzoComponent', 'selector': 'app-texto-lienzo'},{'name': 'TimelineComponent', 'selector': 'app-timeline'},{'name': 'TituloLienzoComponent', 'selector': 'app-titulo-lienzo'},{'name': 'VideoComponent', 'selector': 'app-video'},{'name': 'VideoLienzoComponent', 'selector': 'app-video-lienzo'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'RankingComponent'};
 </script>

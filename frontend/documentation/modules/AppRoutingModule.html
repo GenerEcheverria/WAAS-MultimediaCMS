@@ -74,7 +74,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
 import { RouterModule, Routes } from &#x27;@angular/router&#x27;;
-import { MainLayoutComponent } from &#x27;./main-layout/main-layout.component&#x27;;
+import { MainLayoutComponent } from &#x27;./shared/main-layout/main-layout.component&#x27;;
 import { LoginComponent } from &#x27;./pages/login/login.component&#x27;;
 import { TimelineComponent } from &#x27;./pages/crear-sitio/media-types/timeline/timeline.component&#x27;;
 import { FormsModule } from &#x27;@angular/forms&#x27;;
@@ -87,25 +87,27 @@ import { SuperadministradorCuentaUsuarioComponent } from &#x27;./pages/superadmi
 
 import { MisSitiosComponent } from &#x27;./pages/mis-sitios/mis-sitios.component&#x27;;
 import { RankingComponent } from &#x27;./pages/ranking/ranking.component&#x27;;
+import { AuthGuard } from &#x27;./guards/auth.guard&#x27;;
+import { RoleGuard } from &#x27;./guards/role.guard&#x27;;
 
 
 const routes: Routes &#x3D; [
   { path: &#x27;login&#x27;, component: LoginComponent },
   { path: &#x27;register&#x27;, component: RegisterComponent},
+  { path: &#x27;site/:url&#x27;, component:  SitiosComponent},
   {
     path: &#x27;&#x27;,
     component: MainLayoutComponent,
+    canActivate: [AuthGuard],
     children: [
-      { path: &#x27;sitios&#x27;, component:  SitiosComponent},
-      { path: &#x27;crear&#x27;, component: CrearSitioComponent},
-      { path: &#x27;sasitios&#x27;, component: SuperAdminSitiosComponent},
-      { path: &#x27;mi-cuenta&#x27;, component: MiCuentaComponent},
-      { path: &#x27;sausuarios&#x27;, component:  SuperadministradorCuentaUsuarioComponent},
-      { path: &#x27;misSitios&#x27;, component: MisSitiosComponent},
-      { path: &#x27;ranking&#x27;, component: RankingComponent},
-      { path: &#x27;sausuarios&#x27;, component:  SuperadministradorCuentaUsuarioComponent},
-      { path: &#x27;ranking&#x27;, component: RankingComponent}
-
+      {path: &#x27;&#x27;, redirectTo: &#x27;misSitios&#x27;, pathMatch: &#x27;full&#x27;},
+      { path: &#x27;crear&#x27;, component: CrearSitioComponent, canActivate: [RoleGuard], data: { roles: [&#x27;admin&#x27;] }},
+      { path: &#x27;sasitios&#x27;, component: SuperAdminSitiosComponent,canActivate: [RoleGuard], data: { roles: [&#x27;superadmin&#x27;] }},
+      { path: &#x27;mi-cuenta&#x27;, component: MiCuentaComponent, canActivate: [RoleGuard], data: { roles: [&#x27;admin&#x27;] }},
+      { path: &#x27;sausuarios/:id&#x27;, component:  SuperadministradorCuentaUsuarioComponent,canActivate: [RoleGuard], data: { roles: [&#x27;superadmin&#x27;] }},
+      { path: &#x27;misSitios&#x27;, component: MisSitiosComponent, canActivate: [RoleGuard], data: { roles: [&#x27;admin&#x27;] } },
+      { path: &#x27;ranking&#x27;, component: RankingComponent, canActivate: [RoleGuard], data: { roles: [&#x27;admin&#x27;] }},
+      {path: &#x27;**&#x27;, redirectTo: &#x27;misSitios&#x27;, pathMatch: &#x27;full&#x27;},
     ]
   }
 ];

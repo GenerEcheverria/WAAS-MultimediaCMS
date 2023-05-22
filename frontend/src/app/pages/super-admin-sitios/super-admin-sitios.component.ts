@@ -32,6 +32,9 @@ export class SuperAdminSitiosComponent implements OnInit {
 
   constructor(private sasitiosService: SasitiosService, private route: ActivatedRoute, private userService: UserService,private siteService: SiteService, private router: Router) { }
 
+  /**
+   * Método que se ejecuta al inicializar el componente.
+   */
   ngOnInit() {
     this.sasitiosService.getUsuarios().subscribe((data: saUsuarios[]) => {
       this.saUsuarios = data;
@@ -45,6 +48,12 @@ export class SuperAdminSitiosComponent implements OnInit {
 
   }
 
+  
+  /**
+   * Carga los datos de un usuario y la cantidad de sitios asociados.
+   * @param userId El ID del usuario.
+   * @param nom El nombre del usuario.
+   */
   async loadData(userId: string, nom: string): Promise<void> {
     if (userId) {
       try {
@@ -78,6 +87,10 @@ export class SuperAdminSitiosComponent implements OnInit {
     }
   }
 
+  
+  /**
+   * Método que se ejecuta después de que los componentes de la vista se inicializan completamente.
+   */
   ngAfterViewInit() {
         this.dataTable = $('#example').DataTable({
   

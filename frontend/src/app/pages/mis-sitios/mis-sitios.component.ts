@@ -35,6 +35,9 @@ export class MisSitiosComponent {
     this.updateData()
   }
 
+  /**
+   * Actualiza los datos de la biblioteca de sitios.
+   */
   updateData(){
     this.misSitiosService.getAll().subscribe(data => {
       this.bibliotecaSitios = data.sites;
@@ -42,6 +45,9 @@ export class MisSitiosComponent {
     });
   }
 
+   /**
+   * Actualiza el estado de un sitio en la base de datos.
+   */
   updateSelected(id:number,state:string){
     this.actualModify=id
     this.newState=state
@@ -57,7 +63,9 @@ export class MisSitiosComponent {
     );
   }
 
-  
+  /**
+   * Actualiza el estado de un sitio en la base de datos.
+   */
   updateDBState(){
     console.log(this.actualModify, this.newState)
     const site = {

@@ -15,6 +15,10 @@ export class SidebarComponent {
 
   constructor(private authService: AuthService, private router: Router) { }
 
+  
+  /**
+   * Cierra la sesión del usuario y redirige al inicio de sesión.
+   */
   logout(){
     this.authService.logout().subscribe(
       (response) => {

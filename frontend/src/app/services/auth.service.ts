@@ -45,6 +45,10 @@ export class AuthService {
     return this.http.post<any>(this.url + '/login', { email, password });
   }
 
+  /**
+   * Obtiene la información del usuario actualmente autenticado.
+   * @returns Observable que representa la información del usuario.
+   */
   me(){
     const token = this.getToken();
     const httpOptions = {
@@ -55,6 +59,10 @@ export class AuthService {
     return this.http.post<any>(this.url+'/me', {},httpOptions);
   }
 
+  /**
+   * Cierra la sesión del usuario.
+   * @returns Observable que representa la respuesta del servidor.
+   */
   logout() {
     const token = this.getToken();
     const httpOptions = {
@@ -90,10 +98,19 @@ export class AuthService {
     return of({ valid: false });
   }
 
+   /**
+   * Establece los roles del usuario en el almacenamiento local.
+   * @param role Rol del usuario.
+   */
   public setUserRoles(role: string) {
     localStorage.setItem('role', role);
   }
 
+  /**
+   * Comprueba si el usuario tiene el rol especificado.
+   * @param requiredRole Rol requerido.
+   * @returns True si el usuario tiene el rol, False en caso contrario.
+   */
   public hasRole(requiredRole: string): boolean {
     const userRole: string | null = localStorage.getItem('role');
     if (userRole) {
