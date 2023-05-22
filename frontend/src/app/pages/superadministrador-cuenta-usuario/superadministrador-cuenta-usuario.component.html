@@ -47,104 +47,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Juan Pérez</td>
-                    <td>152</td> 
-                    <td>2022-03-15</td>
-                    <td>2022-04-01</td> 
-                    <td>http://www.ejemplo.com/juan-perez</td>
+                <tr *ngFor="let site of sites">
+                    <td>{{ site.name }}</td>
+                    <td>{{ site.views }}</td>
+                    <td>{{ formatDate(site.created_at) }}</td>
+                    <td>{{ formatDate(site.updated_at) }}</td>
+
+                    <td><a href="/site/{{site.url}}" target="_blank">{{site.url}}</a></td>
                 </tr>
-                <tr>
-                    <td>María García</td>
-                    <td>68</td> 
-                    <td>2022-02-25</td>
-                    <td>2022-03-31</td> 
-                    <td>http://www.ejemplo.com/maria-garcia</td>
-                </tr>
-                <tr>
-                    <td>Pedro Hernández</td>
-                    <td>215</td> 
-                    <td>2022-01-05</td>
-                    <td>2022-03-29</td> 
-                    <td>http://www.ejemplo.com/pedro-hernandez</td>
-                </tr>
-                <tr>
-                    <td>Lucía Torres</td>
-                    <td>95</td> 
-                    <td>2022-03-01</td>
-                    <td>2022-04-02</td> 
-                    <td>http://www.ejemplo.com/lucia-torres</td>
-                </tr>
-                <tr>
-                    <td>Jorge González</td>
-                    <td>36</td> 
-                    <td>2022-03-20</td>
-                    <td>2022-04-03</td> 
-                    <td>http://www.ejemplo.com/jorge-gonzalez</td>
-                </tr>
-                <tr>
-                    <td>Carla Sánchez</td>
-                    <td>78</td> 
-                    <td>2022-02-15</td>
-                    <td>2022-03-30</td> 
-                    <td>http://www.ejemplo.com/carla-sanchez</td>
-                </tr>
-                <tr>
-                    <td>Manuel Ramírez</td>
-                    <td>189</td> 
-                    <td>2022-01-20</td>
-                    <td>2022-03-28</td> 
-                    <td>http://www.ejemplo.com/manuel-ramirez</td>
-                </tr>
-                <tr>
-                    <td>Sofía Castro</td>
-                    <td>44</td> 
-                    <td>2022-03-05</td>
-                    <td>2022-04-04</td> 
-                    <td>http://www.ejemplo.com/sofia-castro</td>
-                </tr>
-                <tr>
-                    <td>Juan Pérez</td>
-                    <td>152</td> 
-                    <td>2022-03-15</td>
-                    <td>2022-04-01</td> 
-                    <td>http://www.ejemplo.com/juan-perez</td>
-                </tr>
-                <tr>
-                    <td>María García</td>
-                    <td>68</td> 
-                    <td>2022-02-25</td>
-                    <td>2022-03-31</td> 
-                    <td>http://www.ejemplo.com/maria-garcia</td>
-                </tr>
-                <tr>
-                    <td>Pedro Hernández</td>
-                    <td>215</td> 
-                    <td>2022-01-05</td>
-                    <td>2022-03-29</td> 
-                    <td>http://www.ejemplo.com/pedro-hernandez</td>
-                </tr>
-                <tr>
-                    <td>Lucía Torres</td>
-                    <td>95</td> 
-                    <td>2022-03-01</td>
-                    <td>2022-04-02</td> 
-                    <td>http://www.ejemplo.com/lucia-torres</td>
-                </tr>
-                <tr>
-                    <td>Jorge González</td>
-                    <td>36</td> 
-                    <td>2022-03-20</td>
-                    <td>2022-04-03</td> 
-                    <td>http://www.ejemplo.com/jorge-gonzalez</td>
-                </tr>
-                <tr>
-                    <td>Carla Sánchez</td>
-                    <td>78</td> 
-                    <td>2022-02-15</td>
-                    <td>2022-03-30</td> 
-                    <td>http://www.ejemplo.com/carla-sanchez</td>
-                </tr>
+               
             </tbody>
         </table>
     </div>
