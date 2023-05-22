@@ -38,10 +38,10 @@ class UserController extends Controller
             //     'user.email',
             //     'user.phone'
             // ]));
-            if ($request->has('cuenta.nombre')) {   
-            $user->name =  $request->input('cuenta.nombre');
-            $user->email =  $request->input('cuenta.email');
-            $user->phone =  $request->input('cuenta.tel');
+            if ($request->has('cuenta.nombre')) {
+                $user->name =  $request->input('cuenta.nombre');
+                $user->email =  $request->input('cuenta.email');
+                $user->phone =  $request->input('cuenta.tel');
             }
 
             if ($request->has('cuenta.cpass')) {
@@ -82,27 +82,29 @@ class UserController extends Controller
     }
 
     public function getSaUsers(Request $request)
-{
-    $users = User::select('id', 'name')->get();
+    {
+        $users = User::select('id', 'name')
+            ->where('role', 'admin')
+            ->get();
+        return response()->json($users, 200);
+    }
 
-    return response()->json($users, 200);
-}
 
-public function getSitesForUser($userId)
-{
-    $user = User::findOrFail($userId);
-    $sites = $user->sites;
+    public function getSitesForUser($userId)
+    {
+        $user = User::findOrFail($userId);
+        $sites = $user->sites;
 
-    return response()->json([
-        'sites' => $sites
-    ], 200);
-}
+        return response()->json([
+            'sites' => $sites
+        ], 200);
+    }
 
-public function getnumSitesForUser($userId)
-{
-    $user = User::findOrFail($userId);
-    $siteCount = $user->sites()->count();
+    public function getnumSitesForUser($userId)
+    {
+        $user = User::findOrFail($userId);
+        $siteCount = $user->sites()->count();
 
-    return $siteCount;
-}
+        return $siteCount;
+    }
 }
