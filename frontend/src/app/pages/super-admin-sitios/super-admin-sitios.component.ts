@@ -5,6 +5,9 @@ import { saUsuarios } from 'src/app/interfaces/saUsuarios';
 import * as $ from 'jquery';
 import 'datatables.net';
 import 'datatables.net-bs5';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SiteService } from 'src/app/services/site.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-super-admin-sitios',
@@ -12,30 +15,69 @@ import 'datatables.net-bs5';
   styleUrls: ['./super-admin-sitios.component.css']
 })
 export class SuperAdminSitiosComponent implements OnInit {
+  public userSiteCounts: { userId: string, siteCount: number }[] = [];
   public saUsuarios: saUsuarios[] = [];
   public nombre: string[] = [];
   public nsitios: number[] = [];
+  id!:string | null;
+  protected name!:string;
+  protected email!:string;
+  protected phone!:string;
+  dataTable!: any;
 
-  constructor(private sasitiosService: SasitiosService) { }
+  constructor(private sasitiosService: SasitiosService, private route: ActivatedRoute, private userService: UserService,private siteService: SiteService, private router: Router) { }
 
   ngOnInit() {
     this.sasitiosService.getUsuarios().subscribe((data: saUsuarios[]) => {
       this.saUsuarios = data;
+      // Obtener los ID de todos los usuarios y llamar a loadData() para cada uno
+      this.saUsuarios.forEach((user) => {
+        const userId = user.id;
+        this.loadData(userId);
+      });
     });
+    this.dataTable.draw();
+  }
+
+  async loadData(userId: string): Promise<void> {
+    if (userId) {
+      try {
+        const response = await this.siteService.getSitesForUser(userId).toPromise();
+        const siteCount = response.sites.length; // Obtener la cantidad de sitios
+        // Guardar el ID del usuario y la cantidad de sitios en un objeto
+        const userSiteCount = {
+          userId: userId,
+          siteCount: siteCount
+        };
+  
+        console.log(userSiteCount); // Aquí puedes ver el objeto con el ID y la cantidad de sitios
+  
+        // Puedes almacenar userSiteCount en un arreglo si necesitas mantener un registro de todos los usuarios con sus respectivas cantidades de sitios
+        this.userSiteCounts.push(userSiteCount);
+        
+
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      this.router.navigate(['/sasitios']);
+    }
   }
 
   ngAfterViewInit() {
       $(document).ready(function () {
-        $('#example').DataTable({
-
+        this.dataTable = $('#example').DataTable({
+  
           "language": {
             "search": "",
             "searchPlaceholder": "Buscar",
           },
           "dom": '<"d-flex justify-content-end"f>t<"d-flex justify-content-between"ipl>',
-
+  
           "pagingType": "simple_numbers",
         });
       });
     }
-}
+  }
+
+

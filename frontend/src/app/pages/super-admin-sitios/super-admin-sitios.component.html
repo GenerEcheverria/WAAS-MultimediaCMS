@@ -1,20 +1,19 @@
-<h1>Usuarios</h1>
-<h2>Lista de Usuarios</h2>
+<h1>Lista de Usuarios</h1>
 <table id="example" class="table table-striped table-hover table-bordered" style="width: 100%">
     <thead>
       <tr>
         <th>Nombre</th>
         <th># Sitios</th>
-        <th>Estado</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let usuario of saUsuarios">
-        <td>{{ usuario.name }}</td>
-        <td>{{ usuario.siteCount }}</td>
-        <td>Activo</td>
-      <td><button type="button" class="btn btn-primary rounded-pill text-white">Ver sitio</button></td>
-      </tr>
+      <ng-container *ngFor="let usuario of saUsuarios; index as i">
+        <tr>
+          <td>{{ usuario.name }}</td>
+          <td>{{ userSiteCounts[i]?.siteCount || 0 }}</td>
+          <td><button type="button" class="btn btn-primary rounded-pill text-white">Ver sitio</button></td>
+        </tr>
+      </ng-container>
     </tbody>
   </table>
