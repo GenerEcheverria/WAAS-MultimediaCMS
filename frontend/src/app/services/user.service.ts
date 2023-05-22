@@ -19,4 +19,8 @@ export class UserService {
   getUser(id: string) {
     return this.http.get<any>(this.url + '/users/'+id, this.httpOptions);
   }
+
+  deleteUser(id: string) {
+    return this.http.delete<any>(this.url + '/users/'+id, this.httpOptions);
+  }
 }
