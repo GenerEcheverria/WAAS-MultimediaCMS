@@ -74,4 +74,38 @@ class UserController extends Controller
             ], 404);
         }
     }
+
+    public function getSaUsers(Request $request)
+{
+    $users = User::with('sites')->select('name')->get();
+
+    $userList = [];
+    foreach ($users as $user) {
+        $siteCount =$user->sites;
+        $userList[] = [
+            'name' => $user->name,
+            'siteCount' => $siteCount,
+        ];
+    }
+
+    return response()->json($userList, 200);
+}
+
+public function getSitesForUser($userId)
+{
+    $user = User::findOrFail($userId);
+    $sites = $user->sites;
+
+    return response()->json([
+        'sites' => $sites
+    ], 200);
+}
+
+public function getnumSitesForUser($userId)
+{
+    $user = User::findOrFail($userId);
+    $siteCount = $user->sites()->count();
+
+    return $siteCount;
+}
 }
