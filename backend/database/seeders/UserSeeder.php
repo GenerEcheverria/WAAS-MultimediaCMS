@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'SA',
             "email"=>"albaficas@gmail.com",
-            'password' => '$2y$10$LftVbB.xbgKRAhwZEDQMVeNZC1Y0PVjhNlyYKdreWaqODB.gNIYsK',
+            'password' => '$2y$10$06bfQ6iUQeaZn6v1jPFfBexFI3nT1AC94oktN6BAIlr4t7x5jteJq',
             "role"=>"superadmin",
             "phone"=> "9991732101",
             "photo"=>"a"
@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'Gener Echeverria',
             "email"=>"gener.echeverria@gmail.com",
-            'password' => '$2y$10$LftVbB.xbgKRAhwZEDQMVeNZC1Y0PVjhNlyYKdreWaqODB.gNIYsK',
+            'password' => '$2y$10$06bfQ6iUQeaZn6v1jPFfBexFI3nT1AC94oktN6BAIlr4t7x5jteJq',
             "role"=>"admin",
             "phone"=> "9991732101",
             "photo"=>"a"
