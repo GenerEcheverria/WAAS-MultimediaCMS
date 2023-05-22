@@ -30,6 +30,7 @@ Route::group([
     'middleware' => 'api',
     'prefix' => 'account'
 ], function ($router) {
+    Route::get('sausers', 'App\Http\Controllers\UserController@getSaUsers');
     Route::get('users', 'App\Http\Controllers\UserController@index');
     Route::get('users/{id}', 'App\Http\Controllers\UserController@show');
     Route::put('users/{id}', 'App\Http\Controllers\UserController@update');
