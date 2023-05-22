@@ -98,7 +98,7 @@ export class RegisterComponent {
       'password' : this.crypto.encrypted(formUser.password),
       'role' : "admin",
       'phone': formUser.telefono,
-      'photo': "adadad", //aqui le deben pasar la url
+      'photo': "../../../assets/users/generceo.png", //aqui le deben pasar la url
     }
     this.authService.register(newUser.name, newUser.email, newUser.password, newUser.role, newUser.phone, newUser.photo).subscribe(
       (response) => {
