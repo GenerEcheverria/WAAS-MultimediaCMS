@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Footer;
 use App\Models\Site;
+use App\Models\User;
 use App\Models\Body;
 use App\Models\Text;
 use App\Models\Image;
@@ -242,6 +243,17 @@ class SiteController extends Controller
         ], 200);
     }
 
+    public function getSitesForUser($userId)
+    {
+        $user = User::findOrFail($userId);
+        $sites = $user->sites;
+
+        return response()->json([
+            'sites' => $sites
+        ], 200);
+    }
+
+
     public function getIdSite($url)
     {
         $site = Site::where('url', $url)->first();
@@ -379,10 +391,10 @@ class SiteController extends Controller
                 }
                 if ($bodyItem->type2 === 'text') {
                     $test->backgroundColor = 'owo';
-                    if(is_null($bodyItem->texts) ||count($bodyItem->texts)>1) {
-                        $index=1;
+                    if (is_null($bodyItem->texts) || count($bodyItem->texts) > 1) {
+                        $index = 1;
                     } else {
-                        $index=0;
+                        $index = 0;
                     }
                     $elements->right = [
                         'text' => [
@@ -393,10 +405,10 @@ class SiteController extends Controller
                         ]
                     ];
                 } else if ($bodyItem->type2 === 'image') {
-                    if(is_null($bodyItem->images) || count($bodyItem->images)>1) {
-                        $index=1;
+                    if (is_null($bodyItem->images) || count($bodyItem->images) > 1) {
+                        $index = 1;
                     } else {
-                        $index=0;
+                        $index = 0;
                     }
                     $elements->right = [
                         'image' => [
@@ -406,10 +418,10 @@ class SiteController extends Controller
                         ]
                     ];
                 } else if ($bodyItem->type2 === 'video') {
-                    if(is_null($bodyItem->videos) ||count($bodyItem->videos) > 1) {
-                        $index=1;
+                    if (is_null($bodyItem->videos) || count($bodyItem->videos) > 1) {
+                        $index = 1;
                     } else {
-                        $index=0;
+                        $index = 0;
                     }
                     $elements->right = [
                         'video' => [

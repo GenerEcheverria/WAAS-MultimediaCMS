@@ -32,7 +32,7 @@ export class SuperadministradorCuentaUsuarioComponent implements OnInit {
     });
   }
 
-  constructor(private route: ActivatedRoute, private userService: UserService, private router: Router){}
+  constructor(private route: ActivatedRoute, private userService: UserService,private siteService: SiteService, private router: Router){}
 
   ngOnInit(): void {
     this.loadData();
@@ -50,6 +50,10 @@ export class SuperadministradorCuentaUsuarioComponent implements OnInit {
          this.phone = response.phone;
       } catch (error) {
       }
+      try {
+        const response = await this.siteService.getSitesForUser(this.id.toString()).toPromise();
+        console.log(response) 
+      } catch (error) {}
     } else {
       this.router.navigate(['/sasitios']);
     }
