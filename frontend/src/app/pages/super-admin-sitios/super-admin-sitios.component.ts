@@ -8,6 +8,7 @@ import 'datatables.net-bs5';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SiteService } from 'src/app/services/site.service';
 import { UserService } from 'src/app/services/user.service';
+import DataTables from 'datatables.net';
 
 @Component({
   selector: 'app-super-admin-sitios',
@@ -23,7 +24,8 @@ export class SuperAdminSitiosComponent implements OnInit {
   protected name!:string;
   protected email!:string;
   protected phone!:string;
-  dataTable!: any;
+  public dataTable: any;
+  
 
   constructor(private sasitiosService: SasitiosService, private route: ActivatedRoute, private userService: UserService,private siteService: SiteService, private router: Router) { }
 
@@ -33,13 +35,14 @@ export class SuperAdminSitiosComponent implements OnInit {
       // Obtener los ID de todos los usuarios y llamar a loadData() para cada uno
       this.saUsuarios.forEach((user) => {
         const userId = user.id;
-        this.loadData(userId);
+        const nom = user.name;
+        this.loadData(userId, nom);
       });
     });
-    this.dataTable.draw();
+
   }
 
-  async loadData(userId: string): Promise<void> {
+  async loadData(userId: string, nom: string): Promise<void> {
     if (userId) {
       try {
         const response = await this.siteService.getSitesForUser(userId).toPromise();
@@ -52,8 +55,16 @@ export class SuperAdminSitiosComponent implements OnInit {
   
         console.log(userSiteCount); // Aquí puedes ver el objeto con el ID y la cantidad de sitios
   
+        const boton = '<button type="button" class="btn btn-primary rounded-pill text-white"><a class="text-white text-decoration-none" href="http://localhost:4200/sausuarios/'+ userId +'">Ver Usuario</a></button>'
+        this.dataTable.row.add([
+          nom,
+          siteCount.toString(),
+          boton
+        ]);
+
+        this.dataTable.draw();
         // Puedes almacenar userSiteCount en un arreglo si necesitas mantener un registro de todos los usuarios con sus respectivas cantidades de sitios
-        this.userSiteCounts.push(userSiteCount);
+        //this.userSiteCounts.push(userSiteCount);
         
 
       } catch (error) {
@@ -65,7 +76,6 @@ export class SuperAdminSitiosComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-      $(document).ready(function () {
         this.dataTable = $('#example').DataTable({
   
           "language": {
@@ -76,7 +86,7 @@ export class SuperAdminSitiosComponent implements OnInit {
   
           "pagingType": "simple_numbers",
         });
-      });
+      
     }
   }
 
