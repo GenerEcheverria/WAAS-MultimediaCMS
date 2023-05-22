@@ -43,25 +43,28 @@ class UserController extends Controller
     {
         if (User::where("id", $id)->exists()) {
             $user = User::find($id);
-
-            // Actualizar los campos del usuario con los datos del request
-            $user->fill($request->only([
-                'name',
-                'email',
-                'phone',
-                'photo'
-            ]));
-
-            if ($request->has('password')) {
-                // Si se proporciona una nueva contraseña, se actualiza
-                $user->password = bcrypt($request->input('password'));
+            // $user->fill($request->only([
+            //     'user.name',
+            //     'user.email',
+            //     'user.phone'
+            // ]));
+            if ($request->has('cuenta.nombre')) {   
+            $user->name =  $request->input('cuenta.nombre');
+            $user->email =  $request->input('cuenta.email');
+            $user->phone =  $request->input('cuenta.tel');
             }
+
+            if ($request->has('cuenta.cpass')) {
+                $user->password = bcrypt($request->input('cuenta.cpass'));
+            }
+            $pass = $request->input('cuenta.cpass');
 
             $user->save();
 
             return response()->json([
                 "message" => "User updated successfully",
-                'user' => $user
+                'user' => $user,
+                'newpassword' => $pass
             ], 200);
         } else {
             return response()->json([
@@ -90,4 +93,29 @@ class UserController extends Controller
             ], 404);
         }
     }
+
+    public function getSaUsers(Request $request)
+{
+    $users = User::select('id', 'name')->get();
+
+    return response()->json($users, 200);
+}
+
+public function getSitesForUser($userId)
+{
+    $user = User::findOrFail($userId);
+    $sites = $user->sites;
+
+    return response()->json([
+        'sites' => $sites
+    ], 200);
+}
+
+public function getnumSitesForUser($userId)
+{
+    $user = User::findOrFail($userId);
+    $siteCount = $user->sites()->count();
+
+    return $siteCount;
+}
 }

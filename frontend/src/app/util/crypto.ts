@@ -7,8 +7,9 @@ export class Crypto {
     public encrypted(text: string): string {
         return (CryptoJS.AES.encrypt(text, this.key,{iv:this.iv})).toString();
     }
-
+      
     public decrypted(text: string): string {
-        return (CryptoJS.AES.decrypt(text, this.key)).toString(CryptoJS.enc.Utf8);
-    }
+        return (CryptoJS.AES.decrypt(text, this.key)).toString(CryptoJS.enc.Utf8);;
+
+    }  
 }

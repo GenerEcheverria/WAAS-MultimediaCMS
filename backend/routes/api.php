@@ -40,7 +40,7 @@ Route::group([
     'middleware' => 'api',
     'prefix' => 'account'
 ], function ($router) {
-    // Endpoint para obtener todos los usuarios
+    Route::get('sausers', 'App\Http\Controllers\UserController@getSaUsers');
     Route::get('users', 'App\Http\Controllers\UserController@index');
 
     // Endpoint para obtener un usuario específico por ID
@@ -65,11 +65,10 @@ Route::group([
 
     // Endpoint para obtener los sitios del usuario actual
     Route::get('mySites', 'App\Http\Controllers\SiteController@getSitesForCurrentUser');
-
-    // Endpoint para obtener un sitio específico por ID
+    Route::post('updateState', 'App\Http\Controllers\SiteController@updateState');
+    Route::get('userSites/{id}', 'App\Http\Controllers\SiteController@getSitesForUser');
     Route::get('site/{id}', 'App\Http\Controllers\SiteController@show');
-
-    // Endpoint para actualizar un sitio específico por ID
+    Route::get('id/{url}', 'App\Http\Controllers\SiteController@getIdSite');
     Route::put('site/{id}', 'App\Http\Controllers\SiteController@update');
 
     // Endpoint para eliminar un sitio específico por ID

@@ -104,10 +104,14 @@ class AuthController extends Controller
      */
     protected function respondWithToken($token)
     {
+        $user = auth()->user();
+        $role = $user->role; 
+
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
+            'expires_in' => auth()->factory()->getTTL() * 60,
+            'role' => $role 
         ]);
     }
 
@@ -117,6 +121,7 @@ class AuthController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
+
     public function checkToken(Request $request)
     {
         try {

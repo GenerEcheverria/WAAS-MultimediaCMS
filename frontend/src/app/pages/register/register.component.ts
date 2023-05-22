@@ -28,11 +28,22 @@ export class RegisterComponent {
       telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
       fotoPerfil: ['', [Validators.required, this.imageValidator.bind(this)]],
       password: ['', [Validators.required, Validators.minLength(8)]],
-      confirmPassword: ['', [Validators.required]]
-
-    }); 
+      confirmPassword: ['', [Validators.required]]}, { validator: this.passwordsMatchValidator }); 
   }
 
+  passwordsMatchValidator(formGroup: FormGroup) {
+    const password = formGroup.get('password')?.value;
+    const confirmPassword = formGroup.get('confirmPassword')?.value;
+    if(password != "" && confirmPassword !=""){
+      if (password && confirmPassword && password !== confirmPassword) {
+        formGroup.get('confirmPassword')?.setErrors({ passwordsNotMatch: true });
+      } else {
+        formGroup.get('confirmPassword')?.setErrors(null);
+      }
+    }
+  }
+  
+  
   emailValidator(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
       const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -85,7 +96,7 @@ export class RegisterComponent {
       'name': formUser.Nombre,
       'email' : formUser.email,
       'password' : this.crypto.encrypted(formUser.password),
-      'role' : "administrador",
+      'role' : "admin",
       'phone': formUser.telefono,
       'photo': "adadad", //aqui le deben pasar la url
     }

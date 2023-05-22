@@ -2,7 +2,6 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BodyElementComponent } from './body-element/body-element.component';
-import { CrearSitio } from 'src/app/interfaces/crear-sitio';
 import { CrearSitioService } from 'src/app/services/crear-sitio.service';
 
 @Component({
@@ -36,6 +35,7 @@ export class CrearSitioComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //endpoint que conecte a show co un parametro
     this.initSitioForm();
   }
 
@@ -45,7 +45,7 @@ export class CrearSitioComponent implements OnInit {
       name: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9]+$/), Validators.maxLength(64)]),
       backgroundColor: new FormControl('#ffffff'),
       header: new FormGroup({
-        hero: new FormControl(''),
+        hero: new FormControl(false),
         title: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9 ]+$/), Validators.maxLength(64)]),
         position: new FormControl('', Validators.required),
         size: new FormControl('', Validators.required),
@@ -76,7 +76,7 @@ export class CrearSitioComponent implements OnInit {
           address: new FormControl(''),
         }),
       })
-    })
+    });
   }
 
   getCtrl(key: string, form: FormGroup): any {
@@ -106,58 +106,21 @@ export class CrearSitioComponent implements OnInit {
 
   onSubmit() {
     const sitioForm = this.sitioForm.value;
-    const newCrearSitio: CrearSitio = {
-      'name': sitioForm.name,
-      'backgroundColor': sitioForm.backgroundColor,
-      'views': 0,
-      'url': "djdjdkdjdj",
-      'header': {
-        'title': sitioForm.header.title,
-        'color': sitioForm.header.color,
-        'position': sitioForm.header.position,
-        'size': sitioForm.header.size,
-        'hero': sitioForm.header.hero,
-        'image': "adskdkdkdk"
-      },
-      'footer': {
-        'backgroundColor': sitioForm.footer.backgroundColor,
-        'textColor': sitioForm.footer.textColor,
-        'socialMedia': {
-          'setSocialMedia': false,//sitioForm.footer.setSocialMedia,
-          'facebook': sitioForm.footer.facebook,
-          'instagram': sitioForm.footer.instagram,
-          'twitter': sitioForm.footer.twitter,
-          'linkedin': sitioForm.footer.linkedin,
-          'tiktok': sitioForm.footer.tiktok,
-          'otro': sitioForm.footer.otro,
-        },
-        'extra': {
-          'setExtra':  false,//sitioForm.footer.setExtra,
-          'image': sitioForm.footer.image,
-          'text': sitioForm.footer.text,
-        },
-        'contact': {
-          'setContact': false,// sitioForm.footer.setContact,
-          'phone': sitioForm.footer.phone,
-          'address': sitioForm.footer.address,
-        }
-      }
-    };
-    console.log(newCrearSitio);
-    this.crearSitio.crearSite(newCrearSitio).subscribe(
+    sitioForm.url = sitioForm.name;
+    sitioForm.views = 0;
+    this.crearSitio.crearSite(sitioForm).subscribe(
       (response) => {
-        this.router.navigate(['/sitios']);
+        this.router.navigate(['/misSitios']);
       },
       (error) => {
-        console.error(error);
+        console.error(JSON.stringify(JSON.parse(error), null, 2));
       }
     );
+    
   }
 
-
-
   cancelar(): void {
-    this.router.navigate(['/sitios']);
+    this.router.navigate(['/misSitios']);
   }
 
   //Mostrar form y preview dependiendo del switch
