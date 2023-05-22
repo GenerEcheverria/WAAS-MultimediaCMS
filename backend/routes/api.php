@@ -45,6 +45,7 @@ Route::group([
     Route::post('sites', 'App\Http\Controllers\SiteController@store');
     Route::get('mySites', 'App\Http\Controllers\SiteController@getSitesForCurrentUser');
     Route::get('site/{id}', 'App\Http\Controllers\SiteController@show');
+    Route::get('id/{url}', 'App\Http\Controllers\SiteController@getIdSite');
     Route::put('site/{id}', 'App\Http\Controllers\SiteController@update');
     Route::delete('site/{id}', 'App\Http\Controllers\SiteController@destroy');
 });

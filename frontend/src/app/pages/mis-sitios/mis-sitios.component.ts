@@ -5,6 +5,7 @@ import { writeFile } from 'xlsx';
 import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver';
 import { ElementRef } from '@angular/core';
+import { MisSitiosService } from 'src/app/services/mis-sitios.service';
 
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 @Component({
@@ -13,57 +14,22 @@ import { ElementRef } from '@angular/core';
   styleUrls: ['./mis-sitios.component.css']
 })
 export class MisSitiosComponent {
-  public bibliotecaSitios: {link: string, titulo: string, seccion: string, vistas: number}[] = [];
-  public filteredData = this.bibliotecaSitios
+  public bibliotecaSitios: any[] = [];
+  public filteredData: any[] = [];
   public Filtro: string = '';
 
+  constructor(private misSitiosService: MisSitiosService) {}
+
   ngOnInit(): void {
-    let a = {
-      link: '/misSitios',
-      titulo: 'Sitio A',
-      seccion: 'seccion 1',
-      vistas: 3
-    };
-    this.bibliotecaSitios.push(a);
-
-    let b = {
-      link: '/ranking',
-      titulo: 'Sitio B',
-      seccion: 'seccion 3',
-      vistas: 5
-    };
-    this.bibliotecaSitios.push(b);
-
-    let c = {
-      link: '/cuenta',
-      titulo: 'Sitio C',
-      seccion: 'seccion 2',
-      vistas: 3
-    };
-    this.bibliotecaSitios.push(c);
-
-    let d = {
-      link: '/misSitios',
-      titulo: 'Sitio D',
-      seccion: 'seccion 4',
-      vistas: 5
-    };
-    this.bibliotecaSitios.push(d);
-
-    let e = {
-      link: '/misSitios',
-      titulo: 'Sitio E',
-      seccion: 'seccion 4',
-      vistas: 5
-    };
-    this.bibliotecaSitios.push(e);
-
-    console.log('estos son los sitios actuales', this.bibliotecaSitios);
+    this.misSitiosService.getAll().subscribe(data => {
+      this.bibliotecaSitios = data.sites;
+      this.filteredData = this.bibliotecaSitios;
+    });
   }
-
+  
   filterData() {
     this.filteredData = this.bibliotecaSitios.filter((item) =>
-      item.titulo.toLowerCase().includes(this.Filtro.toLowerCase())
+      item.name.toLowerCase().includes(this.Filtro.toLowerCase())
     );
   }
 
@@ -72,10 +38,10 @@ export class MisSitiosComponent {
       {
         table: {
           headerRows: 1,
-          widths: ['*', '*', '*', '*'],
+          widths: ['*', '*', '*'],
           body: [
-            ['Link', 'Título', 'Sección', 'Vistas'],
-            ...this.bibliotecaSitios.map(item => [item.link, item.titulo, item.seccion, item.vistas])
+            ['URL', 'Nombre', 'Vistas'],
+            ...this.bibliotecaSitios.map(item => ["/site/"+item.url, item.name, item.views])
           ]
         }
       }

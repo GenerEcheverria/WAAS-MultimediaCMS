@@ -20,13 +20,13 @@ import { RoleGuard } from './guards/role.guard';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent},
+  { path: 'site/:url', component:  SitiosComponent},
   {
     path: '',
     component: MainLayoutComponent,
     canActivate: [AuthGuard],
     children: [
       {path: '', redirectTo: 'misSitios', pathMatch: 'full'},
-      { path: 'sitios', component:  SitiosComponent,canActivate: [RoleGuard], data: { roles: ['superadmin'] }},
       { path: 'crear', component: CrearSitioComponent, canActivate: [RoleGuard], data: { roles: ['admin'] }},
       { path: 'sasitios', component: SuperAdminSitiosComponent,canActivate: [RoleGuard], data: { roles: ['superadmin'] }},
       { path: 'mi-cuenta', component: MiCuentaComponent, canActivate: [RoleGuard], data: { roles: ['admin'] }},
