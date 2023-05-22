@@ -12,7 +12,7 @@ class UserController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Display a listing of the users.
      *
      * @return \Illuminate\Http\Response
      */
@@ -21,8 +21,9 @@ class UserController extends Controller
         return User::all();
     }
 
+    
     /**
-     * Display the specified resource.
+     * Display the specified user.
      *
      * @param  string  $id
      * @return \Illuminate\Http\Response
@@ -94,6 +95,12 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Get SA users.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function getSaUsers(Request $request)
 {
     $users = User::select('id', 'name')->get();
@@ -101,6 +108,12 @@ class UserController extends Controller
     return response()->json($users, 200);
 }
 
+/**
+     * Get sites for a specific user.
+     *
+     * @param  string  $userId
+     * @return \Illuminate\Http\JsonResponse
+     */
 public function getSitesForUser($userId)
 {
     $user = User::findOrFail($userId);
@@ -111,6 +124,12 @@ public function getSitesForUser($userId)
     ], 200);
 }
 
+/**
+     * Get the number of sites for a specific user.
+     *
+     * @param  string  $userId
+     * @return int
+     */
 public function getnumSitesForUser($userId)
 {
     $user = User::findOrFail($userId);

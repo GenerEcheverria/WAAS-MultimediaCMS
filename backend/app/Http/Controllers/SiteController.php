@@ -20,13 +20,13 @@ class SiteController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['show', 'getIdSite','updateState']]);
+        $this->middleware('auth:api', ['except' => ['show', 'getIdSite', 'updateState']]);
     }
 
     /**
-     * Display a listing of the resource.
+     * Get all sites.
      *
-     * @return \Illuminate\Http\Response
+     * @return Collection
      */
     public function index()
     {
@@ -34,14 +34,15 @@ class SiteController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Update the state of a site.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return JsonResponse
      */
-    public function updateState(Request $request){
+    public function updateState(Request $request)
+    {
         if (Site::where("id", $request->input('id'))->exists()) {
-            $site = Site::find($request->input('id')); 
+            $site = Site::find($request->input('id'));
             $site->state =  $request->input('state');
             $site->save();
 
@@ -55,6 +56,12 @@ class SiteController extends Controller
         }
     }
 
+    /**
+     * Store a new site with its associated data.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -263,9 +270,9 @@ class SiteController extends Controller
     }
 
     /**
-     * Get sites for the current user.
+     * Get all sites associated with the current user.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function getSitesForCurrentUser()
     {
@@ -276,6 +283,12 @@ class SiteController extends Controller
         ], 200);
     }
 
+    /**
+     * Get all sites associated with a specific user.
+     *
+     * @param int $userId
+     * @return JsonResponse
+     */
     public function getSitesForUser($userId)
     {
         $user = User::findOrFail($userId);
@@ -287,6 +300,12 @@ class SiteController extends Controller
     }
 
 
+    /**
+     * Get the ID of a site based on its URL.
+     *
+     * @param string $url
+     * @return JsonResponse
+     */
     public function getIdSite($url)
     {
         $site = Site::where('url', $url)->first();
@@ -298,6 +317,12 @@ class SiteController extends Controller
         }
     }
 
+    /**
+     * Get the details of a site.
+     *
+     * @param  string  $id
+     * @return JsonResponse
+     */
     public function show(string $id)
     {
         $site = Site::findOrFail($id);
@@ -472,11 +497,11 @@ class SiteController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update a site.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      * @param  string  $id
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function update(Request $request, string $id)
     {
@@ -507,10 +532,10 @@ class SiteController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete a site.
      *
      * @param  string  $id
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function destroy(string $id)
     {
