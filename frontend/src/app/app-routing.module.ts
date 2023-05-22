@@ -30,7 +30,7 @@ const routes: Routes = [
       { path: 'crear', component: CrearSitioComponent, canActivate: [RoleGuard], data: { roles: ['admin'] }},
       { path: 'sasitios', component: SuperAdminSitiosComponent,canActivate: [RoleGuard], data: { roles: ['superadmin'] }},
       { path: 'mi-cuenta', component: MiCuentaComponent, canActivate: [RoleGuard], data: { roles: ['admin'] }},
-      { path: 'sausuarios', component:  SuperadministradorCuentaUsuarioComponent,canActivate: [RoleGuard], data: { roles: ['superadmin'] }},
+      { path: 'sausuarios/:id', component:  SuperadministradorCuentaUsuarioComponent,canActivate: [RoleGuard], data: { roles: ['superadmin'] }},
       { path: 'misSitios', component: MisSitiosComponent, canActivate: [RoleGuard], data: { roles: ['admin'] } },
       { path: 'ranking', component: RankingComponent, canActivate: [RoleGuard], data: { roles: ['admin'] }},
       {path: '**', redirectTo: 'misSitios', pathMatch: 'full'},
