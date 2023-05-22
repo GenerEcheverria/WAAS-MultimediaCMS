@@ -76,9 +76,9 @@ class SiteController extends Controller
                         $textData = [
                             'idCol' => $body->id,
                             'titleText' => $item['full']['text']['title'],
-                            'positionTitle' => $item['full']['text']['alignment'],
+                            'positionTitle' => $item['full']['text']['position'],
                             'text' => $item['full']['text']['text'],
-                            'positionText' => $item['full']['text']['position']
+                            'positionText' => $item['full']['text']['alignment']
                         ];
                         $text = Text::create($textData);
                         $body->idType = $text->id;
@@ -116,9 +116,9 @@ class SiteController extends Controller
                         $textData = [
                             'idCol' => $body->id,
                             'titleText' => $item['left']['text']['title'],
-                            'positionTitle' => $item['left']['text']['alignment'],
+                            'positionTitle' => $item['left']['text']['position'],
                             'text' => $item['left']['text']['text'],
-                            'positionText' => $item['left']['text']['position']
+                            'positionText' => $item['left']['text']['alignment']
                         ];
                         $text = Text::create($textData);
                         $body->idType = $text->id;
@@ -155,9 +155,9 @@ class SiteController extends Controller
                         $textData = [
                             'idCol' => $body->id,
                             'titleText' => $item['right']['text']['title'],
-                            'positionTitle' => $item['right']['text']['alignment'],
+                            'positionTitle' => $item['right']['text']['position'],
                             'text' => $item['right']['text']['text'],
-                            'positionText' => $item['right']['text']['position']
+                            'positionText' => $item['right']['text']['alignment']
                         ];
                         $text = Text::create($textData);
                         $body->idType2 = $text->id;
@@ -379,27 +379,42 @@ class SiteController extends Controller
                 }
                 if ($bodyItem->type2 === 'text') {
                     $test->backgroundColor = 'owo';
+                    if(is_null($bodyItem->texts) ||count($bodyItem->texts)>1) {
+                        $index=1;
+                    } else {
+                        $index=0;
+                    }
                     $elements->right = [
                         'text' => [
-                            'alignment' => $bodyItem->texts[1]->positionTitle,
-                            'position' => $bodyItem->texts[1]->positionText,
-                            'text' => $bodyItem->texts[1]->titleText,
-                            'title' => $bodyItem->texts[1]->text
+                            'alignment' => $bodyItem->texts[$index]->positionTitle,
+                            'position' => $bodyItem->texts[$index]->positionText,
+                            'text' => $bodyItem->texts[$index]->titleText,
+                            'title' => $bodyItem->texts[$index]->text
                         ]
                     ];
                 } else if ($bodyItem->type2 === 'image') {
+                    if(is_null($bodyItem->images) || count($bodyItem->images)>1) {
+                        $index=1;
+                    } else {
+                        $index=0;
+                    }
                     $elements->right = [
                         'image' => [
-                            'caption' => $bodyItem->images[1]->text,
-                            'image' => $bodyItem->images[1]->url,
-                            'size' => $bodyItem->images[1]->size,
+                            'caption' => $bodyItem->images[$index]->text,
+                            'image' => $bodyItem->images[$index]->url,
+                            'size' => $bodyItem->images[$index]->size,
                         ]
                     ];
                 } else if ($bodyItem->type2 === 'video') {
+                    if(is_null($bodyItem->videos) ||count($bodyItem->videos) > 1) {
+                        $index=1;
+                    } else {
+                        $index=0;
+                    }
                     $elements->right = [
                         'video' => [
-                            'video' => $bodyItem->videos[1]->url,
-                            'size' => $bodyItem->videos[1]->size
+                            'video' => $bodyItem->videos[$index]->url,
+                            'size' => $bodyItem->videos[$index]->size
                         ]
                     ];
                 }
