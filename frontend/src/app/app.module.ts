@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MiCuentaComponent } from './pages/mi-cuenta/mi-cuenta.component';
-import { MainLayoutComponent } from './main-layout/main-layout.component';
+import { MainLayoutComponent } from './shared/main-layout/main-layout.component';
 import { SitiosComponent } from './pages/sitios/sitios.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
@@ -28,6 +28,10 @@ import { MisSitiosComponent } from './pages/mis-sitios/mis-sitios.component';
 import { RankingComponent } from './pages/ranking/ranking.component';
 import { BodyBuilderComponent } from './pages/crear-sitio/lienzo-pagina/body-builder/body-builder.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { SuperadministradorCuentaUsuarioComponent } from './pages/superadministrador-cuenta-usuario/superadministrador-cuenta-usuario.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -56,16 +60,19 @@ import { RegisterComponent } from './pages/register/register.component';
     FooterLienzoComponent,
     SuperAdminSitiosComponent,
     BodyBuilderComponent,
-    RegisterComponent
+    RegisterComponent,
+    SuperadministradorCuentaUsuarioComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    CommonModule
   ],
 
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 
