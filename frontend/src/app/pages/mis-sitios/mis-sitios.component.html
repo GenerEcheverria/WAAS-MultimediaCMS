@@ -21,12 +21,13 @@
         <div class="col-11 border border-azure-web rounded-pill justify-content-center" id="containerData">
             <div class="row m-0 p-0">
                 <div class="col-3 d-flex align-items-center"><b>{{sitio.name}}</b></div>
-                <div class="col-3 d-flex align-items-center">{{sitio.views}} vistas</div>
+                <div class="col-1 d-flex align-items-center">{{sitio.views}} vistas</div>
+                <div class="col-2 d-flex align-items-center">{{sitio.state}}</div>
                 <div class="col-2">
-                    <a class="btn btn-primary rounded-pill  text-white" style="width:90%"  href="/site/{{sitio.url}} " target="_blank">Visualizar</a>
+                    <a class="btn btn-primary rounded-pill  text-white" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="updateSelected(sitio.id, sitio.state)" style="width:90%">Modificar estado</a>
                 </div>
                 <div class="col-2">
-                    <a class="btn btn-primary rounded-pill  text-white" style="width:90%" href="/crear">Editar</a>
+                    <a class="btn btn-primary rounded-pill  text-white" style="width:90%"  href="/site/{{sitio.url}} " target="_blank">Visualizar</a>
                 </div>
                 <div class="col-2" id="position"><button class="btn btn-primary rounded-pill  text-white" style="width:90%" (click)="generarQRyDescargar('http://localhost:4200/'+sitio.url)">Obtener QR</button></div>
             </div>
@@ -40,3 +41,32 @@
     <div class="col-3" id="position"><button class="btn btn-primary rounded-pill  text-white" (click)="generarExcel()">Descargar Excell</button></div>
     <div class="col-2" id="position"></div>
 </div>
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button> -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Modifica estado</h5>
+          </div>
+          <div class="modal-body">
+            <p>Estado actual:</p>
+            <select class="form-select" aria-label="Default select example" [(ngModel)]="newState">
+                <option selected>Escoge el nuevo estado</option>
+                <option value="publicada">publicada</option>
+                <option value="capturada">capturada</option>
+                <option value="pausada">pausada</option>
+              </select>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" (click)="updateDBState()">Save changes</button>
+          </div>
+      </div>
+    </div>
+  </div>
+

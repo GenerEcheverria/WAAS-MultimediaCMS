@@ -21,7 +21,7 @@ class SiteController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['show', 'getIdSite']]);
+        $this->middleware('auth:api', ['except' => ['show', 'getIdSite','updateState']]);
     }
 
     public function index()
@@ -29,6 +29,21 @@ class SiteController extends Controller
         return Site::all();
     }
 
+    public function updateState(Request $request){
+        if (Site::where("id", $request->input('id'))->exists()) {
+            $site = Site::find($request->input('id')); 
+            $site->state =  $request->input('state');
+            $site->save();
+
+            return response()->json([
+                "message" => "state update",
+            ], 200);
+        } else {
+            return response()->json([
+                "error" => "state not update",
+            ], 404);
+        }
+    }
 
     public function store(Request $request)
     {
@@ -50,6 +65,7 @@ class SiteController extends Controller
             'backgroundColor' => $request->input('newCrearSitio.backgroundColor'),
             'views' => $request->input('newCrearSitio.views'),
             'url' => $request->input('newCrearSitio.url'),
+            'state' => 'publicada'
         ];
 
         try {
