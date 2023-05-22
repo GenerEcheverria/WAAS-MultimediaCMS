@@ -19,6 +19,7 @@ export class SuperadministradorCuentaUsuarioComponent implements OnInit {
   protected email!: string;
   protected phone!: string;
   protected sites: any;
+  protected isDeleteUser!: boolean;
 
   ngAfterViewInit() {
     $(document).ready(function () {
@@ -37,13 +38,14 @@ export class SuperadministradorCuentaUsuarioComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private userService: UserService, 
-    private siteService: SiteService, 
-    private router: Router, 
+    private userService: UserService,
+    private siteService: SiteService,
+    private router: Router,
     private datePipe: DatePipe
   ) { }
 
   ngOnInit(): void {
+    this.isDeleteUser = false;
     this.loadData();
 
   }
@@ -53,15 +55,14 @@ export class SuperadministradorCuentaUsuarioComponent implements OnInit {
     if (this.id) {
       try {
         const response = await this.userService.getUser(this.id.toString()).toPromise();
-        console.log(response)
         this.email = response.email;
         this.name = response.name;
         this.phone = response.phone;
       } catch (error) {
+        this.router.navigate(['/sasitios']);
       }
       try {
         const response = await this.siteService.getSitesForUser(this.id.toString()).toPromise();
-        console.log(response)
         this.sites = response.sites;
       } catch (error) { }
     } else {
@@ -69,9 +70,22 @@ export class SuperadministradorCuentaUsuarioComponent implements OnInit {
     }
   }
 
+  deleteUser() {
+    if (this.id) {
+      this.userService.deleteUser(this.id).subscribe(
+        (response) => {
+          this.router.navigate(['/sasitios']);
+        },
+        (error) => {
+          alert("No pudo borrarse el usuario")
+        }
+      )
+    }
+  }
+
   formatDate(date: string): string {
-    const formattedDate = this.datePipe.transform(date, 'dd/MM/yyyy HH:mm:ss'); 
+    const formattedDate = this.datePipe.transform(date, 'dd/MM/yyyy HH:mm:ss');
     return formattedDate || '';
   }
-  
+
 }
