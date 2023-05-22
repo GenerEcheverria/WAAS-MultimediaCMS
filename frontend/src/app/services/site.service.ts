@@ -26,5 +26,7 @@ export class SiteService {
 
   updateState(id:number, state: string){
     return this.http.post<any>(this.url + '/media/updateState', {id, state});
+  getSitesForUser(id: string){
+    return this.http.get<any>(this.url + '/media/userSites/'+id, this.httpOptions);
   }
 }
