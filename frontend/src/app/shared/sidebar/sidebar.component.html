@@ -37,23 +37,16 @@
           class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
           id="menu"
         >
-          <li >
-            <app-menu-option
-              [titulo]="'Sitios'"
-              [link]="'sasitios'"
-              [icon]="'bi-house'"
-            ></app-menu-option>
-          </li>
           <li>
             <app-menu-option
               [titulo]="'Usuarios'"
-              [link]="'sausuarios'"
+              [link]="'sasitios'"
               [icon]="'bi-person-circle'"
             ></app-menu-option>
           </li>
         </ul>
         <div class="d-flex justify-content-center mb-4 ms-3">
-            <button routerLink="/login" class="btn btn-primary rounded-pill  text-white">Cerrar sesión</button>
+            <button (click)="logout()" class="btn btn-primary rounded-pill  text-white">Cerrar sesión</button>
         </div>  
       </div>
     </div>

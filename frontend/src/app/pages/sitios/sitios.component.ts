@@ -39,6 +39,5 @@ export class SitiosComponent {
     } else {
       this.router.navigate(['/login']);
     }
-    console.log(this.webContent);
   }
 }
