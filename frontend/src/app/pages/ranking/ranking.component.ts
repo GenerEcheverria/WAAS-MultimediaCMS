@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { MisSitiosService } from 'src/app/services/mis-sitios.service';
 
+/**
+ * Componente para mostrar el ranking de sitios.
+ */
 @Component({
   selector: 'app-ranking',
   templateUrl: './ranking.component.html',
@@ -11,6 +14,9 @@ export class RankingComponent {
 
   constructor(private misSitiosService: MisSitiosService) {}
 
+   /**
+   * Se ejecuta al inicializar el componente.
+   */
   ngOnInit(): void {
     this.misSitiosService.getAll().subscribe(data => {
       this.bibliotecaSitios = data.sites;

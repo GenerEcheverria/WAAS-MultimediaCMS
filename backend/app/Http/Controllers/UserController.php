@@ -1,10 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-
 
 class UserController extends Controller
 {
@@ -13,13 +11,22 @@ class UserController extends Controller
         $this->middleware('auth:api');
     }
 
+    /**
+     * Display a listing of the users.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         return User::all();
     }
 
+    
     /**
-     * Display the specified resource.
+     * Display the specified user.
+     *
+     * @param  string  $id
+     * @return \Illuminate\Http\Response
      */
     public function show(string $id)
     {
@@ -28,6 +35,10 @@ class UserController extends Controller
 
     /**
      * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $id
+     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, string $id)
     {
@@ -65,6 +76,9 @@ class UserController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     *
+     * @param  string  $id
+     * @return \Illuminate\Http\Response
      */
     public function destroy(string $id)
     {
@@ -81,6 +95,12 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Get SA users.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function getSaUsers(Request $request)
     {
         $users = User::select('id', 'name')
@@ -88,6 +108,14 @@ class UserController extends Controller
             ->get();
         return response()->json($users, 200);
     }
+
+
+    /**
+     * Get sites for a specific user.
+     *
+     * @param  string  $userId
+     * @return \Illuminate\Http\JsonResponse
+     */
 
 
     public function getSitesForUser($userId)
@@ -100,6 +128,12 @@ class UserController extends Controller
         ], 200);
     }
 
+    /**
+     * Get the number of sites for a specific user.
+     *
+     * @param  string  $userId
+     * @return int
+     */
     public function getnumSitesForUser($userId)
     {
         $user = User::findOrFail($userId);

@@ -1,20 +1,83 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+/**
+ * Componente encargado de devolver el tipo de medio correspondiente.
+ * 
+ * @component
+ * @selector app-body-builder
+ * @templateUrl ./body-builder.component.html
+ * @styleUrls ['./body-builder.component.css']
+ */
 @Component({
   selector: 'app-body-builder',
   templateUrl: './body-builder.component.html',
   styleUrls: ['./body-builder.component.css']
 })
 
-//Componente encargado de devolver el tipo de medio correspondiente
 export class BodyBuilderComponent implements OnInit {
+
+  /**
+   * Contenido del cuerpo de la página web.
+   * 
+   * @property {any} webContent
+   * @input
+   */
   @Input() webContent: any;
+
+   /**
+   * Objeto que representa el contenido de una columna completa.
+   * 
+   * @property {any} full
+   * @protected
+   */
   protected full: any;
+
+    /**
+   * Tipo de medio contenido en la columna completa.
+   * 
+   * @property {string} fullType
+   * @protected
+   */
   protected fullType!: string;
+
+    /**
+   * Objeto que representa el contenido del lado izquierdo de una columna dividida.
+   * 
+   * @property {any} left
+   * @protected
+   */
   protected left: any;
+
+   /**
+   * Tipo de medio contenido en el lado izquierdo de una columna dividida.
+   * 
+   * @property {string} leftType
+   * @protected
+   */
   protected leftType!: string;
+
+   /**
+   * Objeto que representa el contenido del lado derecho de una columna dividida.
+   * 
+   * @property {any} right
+   * @protected
+   */
   protected right: any;
+
+  /**
+   * Tipo de medio contenido en el lado derecho de una columna dividida.
+   * 
+   * @property {string} rightType
+   * @protected
+   */
   protected rightType!: string;
+
+  /**
+   * Indica si se utilizan columnas para mostrar el contenido.
+   * 
+   * @property {any} columns
+   * @protected
+   */
   protected columns: any
 
   ngOnInit(): void {

@@ -8,6 +8,9 @@ import { UserService } from 'src/app/services/user.service';
 import { DatePipe } from '@angular/common';
 
 
+/**
+ * Componente para la administración de cuentas de usuario por parte de un superadministrador.
+ */
 @Component({
   selector: 'app-superadministrador-cuenta-usuario',
   templateUrl: './superadministrador-cuenta-usuario.component.html',
@@ -21,6 +24,9 @@ export class SuperadministradorCuentaUsuarioComponent implements OnInit {
   protected sites: any;
   protected isDeleteUser!: boolean;
 
+   /**
+   * Método que se ejecuta después de que los componentes de la vista se inicializan completamente.
+   */
   ngAfterViewInit() {
     $(document).ready(function () {
       $('#example').DataTable({
@@ -44,12 +50,18 @@ export class SuperadministradorCuentaUsuarioComponent implements OnInit {
     private datePipe: DatePipe
   ) { }
 
+   /**
+   * Método que se ejecuta al inicializar el componente.
+   */
   ngOnInit(): void {
     this.isDeleteUser = false;
     this.loadData();
 
   }
 
+    /**
+   * Carga los datos del usuario y los sitios asociados.
+   */
   async loadData(): Promise<void> {
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id) {
@@ -70,6 +82,9 @@ export class SuperadministradorCuentaUsuarioComponent implements OnInit {
     }
   }
 
+  /**
+   * Elimina el usuario actual.
+   */
   deleteUser() {
     if (this.id) {
       this.userService.deleteUser(this.id).subscribe(
@@ -83,6 +98,11 @@ export class SuperadministradorCuentaUsuarioComponent implements OnInit {
     }
   }
 
+  /**
+   * Formatea una fecha en el formato 'dd/MM/yyyy HH:mm:ss'.
+   * @param date La fecha a formatear.
+   * @returns La fecha formateada en formato de cadena de texto.
+   */
   formatDate(date: string): string {
     const formattedDate = this.datePipe.transform(date, 'dd/MM/yyyy HH:mm:ss');
     return formattedDate || '';

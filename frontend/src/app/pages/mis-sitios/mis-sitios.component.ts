@@ -9,6 +9,10 @@ import { MisSitiosService } from 'src/app/services/mis-sitios.service';
 import { SiteService } from 'src/app/services/site.service';
 
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
+
+/**
+ * Componente para gestionar los sitios del usuario.
+ */
 @Component({
   selector: 'app-mis-sitios',
   templateUrl: './mis-sitios.component.html',
@@ -24,10 +28,16 @@ export class MisSitiosComponent {
 
   constructor(private misSitiosService: MisSitiosService, private site: SiteService) {}
 
+  /**
+   * Se ejecuta al inicializar el componente.
+   */
   ngOnInit(): void {
     this.updateData()
   }
 
+  /**
+   * Actualiza los datos de la biblioteca de sitios.
+   */
   updateData(){
     this.misSitiosService.getAll().subscribe(data => {
       this.bibliotecaSitios = data.sites;
@@ -35,17 +45,27 @@ export class MisSitiosComponent {
     });
   }
 
+   /**
+   * Actualiza el estado de un sitio en la base de datos.
+   */
   updateSelected(id:number,state:string){
     this.actualModify=id
     this.newState=state
   }
 
+  
+  /**
+   * Filtra los datos de la biblioteca de sitios según el valor del filtro.
+   */
   filterData() {
     this.filteredData = this.bibliotecaSitios.filter((item) =>
       item.name.toLowerCase().includes(this.Filtro.toLowerCase())
     );
   }
 
+  /**
+   * Actualiza el estado de un sitio en la base de datos.
+   */
   updateDBState(){
     console.log(this.actualModify, this.newState)
     const site = {
@@ -61,6 +81,10 @@ export class MisSitiosComponent {
       }
     );
   }
+
+  /**
+   * Genera y descarga un archivo PDF con los datos de la biblioteca de sitios.
+   */
   generarPDF() {
     const documentDefinition = {   content: [
       {
@@ -90,6 +114,9 @@ export class MisSitiosComponent {
     pdfMake.createPdf(documentDefinition).download('ReporteMisSitios.pdf');
   }
 
+  /**
+   * Genera y descarga un archivo Excel con los datos de la biblioteca de sitios.
+   */
 
   generarExcel() {
     const worksheet = XLSX.utils.json_to_sheet(this.bibliotecaSitios);
@@ -100,6 +127,10 @@ export class MisSitiosComponent {
     saveAs(data, 'ReporteMisSitios.xlsx');
   }
 
+  /**
+   * Genera y descarga un código QR a partir de la URL proporcionada.
+   * @param url La URL para generar el código QR.
+   */
   async generarQRyDescargar(url: string): Promise<void> {
     try {
       const apiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(url)}`;

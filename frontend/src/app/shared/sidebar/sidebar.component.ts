@@ -2,6 +2,9 @@ import { Component,Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
+/**
+ * Componente de la barra lateral de la aplicación.
+ */
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -12,6 +15,10 @@ export class SidebarComponent {
 
   constructor(private authService: AuthService, private router: Router) { }
 
+  
+  /**
+   * Cierra la sesión del usuario y redirige al inicio de sesión.
+   */
   logout(){
     this.authService.logout().subscribe(
       (response) => {
