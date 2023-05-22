@@ -8,7 +8,7 @@
             <h5 class=" m-0 h-100" style="font-family: 'Inter';">Nombre</h5>
         </div>
         <div class="col-10 p-0 m-0">
-            <input type="text" value="Gener Alejando Echeverria Chi"  class=" rounded-pill bg-azure-web border border-none w-100 h-100 ps-3" readonly>
+            <input type="text" value="{{name}}"  class=" rounded-pill bg-azure-web border border-none w-100 h-100 ps-3" readonly>
         </div>
     </div>
     <!--Correo electrónico-->
@@ -17,7 +17,7 @@
             <h5 class=" m-0 h-100" style="font-family: 'Inter';">Correo</h5>
         </div>
         <div class="col-10 p-0 m-0">
-            <input type="text" value="gerber@gmail.com"  class=" rounded-pill bg-azure-web border border-none w-100 h-100 ps-3" readonly>
+            <input type="text" value="{{email}}"  class=" rounded-pill bg-azure-web border border-none w-100 h-100 ps-3" readonly>
         </div>
     </div>
     <!--Teléfono-->
@@ -26,18 +26,10 @@
             <h5 class=" m-0 h-100" style="font-family: 'Inter';">Teléfono</h5>
         </div>
         <div class="col-10 p-0 m-0">
-            <input type="text" value="9992195646"  class=" rounded-pill bg-azure-web border border-none w-100 h-100 ps-3" readonly>
+            <input type="text" value="{{phone}}"  class=" rounded-pill bg-azure-web border border-none w-100 h-100 ps-3" readonly>
         </div>
     </div>
-    <!--Foto de perfil-->
-    <div class="row mb-4 mx-0 mt-0 p-0">
-        <div class="col-2 p-0 m-0 d-flex align-self-center">
-            <h5 class=" m-0 h-100" style="font-family: 'Inter';">Foto de perfil</h5>
-        </div>
-        <div class="col-10 p-0 m-0" id="image-container">
-            <img class="img-fluid" src="../../../assets/images/gerber.jpg">
-        </div>
-    </div>
+    
 </div>
 
 <!--Lista de sitios-->
@@ -155,23 +147,6 @@
                 </tr>
             </tbody>
         </table>
-    </div>
-</div>
-
-<!--Estado-->
-<div class="container p-0 m-0 mt-5">
-    <h3>Estado de la cuenta</h3>
-    <div class="row m-0 p-0 mt-4">
-        <div class="col-3 m-0 p-0">
-            <label class="mb-3" for="estado">Seleccione un estado:</label>
-            <select class="form-select rounded-pill" id="estado">
-                <option value="activada">Activada</option>
-                <option value="desactivada">Desactivada</option>
-            </select>
-        </div>
-        <div class="col-9 m-0 p-0 d-flex justify-content-end align-items-end">
-            <button type="button" class="btn btn-primary rounded-pill w-25 text-white">Guardar</button>
-        </div>  
     </div>
 </div>
 

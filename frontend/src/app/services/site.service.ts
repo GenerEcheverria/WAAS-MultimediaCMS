@@ -23,4 +23,8 @@ export class SiteService {
   getSiteIdbyUrl(url: string) {
     return this.http.get<any>(this.url + '/media/id/'+url, {});
   }
+
+  getSitesForUser(id: string){
+    return this.http.get<any>(this.url + '/media/userSites/'+id, this.httpOptions);
+  }
 }
