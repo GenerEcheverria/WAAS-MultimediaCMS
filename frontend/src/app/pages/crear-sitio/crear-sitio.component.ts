@@ -2,6 +2,8 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BodyElementComponent } from './body-element/body-element.component';
+import { CrearSitioService } from 'src/app/services/crear-sitio.service';
+
 
 /**
  * Componente para la ventana de creación de sitios.
@@ -104,7 +106,6 @@ export class CrearSitioComponent implements OnInit {
    * @param {Router} router - El enrutador de Angular.
    * @param {ChangeDetectorRef} cdr - El detector de cambios de Angular.
    */
-  constructor(private router: Router, private cdr: ChangeDetectorRef) {
   constructor(private router: Router, private cdr: ChangeDetectorRef, private crearSitio: CrearSitioService) {
     this.isHero = false;
     this.setSocialMedia = false;
@@ -188,7 +189,8 @@ export class CrearSitioComponent implements OnInit {
    * 
    * @method addFullColumn
    * @param {string} type - Tipo de columna.
-   */addFullColumn(type: string): void {
+   */
+  addFullColumn(type: string): void {
     this.getCtrl('body', this.sitioForm).push(BodyElementComponent.addFullColumn(type))
     this.cdr.detectChanges();
   }
