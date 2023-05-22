@@ -13,7 +13,7 @@
   </div>
   <div class="row justify-content-center mb-5">
     <div class="col-12 " style="width: 100%;">
-      <form [formGroup]="form1" (submit)="send()">
+      <form [formGroup]="form1" (ngSubmit)="onSubmitDatos()">
         <h4 class="mb-3">Mi Información</h4>
 
         <div class="row mb-3">
@@ -26,7 +26,7 @@
 
               <div *ngIf="form1.get('nombre')?.invalid && (form1.get('nombre')?.dirty || form1.get('nombre')?.touched)">
                 <div class="control-error" *ngIf="form1.get('nombre')?.errors?.['required']">El campo Nombre es requerido.</div>
-                <div class="control-error" *ngIf="form1.get('nombre')?.errors?.['minlength']">El campo Nombre debe tener al menos 10 caracteres.</div>
+                <div class="control-error" *ngIf="form1.get('nombre')?.errors?.['minlength']">El campo Nombre debe tener al menos 3 caracteres.</div>
                 <div class="control-error" *ngIf="form1.get('nombre')?.errors?.['maxlength']">El campo Nombre debe tener menos de 32 caracteres.</div>
               </div>
 
@@ -95,7 +95,7 @@
   </div>
   <div class="row justify-content-center mb-5">
     <div class="col-12 col-md-6" style="width: 100%;">
-      <form [formGroup]="form2">
+      <form [formGroup]="form2" (ngSubmit)="onSubmitContrasenas()">
         <h4 class="mb-3">Cambio de Contraseña</h4>
         <div class="row mb-3">
           <div class="col-2">
