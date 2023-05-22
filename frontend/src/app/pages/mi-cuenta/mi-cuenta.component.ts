@@ -6,6 +6,9 @@ import { MiCuentaService } from 'src/app/services/mi-cuenta.service';
 import { Router } from '@angular/router';
 import { Cuenta } from 'src/app/interfaces/cuenta';
 
+/**
+ * Componente encargado de administrar la cuenta del usuario.
+ */
 @Component({
   selector: 'app-mi-cuenta',
   templateUrl: './mi-cuenta.component.html',
@@ -13,6 +16,10 @@ import { Cuenta } from 'src/app/interfaces/cuenta';
 })
 export class MiCuentaComponent implements OnInit {
   public form1!: FormGroup;
+
+  /**
+   * Formulario para el cambio de contraseña del usuario.
+   */
   public form2!: FormGroup;
   public datosCuenta: any[] = [];
   public userData: any;
@@ -21,8 +28,19 @@ export class MiCuentaComponent implements OnInit {
   public emailUser: string = "";
   public phoneUser: string = "";
   
+    /**
+   * Constructor del componente MiCuentaComponent.
+   * @param formBuilder Instancia del FormBuilder utilizado para crear los formularios.
+   * @param authService Servicio de autenticación.
+   * @param router Enrutador de la aplicación.
+   * @param cuenta Servicio para administrar la cuenta.
+   */
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, private cuenta: MiCuentaService){}
 
+  /**
+   * Método de ciclo de vida de Angular que se ejecuta al iniciar el componente.
+   * Se encarga de inicializar los formularios y definir las validaciones.
+   */
   ngOnInit(): void {
     this.form1 = this.formBuilder.group({
       nombre: ['', [Validators.required, Validators.maxLength(32), Validators.minLength(3)]],
@@ -47,6 +65,10 @@ export class MiCuentaComponent implements OnInit {
     
   }
 
+  /**
+   * Método que se ejecuta al enviar el formulario de datos de cuenta.
+   * Guarda los cambios realizados en la cuenta del usuario.
+   */
   onSubmitDatos() {
     const sitioForm = this.form1.value;
     sitioForm.url = sitioForm.name;
@@ -62,6 +84,10 @@ export class MiCuentaComponent implements OnInit {
     );
   }
 
+  /**
+   * Método que se ejecuta al enviar el formulario de cambio de contraseñas.
+   * Guarda la nueva contraseña del usuario.
+   */
   onSubmitContrasenas(){
     const sitioForm = this.form2.value;
     sitioForm.url = sitioForm.name;

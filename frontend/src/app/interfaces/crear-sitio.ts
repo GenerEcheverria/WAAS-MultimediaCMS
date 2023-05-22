@@ -1,18 +1,33 @@
+/**
+ * Posiciones del encabezado.
+ */
 enum HeaderPosition {
     center = "center",
     left = "left",
     right = "right"
 }
+
+/**
+ * Tamaños del encabezado.
+ */
 enum HeaderSize {
     big = "big",
     small = "small",
     medium = "medium"
 }
+
+/**
+ * Tamaños del cuerpo.
+ */
 enum BodySize{
     big = "big",
     small = "small",
     medium = "medium"
 }
+
+/**
+ * Interfaz que describe la estructura para crear un sitio.
+ */
 export interface CrearSitio {
     name: string,
     backgroundColor: string,

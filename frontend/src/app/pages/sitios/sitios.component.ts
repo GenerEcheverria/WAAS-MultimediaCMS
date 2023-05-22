@@ -2,6 +2,9 @@ import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SiteService } from 'src/app/services/site.service';
 
+/**
+ * Componente para la visualización de sitios.
+ */
 @Component({
   selector: 'app-sitios',
   templateUrl: './sitios.component.html',
@@ -21,10 +24,18 @@ export class SitiosComponent {
 
   constructor(private route: ActivatedRoute, private siteService: SiteService, private router: Router) { }
 
+  
+  /**
+   * Método que se ejecuta al inicializar el componente.
+   */
   ngOnInit(): void {
     this.loadData();
   }
 
+  
+  /**
+   * Carga los datos del sitio a partir de la URL proporcionada.
+   */
   private async loadData(): Promise<void> {
     this.url = this.route.snapshot.paramMap.get('url');
     let id: string = "";

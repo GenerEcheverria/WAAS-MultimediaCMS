@@ -7,20 +7,47 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { saveAs } from 'file-saver';
 
-
+/**
+ * Componente para el registro de usuarios.
+ */
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+
+  /**
+   * Formulario de registro.
+   */
   public formLogin!: FormGroup;
+
+   /**
+   * Contraseña ingresada por el usuario.
+   */
   public pass: string = ''
+
+  /**
+   * Confirmación de contraseña ingresada por el usuario.
+   */
   public pass2: string = ''
+
+  /**
+   * Fuente de imagen para mostrar la vista previa.
+   */
   public imageSrc: string = '';
+
+  /**
+   * Instancia de la clase Crypto para encriptar contraseñas.
+   */
   private crypto = new Crypto;
+
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {}
 
+  /**
+   * Se ejecuta al inicializar el componente.
+   * Se configura el formulario de registro con las validaciones correspondientes.
+   */
   ngOnInit(): void {
     this.formLogin = this.formBuilder.group({
       Nombre: ['', [Validators.required, Validators.minLength(3)]],
@@ -66,6 +93,12 @@ export class RegisterComponent {
     }
   }
 
+  /**
+   * Validador personalizado para la dimensión de la imagen.
+   * Verifica que la imagen tenga dimensiones cuadradas.
+   * @param control Control del formulario.
+   * @returns Error de validación si la imagen no tiene dimensiones cuadradas.
+   */
   imageValidator(control: AbstractControl): ValidationErrors | null {
     const file = control.value;
     if (!file) {
@@ -89,6 +122,10 @@ export class RegisterComponent {
     return null;
   }
 
+   /**
+   * Método para enviar el formulario de registro.
+   * Se obtienen los valores ingresados por el usuario y se realiza el registro llamando al servicio de autenticación.
+   */
   onSubmit() {
     const formUser = this.formLogin.value;
     console.log(formUser);

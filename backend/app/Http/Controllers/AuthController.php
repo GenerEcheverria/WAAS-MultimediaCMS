@@ -12,11 +12,22 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
+     /**
+     * Create a new AuthController instance.
+     *
+     * @return void
+     */
     public function __construct()
     {
         $this->middleware('auth:api', ['except' => ['login', 'register', 'checkToken']]);
     }
 
+    /**
+     * Attempt to log in the user and generate a JWT token.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function login()
     {
         $credentials = request(['email', 'password']);
@@ -27,6 +38,12 @@ class AuthController extends Controller
     }
 
 
+    /**
+     * Register a new user.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -52,6 +69,11 @@ class AuthController extends Controller
         ], 201);
     }
 
+    /**
+     * Get the authenticated user.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function me()
     {
         return response()->json(auth()->user());
@@ -99,7 +121,12 @@ class AuthController extends Controller
         ]);
     }
 
-
+    /**
+     * Check the validity of a token.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function checkToken(Request $request)
     {
         try {
