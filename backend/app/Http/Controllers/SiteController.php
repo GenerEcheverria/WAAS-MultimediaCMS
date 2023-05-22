@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -21,17 +20,29 @@ class SiteController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['show', 'getIdSite','updateState']]);
+        $this->middleware('auth:api', ['except' => ['show', 'getIdSite', 'updateState']]);
     }
 
+    /**
+     * Get all sites.
+     *
+     * @return Collection
+     */
     public function index()
     {
         return Site::all();
     }
 
-    public function updateState(Request $request){
+    /**
+     * Update the state of a site.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function updateState(Request $request)
+    {
         if (Site::where("id", $request->input('id'))->exists()) {
-            $site = Site::find($request->input('id')); 
+            $site = Site::find($request->input('id'));
             $site->state =  $request->input('state');
             $site->save();
 
@@ -45,6 +56,12 @@ class SiteController extends Controller
         }
     }
 
+    /**
+     * Store a new site with its associated data.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -71,6 +88,8 @@ class SiteController extends Controller
         try {
             DB::beginTransaction();
             $site = Site::create($siteData);
+
+            // Crear un nuevo header para el sitio
             $headerData = [
                 'idSite' => $site->id,
                 'title' => $request->input('newCrearSitio.header.title'),
@@ -212,6 +231,7 @@ class SiteController extends Controller
 
             $header = Header::create($headerData);
 
+            // Crear un nuevo footer para el sitio
             $footerData = [
                 'idSite' => $site->id,
                 'backgroundColor' => $request->input('newCrearSitio.footer.backgroundColor'),
@@ -230,7 +250,6 @@ class SiteController extends Controller
                 'text' => $request->input('newCrearSitio.footer.extra.text'),
                 'image' => $request->input('newCrearSitio.footer.extra.image'),
             ];
-
             $footer = Footer::create($footerData);
 
             DB::commit();
@@ -250,6 +269,11 @@ class SiteController extends Controller
         }
     }
 
+    /**
+     * Get all sites associated with the current user.
+     *
+     * @return JsonResponse
+     */
     public function getSitesForCurrentUser()
     {
         $user = JWTAuth::parseToken()->authenticate();
@@ -259,6 +283,12 @@ class SiteController extends Controller
         ], 200);
     }
 
+    /**
+     * Get all sites associated with a specific user.
+     *
+     * @param int $userId
+     * @return JsonResponse
+     */
     public function getSitesForUser($userId)
     {
         $user = User::findOrFail($userId);
@@ -270,6 +300,12 @@ class SiteController extends Controller
     }
 
 
+    /**
+     * Get the ID of a site based on its URL.
+     *
+     * @param string $url
+     * @return JsonResponse
+     */
     public function getIdSite($url)
     {
         $site = Site::where('url', $url)->first();
@@ -281,6 +317,12 @@ class SiteController extends Controller
         }
     }
 
+    /**
+     * Get the details of a site.
+     *
+     * @param  string  $id
+     * @return JsonResponse
+     */
     public function show(string $id)
     {
         $site = Site::findOrFail($id);
@@ -454,6 +496,13 @@ class SiteController extends Controller
         ], 200);
     }
 
+    /**
+     * Update a site.
+     *
+     * @param  Request  $request
+     * @param  string  $id
+     * @return JsonResponse
+     */
     public function update(Request $request, string $id)
     {
         $validator = Validator::make($request->all(), [
@@ -482,6 +531,12 @@ class SiteController extends Controller
         ], 200);
     }
 
+    /**
+     * Delete a site.
+     *
+     * @param  string  $id
+     * @return JsonResponse
+     */
     public function destroy(string $id)
     {
         $site = Site::findOrFail($id);
