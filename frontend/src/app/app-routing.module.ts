@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MainLayoutComponent } from './main-layout/main-layout.component';
+import { MainLayoutComponent } from './shared/main-layout/main-layout.component';
 import { LoginComponent } from './pages/login/login.component';
 import { TimelineComponent } from './pages/crear-sitio/media-types/timeline/timeline.component';
 import { FormsModule } from '@angular/forms';
@@ -13,25 +13,27 @@ import { SuperadministradorCuentaUsuarioComponent } from './pages/superadministr
 
 import { MisSitiosComponent } from './pages/mis-sitios/mis-sitios.component';
 import { RankingComponent } from './pages/ranking/ranking.component';
+import { AuthGuard } from './guards/auth.guard';
+import { RoleGuard } from './guards/role.guard';
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent},
+  { path: 'site/:url', component:  SitiosComponent},
   {
     path: '',
     component: MainLayoutComponent,
+    canActivate: [AuthGuard],
     children: [
-      { path: 'sitios', component:  SitiosComponent},
-      { path: 'crear', component: CrearSitioComponent},
-      { path: 'sasitios', component: SuperAdminSitiosComponent},
-      { path: 'mi-cuenta', component: MiCuentaComponent},
-      { path: 'sausuarios', component:  SuperadministradorCuentaUsuarioComponent},
-      { path: 'misSitios', component: MisSitiosComponent},
-      { path: 'ranking', component: RankingComponent},
-      { path: 'sausuarios', component:  SuperadministradorCuentaUsuarioComponent},
-      { path: 'ranking', component: RankingComponent}
-
+      {path: '', redirectTo: 'misSitios', pathMatch: 'full'},
+      { path: 'crear', component: CrearSitioComponent, canActivate: [RoleGuard], data: { roles: ['admin'] }},
+      { path: 'sasitios', component: SuperAdminSitiosComponent,canActivate: [RoleGuard], data: { roles: ['superadmin'] }},
+      { path: 'mi-cuenta', component: MiCuentaComponent, canActivate: [RoleGuard], data: { roles: ['admin'] }},
+      { path: 'sausuarios/:id', component:  SuperadministradorCuentaUsuarioComponent,canActivate: [RoleGuard], data: { roles: ['superadmin'] }},
+      { path: 'misSitios', component: MisSitiosComponent, canActivate: [RoleGuard], data: { roles: ['admin'] } },
+      { path: 'ranking', component: RankingComponent, canActivate: [RoleGuard], data: { roles: ['admin'] }},
+      {path: '**', redirectTo: 'misSitios', pathMatch: 'full'},
     ]
   }
 ];

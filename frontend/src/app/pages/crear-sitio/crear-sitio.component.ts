@@ -3,7 +3,6 @@ import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BodyElementComponent } from './body-element/body-element.component';
 
-
 /**
  * Componente para la ventana de creación de sitios.
  * 
@@ -106,6 +105,7 @@ export class CrearSitioComponent implements OnInit {
    * @param {ChangeDetectorRef} cdr - El detector de cambios de Angular.
    */
   constructor(private router: Router, private cdr: ChangeDetectorRef) {
+  constructor(private router: Router, private cdr: ChangeDetectorRef, private crearSitio: CrearSitioService) {
     this.isHero = false;
     this.setSocialMedia = false;
     this.setContact = false;
@@ -123,6 +123,7 @@ export class CrearSitioComponent implements OnInit {
    * 
    */
   ngOnInit(): void {
+    //endpoint que conecte a show co un parametro
     this.initSitioForm();
   }
 
@@ -136,7 +137,7 @@ export class CrearSitioComponent implements OnInit {
       name: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9]+$/), Validators.maxLength(64)]),
       backgroundColor: new FormControl('#ffffff'),
       header: new FormGroup({
-        hero: new FormControl(''),
+        hero: new FormControl(false),
         title: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9 ]+$/), Validators.maxLength(64)]),
         position: new FormControl('', Validators.required),
         size: new FormControl('', Validators.required),
@@ -167,7 +168,7 @@ export class CrearSitioComponent implements OnInit {
           address: new FormControl(''),
         }),
       })
-    })
+    });
   }
 
   /**
@@ -224,13 +225,19 @@ export class CrearSitioComponent implements OnInit {
     bodyCtrl.clear();
   }
 
-   /**
-   * Maneja la acción de enviar el formulario.
-   * 
-   * @method onSubmit
-   */
-  onSubmit(): void {
-    console.log(this.sitioForm.value)
+  onSubmit() {
+    const sitioForm = this.sitioForm.value;
+    sitioForm.url = sitioForm.name;
+    sitioForm.views = 0;
+    this.crearSitio.crearSite(sitioForm).subscribe(
+      (response) => {
+        this.router.navigate(['/misSitios']);
+      },
+      (error) => {
+        console.error(JSON.stringify(JSON.parse(error), null, 2));
+      }
+    );
+    
   }
 
   /**
@@ -239,7 +246,7 @@ export class CrearSitioComponent implements OnInit {
    * @method cancelar
    */
   cancelar(): void {
-    this.router.navigate(['/sitios']);
+    this.router.navigate(['/misSitios']);
   }
 
    /**

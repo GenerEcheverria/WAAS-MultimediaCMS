@@ -9,7 +9,6 @@ class Footer extends Model
 {
     use HasFactory;
 
-    use HasFactory;
     protected  $fillable = [
         'idSite',
         'backgroundColor',
@@ -30,4 +29,9 @@ class Footer extends Model
     ];
 
     protected $table = 'footers';
+
+    public function site()
+    {
+        return $this->belongsTo(Site::class, 'idSite');
+    }
 }

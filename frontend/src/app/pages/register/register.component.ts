@@ -51,20 +51,34 @@ export class RegisterComponent {
   ngOnInit(): void {
     this.formLogin = this.formBuilder.group({
       Nombre: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.minLength(10)]],
-      telefono: ['', [Validators.required, Validators.minLength(12), Validators.maxLength(12)]],
+      email: ['', [Validators.required, this.emailValidator()]],
+      telefono: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
       fotoPerfil: ['', [Validators.required, this.imageValidator.bind(this)]],
       password: ['', [Validators.required, Validators.minLength(8)]],
-      confirmPassword: ['', [Validators.required]]
-
-    }); 
+      confirmPassword: ['', [Validators.required]]}, { validator: this.passwordsMatchValidator }); 
   }
 
-  /**
-   * Método para manejar el cambio de archivo en el input de imagen.
-   * Permite obtener la imagen seleccionada y mostrarla en la vista previa.
-   * @param event Evento de cambio de archivo.
-   */
+  passwordsMatchValidator(formGroup: FormGroup) {
+    const password = formGroup.get('password')?.value;
+    const confirmPassword = formGroup.get('confirmPassword')?.value;
+    if(password != "" && confirmPassword !=""){
+      if (password && confirmPassword && password !== confirmPassword) {
+        formGroup.get('confirmPassword')?.setErrors({ passwordsNotMatch: true });
+      } else {
+        formGroup.get('confirmPassword')?.setErrors(null);
+      }
+    }
+  }
+  
+  
+  emailValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      const isValid = emailPattern.test(control.value);
+      return isValid ? null : { emailInvalid: true };
+    };
+  }
+
   onFileChange(event: any) {
     const file = event.target.files[0];
     if (file && file.type.match(/image\/(gif|jpe?g|png)$/i)) {
@@ -119,7 +133,7 @@ export class RegisterComponent {
       'name': formUser.Nombre,
       'email' : formUser.email,
       'password' : this.crypto.encrypted(formUser.password),
-      'role' : "administrador",
+      'role' : "admin",
       'phone': formUser.telefono,
       'photo': "adadad", //aqui le deben pasar la url
     }

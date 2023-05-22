@@ -28,7 +28,9 @@ export class Crypto {
      * @param text Texto encriptado.
      * @returns Texto desencriptado.
      */
+      
     public decrypted(text: string): string {
-        return (CryptoJS.AES.decrypt(text, this.key)).toString(CryptoJS.enc.Utf8);
-    }
+        return (CryptoJS.AES.decrypt(text, this.key)).toString(CryptoJS.enc.Utf8);;
+
+    }  
 }

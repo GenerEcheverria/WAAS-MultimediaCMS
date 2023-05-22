@@ -13,4 +13,5 @@ export class HeaderComponent {
    * Nombre para mostrar en el encabezado.
    */
   @Input() name: string ="";
+  @Input() photo: string ="";
 }

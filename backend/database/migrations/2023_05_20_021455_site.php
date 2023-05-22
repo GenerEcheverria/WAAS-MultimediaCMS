@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-
     public function up(): void
     {
         Schema::create('sites', function (Blueprint $table) {
@@ -14,11 +13,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('backgroundColor');
             $table->integer('views');
-            $table->unsignedBigInteger('idUser'); 
+            $table->unsignedBigInteger('idUser');
             $table->string('url');
-            $table->timestamps(); 
+            $table->enum('state', ['capturada', 'publicada', 'pausada']);
+            $table->timestamps();
 
-            $table->foreign('idUser')->references('id')->on('users'); 
+            $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -27,4 +27,3 @@ return new class extends Migration
         Schema::dropIfExists('sites');
     }
 };
-

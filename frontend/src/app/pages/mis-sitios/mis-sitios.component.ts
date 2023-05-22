@@ -5,6 +5,8 @@ import { writeFile } from 'xlsx';
 import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver';
 import { ElementRef } from '@angular/core';
+import { MisSitiosService } from 'src/app/services/mis-sitios.service';
+import { SiteService } from 'src/app/services/site.service';
 
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
@@ -17,66 +19,32 @@ import { ElementRef } from '@angular/core';
   styleUrls: ['./mis-sitios.component.css']
 })
 export class MisSitiosComponent {
-  /**
-   * Lista de sitios en la biblioteca del usuario.
-   */
-  public bibliotecaSitios: {link: string, titulo: string, seccion: string, vistas: number}[] = [];
-  
-  /**
-   * Datos filtrados de la biblioteca de sitios.
-   */
-  public filteredData = this.bibliotecaSitios
-
-  /**
-   * Filtro aplicado a la biblioteca de sitios.
-   */
+  public bibliotecaSitios: any[] = [];
+  public filteredData: any[] = [];
   public Filtro: string = '';
+  public newState: string = '';
+  public actualModify: number = 0;
+  
+
+  constructor(private misSitiosService: MisSitiosService, private site: SiteService) {}
 
   /**
    * Se ejecuta al inicializar el componente.
    */
   ngOnInit(): void {
-    let a = {
-      link: '/misSitios',
-      titulo: 'Sitio A',
-      seccion: 'seccion 1',
-      vistas: 3
-    };
-    this.bibliotecaSitios.push(a);
+    this.updateData()
+  }
 
-    let b = {
-      link: '/ranking',
-      titulo: 'Sitio B',
-      seccion: 'seccion 3',
-      vistas: 5
-    };
-    this.bibliotecaSitios.push(b);
+  updateData(){
+    this.misSitiosService.getAll().subscribe(data => {
+      this.bibliotecaSitios = data.sites;
+      this.filteredData = this.bibliotecaSitios;
+    });
+  }
 
-    let c = {
-      link: '/cuenta',
-      titulo: 'Sitio C',
-      seccion: 'seccion 2',
-      vistas: 3
-    };
-    this.bibliotecaSitios.push(c);
-
-    let d = {
-      link: '/misSitios',
-      titulo: 'Sitio D',
-      seccion: 'seccion 4',
-      vistas: 5
-    };
-    this.bibliotecaSitios.push(d);
-
-    let e = {
-      link: '/misSitios',
-      titulo: 'Sitio E',
-      seccion: 'seccion 4',
-      vistas: 5
-    };
-    this.bibliotecaSitios.push(e);
-
-    console.log('estos son los sitios actuales', this.bibliotecaSitios);
+  updateSelected(id:number,state:string){
+    this.actualModify=id
+    this.newState=state
   }
 
   
@@ -85,7 +53,24 @@ export class MisSitiosComponent {
    */
   filterData() {
     this.filteredData = this.bibliotecaSitios.filter((item) =>
-      item.titulo.toLowerCase().includes(this.Filtro.toLowerCase())
+      item.name.toLowerCase().includes(this.Filtro.toLowerCase())
+    );
+  }
+
+  
+  updateDBState(){
+    console.log(this.actualModify, this.newState)
+    const site = {
+      'id' : this.actualModify,
+      'state' : this.newState
+    } 
+    this.site.updateState(site.id, site.state).subscribe(
+      (response) => {
+        this.updateData()
+      },
+      (error) => {
+        console.error(error);
+      }
     );
   }
 
@@ -97,10 +82,10 @@ export class MisSitiosComponent {
       {
         table: {
           headerRows: 1,
-          widths: ['*', '*', '*', '*'],
+          widths: ['*', '*', '*'],
           body: [
-            ['Link', 'Título', 'Sección', 'Vistas'],
-            ...this.bibliotecaSitios.map(item => [item.link, item.titulo, item.seccion, item.vistas])
+            ['URL', 'Nombre', 'Vistas'],
+            ...this.bibliotecaSitios.map(item => ["/site/"+item.url, item.name, item.views])
           ]
         }
       }
@@ -124,6 +109,7 @@ export class MisSitiosComponent {
   /**
    * Genera y descarga un archivo Excel con los datos de la biblioteca de sitios.
    */
+
   generarExcel() {
     const worksheet = XLSX.utils.json_to_sheet(this.bibliotecaSitios);
     const workbook = XLSX.utils.book_new();

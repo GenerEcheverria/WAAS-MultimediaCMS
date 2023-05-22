@@ -6,6 +6,7 @@
         <br>
         <span class="fs-5 d-none d-sm-inline pt-5">Menú</span>
         <ul
+          *ngIf="role=='admin'"
           class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
           id="menu"
         >
@@ -31,8 +32,21 @@
             ></app-menu-option>
           </li>
         </ul>
+        <ul
+          *ngIf="role=='superadmin'"
+          class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+          id="menu"
+        >
+          <li>
+            <app-menu-option
+              [titulo]="'Usuarios'"
+              [link]="'sasitios'"
+              [icon]="'bi-person-circle'"
+            ></app-menu-option>
+          </li>
+        </ul>
         <div class="d-flex justify-content-center mb-4 ms-3">
-            <a href="/login" class="btn btn-primary rounded-pill  text-white">Cerrar sesión</a>
+            <button (click)="logout()" class="btn btn-primary rounded-pill  text-white">Cerrar sesión</button>
         </div>  
       </div>
     </div>
