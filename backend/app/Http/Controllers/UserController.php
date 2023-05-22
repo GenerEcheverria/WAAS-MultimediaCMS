@@ -110,6 +110,14 @@ class UserController extends Controller
     }
 
 
+    /**
+     * Get sites for a specific user.
+     *
+     * @param  string  $userId
+     * @return \Illuminate\Http\JsonResponse
+     */
+
+
     public function getSitesForUser($userId)
     {
         $user = User::findOrFail($userId);
@@ -120,6 +128,12 @@ class UserController extends Controller
         ], 200);
     }
 
+    /**
+     * Get the number of sites for a specific user.
+     *
+     * @param  string  $userId
+     * @return int
+     */
     public function getnumSitesForUser($userId)
     {
         $user = User::findOrFail($userId);
