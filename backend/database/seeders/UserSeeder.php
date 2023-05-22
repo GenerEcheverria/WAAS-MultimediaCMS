@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
             'password' => '$2y$10$06bfQ6iUQeaZn6v1jPFfBexFI3nT1AC94oktN6BAIlr4t7x5jteJq',
             "role"=>"superadmin",
             "phone"=> "9991732101",
-            "photo"=>"a"
+            "photo"=>"../../../assets/images/default-user.png"
         ]);
         User::create([
             'name' => 'Gener Echeverria',
@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
             'password' => '$2y$10$06bfQ6iUQeaZn6v1jPFfBexFI3nT1AC94oktN6BAIlr4t7x5jteJq',
             "role"=>"admin",
             "phone"=> "9991732101",
-            "photo"=>"a"
+            "photo"=>"../../../assets/users/generceo.png"
         ]);
     }
 }

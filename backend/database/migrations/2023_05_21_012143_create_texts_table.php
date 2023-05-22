@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('idCol')->references('id')->on('bodies')->onDelete('cascade');
             $table->string('titleText');
             $table->enum('positionTitle', ['left', 'center', 'right']);
-            $table->string('text');
+            $table->text('text');
             $table->enum('positionText', ['left', 'center', 'right', 'justified']);
             $table->timestamps();
         });

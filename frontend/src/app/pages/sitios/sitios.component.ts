@@ -42,6 +42,10 @@ export class SitiosComponent {
     if (this.url) {
       try {
         const response = await this.siteService.getSiteIdbyUrl(this.url.toString()).toPromise();
+        if (response.state !== 'publicada') {
+          this.router.navigate(['/misSitios']);
+          return
+        }
         id = response.id;
         this.webContent = await this.siteService.getSite(id).toPromise();
         this.isDataLoaded = true; // Marcar los datos como cargados
