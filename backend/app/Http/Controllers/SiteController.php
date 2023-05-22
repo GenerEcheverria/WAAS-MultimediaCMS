@@ -275,7 +275,9 @@ class SiteController extends Controller
         $site = Site::where('url', $url)->first();
 
         if ($site) {
-            return response()->json(['id' => $site->id], 200);
+            return response()->json(['id' => $site->id,
+            'state' => $site->state
+        ], 200);
         } else {
             return response()->json(['message' => 'Site not found'], 404);
         }
