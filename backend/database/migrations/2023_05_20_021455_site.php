@@ -15,6 +15,7 @@ return new class extends Migration
             $table->integer('views');
             $table->unsignedBigInteger('idUser');
             $table->string('url');
+            $table->enum('state', ['capturada', 'publicada', 'pausada']);
             $table->timestamps();
 
             $table->foreign('idUser')->references('id')->on('users')->onDelete('cascade');

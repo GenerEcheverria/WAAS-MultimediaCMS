@@ -6,6 +6,7 @@ import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver';
 import { ElementRef } from '@angular/core';
 import { MisSitiosService } from 'src/app/services/mis-sitios.service';
+import { SiteService } from 'src/app/services/site.service';
 
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 @Component({
@@ -17,22 +18,49 @@ export class MisSitiosComponent {
   public bibliotecaSitios: any[] = [];
   public filteredData: any[] = [];
   public Filtro: string = '';
+  public newState: string = '';
+  public actualModify: number = 0;
+  
 
-  constructor(private misSitiosService: MisSitiosService) {}
+  constructor(private misSitiosService: MisSitiosService, private site: SiteService) {}
 
   ngOnInit(): void {
+    this.updateData()
+  }
+
+  updateData(){
     this.misSitiosService.getAll().subscribe(data => {
       this.bibliotecaSitios = data.sites;
       this.filteredData = this.bibliotecaSitios;
     });
   }
-  
+
+  updateSelected(id:number,state:string){
+    this.actualModify=id
+    this.newState=state
+  }
+
   filterData() {
     this.filteredData = this.bibliotecaSitios.filter((item) =>
       item.name.toLowerCase().includes(this.Filtro.toLowerCase())
     );
   }
 
+  updateDBState(){
+    console.log(this.actualModify, this.newState)
+    const site = {
+      'id' : this.actualModify,
+      'state' : this.newState
+    } 
+    this.site.updateState(site.id, site.state).subscribe(
+      (response) => {
+        this.updateData()
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
   generarPDF() {
     const documentDefinition = {   content: [
       {
@@ -61,6 +89,7 @@ export class MisSitiosComponent {
   };
     pdfMake.createPdf(documentDefinition).download('ReporteMisSitios.pdf');
   }
+
 
   generarExcel() {
     const worksheet = XLSX.utils.json_to_sheet(this.bibliotecaSitios);

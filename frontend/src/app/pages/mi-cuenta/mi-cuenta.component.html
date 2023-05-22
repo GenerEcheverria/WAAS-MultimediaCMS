@@ -69,22 +69,6 @@
 
           </div>
         </div>
-        <div class="row mb-3">
-          <div class="col-2">
-
-            <label for="imagen" class="form-label">Imagen:</label>
-          </div>
-          <div class="col-6">
-
-            <input type="file" formControlName="imagen" class="form-control rounded-pill bg-azure-web" id="imagen"
-              name="imagen">
-
-              <div *ngIf="form1.get('imagen')?.invalid && (form1.get('imagen')?.dirty || form1.get('imagen')?.touched)">
-                <div class="control-error" *ngIf="form1.get('imagen')?.errors?.['required']">Se requiere una Imagen</div>
-              </div>
-
-          </div>
-        </div>
         <div class="d-flex col-8 justify-content-end align-items-end">
 
           <button type="submit" [disabled]="form1.invalid"

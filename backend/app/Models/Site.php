@@ -9,7 +9,7 @@ class Site extends Model
 {
     use HasFactory;
     protected  $fillable = [
-        'name', 'backgroundColor','views', 'idUser', 'url'
+        'name', 'backgroundColor','views', 'idUser', 'url', 'state'
     ];
 
     protected $table = 'sites';

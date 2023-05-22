@@ -23,4 +23,8 @@ export class SiteService {
   getSiteIdbyUrl(url: string) {
     return this.http.get<any>(this.url + '/media/id/'+url, {});
   }
+
+  updateState(id:number, state: string){
+    return this.http.post<any>(this.url + '/media/updateState', {id, state});
+  }
 }
